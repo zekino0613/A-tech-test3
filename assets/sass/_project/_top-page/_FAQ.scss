@@ -1,0 +1,242 @@
+@use "../../_foundation/_mixin"as mixin;
+@use "../../_foundation/_base"as base;
+
+#FAQ {
+  margin: -8px auto 120px;
+  padding: 0 11.5% 0 8.33%;
+  .FAQ {
+    &__inner {
+      .accordion {
+        max-width: 1080px;
+        margin: 60px 0 0 60px;
+        // padding: 0 60px;
+        .accordion-item {
+          margin-bottom: 20px;
+          background-color: #D4CEBE;
+          overflow: hidden; // 必要以上の高さを表示しないように設定
+      
+          .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+            padding: 47px 32px 47px 20px;
+            cursor: pointer;
+            @include mixin.font-settings
+            ( F-size18
+            , F-line-height14
+            , F-letter-spacing-0-72
+            , F-family-mincho
+            , normal
+            , F-color-orange);
+            transition: background-color 0.3s ease; /* 背景色の遷移 */
+            position: relative;
+            &:hover {
+              background-color: #e6dfd1;
+            }
+      
+            // Q:タイトルテキストを中央に配置
+            .accordion-question {
+              flex: 1;
+              margin: 8px 0px 4px 41px;
+              position: relative;
+              &::before {
+                content: "Q";
+                @include mixin.font-settings
+                ( F-size24
+                , F-line-height14
+                , 0.96
+                , F-family-mincho
+                , normal
+                , F-color-orange);
+                position: absolute;
+                top: -5px;
+                left: -39px;
+                margin: 0 0px 0 0px;
+              }  
+            }
+      
+            // アイコンの配置
+            .accordion-icon {
+              font-size: 14px;
+              color: #54372D;
+              transition: transform 0.3s;
+              position: absolute;
+              right: 29px;
+              top: 43px;
+            }
+          }
+      
+          .accordion-content {
+            max-height: 0; // 初期状態で高さを 0 に設定
+            overflow: hidden; // テキストのオーバーフローを隠す
+            @include mixin.font-settings
+            ( F-size18
+            , 23
+            , F-letter-spacing-0-72
+            , F-family-mincho
+            , normal
+            , F-color-orange);
+            padding: 0 16px; // 初期状態でパディングを 0 に設定
+            transition: max-height 0.3s ease, padding 0.3s ease; // 滑らかな開閉
+            p {
+              position: relative;
+              margin:-9px 0px 0px 38px;
+              &::before {
+                content: "A";
+                @include mixin.font-settings
+                ( F-size24
+                , F-line-height14
+                , 0.96
+                , F-family-mincho
+                , normal
+                , F-color-orange);
+                position: absolute;
+                top: 4px;
+                left: -38px;
+              }
+            }
+          }
+      
+          &.active {
+            .accordion-content {
+              // 開いた時に高さとパディングを適切に設定
+              overflow: visible;
+            }
+      
+            .accordion-icon {
+              transform: rotate(180deg); // ▼を▲に
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@include mixin.TAB1 {
+  #FAQ {
+    margin:164px auto 121px ;
+    padding: 0 4% 0 8%;
+    .FAQ {
+      &__inner {
+
+        .section-title {
+          &__shadow {
+            font-size: 72px;
+            left: 41px;
+          }
+        }
+        .accordion {
+          max-width: 1080px;
+          margin: 38px auto;
+          // padding: 0 60px;
+          .accordion-item {
+            margin-bottom: 20px;
+            background-color: #D4CEBE;
+            overflow: hidden; // 必要以上の高さを表示しないように設定
+        
+            .accordion-header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              height: 73px;
+              padding: 16px 28px 17px 3px;
+              cursor: pointer;
+              @include mixin.font-settings
+              ( F-size14
+              , 21
+              , F-letter-spacing-0-56
+              , F-family-mincho
+              , normal
+              , F-color-orange);
+              transition: background-color 0.3s ease; /* 背景色の遷移 */
+              position: relative;
+              &:hover {
+                background-color: #e6dfd1;
+              }
+        
+              // Q:タイトルテキストを中央に配置
+              .accordion-question {
+                flex: 1;
+                margin: 8px 0px 4px 41px;
+                position: relative;
+                &::before {
+                  content: "Q";
+                  @include mixin.font-settings
+                  ( F-size18
+                  , F-line-height14
+                  , 0.72
+                  , F-family-mincho
+                  , normal
+                  , F-color-orange);
+                  position: absolute;
+                  top: 2px;
+                  left: -28px;
+                  margin: 0 0px 0 0px;
+                }  
+              }
+        
+              // アイコンの配置
+              .accordion-icon {
+                font-size: 14px;
+                color: #54372D;
+                transition: transform 0.3s;
+                position: absolute;
+                right: 11px;
+                top: 26px;
+              }
+            }
+
+            &:last-child .accordion-header {
+              height: 94px; /* 最後の.accordion-item内の.accordion-headerだけに適用 */
+            }
+        
+            .accordion-content {
+              max-height: 0; // 初期状態で高さを 0 に設定
+              overflow: hidden; // テキストのオーバーフローを隠す
+              padding: 0 14px; // 初期状態でパディングを 0 に設定
+              @include mixin.font-settings
+              ( F-size14
+              , 21
+              , F-letter-spacing-0-56
+              , F-family-mincho
+              , normal
+              , F-color-orange);
+              transition: max-height 0.3s ease, padding 0.3s ease; // 滑らかな開閉
+              p {
+                position: relative;
+                margin: -11px 0px 0px 26px;
+                &::before {
+                  content: "A";
+                  @include mixin.font-settings
+                  ( F-size18
+                  , F-line-height14
+                  , 0.72
+                  , F-family-mincho
+                  , normal
+                  , F-color-orange);
+                  position: absolute;
+                  top: -2px;
+                  left: -24px;
+                }
+              }
+            }
+        
+            &.active {
+              .accordion-content {
+                // 開いた時に高さとパディングを適切に設定
+                overflow: visible;
+              }
+        
+              .accordion-icon {
+                transform: rotate(180deg); // ▼を▲に
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

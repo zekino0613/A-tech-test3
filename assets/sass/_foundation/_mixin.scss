@@ -1,0 +1,158 @@
+@use "sass:math";
+
+$TAB2: 1200px;
+$TAB1: 900px;
+$SP: 500px;
+
+
+@mixin TAB2 {
+  @media (max-width: $TAB2) {
+    @content;
+  }
+}
+
+@mixin TAB1 {
+  @media (max-width: $TAB1) {
+    @content;
+  }
+}
+
+@mixin SP {
+  @media (max-width: $SP) {
+    @content;
+  }
+}
+
+
+// フォントサイズ（プレフィックス付き）
+$font-sizes: (
+  F-size9: 9px,
+  F-size12: 12px,
+  F-size14: 14px,
+  F-size16: 16px,
+  F-size18: 18px,
+  F-size20: 20px,
+  F-size24: 24px,
+  F-size27: 27px,
+  F-size28: 28px,
+  F-size29: 29px,
+  F-size32: 32px,
+  F-size33: 33px,
+  F-size36: 36px,
+  F-size40: 40px,
+  F-size48: 48px,
+  F-size60: 60px,
+  F-size72: 72px,
+  F-size80: 80px,
+  F-size84: 84px,
+  F-size120: 120px);
+
+// 行送り（line-height）
+$line-heights: (
+  F-line-height8: 8,
+  F-line-height12: 12,
+  F-line-height14: 14,
+  F-line-height18: 18,
+  F-line-height22: 22,
+  F-line-height24: 24,
+  F-line-height25: 25,
+  F-line-height27: 27,
+  F-line-height28: 28,
+  F-line-height32: 32,
+  F-line-height35: 35,
+  F-line-height36: 36,
+  F-line-height44: 44,
+  F-line-height60: 60,
+  F-line-height106: 106,
+  F-line-height168: 168);
+
+// 文字の間隔（letter-spacing）
+$letter-spacings: (
+  F-letter-spacing-0: 0px,
+  F-letter-spacing-0-48: 0.48px,
+  F-letter-spacing-0-56: 0.56px,
+  F-letter-spacing-0-72: 0.72px,
+  F-letter-spacing-1-2: 1.2px,
+  F-letter-spacing-1-4: 1.4px,
+  F-letter-spacing-1-6: 1.6px,
+  F-letter-spacing-1-8: 1.8px,
+  F-letter-spacing-2: 2px,
+  F-letter-spacing-2-4: 2.4px,
+  F-letter-spacing-3-36: 3.36px,
+  F-letter-spacing-4-8: 4.8px,
+  F-letter-spacing-5-6: 5.6px,
+);
+
+// フォントファミリー（プレフィックス付き）
+$font-families: (
+  F-family-marcellus: "Marcellus",
+  F-family-mincho: "Yu Mincho",
+  F-family-gothic: "Yu Gothic",
+  F-family-parisienne:"Parisienne"
+);
+
+$font-weights: (
+  normal: normal,
+  bold: bold);
+
+// フォントカラー（プレフィックス付き）
+$font-colors: (
+  F-color-orange:#CA7F13,
+  F-color-brown: #54372D,
+  F-color-green: #949E33,
+  F-color-white: #FFFFFF,
+  F-color-black: #333333,
+  F-color-shadow:#CA7F1314,
+  F-color-gray: #54372D33,
+  F-color-rightgray:#707070
+);
+
+
+// フォントスタイル
+@mixin font-settings(
+  $fontsize: null,
+  $line: null,
+  $letter-spacing: null,
+  $font-family: null,
+  $font-weight: null,
+  $color: null) {
+  // ✅ フォントサイズを取得（未登録なら `px` を追加）
+  $font-size-value: null;
+  @if $fontsize !=null {
+    $size-value: if(map-has-key($font-sizes, $fontsize), map-get($font-sizes, $fontsize), $fontsize + px);
+    $font-size-value: strip-unit($size-value); // ✅ `px` を削除して数値に変換
+    font-size: $size-value;
+  }
+  // ✅ Letter-Spacing の計算（フォントサイズがある場合のみ）
+  @if $letter-spacing !=null and $font-size-value !=null {
+    $spacing-value: if(map-has-key($letter-spacings, $letter-spacing), map-get($letter-spacings, $letter-spacing), $letter-spacing);
+    $spacing-value-unitless: strip-unit($spacing-value); // ✅ `px` を削除
+    letter-spacing: #{($spacing-value-unitless / $font-size-value)}em;
+  }
+    // ✅ Line-Height の計算（フォントサイズがある場合のみ）
+  @if $line !=null and $font-size-value !=null {
+    $line-value: if(map-has-key($line-heights, $line), map-get($line-heights, $line), $line);
+    $line-value-unitless: strip-unit($line-value); // ✅ `px` を削除
+    line-height: ($line-value-unitless / $font-size-value); // ✅ `em` を削除
+  }
+  // ✅ フォントファミリー
+  @if $font-family !=null {
+    font-family: map-get($font-families, $font-family);
+  }
+  // ✅ フォントウェイト
+  @if $font-weight !=null {
+    font-weight: map-get($font-weights, $font-weight);
+  }
+  // ✅ カラー（指定がある場合のみ変更）
+  @if $color !=null {
+    color: map-get($font-colors, $color);
+  }
+}
+
+// ✅ ユーティリティ関数: 単位を削除
+@function strip-unit($value) {
+  @if type-of($value)=="number"and unit($value) !="" {
+    @return $value / ($value * 0 + 1);
+  }
+  @return $value;
+}

@@ -1,0 +1,602 @@
+@use "./mixin"as mixin;
+// @use "../_foundation/base" as base;
+
+
+
+html {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+
+  .no-scroll {
+    overflow: hidden;
+    /* スクロールを無効化 */
+    position: fixed;
+    /* 固定位置 */
+  }
+
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #000000;
+  background-color: #ffffff;
+  scroll-behavior: smooth;
+  margin: 0; // 
+  padding: 0;
+  -wp-admin--admin-bar--height: 0;
+  font-size: 0.9rem;
+  letter-spacing: 0px;
+  font-family: "Yu Mincho";
+  scroll-margin-top: 250px;
+  /* ヘッダー分の余白を確保 */
+  // .no-scroll {
+  //   overflow: hidden; /* スクロールを無効化 */
+  // }
+
+  .scroll-to-top {
+    position: fixed;
+    bottom: 68px;
+    right: 22px;
+    width: 80px;
+    /* ボタンの幅 */
+    height: 80px;
+    /* ボタンの高さ */
+    background-color: rgba(#949E33, 0.7);
+    /* 背景色と半透明度 */
+    border-radius: 50%;
+    /* 円形にする */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    /* 矢印の大きさ */
+    font-weight: bold;
+    /* 矢印を太字に */
+    color: #ffffff;
+    /* 矢印の色 */
+    cursor: pointer;
+    opacity: 0;
+    /* 初期状態で非表示 */
+    visibility: hidden;
+    transform: scale(0.8);
+    /* 初期状態で縮小 */
+    transition: opacity 1s ease, transform 0.3s ease, visibility 0.3s ease;
+    /* 表示のトランジション */
+    z-index: 999;
+
+    &.show {
+      opacity: 1;
+      /* 表示状態 */
+      visibility: visible;
+      /* 表示状態 */
+      transform: scale(1);
+      /* 通常サイズ */
+      transition: 1s;
+    }
+
+    &:hover {
+      transition: 1s;
+      background-color: rgba(#CA7F13, 0.9);
+      /* ホバー時の色 */
+    }
+  }
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  margin: 0 auto;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto; //レイアウトシフ対策
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  display: block;
+  /* `<a>`全体をクリック可能に */
+  transition: .3s;
+}
+
+a:hover {
+  opacity: 0.7;
+  transition: .3s;
+}
+
+/* キーボード操作時にのみフォーカスアウトラインを表示 */
+a:focus-visible {
+  outline: 2px solid #fefefe;
+  /* フォーカス時の アウトライン */
+  box-shadow: 0 0 2px #ffffff, 0 0 0 4px #000000;
+  /* 2本目のアウトライン */
+  border-radius: 5px;
+}
+
+//SP版改行
+.brsp {
+  display: none;
+}
+
+//PC版改行
+.brpc {
+  display: block;
+}
+
+
+
+
+// header/footerアイコン
+.a-logo {
+  .h-logo {
+    display: flex;
+    align-items: center;
+    padding: 0 0px 0 20px;
+
+    &__img {
+      width: 64px;
+      height: 64px;
+    }
+
+    &__text {
+      @include mixin.font-settings (F-size28, F-line-height35, F-letter-spacing-5-6, F-family-mincho, normal, F-color-brown);
+      //変更内容
+      padding: 0 0 0 7px;
+
+    }
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+// 緑ボタンレイアウト
+.btn {
+  @include mixin.font-settings (F-size16, 26, 1.6, F-family-mincho, normal, F-color-white);
+  background: #949E33; // 初期背景色
+  display: flex;
+  align-items: center;
+  justify-content: center; // 中央揃え
+  border-radius: 40px;
+  margin: 0 4px 0 0;
+  transition: background 0.3s ease, color 0.3s ease;
+  text-decoration: none; // リンクの場合も装飾を消す
+  cursor: pointer;
+
+  &:hover {
+    background: #CA7F13; // ホバー時背景色
+    // color: #54372D; // ホバー時文字色
+  }
+
+  &.back {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    /* クリックを無効化 */
+  }
+}
+
+//view-moreボタン
+.view-more {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &__text {
+    position: relative;
+    @include mixin.font-settings (F-size18, F-line-height36, F-letter-spacing-1-8, F-family-mincho, normal, F-color-brown);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      /* 下線の位置を調整 */
+      left: 0;
+      width: 120px;
+      height: 1px;
+      background-color: #54372D;
+      /* 下線の色 */
+      z-index: 1;
+    }
+  }
+
+  &__arrow {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -9px;
+      left: 11px;
+      width: 6px;
+      height: 1px;
+      transform: rotate(28deg);
+      background-color: #54372D;
+    }
+  }
+}
+
+// 各セクションのタイトルテキスト
+.section-title {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+
+  &__shadow {
+    @include mixin.font-settings (F-size120, F-line-height168, 0, F-family-parisienne, normal, F-color-shadow);
+    position: absolute;
+    /* 重ねて配置 */
+    top: -40px;
+    left: 100px;
+    z-index: 2;
+    /* 背面に配置 */
+  }
+
+  &__main {
+    @include mixin.font-settings (F-size84, F-line-height106, F-letter-spacing-3-36, F-family-marcellus, normal, F-color-orange);
+    position: relative;
+    /* 重ねる基準 */
+    text-transform: uppercase; //全ての文字を大文字に変換
+    z-index: 4;
+    /* 前面に表示 */
+  }
+
+  &__small {
+    @include mixin.font-settings (F-size14, F-line-height14, F-letter-spacing-0-56, F-family-mincho, normal, F-color-orange);
+  }
+}
+
+//footerのクリックボタン
+.select-btn {
+  color: #CA7F13;
+  position: absolute;
+  top: 48%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+  /* 中心位置に調整 */
+  text-align: center;
+  z-index: 2;
+  /* 擬似要素より前に配置 */
+  transition: .3s;
+
+  &__main {
+    @include mixin.font-settings (F-size80, F-line-height14, 8, F-family-marcellus, normal, F-color-orange);
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+
+  &__sub {
+    @include mixin.font-settings (F-size16, F-line-height14, F-letter-spacing-1-6, F-family-mincho, normal, F-color-orange);
+    display: block;
+    width: 150px;
+    text-align: center;
+    position: absolute;
+    top: 530%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    /* 中心位置に調整 */
+  }
+}
+
+
+
+//スクロール中に下からフェードイン
+.fade-in {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  visibility: hidden;
+
+  /* 初期状態では要素を隠します。 */
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    /* ビューポート内に入ったときに要素を表示します。 */
+  }
+}
+
+//mainvisualのテキスト。ロード後にフェードイン
+.fadein {
+  opacity: 0;
+  transform: translate(0, 200px);
+  /* 初期位置を下にずらす */
+  transition: all 1s ease;
+
+  /* イージングを適用 */
+  &.scrollin {
+    opacity: 1 !important;
+    transform: translate(0, 0) !important;
+  }
+}
+
+
+
+
+//-------------------------------------------------------------------------------
+// wordpressテンプレートパーツ
+//-------------------------------------------------------------------------------
+// 【パンくずリストプラグイン】-------------↓
+#breadcrumbs {
+  @include mixin.font-settings (F-size18, F-line-height36, F-letter-spacing-1-8, F-family-mincho, normal, F-color-orange);
+  padding: 27.5px 0 0px 36px;
+  display: flex;
+
+  /* 各パンくずの要素設定 */
+  span {
+    display: flex;
+    flex-wrap: wrap; // 折り返し設定
+    gap: 4px; // 各要素の間隔を設定
+    margin: 0; // 不要な余白を削除
+    padding: 0;
+
+    /* リンクのスタイル */
+    a {
+      color: #ca7f13; // リンクの色
+      text-decoration: none; // 下線を削除
+      transition: color 0.3s ease; // ホバー時のスムーズな色変更
+      margin: 0;
+
+      &:hover {
+        color: #a8660f; // ホバー時の色
+      }
+    }
+
+    /* 最後のパンくず要素 */
+    &.breadcrumb_last {
+      margin-right: 16px; // 必要に応じて調整
+    }
+
+    /* 最後の区切り線を削除 */
+    &:last-child::after {
+      content: ""; // 空白
+    }
+
+    &:last-child::after {
+      content: ""; // 最後の要素の区切り線を削除
+    }
+  }
+}
+
+
+
+
+
+@include mixin.TAB1 {
+  .brsp {
+    display: block;
+  }
+
+  //PC版改行
+  .brpc {
+    display: none;
+  }
+
+
+  .section-title {
+    display: block;
+    color: #CA7F13;
+    position: relative;
+
+    &__shadow {
+      @include mixin.font-settings (F-size72, 101, 0, F-family-parisienne, normal, F-color-shadow);
+
+      display: block;
+      position: absolute;
+      /* 重ねて配置 */
+      top: -30px;
+      left: 73px;
+      z-index: 1;
+      /* 背面に配置 */
+    }
+
+    &__main {
+      @include mixin.font-settings (F-size48, F-line-height60, 1.92, F-family-marcellus, normal, F-color-orange);
+      position: relative;
+      /* 重ねる基準 */
+      z-index: 2;
+      /* 前面に表示 */
+    }
+
+    &__small {
+      @include mixin.font-settings (F-size12, F-line-height8, F-letter-spacing-0-48, F-family-mincho, normal, F-color-orange);
+    }
+  }
+
+
+  .select-btn {
+    color: #CA7F13;
+    position: absolute;
+    top: 48%;
+    left: 51%;
+    transform: translate(-50%, -50%);
+    /* 中心位置に調整 */
+    text-align: center;
+    z-index: 2;
+
+    /* 擬似要素より前に配置 */
+    &__main {
+      @include mixin.font-settings (F-size48, F-line-height14, F-letter-spacing-4-8, F-family-marcellus, normal, F-color-orange);
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+
+    &__sub {
+      @include mixin.font-settings (F-size12, F-line-height14, F-letter-spacing-1-2, F-family-mincho, normal, F-color-orange);
+
+      width: 150px;
+      display: block;
+      /* 行揃えを適切にするため */
+      text-align: center;
+      position: absolute;
+      top: 340%;
+      left: 49%;
+      transform: translate(-50%, -50%);
+      /* 中心位置に調整 */
+    }
+  }
+
+
+}
+
+
+@include mixin.SP {
+
+  body {
+    .scroll-to-top {
+      position: fixed;
+      bottom: 62px;
+      right: 10px;
+      width: 40px;
+      /* ボタンの幅 */
+      height: 40px;
+      /* ボタンの高さ */
+      background-color: rgba(#949E33, 0.7);
+      /* 背景色と半透明度 */
+      border-radius: 50%;
+      /* 円形にする */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      /* 矢印の大きさ */
+      font-weight: bold;
+      /* 矢印を太字に */
+      color: #ffffff;
+      /* 矢印の色 */
+      cursor: pointer;
+      opacity: 0;
+      /* 初期状態で非表示 */
+      visibility: hidden;
+      transform: scale(0.8);
+      /* 初期状態で縮小 */
+      transition: opacity 1s ease, transform 0.3s ease, visibility 0.3s ease;
+      /* 表示のトランジション */
+      z-index: 999;
+
+      &.show {
+        opacity: 1;
+        /* 表示状態 */
+        visibility: visible;
+        /* 表示状態 */
+        transform: scale(1);
+        /* 通常サイズ */
+        transition: 1s;
+      }
+
+      &:hover {
+        transition: 1s;
+        background-color: rgba(#CA7F13, 0.9);
+        /* ホバー時の色 */
+      }
+    }
+  }
+
+
+  .brsp {
+    display: block;
+  }
+
+  //PC版改行
+  .brpc {
+    display: none;
+  }
+
+
+  .btn.front {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    /* クリックを無効化 */
+  }
+
+  .btn.back {
+    @include mixin.font-settings (F-size12, 20, F-letter-spacing-1-2, F-family-mincho, normal, F-color-white);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    /* クリック可能 */
+    width: 120px;
+    height: 30px;
+    margin: 0 auto;
+
+
+    &:hover {
+      background-color: #CA7F13;
+      color: #FFFFFF;
+    }
+  }
+
+  .section-title {
+    &__shadow {
+      font-size: 10vw;
+    }
+  }
+
+
+  //-------------------------------------------------------------------------------
+  // wordpressテンプレートパーツ
+  //-------------------------------------------------------------------------------
+  // 【パンくずリストプラグイン】-------------↓
+  #breadcrumbs {
+    @include mixin.font-settings (F-size14, F-line-height36, F-letter-spacing-1-4, F-family-mincho, normal, F-color-orange);
+    padding: 12.5px 0 0px 4px;
+
+    /* 各パンくずの要素設定 */
+    span {
+      display: flex;
+      // flex-wrap: wrap; // 折り返し設定b
+      gap: 4px; // 各要素の間隔を設定
+      margin: 0; // 不要な余白を削除
+      padding: 0;
+
+      /* リンクのスタイル */
+      a {
+        color: #ca7f13; // リンクの色
+        text-decoration: none; // 下線を削除
+        transition: color 0.3s ease; // ホバー時のスムーズな色変更
+        margin: 0;
+
+        &:hover {
+          color: #a8660f; // ホバー時の色
+        }
+      }
+
+      /* 最後のパンくず要素 */
+      &.breadcrumb_last {
+        margin-right: 16px; // 必要に応じて調整
+      }
+
+      /* 最後の区切り線を削除 */
+      &:last-child::after {
+        content: ""; // 空白
+      }
+    }
+  }
+}

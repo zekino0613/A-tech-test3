@@ -1,0 +1,296 @@
+@use "../../_foundation/_mixin"as mixin;
+@use "../../_foundation/_base"as base;
+
+
+
+#section-contects.archive-news {
+  height: auto;
+  background-color: #F9F8F6;
+
+  .news-flex-contents {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding:111px  12.6% 93px;
+    &__news-item {
+      max-width: 864px;
+      width: 100%;
+      &--post {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        background-color: #D4CEBE;
+        margin: 0 0 20px;
+        .item-flex {
+          display: flex;
+          padding: 29px 0 30px 24px;
+          .date {
+            @include mixin.font-settings
+            ( F-size16
+            , F-line-height14
+            , F-letter-spacing-1-6
+            , F-family-marcellus
+            , normal
+            , F-color-orange);
+            margin: 0 16px 0 0 ;
+          }
+          h2 {
+            @include mixin.font-settings
+            ( F-size16
+            , F-line-height14
+            , F-letter-spacing-1-6
+            , F-family-mincho
+            , normal
+            , F-color-orange);
+          }
+        }
+        
+        .category {
+          @include mixin.font-settings
+          ( F-size32
+          , F-line-height14
+          , 1.28
+          , F-family-marcellus
+          , normal
+          , F-color-gray);
+          padding: 27px 24px 22px 0px;
+        }
+      }
+    }
+  
+
+
+
+    .pagination {
+      display: flex;
+      justify-content: center; /* 中央寄せ */
+      align-items: center; /* 矢印と数字の位置を中央揃え */
+      margin: 20px 0; /* 上下の余白を調整 */
+      list-style: none; /* リストのデフォルトスタイルを削除 */
+      a,
+      span {
+        display: inline-block;
+        margin: 0 2px;
+        padding: 3px 8px;
+        @include mixin.font-settings
+        ( F-size32
+        , F-line-height14
+        , 3.2
+        , F-family-marcellus
+        , normal
+        , F-color-orange);
+        text-decoration: none;
+        transition: .3s;
+        &:hover {
+          color: #949E33;
+          transition: .3s;
+        }
+    
+        &.current {
+          color: #CA7F13;
+          pointer-events: none; /* 現在のページをクリックできないようにする */
+        }    
+      }
+
+      &.fa-chevron-left,
+      &.fa-chevron-right {
+        font-size: 6px;
+      }
+
+      .fa-solid {
+        font-size: 14px;
+        margin: 0 0 17px;
+        &::before {
+          padding: 20px 0 0;
+          display: block;
+        }
+      }
+
+      
+    }
+
+
+    &__sidebar {
+      max-width: 174px;
+      width: 100%;
+      height: fit-content;
+      margin: 0 -15px 0 37px;
+      padding: 9px 0 7px 15px;
+      border-left: 2.5px solid  #CA7F13;
+      &--category-title {
+        @include mixin.font-settings
+        ( F-size32
+        , F-line-height14
+        , 3.2
+        , F-family-marcellus
+        , normal
+        , F-color-orange);
+        color: #CA7F13;
+        margin: 11px 0 44px 0;
+      }
+
+      &--category-list  li a{
+        @include mixin.font-settings
+        ( F-size16
+        , F-line-height14
+        , F-letter-spacing-1-6
+        , F-family-gothic
+        , normal
+        , F-color-orange);
+        margin: 0 0 12px 0;
+      }
+    }
+  }
+}
+
+  
+  
+
+  
+@include mixin.TAB1 {  
+  #section-contects.archive-news {
+    height: auto;
+    background-color: #F9F8F6;
+    .news-flex-contents {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      padding:0 12px 69px;
+      &__news-item {
+        max-width: 864px;
+        width: 100%;
+        padding: 81px 0 0 0;
+        &--post {
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          justify-content: space-between;
+          background-color: #D4CEBE;
+          margin: 0 0 14px;
+          .item-flex {
+            display: flex;
+            flex-direction: column;
+            padding: 6px 0px 0px 8px;
+            .date {
+              @include mixin.font-settings
+              ( F-size14
+              , 21
+              , F-letter-spacing-1-4
+              , F-family-marcellus
+              , normal
+              , F-color-orange);
+              margin: 0px 0 8px 0;
+            }
+            h2 {
+              @include mixin.font-settings
+              ( F-size14
+              , 21
+              , F-letter-spacing-1-4
+              , F-family-mincho
+              , normal
+              , F-color-orange);
+            }
+          }
+          
+          .category {
+            @include mixin.font-settings
+            ( F-size20
+            , F-line-height14
+            , 2
+            , F-family-marcellus
+            , normal
+            , F-color-gray);
+            text-align: right;
+            padding: 6px 4px 1px 8px;
+          }
+        }
+      }
+    
+
+
+
+      .pagination {
+        display: flex;
+        justify-content: center; /* 中央寄せ */
+        align-items: center; /* 矢印と数字の位置を中央揃え */
+        margin: 20px 0; /* 上下の余白を調整 */
+        list-style: none; /* リストのデフォルトスタイルを削除 */
+        a,
+        span {
+          display: inline-block;
+          margin: 0 2px;
+          padding: 3px 8px;
+          @include mixin.font-settings
+          ( F-size16
+          , F-line-height14
+          , F-letter-spacing-1-6
+          , F-family-marcellus
+          , normal
+          , F-color-orange);
+          text-decoration: none;
+          transition: .3s;
+          &:hover {
+            color: #949E33;
+            transition: .3s;
+          }
+      
+          &.current {
+            color: #CA7F13;
+            pointer-events: none; /* 現在のページをクリックできないようにする */
+          }    
+        }
+
+        &.fa-chevron-left,
+        &.fa-chevron-right {
+          font-size: 6px;
+        }
+
+        .fa-solid {
+          font-size: 12px;
+          margin: 0 0 6px;
+          &::before {
+            padding: 5px 0 0;
+            display: block;
+          }
+        }
+      }
+
+
+      &__sidebar {
+        max-width: 100%;
+        width: 100%;
+        height: fit-content;
+        margin: 0 ;
+        padding: 0 0 0px 3px;
+        border-left: none;
+        &--category-title {
+          @include mixin.font-settings
+          ( F-size24
+          , F-line-height14
+          , 2.4
+          , F-family-marcellus
+          , normal
+          , F-color-orange);
+          margin: 3px 0 26px 0;
+        }
+
+        &--category-list {
+          display: flex;
+          flex-wrap: wrap;
+          li a{
+          width: 150px;
+          @include mixin.font-settings
+          ( F-size14
+          , F-line-height14
+          , F-letter-spacing-1-4
+          , F-family-gothic
+          , normal
+          , F-color-orange);
+          margin: 0 0 13px   0;
+          }
+        }
+      }
+    }
+  }
+} 

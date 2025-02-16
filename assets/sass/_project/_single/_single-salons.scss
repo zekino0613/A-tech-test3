@@ -1,0 +1,1037 @@
+@use "../../_foundation/_mixin"as mixin;
+@use "../../_foundation/_base"as base;
+
+.single-salons #para-mainvisual {
+  .section-title {
+    h1 {
+    @include mixin.font-settings
+    ( F-size48
+    , F-line-height14
+    , F-letter-spacing-4-8
+    , F-family-marcellus
+    , normal
+    , F-color-orange);  
+    position: relative;
+    margin-bottom: 10px;
+    top: 13%;
+    left: 50.8%;
+    transform: translate(-50%, -50%);
+    }
+
+    .store-name {
+      @include mixin.font-settings
+      ( F-size80
+      , F-line-height14
+      , 8
+      , F-family-mincho
+      , normal
+      , F-color-orange);  
+      position: absolute;
+      top: 73.2%;
+      left: 50.8%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+
+//固定
+#section-contects.single-salons {
+  height: auto;
+  background-color: #F9F8F6;
+
+  .store-info {
+    padding: 115px 12.6% 197px 13.6%;
+    text-align: center;
+    @include mixin.font-settings
+    ( F-size20
+    , 40
+    , 2
+    , F-family-mincho
+    , normal
+    , F-color-black);
+  }
+}
+
+
+
+
+
+#flow {
+  .section-title {
+    top: -30px;
+    left: 120px;
+  }
+  .flow {
+    &__inner {
+      padding: 50px 17.5% 91px 16.3%;
+      position: relative;
+
+      .flow-steps {
+        position: relative;
+
+        .flow-step {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          position: relative;
+          margin: 0 0 27px 0;
+          &__number {
+            position: relative;
+            color: #F9F8F6;
+            font-size: 32px;
+            text-align: center;
+            padding: 13px 0;
+            background-color: #949E33;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 0 0 0 44px;
+
+            // 通常の疑似要素
+            &::after {
+              content: "";
+              position: absolute;
+              bottom: -80px;
+              left: 50%; /* 中央揃え */
+              transform: translateX(-50%);
+              width: 1px;
+              height: 72px;
+              background: repeating-linear-gradient(
+              to bottom,
+              #949E33,
+              #949E33 1px,
+              transparent 3px,
+              transparent 10px
+              );
+            }
+          }
+
+          // 最後の .flow-step 内の .flow-step__number に疑似要素を非表示
+          &:last-child .flow-step__number::after {
+            content: none;
+          }
+
+          &__column {
+            width: 750px;
+            color: #CA7F13;
+            padding: 3px 0px 0px 39px;
+            margin: 0 0 0 ;
+            &--title {
+              @include mixin.font-settings
+              ( F-size24
+              , F-line-height14
+              , 0.96
+              , F-family-mincho
+              , bold
+              , F-color-orange);          
+              margin: 0 0 12px 0;
+            }
+
+            &--text {
+              @include mixin.font-settings
+              ( F-size18
+              , F-line-height27
+              , F-letter-spacing-1-8
+              , F-family-gothic
+              , normal
+              , F-color-orange);          
+            }
+          }
+        }
+      }
+
+      .flow-images {
+        .flow_image_1 img {
+          border-radius: 50%; /* 円形にする */
+          object-fit: cover; /* 画像を要素内にフィットさせる */
+          position: absolute;
+          overflow: hidden;
+          top: 301px;
+          left: 87px;
+        }
+        .flow_image_2 img {
+          border-radius: 50%; /* 円形にする */
+          object-fit: cover; /* 画像を要素内にフィットさせる */
+          position: absolute;
+          overflow: hidden;
+          top: 657px;
+          right: 53px;
+        }
+        //3枚目の写真ある場合
+        .flow_image_3 img {
+          width: 150px;
+          height: 150px;
+          border-radius: 50%; /* 円形にする */
+          object-fit: cover; /* 画像を要素内にフィットさせる */
+          position: absolute;
+          overflow: hidden;
+          left: 90px;
+          top: 1050px;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+#staff {
+  background-color: #464646;
+  border: 1px solid #707070;
+  .staff-flex {
+    display: flex;
+    width: 100%;
+    padding: 80px 160px;
+    margin: 0 0px 0 5px;
+    &__staff_image {
+      width: 47%;
+      margin: -2px 0px 0px 14px;
+    }
+    &__textarea {
+      width: 59%;
+      color: #CA7F13;
+      padding: 45px 0px 61px 61px;
+        h2 {
+          @include mixin.font-settings
+          ( F-size48
+          , F-line-height27
+          , F-letter-spacing-4-8
+          , F-family-marcellus
+          , normal
+          , F-color-orange);      
+          margin: 0 0 44px 0;
+          span {
+            @include mixin.font-settings
+            ( F-size14
+            , F-line-height27
+            , F-letter-spacing-1-4
+            , F-family-gothic
+            , normal
+            , F-color-orange);        
+          }
+        }
+
+        &--staff_message {
+          @include mixin.font-settings
+          ( F-size18
+          , F-line-height36
+          , F-letter-spacing-1-8
+          , F-family-gothic
+          , normal
+          , F-color-orange);      
+        }
+
+        &--staff_name_english {
+          @include mixin.font-settings
+          ( F-size24
+          , 38
+          , 2.4
+          , F-family-mincho
+          , normal
+          , F-color-orange);      
+          margin:18px 0 0px 2px;
+          .staff_name_japan {
+            @include mixin.font-settings
+            ( F-size12
+            , 20
+            , F-letter-spacing-1-2
+            , F-family-gothic
+            , normal
+            , F-color-orange);        
+            margin: 0 0px 0px 7px;
+          }
+        }
+    }
+  }
+}
+
+
+#contact-info {
+  background-color: #D4CEBE;
+  color: #707070;
+  .contact-info-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 80px 180px;
+    &__text {
+      width: 50%;
+      @include mixin.font-settings
+      ( F-size14
+      , 30
+      , F-letter-spacing-1-4
+      , F-family-gothic
+      , normal
+      , F-color-black);
+        &--flex {
+          display: flex;
+          width: 400px;
+          justify-content: flex-start;
+          align-items: center;
+          border-bottom: 1px solid #CA7F13;
+          padding: 17px 0 18px 1px;
+          strong {
+            @include mixin.font-settings
+            ( F-size20
+            , 30
+            , 2
+            , F-family-mincho
+            , bold
+            , F-color-orange);        
+            width: 94px;
+            padding: 0 0 0 6px;
+          }
+          p,address {
+            padding: 0 0 0 64px ;
+          }
+        }
+    }
+
+    &__map {
+      width: 50%;
+      width: 540px;
+      height: 360px;
+      margin: 0 -18px 0 0;
+      #map-container {
+        width: 100%;
+        padding-top: 0; /* アスペクト比を16:9に設定 */
+        position: relative;
+        .map-pc {
+          display: block;
+          }
+        .map-sp {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+#archive-salons-link {
+  background-color: #F9F8F6;
+  padding: 120px 0;
+  margin: auto;
+  .btn {
+    width: 166px;
+    height: 41px;
+    margin: 0 auto;
+    @include mixin.font-settings
+    ( F-size16
+    , 26
+    , F-letter-spacing-1-6
+    , F-family-mincho
+    , normal
+    , F-color-white);
+    &:hover {
+      color: #F9F8F6;
+      background-color: #CA7F13;
+    }
+  }
+}
+
+
+
+
+
+@include mixin.TAB2 {
+  .single-salons #para-mainvisual {
+    .section-title {
+      h1 {
+      @include mixin.font-settings
+      ( F-size40
+      , F-line-height14
+      , 2.4
+      , F-family-marcellus
+      , normal
+      , F-color-orange);    
+      margin-bottom: 10px;
+      position: relative;
+      top: 18%;
+      left: 51%;
+      transform: translate(-50%, -50%);
+      }
+
+      .store-name {
+        @include mixin.font-settings
+        ( F-size60
+        , F-line-height14
+        , F-letter-spacing-3-36
+        , F-family-mincho
+        , normal
+        , F-color-orange);  
+        position: absolute;
+        top: 77%;
+        left: 51%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+
+  //固定
+  #section-contects.single-salons {
+    height: auto;
+    background-color: #F9F8F6;
+
+    .store-info {
+      padding: 90px 30px;
+      text-align: left;
+      margin: 0  auto;
+      @include mixin.font-settings
+      ( F-size18
+      , F-line-height28
+      , F-letter-spacing-1-4
+      , F-family-mincho
+      , normal
+      , F-color-black);    
+      }
+  }
+
+
+
+
+#flow {
+  .flow {
+    &__inner {
+      padding: 133px 10% 91px 3%;
+      position: relative;
+
+      .flow-steps {
+        position: relative;
+
+        .flow-step {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          position: relative;
+          margin: 0 0 40px 0;
+          &__number {
+            position: relative;
+            color: #F9F8F6;
+            font-size: 32px;
+            text-align: center;
+            padding: 13px 0;
+            background-color: #949E33;
+            width: 9%;
+            height: 9%;
+            border-radius: 50%;
+            margin: 0 0 0 5%;
+
+            // 通常の疑似要素
+            &::after {
+              content: "";
+              position: absolute;
+              bottom: -80px;
+              left: 50%; /* 中央揃え */
+              transform: translateX(-50%);
+              width: 1px;
+              height: 72px;
+              background: repeating-linear-gradient(
+                to bottom,
+                #949E33,
+                #949E33 1px,
+                transparent 3px,
+                transparent 10px
+              );
+            }
+          }
+
+          // 最後の .flow-step 内の .flow-step__number に疑似要素を非表示
+          &:last-child .flow-step__number::after {
+            content: none;
+          }
+
+          &__column {
+            width: 100%;  
+            color: #CA7F13;
+            padding: 3px 0px 0px 30px;
+            margin: 0 0 0 ;
+            &--title {
+              @include mixin.font-settings
+              ( F-size20
+              , F-line-height14
+              , 0.96
+              , F-family-mincho
+              , bold
+              , F-color-orange);            
+              margin: 0 0 12px 0;
+            }
+
+            &--text {
+              @include mixin.font-settings
+              ( F-size16
+              , F-line-height27
+              , F-letter-spacing-1-8
+              , F-family-gothic
+              , normal
+              , F-color-orange);            
+            }
+          }
+        }
+      }
+
+      .flow-images {
+        .flow_image_1 img {
+          border-radius: 50%; /* 円形にする */
+          object-fit: cover; /* 画像を要素内にフィットさせる */
+          position: absolute;
+          width: 100px; /* 親要素に対する幅の割合 */
+          height: 100px; /* 縦横比を維持 */
+          top: 3%;
+          left: 88%;
+          transform: translate(-50%, 0); /* 中央揃え調整 */
+        }
+        .flow_image_2 img {
+          border-radius: 50%; /* 円形にする */
+          object-fit: cover; /* 画像を要素内にフィットさせる */
+          position: absolute;
+          width: 120px;
+          height: 120px;
+          top: 74.2%;
+          right: 91.9%;
+          transform: translate(0, -50%);
+        }
+        //3枚目の写真ある場合
+        .flow_image_3 img {
+          border-radius: 50%; /* 円形にする */
+          object-fit: cover; /* 画像を要素内にフィットさせる */
+          position: absolute;
+          width: 100px;
+          height: 100px;
+          top: 51%;
+          left: 92%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+  #staff {
+    background-color: #464646;
+    border: 1px solid #707070;
+    padding:60px 30px 30px;
+    .staff-flex {
+      display: block;
+      padding:0;
+      margin: 0;
+      &__staff_image  {
+        width: 360px;
+        height: 360px;
+        margin: 0  auto;
+        padding: 0 ;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      &__textarea {
+        color: #CA7F13;
+        padding: 0;
+        margin: 0 auto;
+        width: 65%;
+          h2 {
+            @include mixin.font-settings
+            ( F-size36
+            , F-line-height27
+            , 3.6
+            , F-family-marcellus
+            , normal
+            , F-color-orange);        
+            margin: 25px 0 22px 0px;
+            span {
+              @include mixin.font-settings
+              ( F-size14
+              , F-line-height27
+              , F-letter-spacing-1-4
+              , F-family-gothic
+              , normal
+              , F-color-orange);          
+              margin: 0 0 0 -3px;
+            }
+          }
+
+          &--staff_message {
+            @include mixin.font-settings
+            ( F-size16
+            , F-line-height24
+            , F-letter-spacing-1-4
+            , F-family-gothic
+            , normal
+            , F-color-orange);        
+          }
+
+          &--staff_name_english {
+            @include mixin.font-settings
+            ( F-size24
+            , F-line-height14
+            , 2
+            , F-family-mincho
+            , normal
+            , F-color-orange);        
+            margin: 36px 0 0px 0px;
+            .staff_name_japan {
+              @include mixin.font-settings
+              ( F-size12
+              , F-line-height14
+              , F-letter-spacing-1-2
+              , F-family-gothic
+              , normal
+              , F-color-orange);        
+              margin: 0 0px 0px 7px;
+            }
+          }
+      }
+    }
+  }
+
+
+  #contact-info {
+    background-color: #D4CEBE;
+    color: #707070;
+    .contact-info-flex {
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: space-between;
+      align-items: center;
+      width: 75%;
+      height: auto;
+      padding: 60px 30px;
+      margin: 0 auto;
+      &__text {
+        width: 100%;
+        @include mixin.font-settings
+        ( F-size16
+        , 30
+        , F-letter-spacing-1-4
+        , F-family-gothic
+        , normal
+        , F-color-black);    
+          &--flex {
+            display: flex;
+            width: 100%;
+            justify-content: flex-start;
+            align-items: center;
+            border-bottom: 1px solid #CA7F13;
+            padding: 17px 8% ;
+            strong {
+              width: 100px;
+              @include mixin.font-settings
+              ( F-size20
+              , 30
+              , F-letter-spacing-1-6
+              , F-family-mincho
+              , bold
+              , F-color-orange);          
+              padding: 0 0 0 6px;
+            }
+            p,address {
+              padding: 0px 0px 1px 14px;
+            }
+          }
+      }
+
+      &__map {
+        width: 480px;
+        height: auto;
+        margin:  0 0 44px ;
+        #map-container {
+          width: 100%;
+          padding-top: 0; /* アスペクト比を16:9に設定 */
+          position: relative;
+        }
+      }
+    }
+  }
+
+  #archive-salons-link {
+    background-color: #F9F8F6;
+    padding:83px 0px 80px 17px;
+    margin: 0 auto;
+      .btn {
+        width: 156px;
+        height: 38px;
+        margin: 0 auto;
+        @include mixin.font-settings
+        ( F-size14
+        , 26
+        , F-letter-spacing-1-4
+        , F-family-mincho
+        , bold
+        , F-color-white);
+        &:hover {
+          color: #F9F8F6;
+          background-color: #CA7F13;
+        }
+      }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@include mixin.SP {
+  .single-salons #para-mainvisual {
+    .section-title {
+      h1 {
+        @include mixin.font-settings
+        ( F-size24
+        , F-line-height14
+        , 2.4
+        , F-family-marcellus
+        , normal
+        , F-color-orange);  
+        margin-bottom: 10px;
+        position: relative;
+        top: 18%;
+        left: 53%;
+        transform: translate(-50%, -50%);
+      }
+
+      .store-name {
+        @include mixin.font-settings
+        ( F-size32
+        , F-line-height36
+        , 3.2
+        , F-family-mincho
+        , normal
+        , F-color-orange);
+        position: absolute;
+        top: 77%;
+        left: 53%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+
+  //固定
+  #section-contects.single-salons {
+    height: auto;
+    background-color: #F9F8F6;
+
+    .store-info {
+      padding: 90px 30px;
+      text-align: left;
+      @include mixin.font-settings
+      ( F-size14
+      , F-line-height28
+      , F-letter-spacing-1-4
+      , F-family-mincho
+      , normal
+      , F-color-black);    
+    }
+  }
+
+
+  #flow {
+    .section-title {
+      top: -38px;
+      left: 15px;
+    }
+    .flow {
+      &__inner {
+        padding: 22px 31px 0;
+        position: relative;
+
+        .flow-steps {
+          position: relative;
+
+          .flow-step {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            position: relative;
+            margin: 0 0 32px 0;
+            &__number {
+              position: relative;
+              color: #F9F8F6;
+              font-size: 32px;
+              text-align: center;
+              padding: 13px 0;
+              background-color: #949E33;
+              width: 60px;
+              height: 60px;
+              border-radius: 50%;
+              margin: 0 0px 12px 16px;
+              &::after {
+                position: static;
+              }
+            }
+
+            &__column {
+              width: 100%;
+              color: #CA7F13;
+              padding: 0;
+              margin: 0 0 0 ;
+              position: relative;
+              &--title {
+                @include mixin.font-settings
+                ( F-size18
+                , F-line-height14
+                , 0.72
+                , F-family-mincho
+                , bold
+                , F-color-orange);            
+                text-align: center;
+                margin: 0 0 12px 0;
+                padding: 3px 0px 0px 18px;
+              }
+
+              &--text {
+                @include mixin.font-settings
+                ( F-size14
+                , 21
+                , F-letter-spacing-1-4
+                , F-family-gothic
+                , normal
+                , F-color-orange);            
+                margin: 0 0 5px 0;
+              }
+              // 通常の疑似要素
+              &::after {
+                content: "";
+                position: absolute;
+                bottom: -26px;
+                left: 53%;
+                transform: translateX(-50%);
+                width: 1px;
+                height: 24px;
+                background: repeating-linear-gradient(
+                  to bottom,
+                  #949E33,
+                  #949E33 1px,
+                  transparent 3px,
+                  transparent 6px
+                );
+              }
+            }
+              // 最後の .flow-step 内の .flow-step__number に疑似要素を非表示
+              &:last-child .flow-step__column::after {
+                content: none;
+              }
+          }
+        }
+
+        .flow-images {
+          .flow_image_1 img {
+            border-radius: 50%; /* 円形にする */
+            object-fit: cover; /* 画像を要素内にフィットさせる */
+            position: absolute;
+            width: 80px; /* 親要素に対する幅の割合 */
+            height: 80px; /* 縦横比を維持 */
+            top: 31%;
+            left: 98%;
+            transform: translate(-50%, 0); /* 中央揃え調整 */
+          }
+          .flow_image_2 img {
+            border-radius: 50%; /* 円形にする */
+            object-fit: cover; /* 画像を要素内にフィットさせる */
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 66.2%;
+            right: 74.9%;
+            transform: translate(0, -50%);
+          }
+          //3枚目の写真ある場合
+          .flow_image_3 img {
+            border-radius: 50%; /* 円形にする */
+            object-fit: cover; /* 画像を要素内にフィットさせる */
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: 18%;
+            left: 14%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+    }
+  }
+
+
+
+
+  #staff {
+    background-color: #464646;
+    border: 1px solid #707070;
+    padding:60px 30px 30px;
+    .staff-flex {
+      display: block;
+      padding:0;
+      margin: 0;
+      &__staff_image  {
+        width: 240px;
+        height: 240px;
+        margin: 0  auto;
+        padding: 0 ;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      &__textarea {
+        color: #CA7F13;
+        padding: 0;
+        margin: 0 auto;
+        width: 100%;
+          h2 {
+            @include mixin.font-settings
+            ( F-size36
+            , F-line-height27
+            , 3.6
+            , F-family-marcellus
+            , normal
+            , F-color-orange);        
+            margin: 25px 0 22px 0px;
+            span {
+              @include mixin.font-settings
+              ( F-size14
+              , F-line-height27
+              , F-letter-spacing-1-4
+              , F-family-gothic
+              , normal
+              , F-color-orange);          
+              margin: 0 0 0 -3px;
+            }
+          }
+
+          &--staff_message {
+            @include mixin.font-settings
+            ( F-size14
+            , F-line-height28
+            , F-letter-spacing-1-4
+            , F-family-gothic
+            , normal
+            , F-color-orange);        
+          }
+
+          &--staff_name_english {
+            @include mixin.font-settings
+            ( F-size20
+            , F-line-height14
+            , 2
+            , F-family-mincho
+            , normal
+            , F-color-orange);        
+            margin: 13px 0 0px 0px;
+            .staff_name_japan {
+              @include mixin.font-settings
+              ( F-size12
+              , F-line-height14
+              , F-letter-spacing-1-2
+              , F-family-gothic
+              , normal
+              , F-color-orange);
+              margin: 0 0px 0px 7px;
+            }
+          }
+      }
+    }
+  }
+
+
+  #contact-info {
+    background-color: #D4CEBE;
+    color: #707070;
+    .contact-info-flex {
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 60px 30px;
+      &__text {
+        width: 100%;
+        @include mixin.font-settings
+        ( F-size12
+        , 30
+        , F-letter-spacing-1-2
+        , F-family-gothic
+        , normal
+        , F-color-black);    
+          &--flex {
+            display: flex;
+            width: 100%;
+            justify-content: flex-start;
+            align-items: center;
+            border-bottom: 1px solid #CA7F13;
+            padding: 17px 0 18px 1px;
+            strong {
+              @include mixin.font-settings
+              ( F-size16
+              , 30
+              , F-letter-spacing-1-6
+              , F-family-mincho
+              , bold
+              , F-color-orange);          
+              width: 112px;
+              padding: 0 0 0 6px;
+            }
+            p {
+              padding: 0px 0px 1px 14px;
+            }
+          }
+      }
+
+      &__map {
+        max-width: 100%;
+        height: auto;
+        margin:  0 0 44px ;
+        #map-container {
+          width: 100%;
+          padding-top: 0; /* アスペクト比を16:9に設定 */
+          position: relative;
+          .map-pc {
+          display: none;
+          }
+
+          .map-sp {
+            display: block;
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+
+  #archive-salons-link {
+    background-color: #F9F8F6;
+    padding:83px 0px 80px 17px;
+    margin: 0 auto;
+      .btn {
+        width: 156px;
+        height: 38px;
+        margin: 0 auto;
+        @include mixin.font-settings
+        ( F-size14
+        , F-line-height22
+        , F-letter-spacing-1-4
+        , F-family-mincho
+        , bold
+        , F-color-white);    
+        &:hover {
+          color: #F9F8F6;
+          background-color: #CA7F13;
+        }
+      }
+  }
+}

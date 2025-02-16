@@ -1,0 +1,73 @@
+@use "../../_foundation/_mixin"as mixin;
+@use "../../_foundation/_base"as base;
+
+#mainvisual {
+  width: 100%;
+  height: 100vh;
+    .mainvisual {
+      position: relative;
+      &__images {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        // overflow: hidden;x
+        &--item {
+          width: 100%;
+          height: 100%; // 高さが必要な場合
+          background: url('../../assets/images/A-TECH-TEST-image/test-image/img/fv_bg-pc.jpg') no-repeat right center;
+          background-size: cover;
+        }
+
+        &--text {
+          font-size: 64px;
+          font-family: "Yu Mincho";
+          font-weight: normal;
+          color: #FFFFFF;
+          letter-spacing: 6.4px;
+          line-height: 96px;
+          position: absolute;
+          top: 357px; /* トップを基準に中央配置 */
+          left: 36px; /* 左を基準に中央配置 */
+          // transition: opacity 1s,visibility 1s, transform 1s;
+        }
+
+      
+    }
+  }
+}
+
+@include mixin.SP {
+  #mainvisual {
+    width: 100vw;
+    height: 100vh;
+    // overflow: hidden; /* はみ出た部分を非表示にする */
+      .mainvisual {
+        position: relative;
+        &__images {
+          width: 100%;
+          height: 100%;
+          position: relative;
+          // overflow: hidden;x
+          &--item {
+            width: 100%;
+            height: 100%; // 高さが必要な場合
+            background: url('../../assets/images/A-TECH-TEST-image/test-image/img/fv_bg-sp.jpg') no-repeat center center;
+            background-size: cover;
+          }
+  
+          &--text {
+            font-size: 32px;
+            font-family: "Yu Mincho";
+            font-weight: normal;
+            color: #FFFFFF;
+            letter-spacing: 3.2px;
+            line-height: 48px;
+            position: absolute;
+            top: 392px; /* トップを基準に中央配置 */
+            left: 14px; /* 左を基準に中央配置 */
+            // transition: opacity 1s,visibility 1s, transform 1s;
+          }
+      }
+    }
+  }
+}  

@@ -1,0 +1,1320 @@
+@use "../../_foundation/_mixin"as mixin;
+@use "../../_foundation/_base"as base;
+
+
+
+#section-contects.reserve {
+  height: auto; 
+  background-color: #80a0df;
+  border-bottom:1px solid  #F9F8F6;
+  #breadcrumbs {
+    margin: -13px 0 0 0px;
+    padding: 19.5px 0 19px 120px;
+  }
+  
+}   
+
+.privacy-policy {
+  padding: 109px 13.9% 119px 12.6%;
+  background-color: #F9F8F6;
+  &__inner { 
+
+    max-width: 1061px;
+    .privacy-download {
+      display: flex;
+      width: fit-content;
+      margin: 0 -26px 0 0px;
+      &__textarea {
+        color: #CA7F13;
+        max-width: 720px;
+        width: 100%;
+        margin: 0 100px 121px 0;
+        &--title {
+          @include mixin.font-settings
+          ( F-size32
+          , F-line-height32
+          ,3.2
+          , F-family-mincho
+          , normal
+          , F-color-orange);
+          margin: 0 0 42px;
+        }
+        &--text {
+          @include mixin.font-settings
+          ( F-size18
+          , F-line-height27
+          , F-letter-spacing-1-8
+          , F-family-gothic
+          , normal
+          , F-color-orange);
+        }
+      }
+    }
+
+
+    .download-content {
+      background-color: #D4CEBE;
+      width: 240px;
+      height: 147px;
+      padding: 32px 34px 36px 41px;
+      &__text {
+        @include mixin.font-settings
+        ( F-size18
+        , F-line-height27
+        , F-letter-spacing-1-8
+        , F-family-gothic
+        , normal
+        , F-color-orange);
+        margin: 0 0 16px 4px ;
+      }
+
+      &__button {
+        width: 160px;
+        height: 40px; 
+        @include mixin.font-settings
+        ( F-size16
+        , 26
+        , F-letter-spacing-1-6
+        , F-family-mincho
+        , normal
+        , F-color-white);
+        justify-content: left;
+        .fa-file-download {
+          margin: 0 14px 0 12px;
+        }
+        &:hover {
+          color: #F9F8F6;
+          background-color: #CA7F13;
+        }
+      }
+    }
+
+
+
+    .contact-section {
+      .contact {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        &__info {
+          max-width: 578px;
+          width: 100%;
+          color: #CA7F13;
+          &--title {
+            @include mixin.font-settings
+            ( F-size48
+            , F-line-height27
+            , F-letter-spacing-4-8
+            , F-family-marcellus
+            , normal
+            , F-color-orange);
+            margin: 0 0 20px;
+          }
+          &--description {
+            @include mixin.font-settings
+            ( F-size18
+            , F-line-height27
+            , F-letter-spacing-1-8
+            , F-family-gothic
+            , normal
+            , F-color-orange);
+          }
+        }
+        
+        &__details {
+          max-width: 422px;
+          width: 100%;
+          color: #CA7F13;
+          margin: 0px -23px 0 58.5px;
+          padding: 66px 0 44px 9.9%;
+          border-left: 1px solid #CA7F13;
+          &--number  {
+            width: fit-content;
+            @include mixin.font-settings
+            ( F-size32
+            , F-line-height32
+            , 3.2
+            , F-family-marcellus
+            , normal
+            , F-color-orange);
+            margin-bottom: 36px;
+          }
+          &--hours {
+            width: fit-content;
+            display: inline-block;
+            @include mixin.font-settings
+            ( F-size14
+            , F-line-height32
+            , F-letter-spacing-1-4
+            , F-family-gothic
+            , normal
+            , F-color-orange);
+            border: 1px solid #CA7F13;
+            border-radius: 16px;
+            padding: 7px 35px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+#contact-form-section {
+  background-color: #80a0df;
+  padding: 80px 180px 21px;
+  height: auto;
+  .contact-form-section {
+    &__inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      // margin: 0 auto;  
+      .mail-steps {
+        display: flex;
+        justify-content: space-between;
+        margin: 0px 0 -6px;
+        &__textarea {
+          &--title {
+            @include mixin.font-settings
+            ( F-size48
+            , F-line-height36
+            , F-letter-spacing-4-8
+            , F-family-marcellus
+            , normal
+            , F-color-orange);
+            margin: 0 0 48px 0;
+          }
+          &--description {
+            @include mixin.font-settings
+            ( F-size14
+            , F-line-height28
+            , F-letter-spacing-1-4
+            , F-family-gothic
+            , normal
+            , F-color-black);
+          }
+        }
+
+        &__container {
+          display: flex;
+          justify-content: center;
+          gap: 26.5px;
+          .mail-step {
+            text-align: center;
+            border-top: 2px solid #707070;
+            border-bottom: 2px solid #707070;
+            padding: 57.5px 13.5px 53.5px 14.5px;
+            &__number {
+              @include mixin.font-settings
+              ( F-size20
+              , F-line-height28
+              , F-letter-spacing-2
+              , F-family-marcellus
+              , normal
+              , F-color-rightgray);
+              margin: 0 0 16px 0;
+            }
+            &__text {
+              @include mixin.font-settings
+              ( F-size24
+              , F-line-height28
+              , F-letter-spacing-2-4
+              , F-family-mincho
+              , normal
+              , F-color-rightgray);
+            }
+            &:nth-of-type(1) {
+              border-top-color: #CA7F13; // アクティブなステップのカラー
+              border-bottom-color:#CA7F13; // アクティブなステップのカラー
+              &:nth-of-type(1) {
+                .mail-step__number,
+                .mail-step__text {
+                  color: #CA7F13;
+                }
+              }
+            }
+          }
+        }
+      }
+  
+
+
+      .contact-form-wrapper {
+        margin:90px auto 30px;
+        .wpcf7 {
+          .wpcf7-form {
+            //基本ベース
+            .form-list {
+              // max-width: 1080px;
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              margin: 0 0 32px;
+              padding: 0 39px;
+              //バリデーションデザイン
+              .wpcf7-not-valid-tip {
+                color: #bd1212;
+                font-size: 1em;
+                font-weight: normal;
+                display: block;
+                margin: 10px 0 0;
+              }
+              // 項目ブロック----------------
+              .title-flex {
+                width: 39%;
+                display: flex;
+                justify-content: left;
+                align-items: center;
+                // 必須タグ
+                .required-icon {
+                  @include mixin.font-settings
+                  ( F-size12
+                  , F-line-height28
+                  , F-letter-spacing-1-2
+                  , F-family-mincho
+                  , normal
+                  , F-color-white);
+                  background-color: #54372D;  // アイコンの背景色
+                  border-radius: 15px;
+                  padding: 0 18px;           // 内側の余白
+                  margin: 0 16px 0 0;
+                }
+                // 任意タグ
+                .optional-icon {
+                  @include mixin.font-settings
+                  ( F-size12
+                  , F-line-height28
+                  , F-letter-spacing-1-2
+                  , F-family-mincho
+                  , normal
+                  , F-color-black);
+                  background-color: #D4CEBE;  // アイコンの背景色
+                  border-radius: 15px;
+                  padding: 0 18px;           // 内側の余白
+                  margin: 0 16px 0 0;
+                }
+                //項目
+                .title {
+                  @include mixin.font-settings
+                  ( F-size16
+                  , F-line-height28
+                  , F-letter-spacing-1-6
+                  , F-family-mincho
+                  , normal
+                  , F-color-black);
+                  color: #333333;
+                }
+              }
+              label {
+                width: 66%;
+                .wpcf7-form-control-wrap {
+                  width: 100%;
+                  .wpcf7-text {
+                    max-width: 620px; /* 最大幅を620pxに制限 */
+                    width: 100%; /* 親要素の幅に基づいて可変 */
+                    height: 50px;             // 高さを設定
+                    background-color: #FFFFFF;
+                    margin: 0 -17px 0 0px;
+                    padding: 0 0 0 10px; //カーソルスタート位置
+                    border-radius: 5px;       // 角丸
+                    font-size: 1rem;          // フォントサイズ
+                    appearance: none;         // デフォルトの外観を無効化
+                    -webkit-appearance: none; // Safari用の外観を無効化
+                  }                     
+                }
+              }  
+            }
+
+            //項目【ご希望の連絡時間帯】
+            .hope-time {
+              width: 100%;
+              margin:  -21px 0 -13px;
+                .checkbox-group {
+                  width: 65%;
+                  margin: 3px -4px 18px 0px;
+                  &__inner {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    width: 620px;
+                    margin: 19px -18px 21px 0px;
+                    .wpcf7-form-control-wrap[data-name="weekday-contact-time"] , //平日
+                    .wpcf7-form-control-wrap[data-name="holiday-contact-time"] {  //休日
+                      width: 91%;
+                      .wpcf7-list-item {
+                        width: 23%;
+                      }
+                    }
+
+                    legend {
+                      @include mixin.font-settings
+                      ( F-size14
+                      , F-line-height28
+                      , F-letter-spacing-1-4
+                      , F-family-gothic
+                      , normal
+                      , F-color-black);
+                      margin:  5px 19px 0 -2px;
+                    }
+  
+                    .wpcf7-checkbox {
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                      width: 100%;
+                      input[type="checkbox"] {
+                        -webkit-appearance: checkbox; // Webkitブラウザ用
+                        -moz-appearance: checkbox;    // Mozillaブラウザ用
+                        appearance: checkbox;         // モダンブラウザ用
+                        width: 31px;
+                        height: 30px;
+                        cursor: pointer;
+                      }
+                      .wpcf7-list-item {
+                        margin: 0;
+                        .wpcf7-list-item-label {
+                          @include mixin.font-settings
+                          ( F-size14
+                          , F-line-height28
+                          , F-letter-spacing-1-4
+                          , F-family-gothic
+                          , normal
+                          , F-color-black);
+                        }
+                      }
+                    }
+                  }
+                }
+            }
+
+
+            //項目【お問い合わせ項目】form-select
+            .form-select {
+              width: 100%;
+              margin: -19px 0 0;
+              .checkbox-form-group {
+                width: 65%;
+                display: flex;
+                flex-wrap: wrap;
+                margin: 12px -4px 8px 0px;
+                .wpcf7-form-control-wrap[data-name="checkbox-475"] {
+                  display: flex;
+                  flex-wrap: wrap;
+                  width: 100%;
+                  .wpcf7-checkbox {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 12px; /* チェックボックスの間隔 */
+                    width: 100%;
+                  }
+                  .wpcf7-list-item {
+                    width: 41%; /* 2列に並べる */
+                    display: flex;
+                    align-items: center;
+                    margin:0; /* 下の余白を調整 */
+                  }
+                }
+                legend {
+                  @include mixin.font-settings(
+                    F-size14,
+                    F-line-height28,
+                    F-letter-spacing-1-4,
+                    F-family-gothic,
+                    normal,
+                    F-color-black
+                  );
+                  margin: 0 20px 0 6px;
+                }
+                .wpcf7-list-item input[type="checkbox"] {
+                  -webkit-appearance: checkbox; // Webkitブラウザ用
+                  -moz-appearance: checkbox;    // Mozillaブラウザ用
+                  appearance: checkbox;         // モダンブラウザ用
+                  width: 31px;
+                  height: 30px;
+                  margin-right: 8px; /* ラベルとの間隔 */
+                }
+                .wpcf7-list-item-label {
+                  @include mixin.font-settings(
+                    F-size14,
+                    F-line-height28,
+                    F-letter-spacing-1-4,
+                    F-family-gothic,
+                    normal,
+                    F-color-black
+                  );
+                }
+              }
+            }
+
+
+            // 項目【希望店舗】
+            .hope-store {
+              width: 70.7%;
+              .hope-store-label {
+                // max-width: 745px;
+                width: 46%;
+                margin: 19px 0 0;
+                .wpcf7-form-control-wrap[data-name="your-store"] {
+                  width: 45%; 
+                  .wpcf7-text {
+                    max-width: 300px;
+                    width: 100%;  
+                  }  
+                }
+              } 
+            }  
+
+            // 項目【来店希望日（第一希望）（第二希望）】
+            .date-field  {
+              max-width: 790px; 
+              width: 100%; 
+              justify-content: space-between;
+              margin: 39px 0 0;
+              position: relative; 
+              .title-flex {
+                width: 40%;
+              }
+              .date-field-wrap {  
+                width: 48.6%;  
+                .hopeday-label {
+                  width: 100%;  
+                  .my-date-field {
+                    max-width: 300px;
+                    width: 100%;             // 入力欄を親要素内で幅いっぱいに
+                    height: 50px;             // 高さを設定
+                    background-color: #FFFFFF;
+                    color:  #000 !important;
+                    border-radius: 5px;       // 角丸
+                    font-size: 14px;          // フォントサイズ
+                    appearance: none;         // デフォルトの外観を無効化
+                    -webkit-appearance: none; // Safari用の外観を無効化
+                    -moz-appearance: none; /* Firefox */
+                    // color: transparent !important; /* 競合を避けるために !important を推奨 */
+                  }
+                }
+
+                .my-date-field::-webkit-calendar-picker-indicator {
+                    font-size: 3rem; /* アイコンだけ拡大 */
+                    width: 50px;     /* クリック可能領域を広げたい場合 */
+                    height: 50px;
+                    cursor: pointer;
+                  }
+                //iタグ
+                .fa-calendar-days  {
+                  width: 50px;
+                  height: 50px; 
+                  font-size: 30px;
+                  color: #FFFFFF;
+                  background-color: #CA7F13;
+                  position: absolute;
+                  top:0;
+                  right: 85px;
+                  padding: 10px 10px 10px 12px;
+                  pointer-events: none; /* アイコンへのクリックを無視して、裏のinputをクリック可能にする */
+                }
+              }
+            }
+
+            // 項目【お問い合わせ内容】
+            .textarea {  //form-list classと同階層
+              justify-content: left;
+              align-items: flex-start;
+              margin: 49px 0 0;
+              .title-flex {
+                width: 37%;
+              }
+              .textarea-flex {
+                width: 63%;   
+                .textarea-label {
+                  width: 100%;   
+                  .wpcf7-form-control-wrap[data-name="your-details"] {
+                    .wpcf7-textarea {
+                      max-width: 620px;
+                      width: 100%;              // 入力欄を親要素内で幅いっぱいに
+                      height: 120px;             // 高さを設定
+                      background-color: #FFFFFF;
+                      border-radius: 5px;       // 角丸
+                      font-size: 1rem;          // フォントサイズ
+                      padding: 10px 0 0 10px; //カーソルスタート位置
+                      margin: -12px -15px 0px 1px;
+                      appearance: none;         // デフォルトの外観を無効化
+                      -webkit-appearance: none; // Safari用の外観を無効化
+                    }
+                  }
+                }  
+                
+                .details-text {
+                  @include mixin.font-settings
+                  ( F-size12
+                  , F-line-height28
+                  , F-letter-spacing-1-2
+                  , F-family-gothic
+                  , normal
+                  , F-color-black);
+                  margin: 8px 0 0;
+                } 
+              }
+            }
+            
+            //ボタン
+            .wpcf7-submit {
+              width: 160px;
+              height: 40px;
+              display: flex;
+              align-items: center;
+              text-align: center;
+              justify-content:center  ; // 中央揃え
+              background: #949E33; // 初期背景色
+              @include mixin.font-settings
+              ( F-size16
+              , 26
+              , F-letter-spacing-2
+              , F-family-mincho
+              , normal
+              , F-color-white);
+              border-radius: 40px;
+              margin: 32px auto 0;
+              transition: background 0.3s ease, color 0.3s ease;
+              text-decoration: none; // リンクの場合も装飾を消す
+              cursor: pointer;
+              &:hover {
+                background-color: #CA7F13;
+              }
+            }
+            
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mixin.TAB2 {
+  #section-contects.reserve {
+    height: auto;
+    background-color: #F9F8F6;
+    border-bottom:1px solid  #F9F8F6;
+    #breadcrumbs {
+      margin: 0 0 0 0;
+      padding: 14px 0px 0 16px;
+    }
+  }   
+
+  .privacy-policy {
+    padding: 79px 30px 66px 30px;
+    background-color: #F9F8F6;
+      &__inner { 
+        max-width: 1061px;
+        .privacy-download {
+          display: flex;
+          flex-direction: column-reverse;
+          align-items: center;
+          width: fit-content;
+          padding: 0 80px 0 ;
+          margin: 0 ;
+          &__textarea {
+            color: #CA7F13;
+            max-width: 720px;
+            width: 100%;
+            margin:  0;
+            &--title {
+              @include mixin.font-settings
+              ( F-size24
+              , F-line-height32
+              , F-letter-spacing-2-4
+              , F-family-mincho
+              , normal
+              , F-color-orange);
+              margin: 24px 0px 14px;
+            }
+            &--text {
+              @include mixin.font-settings
+              ( F-size14
+              , 21
+              , F-letter-spacing-1-4
+              , F-family-gothic
+              , normal
+              , F-color-orange);
+              margin: 0 0 -2px;
+            }
+          }
+        }
+
+
+        .download-content {
+          background-color: #D4CEBE;
+          width: 240px;
+          height: 147px;
+          padding: 32px 36px 30px 42px;
+          margin: 0 0px 0 17px;
+
+          &__text {
+            @include mixin.font-settings
+            ( F-size18
+            , F-line-height27
+            , F-letter-spacing-1-8
+            , F-family-gothic
+            , normal
+            , F-color-orange);
+            margin: -1px -5px 16px 1px;
+          }
+
+          &__button {
+            width: 160px;
+            height: 40px; 
+            @include mixin.font-settings
+            ( F-size16
+            , 26
+            , F-letter-spacing-1-6
+            , F-family-mincho
+            , normal
+            , F-color-white);
+            justify-content: left;
+            .fa-file-download {
+              font-size: 16px;
+              margin: 0 14px 0 12px;
+            }
+            &:hover {
+              color: #F9F8F6;
+              background-color: #CA7F13;
+            }
+          }
+        }
+
+
+
+        .contact-section {
+          .contact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            &__info {
+              max-width: 100%;
+              width: 100%;
+              color: #CA7F13;
+              padding: 0 80px 0 ;
+              &--title {
+                @include mixin.font-settings
+                ( F-size24
+                , F-line-height32
+                , F-letter-spacing-2-4
+                , F-family-marcellus
+                , normal
+                , F-color-orange);
+                margin: 32px 0 10px 17px;
+                text-align: center;
+              }
+              &--description {
+                @include mixin.font-settings
+                ( F-size14
+                , 21
+                , F-letter-spacing-1-4
+                , F-family-gothic
+                , normal
+                , F-color-orange);
+                .brsp {
+                  display: none;
+                }
+              }
+            }
+            
+            &__details {
+              max-width: 422px;
+              width: 100%;
+              color: #CA7F13;
+              margin: 13px auto ;
+              padding: 0 0 0 24px;
+              text-align: center;
+              border-left: none;
+              &--number  {
+                width: fit-content;
+                @include mixin.font-settings
+                ( F-size24
+                , F-line-height32
+                , F-letter-spacing-1-4
+                , F-family-marcellus
+                , normal
+                , F-color-orange);
+                margin: 10px auto 13px;
+                letter-spacing: 2.4px;
+                line-height: 32px;
+              }
+              &--hours {
+                width: fit-content;
+                display: inline-block;
+                @include mixin.font-settings
+                ( F-size14
+                , F-line-height32
+                , F-letter-spacing-1-4
+                , F-family-gothic
+                , normal
+                , F-color-orange);
+                border: 1px solid #CA7F13;
+                border-radius: 16px;
+                padding: 0px 35px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    
+
+    #contact-form-section {
+      background-color: #EDE9E4;
+      padding: 60px 30px 47px;
+      .contact-form-section {
+        &__inner {
+          max-width: 1080px;
+          margin: 0 auto;
+          // margin: 0 auto;  
+          .mail-steps {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            &__textarea {
+              margin: 0 auto; 
+              &--title {
+                @include mixin.font-settings
+                ( F-size32
+                , F-line-height36
+                , 3.2
+                , F-family-marcellus
+                , normal
+                , F-color-orange);
+                color: #CA7F13;
+                margin: 0 0 16px 0;
+              }
+              &--description {
+                @include mixin.font-settings
+                ( F-size14
+                , F-line-height28
+                , F-letter-spacing-1-4
+                , F-family-gothic
+                , normal
+                , F-color-black);
+                color: #333333;
+                margin: 0 0 24px;
+              }
+            }
+
+            &__container {
+              width: 100%;
+              display: flex;
+              justify-content: center;
+              gap: 16%;
+              padding: 0 11%;
+              .mail-step {
+                width: 100%;
+                text-align: center;
+                border-top: 2px solid #707070;
+                border-bottom: 2px solid #707070;
+                padding: 39.5px 0 36.5px 0;
+                &__number {
+                  @include mixin.font-settings
+                  ( F-size14
+                  , 20
+                  , F-letter-spacing-1-4
+                  , F-family-marcellus
+                  , normal
+                  , F-color-rightgray);
+                  margin: 0 0 16px 0;
+                }
+                &__text {
+                  @include mixin.font-settings
+                  ( F-size16
+                  , 19
+                  , F-letter-spacing-1-6
+                  , F-family-mincho
+                  , normal
+                  , F-color-rightgray);
+                }
+                &:nth-of-type(1) {
+                  border-top-color: #CA7F13; // アクティブなステップのカラー
+                  border-bottom-color:#CA7F13; // アクティブなステップのカラー
+                  &:nth-of-type(1) {
+                    .mail-step__number,
+                    .mail-step__text {
+                      color: #CA7F13;
+                      
+                    }
+                  }
+                }
+              }
+            }
+          }
+        
+      
+
+          .contact-form-wrapper {
+            margin: 67px auto -87px;
+            padding: 0 10%;
+            .wpcf7 {
+              .wpcf7-form {
+                //基本ベース
+                .form-list {
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: space-between;
+                  width: 100%;
+                  margin: 0 0 34.3px;
+                  padding: 0 ;
+                  // 項目ブロック----------------
+                  .title-flex {
+                    width: 100%;
+                    display: flex;
+                    justify-content: left;
+                    align-items: center;
+                    margin: 0 0 12px;
+                    // 必須タグ
+                    .required-icon {
+                      @include mixin.font-settings
+                      ( F-size12
+                      , F-line-height28
+                      , F-letter-spacing-1-2
+                      , F-family-mincho
+                      , normal
+                      , F-color-white);
+                      background-color: #54372D;  // アイコンの背景色
+                      border-radius: 15px;
+                      padding: 0 18px;           // 内側の余白
+                      margin: 0 16px 0 0;
+                    }
+                    // 任意タグ
+                    .optional-icon {
+                      @include mixin.font-settings
+                      ( F-size12
+                      , F-line-height28
+                      , F-letter-spacing-1-2
+                      , F-family-mincho
+                      , normal
+                      , F-color-black);
+                      background-color: #D4CEBE;  // アイコンの背景色
+                      border-radius: 15px;
+                      padding: 0 18px;           // 内側の余白
+                      margin: 0 16px 0 0;
+                    }
+                    //項目
+                    .title {
+                      @include mixin.font-settings
+                      ( F-size16
+                      , F-line-height28
+                      , F-letter-spacing-1-6
+                      , F-family-mincho
+                      , normal
+                      , F-color-black);
+                      letter-spacing: 1.6px;
+                    }
+                  }
+                  label {
+                    width: 100%;
+                    .wpcf7-form-control-wrap {
+                      width: 100%;
+                      .wpcf7-text {
+                        max-width: 100%; 
+                        width: 100%; /* 親要素の幅に基づいて可変 */
+                        height: 50px;             // 高さを設定
+                        background-color: #FFFFFF;
+                        margin: 0 -17px 0 0px;
+                        padding: 0 0 0 10px; //カーソルスタート位置
+                        border-radius: 5px;       // 角丸
+                        font-size: 1rem;          // フォントサイズ
+                        appearance: none;         // デフォルトの外観を無効化
+                        -webkit-appearance: none; // Safari用の外観を無効化
+                      }                     
+                    }
+                  }  
+                }
+    
+                //項目【ご希望の連絡時間帯】
+                .hope-time {
+                  width: 100%;
+                  margin: 0;
+                  .title-flex {
+                    margin: 0 0 12px;
+                  }
+                    .checkbox-group {
+                      width: 100%;
+                      margin: 3px -4px 18px 0px;
+                      padding: 0 10px 0 0;
+                      &__inner {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: baseline;
+                        align-items:normal;
+                        width: 100%;
+                        margin: 0px -18px 2px 0;
+                        .wpcf7-form-control-wrap[data-name="weekday-contact-time"] , //平日
+                        .wpcf7-form-control-wrap[data-name="holiday-contact-time"] {  //休日
+                          width: 100%;
+                          margin: 0 0 10px;
+                          .wpcf7-list-item {
+                            width: 50%;
+                            margin: 0 0 10px;
+                          }
+                        }
+    
+                        legend {
+                          @include mixin.font-settings
+                          ( F-size14
+                          , F-line-height28
+                          , F-letter-spacing-1-4
+                          , F-family-gothic
+                          , normal
+                          , F-color-black);
+                          margin: 0px 0px 12px 0px;
+                          width: fit-content;
+                        }
+      
+                        .wpcf7-checkbox {
+                          display: flex;
+                          flex-wrap: wrap;
+                          justify-content: left;
+                          align-items: normal;
+                          width: 100%;
+                          input[type="checkbox"] {
+                            -webkit-appearance: checkbox; // Webkitブラウザ用
+                            -moz-appearance: checkbox;    // Mozillaブラウザ用
+                            appearance: checkbox;         // モダンブラウザ用
+                            width: 31px;
+                            height: 30px;
+                          }
+                          .wpcf7-list-item {
+                            width: 50%;
+                            margin: 0;
+                            .wpcf7-list-item-label {
+                              @include mixin.font-settings
+                              ( F-size14
+                              , F-line-height28
+                              , F-letter-spacing-1-4
+                              , F-family-gothic
+                              , normal
+                              , F-color-black);
+                              letter-spacing: 1.4px;
+                              margin: 0px 0px 0px 8px;
+                            }
+                          }
+                        }
+                      }
+                    }
+                }
+    
+                
+                //項目【お問い合わせ項目】
+                .form-select {
+                  width: 100%;
+                  margin: -19px 0 0;
+                  .checkbox-form-group {
+                    width: 100%;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    margin: 12px -4px 8px 0px;
+                    .wpcf7-form-control-wrap[data-name="checkbox-475"] {
+                      display: flex;
+                      flex-wrap: wrap;
+                      width: 100%;
+                      .wpcf7-checkbox {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 3px; /* チェックボックスの間隔 */
+                        width: 100%;
+                      }
+                      .wpcf7-list-item {
+                        width: 100%; /* 2列に並べる */
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 8px; /* 下の余白を調整 */
+                      }
+                    }
+                    legend {
+                      @include mixin.font-settings(
+                        F-size14,
+                        F-line-height28,
+                        F-letter-spacing-1-4,
+                        F-family-gothic,
+                        normal,
+                        F-color-black
+                      );
+                      margin: 0 20px 0 6px;
+                    }
+                    .wpcf7-list-item input[type="checkbox"] {
+                      -webkit-appearance: checkbox; // Webkitブラウザ用
+                      -moz-appearance: checkbox;    // Mozillaブラウザ用
+                      appearance: checkbox;         // モダンブラウザ用
+                      width: 31px;
+                      height: 30px;
+                      margin-right: 8px; /* ラベルとの間隔 */
+                    }
+                    .wpcf7-list-item-label {
+                      @include mixin.font-settings(
+                        F-size14,
+                        F-line-height28,
+                        F-letter-spacing-1-4,
+                        F-family-gothic,
+                        normal,
+                        F-color-black
+                      );
+                    }
+                  }
+                }
+    
+                  // 項目【希望店舗】
+                .hope-store {
+                  width: 100%;
+                  .hope-store-label {
+                    max-width: 100%;
+                    width: 100%;
+                    margin: 27px 0 0;
+                    .wpcf7-form-control-wrap[data-name="your-store"] {
+                      width: 100%; 
+                      .wpcf7-text {
+                        max-width: 100%;
+                        width: 100%;  
+                      }  
+                    }
+                  }  
+                } 
+        
+                //項目【来店希望日（第一希望）（第二希望）】
+                .date-field {
+                  max-width: 100%; 
+                  width: 100%; 
+                  justify-content: space-between;
+                  margin: 39px 0 0;
+                  position: relative; 
+                  .title-flex {
+                    width: 100%;
+                  }
+                  .date-field-wrap {  
+                    width: 100%;  
+                    .hopeday-label {
+                      width: 100%;  
+                      .my-date-field {
+                        max-width: 100%;
+                        width: 100%;             // 入力欄を親要素内で幅いっぱいに
+                        height: 50px;             // 高さを設定
+                        background-color: #FFFFFF;
+                        border-radius: 5px;       // 角丸
+                        font-size: 14px;          // フォントサイズ
+                        appearance: none;         // デフォルトの外観を無効化
+                        -webkit-appearance: none; // Safari用の外観を無効化
+                      }
+                    }  
+
+                    .my-date-field::-webkit-calendar-picker-indicator {
+                      font-size: 3rem; /* アイコンだけ拡大 */
+                      width: 50px;     /* クリック可能領域を広げたい場合 */
+                      height: 50px;
+                      cursor: pointer;
+                    }
+                    //iタグ
+                    .fa-calendar-days  {
+                      width: 50px;
+                      height: 50px; 
+                      font-size: 30px;
+                      color: #FFFFFF;
+                      background-color: #CA7F13;
+                      position: absolute;
+                      top: 40px;
+                      right: 0;
+                      padding: 10px 10px 10px 12px;
+                      pointer-events: none; /* アイコンへのクリックを無視して、裏のinputをクリック可能にする */
+                    }
+                  }
+                }
+    
+                //項目【お問い合わせ内容】
+                .textarea {   //form-list classと同階層
+                  width: 100%; 
+                  justify-content: space-between;
+                  align-items: flex-start;
+                  margin: 49px 0 0;
+                  .title-flex {
+                    width: 100%;
+                    margin: -12px 0 25px;
+                  }
+                  .textarea-flex {
+                    width: 100%; 
+                    .textarea-label {
+                      width: 100%;   
+                      .wpcf7-form-control-wrap[data-name="your-details"] {
+                        .wpcf7-textarea {
+                          max-width: 100%;
+                          width: 100%;              // 入力欄を親要素内で幅いっぱいに
+                          height: 200px;             // 高さを設定
+                          background-color: #FFFFFF;
+                          border-radius: 5px;       // 角丸
+                          font-size: 1rem;          // フォントサイズ
+                          padding: 10px 0 0 10px; //カーソルスタート位置
+                          margin: -12px -15px 0px 1px;
+                          appearance: none;         // デフォルトの外観を無効化
+                          -webkit-appearance: none; // Safari用の外観を無効化
+                        }
+                      }
+                    }    
+
+                    .details-text {
+                      @include mixin.font-settings
+                      ( F-size12
+                      , F-line-height28
+                      , F-letter-spacing-1-2
+                      , F-family-gothic
+                      , normal
+                      , F-color-black);
+                      margin: 2px 0 0 -1px;
+                    }
+                  }
+                }
+                
+                //ボタン
+                .wpcf7-submit {
+                  width: 160px;
+                  height: 40px;
+                  display: flex;
+                  align-items: center;
+                  text-align: center;
+                  justify-content:center  ; // 中央揃え
+                  background: #949E33; // 初期背景色
+                  @include mixin.font-settings
+                  ( F-size16
+                  , 26
+                  , F-letter-spacing-1-6
+                  , F-family-mincho
+                  , normal
+                  , F-color-white);
+                  border-radius: 40px;
+                  margin: 32px auto 70px;
+                  transition: background 0.3s ease, color 0.3s ease;
+                  text-decoration: none; // リンクの場合も装飾を消す
+                  cursor: pointer;
+                  &:hover {
+                    background-color: #CA7F13;
+                  }
+                }
+                
+              }
+            }
+          }
+        }
+      }
+    }
+}  
+
+
+@include mixin.SP {
+  #section-contects.reserve {
+    #breadcrumbs {
+      margin: 0 0 0 0;
+      padding: 14px 0px 0 16px;
+    }
+  }   
+
+  .privacy-policy {
+      &__inner { 
+        .privacy-download {
+          padding: 0 ;
+          margin: 0 ;
+        }
+
+        .contact-section {
+          .contact {
+            &__info {
+              max-width: 578px;
+              width: 100%;
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
+
+    
+
+    #contact-form-section {
+      background-color: #EDE9E4;
+      padding: 60px 12px 47px 29px;
+      .contact-form-section {
+        &__inner {
+          .mail-steps {
+            &__container {
+              gap: 18.72px;
+              padding: 0;
+            }
+          }
+        
+          .contact-form-wrapper {
+            padding: 0 ;
+            .wpcf7 {
+              .wpcf7-form {
+                //基本ベース
+                .form-list {
+                   // 項目ブロック----------------
+                  label {
+                    .wpcf7-form-control-wrap {
+                      width: 100%;
+                      .wpcf7-text {
+                        max-width: 620px; /* 最大幅を620pxに制限 */
+                        width: 100%; /* 親要素の幅に基づいて可変 */
+                        height: 50px;             // 高さを設定
+                      }                     
+                    }
+                  }  
+                }
+
+                //項目【お問い合わせ項目】
+                .form-select {
+                  .checkbox-group {
+                    &__inner {
+                      max-width: 620px;
+                      width: 100%;
+                      margin: 0;
+                    }
+                  }
+                }
+                  // 項目【希望店舗】
+                .hope-store {
+                  max-width: 620px;
+                  width: 100%;
+                } 
+
+                //項目【来店希望日（第一希望）（第二希望）】
+                .date-field  {
+                  max-width: 728px; 
+                  width: 100%; 
+                  .title-flex {
+                    width: 100%;
+                  }
+                  .date-field-wrap {  
+                    width: 100%;  
+                    
+                    .my-date-field {
+                      max-width: 620px;
+                      width: 100%;             // 入力欄を親要素内で幅いっぱいに
+                    }
+                  }
+                }
+                .textarea {  //labelタグに対してclass
+                //項目【お問い合わせ内容】
+                  .textarea-flex {
+                    width: 100%; 
+                    .textarea-label {
+                      .wpcf7-form-control-wrap[data-name="your-details"] {
+                        .wpcf7-textarea {
+                          max-width: 620px;
+                          width: 100%;              // 入力欄を親要素内で幅いっぱいに
+                        }
+                      }
+                    }    
+                  }
+                }
+                
+              }
+            }
+          }
+        }
+      }
+    }
+}

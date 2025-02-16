@@ -1,0 +1,409 @@
+@use "../_foundation/mixin"as mixin;
+@use "../_foundation/base"as base;
+
+#footer {
+  background-color: #F9F8F6;
+  .footer-contents {
+    &__reserve {
+      width: 100%;
+      height: 400px; // 高さが必要な場合
+      background: url('../../assets/images/A-TECH-TEST-image/test-image/img/reserve-link-pc.webp') no-repeat center  center;
+      background-size: cover;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer; /* マウスカーソルをポインタに変更 */
+
+        /* 背景暗くする */
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7); /* 背景を暗くする（0.4は透明度） */
+        z-index: 1; /* テキストの後ろに配置 */
+      }
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    .footer-contents__flex {   
+      display: flex;
+      width: 100%;
+      height: 320px;
+      background-color: #F9F8F6;
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 121px;
+        width: 84%;
+        height: 1.2px;
+        background-color: #CA7F13;
+      }
+
+      &--salons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        position: relative;
+        transition: .3s;
+          .select-btn {
+            top: 42%;
+            left: 50%;
+            &__sub {
+              top: 540%;
+              left: 49%;
+            }  
+          }
+          &::before {
+            content: "";
+            position: absolute;
+            right: -8px;
+            top: 30px;        
+            width: 1.2px;
+            height: 260px;
+            background-color: #CA7F13;
+          }
+
+        &:hover {
+          opacity: 0.7;
+          transition: 0.5s;
+        }  
+      }
+
+      
+      
+      &--sns {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        position: relative;
+        transition: .3s;
+        .select-btn {
+          top: 40%;
+          left: 49%;
+          &__main {
+            font-size: 72px;
+          }
+          &__sub {
+            top: 533%;
+            left: 46%;
+
+          }  
+        }
+        &:hover {
+          opacity: 0.7;
+          transition: 0.5s;
+        }
+      }
+    }  
+
+
+  
+    &__end {
+      max-width: 660px;
+      width: 100%;
+      margin: 120px auto 20px;
+        .a-logo {
+          .h-logo {
+            justify-content: center;
+            margin: 0 0 46px;
+          }
+        }
+
+        .f-nav-sp {
+          display: none;
+        }  
+        .f-nav-pc {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          margin: 0 auto ;
+          @include mixin.font-settings
+          ( F-size20
+          , F-line-height25
+          , 2
+          , F-family-marcellus
+          , normal
+          , F-color-brown);
+          margin: 0 0 0 22px;
+            li {
+              padding: 0 30.5px;
+              transition: color 0.7s ease;   
+              border-right: 1.5px solid #54372D;
+              margin: 0 0 32.5px;
+              cursor: pointer;
+              display: block;
+              a {
+                color: #54372D;
+                &:hover {
+                  color: #F9F8F6;
+                  background-color: #CA7F13;
+                  transition: color 0.7s ease;
+                }  
+              }
+              &:nth-child(1)  {
+                padding-left: 0;
+              
+              }
+              &:nth-child(5)  {
+                border-right: none;
+              }
+
+              &:last-child  {
+                padding-right: 0;
+                border-right: none;
+              }
+            }
+        }
+    } 
+  }  
+
+  .last-text {
+    @include mixin.font-settings
+    ( F-size12
+    , F-line-height25
+    , F-letter-spacing-1-2
+    , F-family-mincho
+    , normal
+    , F-color-brown);
+    text-align: center;
+    margin: -2px 0 32px 19px;
+  }
+}
+
+
+
+@include mixin.TAB1 {
+  #footer {
+      margin: 0 auto 0;
+    .footer-contents {
+
+      .scroll-to-top {
+        position: fixed;
+        bottom: 20px; /* ボタンの縦位置 */
+        right: 20px; /* ボタンの横位置 */
+        width: 60px; /* ボタンの幅 */
+        height: 60px; /* ボタンの高さ */
+        background-color: rgba(141, 182, 0, 0.8); /* 背景色と半透明度 */
+        border-radius: 50%; /* 円形にする */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* ボタンの影 */
+        font-size: 24px; /* 矢印の大きさ */
+        font-weight: bold; /* 矢印を太字に */
+        color: #ffffff; /* 矢印の色 */
+        cursor: pointer;
+        opacity: 0; /* 初期状態で非表示 */
+        visibility: hidden;
+        transform: scale(0.8); /* 初期状態で縮小 */
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease; /* 表示のトランジション */
+      
+        &.show {
+          opacity: 1; /* 表示状態 */
+          visibility: visible; /* 表示状態 */
+          transform: scale(1); /* 通常サイズ */
+        }
+      
+        &:hover {
+          background-color: rgba(109, 155, 0, 0.9); /* ホバー時の色 */
+        }
+      }
+      
+
+      &__reserve {
+        width: 100%;
+        height: 200px; // 高さが必要な場合
+        background: url('../../assets/images/A-TECH-TEST-image/test-image/img/reserve-link-sp.webp') no-repeat center  center;
+        background-size: cover;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer; /* マウスカーソルをポインタに変更 */
+        .select-btn {
+          top: 42%;
+          left: 53%;
+        }
+          /* 背景暗くする */
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.7); /* 背景を暗くする（0.4は透明度） */
+          z-index: 1; /* テキストの後ろに配置 */
+        }
+      }
+  
+      .footer-contents__flex {   
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 8%;
+        height: auto;
+        position: relative;
+        &::after {
+          display: none;
+        }
+  
+        &--salons {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 203px;
+          position: relative;
+          border-bottom: 1.2px solid #CA7F13;
+            .select-btn {
+              top: 44%;
+              left: 54%;
+              &__sub {
+                top: 370%;
+                left: 49%;
+              }  
+            }
+            &::before {
+              display: none;
+            }
+        }
+        
+        &--sns {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 200px;
+          position: relative;
+          border-bottom: 1.2px solid #CA7F13;
+          .select-btn {
+            top: 43%;
+            left: 53%;
+            &__main {
+              font-size: 48px;
+            }
+            &__sub {
+              top: 370%;
+              left: 49%;      
+            }  
+          }
+        }
+      }  
+
+      
+    
+      &__end {
+        max-width: 579px;
+        width: 100%;
+        margin: 102px auto 0;
+          .a-logo {
+            .h-logo {
+              display: flex;
+              align-items: center;
+              justify-content: left;
+              padding: 0px 0px 0px 58px;
+          
+              &__img {
+                width: 50px;
+                height: 49px;
+              }
+          
+              &__text {
+                @include mixin.font-settings
+                ( F-size20
+                , F-line-height28
+                , 4
+                , F-family-marcellus
+                , normal
+                , F-color-brown);
+                padding: 0 0 0 5px;
+              }
+            }
+          } 
+          
+          .f-nav-pc {
+            display: none;
+          }
+
+          .f-nav-sp {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 0 auto 12px ;
+            padding: 0 20px;
+            @include mixin.font-settings
+            ( F-size14
+            , F-line-height18
+            , F-letter-spacing-1-4
+            , F-family-marcellus
+            , normal
+            , F-color-brown);
+            height: 18px;
+              li {
+                padding: 0 12px;
+                transition: color 0.7s ease;   
+                border-right: 1.5px solid #54372D;
+                margin: 0 0 0;
+                cursor: pointer;
+                display: block;
+                a {
+                  color: #54372D;
+                  &:hover {
+                    color: #F9F8F6;
+                    background-color: #CA7F13;
+                    transition: color 0.7s ease;
+                  }  
+                }
+                &:nth-child(1)  {
+                  padding-left: 0;
+                
+                }
+                &:nth-child(5)  {
+                  border-right: none;
+                }
+  
+                &:last-child  {
+                  padding-right: 0;
+                  border-right: none;
+                }
+              }
+          }
+          .first {
+            margin: -8px 0px 0px 15px;
+          }
+
+          .second {
+            margin: 12px 0px 0px 38px;
+          }
+
+          .third {
+            margin: 30px 0px 0px 18px;
+          }
+      } 
+    }  
+  
+    .last-text {
+      @include mixin.font-settings
+      ( F-size12
+      , F-line-height25
+      , F-letter-spacing-1-2
+      , F-family-marcellus
+      , normal
+      , F-color-brown);
+      text-align: center;
+      margin: 36px 0 8px 18px;
+    }
+  }
+}

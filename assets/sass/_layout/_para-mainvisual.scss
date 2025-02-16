@@ -1,0 +1,98 @@
+@use "../_foundation/mixin" as mixin;
+@use "../_foundation/base" as base;
+
+#para-mainvisual {
+  .section-title {
+    position: relative;
+    height: 532px; /* セクションの高さ */
+    background-color: #D4CEBE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 0;
+    left: 0;
+
+    h1 {
+      width: 100%;
+      color: #CA7F13;
+      font-size: 80px;
+      font-family: "Marcellus", serif;
+      letter-spacing: 8px;
+      position: absolute;
+      top: 66.4%;
+      left: 51%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  /* パララックスセクション */
+  .parallax-section {
+    position: relative;
+    height: 600px; /* 背景画像の高さ */
+    overflow: hidden;
+
+    .parallax-image {
+      position: fixed;
+      top: 80px; /* ヘッダー分の高さ */
+      left: 0;
+      width: 100%; /* 常に画面幅いっぱい */
+      height: 600px; /* 背景画像の高さ */
+      background-size: cover; /* 元サイズを維持して全画面表示 */
+      background-repeat: no-repeat;
+      background-position: center center;
+      z-index: -1;
+    }
+  }
+}
+
+@include mixin.TAB1 {
+  #para-mainvisual {
+    .section-title {
+      height: 400px; /* セクションの高さ */
+      h1 {
+        font-size: 57px;
+        letter-spacing: 5.2px;
+        position: absolute;
+        top: 64%;
+        left: 52%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    /* パララックスセクション */
+    .parallax-section {
+      height: 500px; /* 背景画像の高さ */
+      .parallax-image {
+        width: 100%; /* 常に画面幅いっぱい */
+        height: 500px; /* 背景画像の高さ */
+      }
+    }
+  }
+}
+
+
+@include mixin.SP {
+  #para-mainvisual {
+    .section-title {
+      height: 280px; /* セクションの高さ */
+      h1 {
+        font-size: 32px;
+        letter-spacing: 3.2px;
+        position: absolute;
+        top: 64%;
+        left: 53%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    /* パララックスセクション */
+    .parallax-section {
+      height: 300px; /* 背景画像の高さ */
+      .parallax-image {
+        height: 300px; /* 背景画像の高さ */
+      }
+    }
+  }
+}
+

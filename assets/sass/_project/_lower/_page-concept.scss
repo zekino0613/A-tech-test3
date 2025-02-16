@@ -1,0 +1,693 @@
+@use "../../_foundation/_mixin"as mixin;
+@use "../../_foundation/_base"as base;
+
+
+#section-contects.concept {
+    height: auto;
+    background-color: #D4CEBE;
+  
+  .concept-detail {
+    &__inner {
+      padding: 0 8% 66px;
+      &--flex {
+        display: flex;
+        margin: 83px auto 0;
+        position: relative;
+        width: 100%;
+        height: 460px;
+        h2 {
+          @include mixin.font-settings
+          ( F-size40
+          , F-line-height60
+          , 4
+          , F-family-mincho
+          , bold
+          , F-color-orange);          
+          position: absolute;
+          top: 144px;
+          left: 5px;
+          z-index: 3;
+        }
+
+        img {
+          display: block;
+          max-width: 720px;
+          width: 100%;
+          height: auto;
+          position: absolute;
+          top: 0;
+          right: -9px;
+          z-index: 1;
+        }
+      }
+
+      &--text {
+        @include mixin.font-settings
+        ( F-size18
+        , F-line-height36
+        , F-letter-spacing-1-8
+        , F-family-gothic
+        , normal
+        , F-color-orange);          
+        margin: 0 0 0 7px;
+      }
+    }
+  }
+}
+
+#instagram {
+  width: 100%;
+  height: 1008px;
+  background-color: #F9F8F6;
+  .section-title {
+    top: 175px;
+    left: 120px;
+  }
+
+
+  .instagram-feed-container {
+    width: 800px;
+    height: 1200px;
+    margin: 0 auto; /* 中央揃え */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    #sb_instagram {
+      padding-bottom: 20px;
+      height: 1000px;
+      #sbi_images {
+        display: grid;
+        width: 100%;
+        margin: 239px 0 0 10px;
+        padding: 0;
+      }
+      .sbi_photo {
+        img {
+          width: 240px;
+          height: 240px;
+          object-fit: cover;
+        }
+      } 
+
+      .sbi_photo_wrap {
+        .sbi_photo   {
+          height: 240px;
+        }
+      }
+
+      /* ボタン部分 */ //.sbi_follow_btn
+      .sbi_custom  {
+        background-color: #949E33; /* 緑色 */
+        width: 200px;
+        height: 50px;
+        // padding: 12px 47px;
+        border-radius: 40px; /* 丸みを追加 */
+        text-decoration: none;
+        text-align: center;
+        display: inline-block;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin: 53px 0 0 15px;
+        span {
+          color: white;
+          font-size: 20px;
+          font-family: 'Yu Mincho';
+        }
+        :hover {
+          background-color: #CA7F13; 
+        }
+      }
+      #sb_instagram.sbi_fixed_height  {
+        // overflow: hidden;
+        overflow-y: hidden;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+    }
+  }
+}
+
+
+
+#company-profile {
+  padding: 146px 11.5% 124px 12.5%;
+  background-color: #F9F8F6;
+  .company-profile {
+    &__inner {
+      .section-title {
+        top: 0;
+        left: -58px;
+      }
+
+      &--image-sp {
+        display: none;
+        
+      }
+      &--image-pc {
+        display: block;
+        width: 100%;
+        height: 540px;
+        margin: 59px auto  56px;
+      }
+
+      .company-info {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 40% 45% ; // 左の列を1fr、右の列を2frに調整
+        gap: 0;
+        border-top: 1px solid #CA7F13 ;
+        .info-row {
+          display: flex;
+          justify-content: left;
+          width: 94%;
+          padding: 10px 0;
+        
+          padding: 25.5px 0;
+          .info-title {
+            width: 30%;
+            @include mixin.font-settings
+            ( F-size18
+            , F-line-height14
+            , F-letter-spacing-1-8
+            , F-family-mincho
+            , bold
+            , F-color-orange);
+            padding: 0 0 0 13px;
+          }
+        
+          .info-content {
+            width: 100%;
+            @include mixin.font-settings
+            ( F-size16
+            , F-line-height14
+            , F-letter-spacing-1-8
+            , F-family-mincho
+            , normal
+            , F-color-black);
+            padding: 0 0 0 32px;
+          }
+
+          &:last-child {
+            border-bottom: none; // 最後の行の線を消す
+          }
+
+          &.full-width {
+            grid-column: 1 / -1; // グリッドの幅を全体に広げる
+            justify-content: left; // 左寄せに調整
+            align-items: center;
+            position: relative;
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: -1px; /* 下線の位置を調整 */
+              left: 0;
+              width: 126%;
+              height: 1px;
+              background-color: #d9a86d; /* 下線の色 */
+              z-index: 1;
+            }
+            .info-title {
+              width: 15%;
+            }
+            .info-content {
+              width: 127%;
+            }
+          }
+        }
+
+        .border {
+          position: relative;
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: -1px; /* 下線の位置を調整 */
+            left: 0;
+            width: 269%;
+            height: 1px;
+            background-color: #d9a86d; /* 下線の色 */
+            z-index: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+@include mixin.TAB1 {
+    
+  #section-contects.concept {
+    background-color: #D4CEBE;
+    .concept-detail {
+      &__inner {
+        padding: 0 8% ;
+        &--flex {
+          display: flex;
+          flex-direction: column;
+          margin: 59px auto 0;
+          position: static;
+          width: 100%;
+          height: auto;
+          .flex-text {
+            @include mixin.font-settings
+            ( 38
+            , F-line-height60
+            , F-letter-spacing-1-8
+            , F-family-mincho
+            , bold
+            , F-color-orange);
+            margin: 34px 0 41px 1px;
+            position:static;
+          }
+          .flex-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            position: static;
+          }
+        }
+
+        &--text {
+          @include mixin.font-settings
+          ( F-size14
+          , F-line-height28
+          , F-letter-spacing-1-4
+          , F-family-gothic
+          , normal
+          , F-color-orange);
+          margin: 0 0 0 2px;
+        }
+      }
+    }
+  }
+
+    
+  
+  
+  #instagram {
+    width: 100%;
+    height: 1000px;
+    background-color: #F9F8F6;
+    
+    .section-title {
+      top: 115px;
+      left: 17px;
+    }
+    .instagram-feed-container {
+      width: 600px;
+      height: 1060px;
+      margin: 0 auto; /* 中央揃え */
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      #sb_instagram {
+        padding-bottom: 20px;
+        height: 1500px;
+        margin: 0 auto; /* 中央揃え */
+        overflow-x: hidden;
+        overflow-y: hidden;
+        #sbi_images {
+          display: grid;
+          justify-content: center;
+          width: 100%;
+          margin:175px auto -23px;
+          padding: 0;
+          grid-template-columns: repeat(2, 240px); /* 縦2列 */
+          grid-template-rows: repeat(3, 240px); /* 横3行 */
+        }
+        .sbi_photo {
+          img {
+            width: 240px;
+            height: 240px;
+            object-fit: cover;
+          }
+        }                                                           
+        .sbi_photo_wrap {
+          .sbi_photo   {
+            height: 240px;
+          }
+        }
+
+        /* ボタン部分 */ //.sbi_follow_btn
+        .sbi_custom  {
+          background-color: #949E33; /* 緑色 */
+          width: 200px;
+          height: 50px;
+          // padding: 12px 47px;
+          border-radius: 40px; /* 丸みを追加 */
+          text-decoration: none;
+          text-align: center;
+          display: inline-block;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          margin: 53px auto;
+          span {
+            color: white;
+            font-size: 20px;
+            font-family: 'Yu Mincho';
+          }
+          :hover {
+            background-color: #CA7F13; 
+          }
+        }
+      
+        #sb_instagram.sbi_fixed_height  {
+          // overflow: hidden;
+          overflow-x: hidden;
+          overflow-y: hidden;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+
+    
+  #company-profile {
+    padding: 146px 8% 124px;
+    background-color: #F9F8F6;
+    .company-profile {
+      &__inner {
+        .section-title {
+          top: 0;
+          left: -58px;
+        }
+
+        &--image-sp {
+          display: none;
+          
+        }
+        &--image-pc {
+          display: block;
+          margin: 59px auto  60px;
+        }
+
+        .company-info {
+          width: 100%;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: 50% 50% ; // 左の列を1fr、右の列を2frに調整
+          gap: 0;
+          .info-row {
+            display: flex;
+            justify-content: left;
+            width: 100%;
+            padding: 10px 0;
+          
+            padding: 25.5px 0;
+            .info-title {
+              width: 30%;
+              @include mixin.font-settings
+              ( F-size14
+              , F-line-height14
+              , F-letter-spacing-1-4
+              , F-family-gothic
+              , bold
+              , F-color-orange);
+              padding: 0 0 0 13px;
+            }
+          
+            .info-content {
+              width: 70%;
+              @include mixin.font-settings
+              ( F-size12
+              , F-line-height14
+              , F-letter-spacing-1-2
+              , F-family-gothic
+              , normal
+              , F-color-black);
+              padding: 0 0 0 32px;
+            }
+
+            &:last-child {
+              border-bottom: none; // 最後の行の線を消す
+            }
+
+            &.full-width {
+              grid-column: 1 / -1; // グリッドの幅を全体に広げる
+              justify-content: left; // 左寄せに調整
+              align-items: center;
+              position: relative;
+              &::after {
+                content: '';
+                position: absolute;
+                bottom: -1px; /* 下線の位置を調整 */
+                left: 0;
+                width: 100%;
+                height: 1px;
+                background-color: #d9a86d; /* 下線の色 */
+                z-index: 1;
+              }
+              .info-title {
+                width: 18%;
+              }
+              .info-content {
+                width: 100%;
+              }
+            }
+          }
+
+          .border {
+            position: relative;
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: -1px; /* 下線の位置を調整 */
+              left: 0;
+              width: 199%;
+              height: 1px;
+              background-color: #d9a86d; /* 下線の色 */
+              z-index: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}  
+
+
+
+
+
+
+
+
+
+@include mixin.SP {
+  #section-contects.concept { 
+    background-color: #D4CEBE;
+    .concept-detail {
+      &__inner {
+        padding: 0 4% 54px 8%;
+        &--flex {
+          display: flex;
+          flex-direction: column;
+          margin: 59px auto 0;
+          position: static;
+          width: 100%;
+          height: auto;
+          .flex-text {
+            color: #CA7F13;
+            @include mixin.font-settings
+            ( F-size18
+            , F-line-height36
+            , F-letter-spacing-1-8
+            , F-family-mincho
+            , bold
+            , F-color-orange);
+            margin: 18px 0 14px 1px;
+            position:static;
+          }
+
+          .flex-image {
+            display: block;
+            max-width: 315px;
+            width: 100%;
+            height: auto;
+            position: static;
+        
+          }
+        }
+
+        &--text {
+          @include mixin.font-settings
+          ( F-size14
+          , F-line-height28
+          , F-letter-spacing-1-4
+          , F-family-gothic
+          , normal
+          , F-color-orange);
+          margin: 0 0 0 2px;
+        }
+      }
+    }
+  }
+  
+  
+    
+  #instagram {
+    width: 100%;
+    height: 700px;
+    background-color: #F9F8F6;
+    .section-title {
+      top: 115px;
+      left: 17px;
+    }
+    .instagram-feed-container {
+      width: 375px;
+      height: 870px;
+      margin: 0 auto; /* 中央揃え */
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      #sb_instagram {
+        padding-bottom: 20px;
+        height: 700px;
+        margin: 0 auto; /* 中央揃え */
+        #sbi_images {
+          display: grid;
+          justify-content: center;
+          width: 100%;
+          margin:175px auto -23px;
+          padding: 0;
+          grid-template-columns: repeat(2, 148px); /* 縦2列 */
+          grid-template-rows: repeat(3, 148px); /* 横3行 */
+        }
+        .sbi_photo {
+          img {
+            width: 148px;
+            height: 148px;
+            object-fit: cover;
+          }
+        }                                                           
+        .sbi_photo_wrap {
+          .sbi_photo   {
+            height: 240px;
+          }
+        }
+
+        /* ボタン部分 */ //.sbi_follow_btn
+        .sbi_custom  {
+          background-color: #949E33; /* 緑色 */
+          width: 200px;
+          height: 50px;
+          // padding: 12px 47px;
+          border-radius: 40px; /* 丸みを追加 */
+          text-decoration: none;
+          text-align: center;
+          display: inline-block;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          margin: 53px auto;
+          span {
+            color: white;
+            font-size: 20px;
+            font-family: 'Yu Mincho';
+          }
+          :hover {
+            background-color: #CA7F13; 
+          }
+        }
+      }
+    }
+  }
+
+
+
+
+#company-profile {
+  padding: 146px 1px 0px 16px;
+  background-color: #F9F8F6;
+  height: 1437px;
+  .company-profile {
+    &__inner {
+      .section-title {
+        top: 118px;
+        left: 0px;
+      }
+      &--image-pc {
+        display: none;
+        
+      }
+      &--image-sp {
+        display: block;
+        margin: 188px auto 47px;
+      }
+
+      .company-info {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr; // スマホ版では縦並びに
+        gap: 0;
+        border-top: 1px solid #CA7F13;
+        border-bottom: 1px solid #CA7F13;
+        background-color: #F9F8F6;
+        .info-row {
+          display: flex;
+          justify-content: left;
+          width: 100%;
+          padding: 28px 0 25px;
+          border-bottom: 1px solid #CA7F13;
+          .info-title {
+            width: 30%;
+            @include mixin.font-settings
+            ( F-size14
+            , F-line-height14
+            , F-letter-spacing-1-4
+            , F-family-mincho
+            , bold
+            , F-color-orange);
+          }
+        
+          .info-content {
+            width: 70%;
+            @include mixin.font-settings
+            ( F-size12
+            , F-line-height18
+            , F-letter-spacing-1-2
+            , F-family-gothic
+            , normal
+            , F-color-black);
+            padding: 0 0 0 24px;
+          }
+
+          &:last-child {
+            border-bottom: none; // 最後の行の線を消す
+          }
+
+          &.full-width {
+            display: flex;
+            overflow: hidden;
+            grid-template-columns: 1fr; // スマホ版では縦並びに
+            justify-content: left; // 左寄せに調整
+            align-items: 47px;
+            position: static;
+            .info-title {
+              width: 30%;
+            }
+            .info-content {
+              width: 70%;
+            }
+          }
+        }
+
+        .border {
+          overflow: hidden;
+        
+        }
+      }
+    }
+  }
+}
+
+
+}

@@ -1,0 +1,89 @@
+@use "../../_foundation/_mixin"as mixin;
+@use "../../_foundation/_base"as base;
+
+.contact-thanks {
+  max-width: 670px;
+  margin: 64px auto 95px;
+  h2 {
+    @include mixin.font-settings
+    ( F-size36
+    , F-line-height28
+    , 3.6
+    , F-family-mincho
+    , normal
+    , F-color-orange);
+    text-align: center;
+    margin: 0 0 32px;
+  }
+
+  .flex {
+    width: 400px;
+    margin: 0 auto;
+    p {
+      @include mixin.font-settings
+      ( F-size18
+      , F-line-height36
+      , 0.72
+      , F-family-mincho
+      , normal
+      , F-color-orange);
+    }
+
+    a {
+      @include mixin.font-settings
+    ( F-size18
+    , F-line-height36
+    , 0.72
+    , F-family-gothic
+    , normal
+    , F-color-orange);
+      text-align: left;
+      text-decoration: underline;
+    }
+  }
+}
+
+
+@include mixin.SP {
+  .contact-thanks {
+    max-width: 670px;
+    margin: 48px auto 60px;
+    h2 {
+      @include mixin.font-settings
+      ( F-size24
+      , F-line-height35
+      , F-letter-spacing-2-4
+      , F-family-mincho
+      , normal
+      , F-color-orange);
+      text-align: left;
+      margin: 0 0 18px;
+    }
+  
+    .flex {
+      width: 400px;
+      margin: 0 auto;
+      p {
+        @include mixin.font-settings
+        ( F-size14
+        , 21
+        , F-letter-spacing-0-56
+        , F-family-gothic
+        , normal
+        , F-color-orange);
+      }
+  
+      a {
+        @include mixin.font-settings
+        ( F-size14
+        , 21
+        , F-letter-spacing-0-56
+        , F-family-gothic
+        , normal
+        , F-color-orange);
+        text-align: left;
+        text-decoration: underline;
+      }
+    }
+  }
+}  

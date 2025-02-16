@@ -1,0 +1,15 @@
+// @use "../_foundation/mixin"as mixin;
+// @use "../_foundation/base"as base;
+
+
+
+.error-404 {
+  margin: 0 auto;
+  padding: 300px 0 300px ;
+  display: flex; /* フレックスボックスを有効化 */
+  justify-content: center; /* 水平方向に中央揃え */
+  align-items: center; /* 垂直方向に中央揃え */
+    img {
+      display: block;
+    }
+}

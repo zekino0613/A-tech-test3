@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+
+
+// ==========================================================================
+// Foundation
+// ==========================================================================
+@use "../sass/_foundation/_mixin";
+@use "../sass/_foundation/_base";
+@use "../sass/_foundation/_error-404";
+// // ==========================================================================
+// // Layout
+// // ==========================================================================
+@use "../sass/_layout/_header";
+@use "../sass/_layout/_footer";
+@use "../sass/_layout/_reserve-footer";
+@use "../sass/_layout/_para-mainvisual";
+// ==========================================================================
+// Project
+// ==========================================================================
+// TOPページ
+@use "../sass/_project/_top-page/_mainvisual";
+@use "../sass/_project/_top-page/_news";
+@use "../sass/_project/_top-page/_concept";
+@use "../sass/_project/_top-page/_feature";
+@use "../sass/_project/_top-page/_price-menu";
+@use "../sass/_project/_top-page/_FAQ";
+// 下層ページ
+@use "../sass/_project/_lower/_page-concept";
+@use "../sass/_project/_lower/_page-price-menu";
+// アーカイブページ
+@use "../sass/_project/_archive/_archive-salons";
+@use "../sass/_project/_archive/_archive-news";
+// シングルページ
+@use "../sass/_project/_single/_single-salons";
+@use "../sass/_project/_single/_single-news";
+ // コンタクトフォームページ
+@use "../sass/_project/_contact-form/page-contact-form";
+@use "../sass/_project/_contact-form/page-contact-form-confirm";
+@use "../sass/_project/_contact-form/page-contact-form-thanks";
