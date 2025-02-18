@@ -4,10 +4,11 @@
 
 #header {
   width: 100%;
-  position: absolute;
-  position: fixed; /*← fixedで固定 */
-  top: -1;
-  z-index: 100;
+  height: 100%; /* 画面の高さいっぱい */
+   // position: absolute;
+  // position: fixed; /*← fixedで固定 */
+  // top: -1;
+  // z-index: 100;
   &.home-header {
     background-color: transparent; /* トップページの背景色 */
     .h-list {
@@ -26,13 +27,9 @@
       .h-list {
         background-color: #F9F8F6;
       }
-
       .hamburger:hover .hamburger__lines--line {
         background-color: #F9F8F6; // ホバー時の色
       }
-
-      
-
   }
   .header {
     &__inner {
@@ -40,60 +37,141 @@
         display: none;
       }
       &--pc {
-        padding: 47px 2% 55px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      
-
+        width: 100%;
+        height: 36vh;
+        background: url(../../assets/images/kidsland_image/design-parts/header-bg-pc.webp) no-repeat center top;
+        background-size: contain;
+        padding: 104px 5.56% 35.46px;
         .h-nav {
+          width: 100%;
           display: flex;
+          justify-content: center;
           align-items: center;
-          gap: 30px;
-
-          &__li {
-            @include mixin.font-settings
-            ( F-size20
-            , F-line-height25
-            , 2
-            , F-family-marcellus
-            , normal
-            , F-color-brown);
-            position: relative;
-            a {
-              color: #54372D;
-              text-decoration: none;
-              transition: color 0.3s ease;
-            }
-          
-            &::after {
+          position: relative;
+          // gap: 30px;
+          &__logo-li {
+            max-width: 280px;
+            width: 100%;
+            .line-border {
               position: absolute;
-              bottom: -8px;
-              left: 0;
-              content: '';
-              width: 100%;
-              height: 3px;
-              background: white;
-              opacity: 0;
-              visibility: hidden;
-              transition: .3s;
+              top: -8px;
+              left: -2px;
+              width: 1px;
+              height: 110px;
+              background: repeating-linear-gradient(
+              to bottom, 
+              #55000C, 
+              #55000C 2px,
+              transparent 4px,
+              transparent 5px);
+              transform: translateX(-50%);
+              // 上の点（●）
+              &::before {
+                content: "";
+                position: absolute;
+                top: -6px;
+                left: 0.5px;
+                width: 8px;
+                height: 8px;
+                background-color: #55000C;
+                border-radius: 50%;
+                transform: translateX(-50%);
+              }
+              // 下の点（●）
+              &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0.6px;
+                width: 8px;
+                height: 8px;
+                background-color: #55000C;
+                border-radius: 50%;
+                transform: translateX(-50%);
+              }
             }
-
-            &:hover::after {
-              opacity: 1;
-              visibility: visible;
+            a {
+              .h-logo-img {
+                width: 100%;
+                height: 100%;
+              }
             }
-          } 
-
-          .btn {
-            width: 200px;
-            height: 50px;
-            font-size: 20px;
-            justify-content: left;
-            gap: 25px;
-            padding: 0 0 0 24px ;
-          } 
-          
+          }
+          &__li {
+            max-width: 150px;
+            width: 100%;
+            position: relative;
+            text-align: center;  
+            .line-border {
+              position: absolute;
+              top: -8px;
+              left: -2px;
+              width: 1px;
+              height: 110px;
+              background: repeating-linear-gradient(
+              to bottom, 
+              #55000C, 
+              #55000C 2px,
+              transparent 4px,
+              transparent 5px);
+              transform: translateX(-50%);
+              // 上の点（●）
+              &::before {
+                content: "";
+                position: absolute;
+                top: -6px;
+                left: 0.5px;
+                width: 8px;
+                height: 8px;
+                background-color: #55000C;
+                border-radius: 50%;
+                transform: translateX(-50%);
+              }
+              // 下の点（●）
+              &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0.6px;
+                width: 8px;
+                height: 8px;
+                background-color: #55000C;
+                border-radius: 50%;
+                transform: translateX(-50%);
+              }
+            }
+            a {
+              .header-icon {
+                text-align: center;
+                width: 150px;
+                &__img {
+                  display: block;
+                  width: 48px;
+                  height: 48px;
+                  margin: 0 auto 12px;
+                }
+                &__title {
+                  @include mixin.font-settings
+                  ( F-size16
+                  , F-line-height19-2
+                  , F-letter-spacing-4
+                  , F-family-KosugiMaru
+                  , normal
+                  , F-color-brown);
+                  // margin: 0 0 4px;
+                }
+                &__english {
+                  @include mixin.font-settings
+                  ( F-size10
+                  , F-line-height12
+                  , F-letter-spacing-10
+                  , F-family-Jost
+                  , bold
+                  , F-color-brown);
+                }
+              }
+            }
+          }          
         }
       }  
     }

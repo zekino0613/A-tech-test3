@@ -27,6 +27,7 @@ $SP: 500px;
 // フォントサイズ（プレフィックス付き）
 $font-sizes: (
   F-size9: 9px,
+  F-size10: 10px,
   F-size12: 12px,
   F-size14: 14px,
   F-size16: 16px,
@@ -50,9 +51,11 @@ $font-sizes: (
 // 行送り（line-height）
 $line-heights: (
   F-line-height8: 8,
+  F-line-height10: 10,
   F-line-height12: 12,
   F-line-height14: 14,
   F-line-height18: 18,
+  F-line-height19-2: 19.2,
   F-line-height22: 22,
   F-line-height24: 24,
   F-line-height25: 25,
@@ -68,27 +71,16 @@ $line-heights: (
 
 // 文字の間隔（letter-spacing）
 $letter-spacings: (
-  F-letter-spacing-0: 0px,
-  F-letter-spacing-0-48: 0.48px,
-  F-letter-spacing-0-56: 0.56px,
-  F-letter-spacing-0-72: 0.72px,
-  F-letter-spacing-1-2: 1.2px,
-  F-letter-spacing-1-4: 1.4px,
-  F-letter-spacing-1-6: 1.6px,
-  F-letter-spacing-1-8: 1.8px,
-  F-letter-spacing-2: 2px,
-  F-letter-spacing-2-4: 2.4px,
-  F-letter-spacing-3-36: 3.36px,
-  F-letter-spacing-4-8: 4.8px,
-  F-letter-spacing-5-6: 5.6px,
+  F-letter-spacing-4: 4%,
+  F-letter-spacing-10: 10%,
+
 );
 
 // フォントファミリー（プレフィックス付き）
 $font-families: (
-  F-family-marcellus: "Marcellus",
-  F-family-mincho: "Yu Mincho",
-  F-family-gothic: "Yu Gothic",
-  F-family-parisienne:"Parisienne"
+  F-family-KosugiMaru: "Kosugi Maru",
+  F-family-YuseiMagic: "Yusei Magic",
+  F-family-Jost: "Jost",
 );
 
 $font-weights: (
@@ -97,14 +89,12 @@ $font-weights: (
 
 // フォントカラー（プレフィックス付き）
 $font-colors: (
-  F-color-orange:#CA7F13,
-  F-color-brown: #54372D,
-  F-color-green: #949E33,
-  F-color-white: #FFFFFF,
+  F-color-brown: #55000C,
   F-color-black: #333333,
-  F-color-shadow:#CA7F1314,
-  F-color-gray: #54372D33,
-  F-color-rightgray:#707070
+  F-color-pink: #EF8F9C,
+  F-color-rightpink: #FFEDF0,
+  F-color-yellow: #FFF7B8,
+  F-color-white:#FFFFFF,
 );
 
 
@@ -123,12 +113,30 @@ $font-colors: (
     $font-size-value: strip-unit($size-value); // ✅ `px` を削除して数値に変換
     font-size: $size-value;
   }
-  // ✅ Letter-Spacing の計算（フォントサイズがある場合のみ）
-  @if $letter-spacing !=null and $font-size-value !=null {
-    $spacing-value: if(map-has-key($letter-spacings, $letter-spacing), map-get($letter-spacings, $letter-spacing), $letter-spacing);
-    $spacing-value-unitless: strip-unit($spacing-value); // ✅ `px` を削除
-    letter-spacing: #{($spacing-value-unitless / $font-size-value)}em;
-  }
+  // // ✅ Letter-Spacing の計算（フォントサイズがある場合のみ）
+  // @if $letter-spacing !=null and $font-size-value !=null {
+  //   $spacing-value: if(map-has-key($letter-spacings, $letter-spacing), map-get($letter-spacings, $letter-spacing), $letter-spacing);
+  //   $spacing-value-unitless: strip-unit($spacing-value); // ✅ `px` を削除
+  //   letter-spacing: #{($spacing-value-unitless / $font-size-value )}em;
+  // }
+// ✅ Letter-Spacing の計算（フォントサイズがある場合のみ）
+@if $letter-spacing != null and $font-size-value != null {
+  // 1. letter-spacing の値を取得（マップにない場合はデフォルト値10%を使用）
+  $spacing-value: if(map-has-key($letter-spacings, $letter-spacing), map-get($letter-spacings, $letter-spacing), 10%);
+
+  // 2. `strip-unit()` を適用し、数値のみ取得（%を除去）
+  $spacing-value-unitless: if(type-of($spacing-value) == "number", strip-unit($spacing-value), 10); 
+
+  // 3. % を em に変換（0防止）
+  $converted-spacing: if($spacing-value-unitless != 0, ($spacing-value-unitless / 100) * 1em, 0.1em);
+
+  // 4. `letter-spacing` を `em` で出力
+  letter-spacing: $converted-spacing;
+}
+
+
+
+
     // ✅ Line-Height の計算（フォントサイズがある場合のみ）
   @if $line !=null and $font-size-value !=null {
     $line-value: if(map-has-key($line-heights, $line), map-get($line-heights, $line), $line);
