@@ -38,11 +38,11 @@ body {
     position: fixed;
     bottom: 68px;
     right: 22px;
-    width: 80px;
     /* ボタンの幅 */
     height: 80px;
     /* ボタンの高さ */
     background-color: rgba(#949E33, 0.7);
+    width: 80px;
     /* 背景色と半透明度 */
     border-radius: 50%;
     /* 円形にする */
@@ -106,7 +106,7 @@ li {
 a {
   text-decoration: none;
   color: rgb(0, 0, 0);
-  display: block;
+  display:  inline-block;
   /* `<a>`全体をクリック可能に */
   transition: .3s;
 }

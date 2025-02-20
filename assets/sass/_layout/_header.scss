@@ -4,66 +4,70 @@
 
 #header {
   width: 100%;
-  height: 100%; /* 画面の高さいっぱい */
-   // position: absolute;
-  // position: fixed; /*← fixedで固定 */
-  // top: -1;
-  // z-index: 100;
+  height: 100%;
+
   &.home-header {
-    background-color: transparent; /* トップページの背景色 */
+    background-color: transparent;
+    /* トップページの背景色 */
     .h-list {
       background-color: transparent;
     }
   }
-
   &.subpage-header {
-    background-color: #F9F8F6; /* サブページの背景色 */
-      .btn {
-        &:hover {
-          color: #F9F8F6;
-          background-color: #CA7F13;
-        }
-      } 
-      .h-list {
-        background-color: #F9F8F6;
+    background-color: #F9F8F6;
+    /* サブページの背景色 */
+    .btn {
+      &:hover {
+        color: #F9F8F6;
+        background-color: #CA7F13;
       }
-      .hamburger:hover .hamburger__lines--line {
-        background-color: #F9F8F6; // ホバー時の色
-      }
+    }
+    .h-list {
+      background-color: #F9F8F6;
+    }
+    .hamburger:hover .hamburger__lines--line {
+      background-color: #F9F8F6; // ホバー時の色
+    }
   }
+
   .header {
     &__inner {
       &--sp {
         display: none;
       }
+
       &--pc {
         width: 100%;
         height: 36vh;
         background: url(../../assets/images/kidsland_image/design-parts/header-bg-pc.webp) no-repeat center top;
         background-size: contain;
-        padding: 104px 5.56% 35.46px;
+        padding: 111px 5.56% 35.46px;
+        position: absolute;
+        z-index: 3;
         .h-nav {
           width: 100%;
           display: flex;
           justify-content: center;
           align-items: center;
           position: relative;
-          // gap: 30px;
+          gap: 1.03%;
+          width: 100%;
+          // background-color: #949E33;
           &__logo-li {
-            max-width: 280px;
-            width: 100%;
+            min-width: 245px; // これで縮小を防ぐ
+            width: 280px;
+            position: relative;
             .line-border {
               position: absolute;
               top: -8px;
               left: -2px;
               width: 1px;
               height: 110px;
-              background: repeating-linear-gradient(
-              to bottom, 
-              #55000C, 
-              #55000C 2px,
-              transparent 4px,
-              transparent 5px);
+              background: repeating-linear-gradient(to bottom,
+                  #55000C,
+                  #55000C 2px,
+                  transparent 4px,
+                  transparent 5px);
               transform: translateX(-50%);
               // 上の点（●）
               &::before {
@@ -90,30 +94,32 @@
                 transform: translateX(-50%);
               }
             }
-            a {
-              .h-logo-img {
-                width: 100%;
-                height: 100%;
-              }
+            
+            .h-logo-img {
+              width: 100%;
+              // width: 280px;
+              height: 100%;
+              margin: -2px 0px 0px 7px;
             }
           }
+
           &__li {
             max-width: 150px;
             width: 100%;
             position: relative;
-            text-align: center;  
+            text-align: center;
+            padding: 0 0px 0 5px;
             .line-border {
               position: absolute;
               top: -8px;
               left: -2px;
               width: 1px;
               height: 110px;
-              background: repeating-linear-gradient(
-              to bottom, 
-              #55000C, 
-              #55000C 2px,
-              transparent 4px,
-              transparent 5px);
+              background: repeating-linear-gradient(to bottom,
+                  #55000C,
+                  #55000C 2px,
+                  transparent 4px,
+                  transparent 5px);
               transform: translateX(-50%);
               // 上の点（●）
               &::before {
@@ -139,6 +145,13 @@
                 border-radius: 50%;
                 transform: translateX(-50%);
               }
+            }
+            // 右側の線（最後のアイコン専用）
+            .line-border-last {
+              left: auto;
+              /* 左の点線とは異なる位置 */
+              right: -2px;
+              /* 右側に配置 */
             }
             a {
               .header-icon {
@@ -148,37 +161,40 @@
                   display: block;
                   width: 48px;
                   height: 48px;
-                  margin: 0 auto 12px;
+                  margin: -1px 54px 11px;
                 }
                 &__title {
-                  @include mixin.font-settings
-                  ( F-size16
-                  , F-line-height19-2
-                  , F-letter-spacing-4
-                  , F-family-KosugiMaru
-                  , normal
-                  , F-color-brown);
-                  // margin: 0 0 4px;
+                  @include mixin.font-settings (
+                    F-size16,
+                    F-line-height19-2,
+                    F-letter-spacing-4,
+                    F-family-KosugiMaru,
+                    normal,
+                    F-color-brown);
+                  display: block;
+                  margin: 13px -18px 2px -11px;
                 }
                 &__english {
-                  @include mixin.font-settings
-                  ( F-size10
-                  , F-line-height12
-                  , F-letter-spacing-10
-                  , F-family-Jost
-                  , bold
-                  , F-color-brown);
+                  @include mixin.font-settings (F-size10,
+                    F-line-height12,
+                    F-letter-spacing-10,
+                    F-family-Jost,
+                    bold,
+                    F-color-brown);
+                  display: block;
+                  margin: 1px 0px 0px 5px;
                 }
               }
             }
-          }          
+
+          }
         }
-      }  
+      }
     }
   }
-}  
+}
 
-@include mixin.TAB1 {
+@include mixin.TAB2 {
   #header {
     .header {
       &__inner {
@@ -187,164 +203,258 @@
         }
 
         &--sp {
-          width: 100%;
           display: block;
-          position: absolute;
-          top: -1px;
-          transition: all 0.5s;
-          .h-list {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+          width: 100%;
+          .h-bg {
             width: 100%;
-            padding: 21px 1% 29px 1%;    
-              &__img {
-                width: 32px;
-                height: 32px;
-                margin: 0 0 0 16px;
-                z-index: 1100; // 最前面に配置              
+            height: auto;
+            background: url(../../assets/images/kidsland_image/design-parts/header-bg-sp.webp) no-repeat center top;
+            background-size: contain;
+            padding: 13.13% 2%;
+            text-align: center;
+            &__logo {
+              width: 52vw;
+              height: 100%;
+              display: block;
+              transition: all 0.5s;
+              &:hover {
+                opacity: 0.7;
+                transition: all 0.5s;
+              }
+            }
+
+            .hamburger {
+              position: absolute;
+              top: 13px;
+              right: 12px;
+              width: 6%;
+              height: 6%;
+              min-width: 48px;
+              min-height: 48px;
+              margin: 0 auto;
+              padding: 12px 0 0;
+              border-radius: 50%;
+              transition: all 0.5s;
+              border:1px solid map-get(mixin.$colors, "C-brown");
+              cursor: pointer;
+              z-index: 1100;
+              &__menu {
+                @include mixin.font-settings (
+                  F-size10,
+                  F-line-height12,
+                  F-letter-spacing-0,
+                  F-family-Jost, 
+                  900, 
+                  F-color-brown);
+                  text-align: center;
+                  text-transform: none;
+                  transition: opacity 0.5s ease, transform 0.5s ease;
+              } 
+              &__close {
+                opacity: 0; // フェードアウト
+                text-align: center;
+                text-transform: none;
+                transition: opacity 0.5s ease, transform 0.5s ease;
+                @include mixin.font-settings (
+                  F-size10,
+                  F-line-height12,
+                  F-letter-spacing-0,
+                  F-family-Jost, 
+                  900, 
+                  F-color-brown);
+              }
+              &__lines {
+                position: relative;
+                top: 1px;
+                left: -2px;
+                width: 25px;
+                height: 12px;
+                text-align: center;
+                // margin: 0 auto;
+                transition: all 0.5s ease;
+                &--line {
+                  position: absolute;
+                  width: 100%;
+                  height: 1px;
+                  background-color: map-get(mixin.$colors, "C-brown");
+                  transition: transform 0.5s ease, opacity 0.3s ease;
+                  &:nth-child(1) {
+                    // 上の線
+                    top: 0;
+                  }
+                  &:nth-child(2) {
+                    // 中央の線
+                    top: 50%;
+                    transform: translateY(-50%);
+                  }
+                  &:nth-child(3) {
+                    // 下の線
+                    bottom: 0;
+                  }
+                }
+            }
+
+              &.is-open {
+                width: 6%;
+                height: 6%;
+                border-radius: 50%; // 円形に変更
+                // background-color: #949E33; // 背景色を指定
+                justify-content: center; // アイコンを中央に配置    
+                align-items: center;
+                .hamburger {
+                  &__menu {
+                    transform: translateX(20px); // 右へスライドして消える
+                    opacity: 0; // フェードアウト
+                  }
+                  &__close {
+                    opacity: 1;
+                    text-align: center;
+                    text-transform: none;
+                    transition: opacity 0.5s ease, transform 0.5s ease;
+                    margin: -6px 0 0px;
+                  }
+                  &__lines {
+                    left: -4px;
+                    &--line {
+                      &:nth-child(1) {
+                        // 上の線が45度回転
+                        top: 132%;
+                        left: 101%;
+                        width: 32px;
+                        transform: rotate(24deg) translate(-50%, -50%);
+                      }
+                      &:nth-child(2) {
+                        // 中央の線が非表示
+                        opacity: 0;
+                      }
+                      &:nth-child(3) {
+                        // 下の線が-45度回転
+                        top: 21%;
+                        left: 101%;
+                        width: 32px;
+                        transform: rotate(-24deg) translate(-50%, -50%);
+                      }
+                    }
+                  }
+                }
                 &:hover {
-                  opacity: 0.7;
+                  background-color: map-get(mixin.$colors, "C-brown"); // ホバー時の色
+                }
+                &:hover .hamburger__close {
+                  color: map-get(mixin.$colors, "C-white");
+                  
+                }
+                &:hover .hamburger__lines--line {
+                  background-color: map-get(mixin.$colors, "C-white"); // ホバー時の色
                 }
               }
+              &:hover {
+                color: map-get(mixin.$colors, "C-white");
+                background-color: map-get(mixin.$colors, "C-brown"); // ホバー時の色
+              }
+              &:hover .hamburger__menu {
+                color: map-get(mixin.$colors, "C-white");
+              }
+              &:hover .hamburger__lines--line {
+                background-color: map-get(mixin.$colors, "C-white"); // ホバー時の色
+              }
+            }
 
-              .hamburger {
+            // 全画面メニューのスタイル
+            .overlay-menu {
+              position: fixed;
+              top: 70px;
+              left: 0;
+              right: 0;
+              width: 92%;
+              height: 88vh;
+              background-color: rgba(map-get(mixin.$colors, "C-white"), 0.8);
+              backdrop-filter: blur(3px);
+              -webkit-backdrop-filter: blur(3px);
+              border-radius: 40px;
+              display: none;
+              align-items: left;
+              justify-content: left;
+              z-index: 1000;
+              padding: 150px 0;
+              margin: 0 4%;
+              .h-nav {
                 display: flex;
+                flex-wrap: wrap;
                 justify-content: center;
                 align-items: center;
-                width: 100px;
-                height: 30px;
-                margin: 0;
-                z-index: 1100; // 最前面に配置
-                transition: all 0.5s;
-                &__text {
-                  @include mixin.font-settings
-                  ( F-size14
-                  , F-line-height22
-                  , F-letter-spacing-1-4
-                  , F-family-mincho
-                  , normal
-                  , F-color-white);
-                  transition: opacity 0.5s ease, transform 0.5s ease;
-                }
-                &__lines {
-                  position: relative;
-                  width: 12px;
-                  height: 10px;
-                  transition: all 0.5s ease;
-                  margin: 0 0 0 10.5px;
-                  &--line {
-                    position: absolute;
+                min-width: 215px;
+                width: 100%;
+                gap: 15px;
+                // min-height: 421px;
+                height: 421px;
+                &__li {
+                  max-width: 300px;
+                  min-width: 150px;
+                  width: 45%;
+                  height: 32%;
+                  border: 1px solid map-get(mixin.$colors, "C-brown");
+                  border-radius: 12px;
+                  padding: 4% 0 ;
+                  display: block;
+                  a {
+                    display: flex; // ✅ ボックス全体がクリック範囲に
+                    align-items: center;
+                    justify-content: center;
                     width: 100%;
-                    height: 1px;
-                    background-color: #FFFFFF;
-                    transition: transform 0.5s ease, opacity 0.3s ease;
-                    &:nth-child(1) {
-                      // 上の線
-                      top: 0;
-                    }
-                    &:nth-child(2) {
-                      // 中央の線
-                      top: 50%;
-                      transform: translateY(-50%);
-                    }
-                    &:nth-child(3) {
-                      // 下の線
-                      bottom: 0;
-                    }
-                  }  
-                } 
-              
-              
-                &.is-open {
-                  width: 30px; // クリックで幅と高さを30pxに縮小
-                  height: 30px;
-                  border-radius: 50%; // 円形に変更
-                  background-color: #949E33; // 背景色を指定
-                  justify-content: center; // アイコンを中央に配置    
-                  align-items: center;   
-
-                  .hamburger{
-                    &__text {
-                      transform: translateX(20px); // 右へスライドして消える
-                      opacity: 0; // フェードアウト
-                    }
-                    &__lines {
-                      left: -15px;
-                      &--line {
-                        &:nth-child(1) {
-                          // 上の線が45度回転
-                          top: 76%;
-                          left: 50%;              
-                          width: 8px;
-                          transform: rotate(45deg) translate(-50%, -50%);
-                        }
-                        &:nth-child(2) {
-                          // 中央の線が非表示
-                          opacity: 0;
-                        }
-                        &:nth-child(3) {
-                          // 下の線が-45度回転
-                          top: 23%;
-                          left: 82%;
-                          width: 8px;
-                          transform: rotate(-45deg) translate(-50%, -50%);
-                        }
+                    height: 100%;
+                    text-decoration: none;
+                    cursor: pointer;
+                    .header-icon {
+                      text-align: center;
+                      width: 150px;
+                      &__img {
+                        display: block;
+                        width: 48px;
+                        height: 48px;
+                        margin: -1px 54px 11px;
+                      }
+                      &__title {
+                        @include mixin.font-settings (
+                          F-size16,
+                          F-line-height19-2,
+                          F-letter-spacing-4,
+                          F-family-KosugiMaru,
+                          normal,
+                          F-color-brown);
+                          width: 100%;
+                        display: block;
+                        margin: 0 auto 4px;
+                      }
+                      &__english {
+                        @include mixin.font-settings (F-size10,
+                          F-line-height12,
+                          F-letter-spacing-10,
+                          F-family-Jost,
+                          900,
+                          F-color-brown);
+                          width: 100%;
+                          display: block;
+                          // margin: 0 auto;
                       }
                     }
-                  
-                  }
-                  &:hover .hamburger__lines--line {
-                    background-color: #ffffff; // ホバー時の色
-                  }  
-              }
-            }  
-              
-              // 全画面メニューのスタイル
-              .overlay-menu {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-                background-color: #D4CEBE;
-                display: none;
-                align-items: left;
-                justify-content: left;
-                z-index: 1000;
-                  nav {
-                    ul {
-                      list-style: none;
-                      margin: 144px auto auto 60px;
-                      text-align: left;
-                      li {
-                        font-family: "Marcellus", serif;
-                        margin: 0 0 12px 0;
-                        a {
-                          @include mixin.font-settings
-                          ( F-size24
-                          , 30
-                          , 2.4
-                          , F-family-marcellus
-                          , normal
-                          , F-color-orange);
-                          text-decoration: none;
-                        }
-                        a:hover {
-                          color: #949E33;
-                        }
-                      }
+                    &:hover {
+                      // display: block;
+                      opacity: 0.7;
                     }
-                  }
-
-                  &.is-open {
-                    display: flex; // 表示
                   }
                 }
-          
+              }
+
+              &.is-open {
+                display: flex; // 表示
+                transition: opacity 0.5s ease, transform 0.5s ease;
+              }
+            }
+
           }
         }
       }
-    }  
+    }
   }
 }

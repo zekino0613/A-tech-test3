@@ -1,0 +1,31 @@
+{
+  "name": "a-tech-test2",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000A\u0000-\u0000T\u0000E\u0000C\u0000H\u0000-\u0000T\u0000E\u0000S\u0000T\u00002\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zekino0613/A-TECH-TEST2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zekino0613/A-TECH-TEST2/issues"
+  },
+  "homepage": "https://github.com/zekino0613/A-TECH-TEST2#readme",
+  "devDependencies": {
+    "browser-sync": "^3.0.3",
+    "gulp": "^5.0.0",
+    "gulp-sass": "^6.0.0",
+    "sass": "^1.85.0"
+  },
+  "dependencies": {
+    "ws": "^8.18.0",
+    "xhr2": "^0.2.1",
+    "yargs-parser": "^21.1.1"
+  }
+}
