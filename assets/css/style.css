@@ -378,7 +378,7 @@ a:focus-visible {
 }
 #header .header__inner--pc {
   width: 100%;
-  height: 36vh;
+  height: 39vh;
   background: url(../../assets/images/kidsland_image/design-parts/header-bg-pc.webp) no-repeat center top;
   background-size: contain;
   padding: 111px 5.56% 35.46px;
@@ -523,12 +523,300 @@ a:focus-visible {
 }
 
 @media (max-width: 1200px) {
+  #header {
+    height: 150px;
+  }
   #header .header__inner--pc {
     display: none;
   }
   #header .header__inner--sp {
     display: block;
     width: 100%;
+    z-index: 3;
+  }
+  #header .header__inner--sp .h-bg {
+    width: 100%;
+    height: auto;
+    background: url(../../assets/images/kidsland_image/design-parts/header-bg-pc.webp) no-repeat center top;
+    background-size: contain;
+    padding: 4.43% 2%;
+    text-align: center;
+  }
+  #header .header__inner--sp .h-bg__logo {
+    width: 30vw;
+    height: 100%;
+    display: block;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+  #header .header__inner--sp .h-bg__logo:hover {
+    opacity: 0.7;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+  #header .header__inner--sp .h-bg .hamburger {
+    position: absolute;
+    top: 23px;
+    right: 51px;
+    width: 8%;
+    height: 8%;
+    min-width: 48px;
+    min-height: 48px;
+    margin: 0 auto;
+    padding: 11px 0 0;
+    border-radius: 50%;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    border: 2px solid #55000C;
+    cursor: pointer;
+    z-index: 1100;
+  }
+  #header .header__inner--sp .h-bg .hamburger__menu {
+    font-size: 10px;
+    letter-spacing: 0em;
+    line-height: 1.2;
+    font-family: "Jost";
+    font-weight: 900;
+    color: #55000C;
+    text-align: center;
+    text-transform: none;
+    margin: 11px 0 0;
+    -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+    transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease, -webkit-transform 0.5s ease;
+  }
+  #header .header__inner--sp .h-bg .hamburger__close {
+    opacity: 0;
+    text-align: center;
+    text-transform: none;
+    -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+    transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease, -webkit-transform 0.5s ease;
+    font-size: 10px;
+    letter-spacing: 0em;
+    line-height: 1.2;
+    font-family: "Jost";
+    font-weight: 900;
+    color: #55000C;
+  }
+  #header .header__inner--sp .h-bg .hamburger__lines {
+    position: relative;
+    top: 11px;
+    left: -17px;
+    width: 35px;
+    height: 19px;
+    margin: 0 auto;
+    text-align: center;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+  #header .header__inner--sp .h-bg .hamburger__lines--line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #55000C;
+    -webkit-transition: opacity 0.3s ease, -webkit-transform 0.5s ease;
+    transition: opacity 0.3s ease, -webkit-transform 0.5s ease;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+    transition: transform 0.5s ease, opacity 0.3s ease, -webkit-transform 0.5s ease;
+  }
+  #header .header__inner--sp .h-bg .hamburger__lines--line:nth-child(1) {
+    top: 0;
+  }
+  #header .header__inner--sp .h-bg .hamburger__lines--line:nth-child(2) {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+  #header .header__inner--sp .h-bg .hamburger__lines--line:nth-child(3) {
+    bottom: 0;
+  }
+  #header .header__inner--sp .h-bg .hamburger.is-open {
+    width: 8%;
+    height: 8%;
+    border-radius: 50%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #header .header__inner--sp .h-bg .hamburger.is-open .hamburger__menu {
+    -webkit-transform: translateX(20px);
+            transform: translateX(20px);
+    opacity: 0;
+  }
+  #header .header__inner--sp .h-bg .hamburger.is-open .hamburger__close {
+    opacity: 1;
+    text-align: center;
+    text-transform: none;
+    -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+    transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease, -webkit-transform 0.5s ease;
+    margin: -18px 0 0px;
+  }
+  #header .header__inner--sp .h-bg .hamburger.is-open .hamburger__lines {
+    left: -4px;
+  }
+  #header .header__inner--sp .h-bg .hamburger.is-open .hamburger__lines--line:nth-child(1) {
+    top: 24%;
+    left: 61%;
+    width: 32px;
+    -webkit-transform: rotate(24deg) translate(-50%, -50%);
+            transform: rotate(24deg) translate(-50%, -50%);
+  }
+  #header .header__inner--sp .h-bg .hamburger.is-open .hamburger__lines--line:nth-child(2) {
+    opacity: 0;
+  }
+  #header .header__inner--sp .h-bg .hamburger.is-open .hamburger__lines--line:nth-child(3) {
+    top: -44%;
+    left: 61%;
+    width: 32px;
+    -webkit-transform: rotate(-24deg) translate(-50%, -50%);
+            transform: rotate(-24deg) translate(-50%, -50%);
+  }
+  #header .header__inner--sp .h-bg .hamburger.is-open:hover {
+    background-color: #55000C;
+  }
+  #header .header__inner--sp .h-bg .hamburger.is-open:hover .hamburger__close {
+    color: #FFFFFF;
+  }
+  #header .header__inner--sp .h-bg .hamburger.is-open:hover .hamburger__lines--line {
+    background-color: #FFFFFF;
+  }
+  #header .header__inner--sp .h-bg .hamburger:hover {
+    color: #FFFFFF;
+    background-color: #55000C;
+  }
+  #header .header__inner--sp .h-bg .hamburger:hover .hamburger__menu {
+    color: #FFFFFF;
+  }
+  #header .header__inner--sp .h-bg .hamburger:hover .hamburger__lines--line {
+    background-color: #FFFFFF;
+  }
+  #header .header__inner--sp .h-bg .overlay-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    width: 92%;
+    height: 88vh;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border-radius: 40px;
+    display: none;
+    -webkit-box-align: left;
+        -ms-flex-align: left;
+            align-items: left;
+    -webkit-box-pack: left;
+        -ms-flex-pack: left;
+            justify-content: left;
+    z-index: 1000;
+    padding: 150px 0;
+    margin: 0 4%;
+  }
+  #header .header__inner--sp .h-bg .overlay-menu .h-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    min-width: 215px;
+    width: 100%;
+    gap: 15px;
+    height: 421px;
+  }
+  #header .header__inner--sp .h-bg .overlay-menu .h-nav__li {
+    max-width: 300px;
+    min-width: 150px;
+    width: 45%;
+    height: 32%;
+    border: 1px solid #55000C;
+    border-radius: 12px;
+    padding: 4% 0;
+    display: block;
+  }
+  #header .header__inner--sp .h-bg .overlay-menu .h-nav__li a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  #header .header__inner--sp .h-bg .overlay-menu .h-nav__li a .header-icon {
+    text-align: center;
+    width: 150px;
+  }
+  #header .header__inner--sp .h-bg .overlay-menu .h-nav__li a .header-icon__img {
+    display: block;
+    width: 48px;
+    height: 48px;
+    margin: -1px 54px 11px;
+  }
+  #header .header__inner--sp .h-bg .overlay-menu .h-nav__li a .header-icon__title {
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #55000C;
+    width: 100%;
+    display: block;
+    margin: 0 auto 4px;
+  }
+  #header .header__inner--sp .h-bg .overlay-menu .h-nav__li a .header-icon__english {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    font-family: "Jost";
+    font-weight: 900;
+    color: #55000C;
+    width: 100%;
+    display: block;
+  }
+  #header .header__inner--sp .h-bg .overlay-menu .h-nav__li a:hover {
+    opacity: 0.7;
+  }
+  #header .header__inner--sp .h-bg .overlay-menu.is-open {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+    transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease, -webkit-transform 0.5s ease;
+  }
+}
+@media (max-width: 500px) {
+  #header {
+    height: 150px;
+  }
+  #header .header__inner--pc {
+    display: none;
+  }
+  #header .header__inner--sp {
+    display: block;
+    width: 100%;
+    z-index: 3;
   }
   #header .header__inner--sp .h-bg {
     width: 100%;
@@ -576,6 +864,7 @@ a:focus-visible {
     color: #55000C;
     text-align: center;
     text-transform: none;
+    margin: 2px 0 0;
     -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
     transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
     transition: opacity 0.5s ease, transform 0.5s ease;
@@ -599,9 +888,10 @@ a:focus-visible {
   #header .header__inner--sp .h-bg .hamburger__lines {
     position: relative;
     top: 1px;
-    left: -2px;
+    left: -12px;
     width: 25px;
     height: 12px;
+    margin: 0 auto;
     text-align: center;
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
@@ -657,8 +947,8 @@ a:focus-visible {
     left: -4px;
   }
   #header .header__inner--sp .h-bg .hamburger.is-open .hamburger__lines--line:nth-child(1) {
-    top: 132%;
-    left: 101%;
+    top: 122%;
+    left: 62%;
     width: 32px;
     -webkit-transform: rotate(24deg) translate(-50%, -50%);
             transform: rotate(24deg) translate(-50%, -50%);
@@ -667,8 +957,8 @@ a:focus-visible {
     opacity: 0;
   }
   #header .header__inner--sp .h-bg .hamburger.is-open .hamburger__lines--line:nth-child(3) {
-    top: 21%;
-    left: 101%;
+    top: 22%;
+    left: 63%;
     width: 32px;
     -webkit-transform: rotate(-24deg) translate(-50%, -50%);
             transform: rotate(-24deg) translate(-50%, -50%);
@@ -1699,21 +1989,24 @@ a:focus-visible {
 #mainvisual {
   width: 100%;
   height: 100vh;
+  padding: 0 4%;
+  margin: 0 auto 100px;
 }
 #mainvisual .mainvisual {
   position: absolute;
-  z-index: 2;
 }
 #mainvisual .mainvisual__image {
-  max-width: 1280px;
-  width: 100%;
-  height: 540px;
+  min-width: 96.99%;
+  width: 97%;
+  min-height: 57.5%;
+  height: 59%;
   margin: 0 auto;
-  background: url(../../assets/images/kidsland_image/FV.png) no-repeat center top;
-  background-size: contain;
+  background: url(../../assets/images/kidsland_image/FV.png) no-repeat center bottom;
+  background-size: cover;
   border-radius: 120px;
   position: relative;
-  top: 200px;
+  top: clamp(100px, 14.3vw, 250px);
+  z-index: -1;
 }
 #mainvisual .mainvisual__image--item {
   width: 516px;
@@ -1722,8 +2015,8 @@ a:focus-visible {
   background-size: contain;
   mask-image: url(../../assets/images/kidsland_image/design-parts/FV-parts-pc.png); /*マスク用画像*/
   mask-repeat: no-repeat;
-  -webkit-mask-size: 599px 459px;
-          mask-size: 599px 459px; /* 横幅 縦幅 */
+  -webkit-mask-size: 841px 477px;
+          mask-size: 841px 477px; /* 横幅 縦幅 */
   -webkit-mask-image: url(../../assets/images/kidsland_image/design-parts/FV-parts-pc.png);
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center center;
@@ -1731,13 +2024,13 @@ a:focus-visible {
   -webkit-filter: drop-shadow(0px -10px 50px rgba(0, 0, 0, 0.3));
           filter: drop-shadow(0px -10px 50px rgba(0, 0, 0, 0.3));
   /* drop-shadow */
-  -webkit-filter: drop-shadow(14px 7px 4px rgba(0, 0, 0, 0.4)) drop-shadow(-11px -1px 4px rgb(53, 169, 59));
-          filter: drop-shadow(14px 7px 4px rgba(0, 0, 0, 0.4)) drop-shadow(-11px -1px 4px rgb(53, 169, 59));
+  -webkit-filter: drop-shadow(1.8px 5px 1.7px rgba(0, 0, 0, 0.3)) drop-shadow(-1px -2.5px 4px rgb(255, 255, 255));
+          filter: drop-shadow(1.8px 5px 1.7px rgba(0, 0, 0, 0.3)) drop-shadow(-1px -2.5px 4px rgb(255, 255, 255));
   /* ✅ フィルターで輪郭ぼかし */
   position: relative;
   position: absolute;
-  bottom: 16.4px;
-  left: 37px;
+  bottom: 3%;
+  left: 3%;
 }
 #mainvisual .mainvisual__image--item .mainvisual-text {
   font-size: 40px;
@@ -1747,39 +2040,121 @@ a:focus-visible {
   font-weight: bold;
   color: #55000C;
   position: absolute;
-  top: 135px; /* トップを基準に中央配置 */
-  left: 62px; /* 左を基準に中央配置 */
+  top: 33%;
+  left: 12%;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1200px) {
   #mainvisual {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
+    padding: 0 4%;
   }
   #mainvisual .mainvisual {
-    position: relative;
-  }
-  #mainvisual .mainvisual__images {
-    width: 100%;
-    height: 100%;
-    position: relative;
-  }
-  #mainvisual .mainvisual__images--item {
-    width: 100%;
-    height: 100%;
-    background: url("../../assets/images/A-TECH-TEST-image/test-image/img/fv_bg-sp.jpg") no-repeat center center;
-    background-size: cover;
-  }
-  #mainvisual .mainvisual__images--text {
-    font-size: 32px;
-    font-family: "Yu Mincho";
-    font-weight: normal;
-    color: #FFFFFF;
-    letter-spacing: 3.2px;
-    line-height: 48px;
     position: absolute;
-    top: 392px; /* トップを基準に中央配置 */
-    left: 14px; /* 左を基準に中央配置 */
+  }
+  #mainvisual .mainvisual__image {
+    min-width: 96.99%;
+    width: 97%;
+    min-height: 57.5%;
+    height: 59%;
+    margin: 0 auto;
+    background: url(../../assets/images/kidsland_image/FV.png) no-repeat center top;
+    background-size: cover;
+    border-radius: 120px;
+    position: relative;
+    top: clamp(-57px, -13.7vw, 13px);
+    z-index: -1;
+  }
+  #mainvisual .mainvisual__image--item {
+    width: 47vw;
+    height: 44vh;
+    background: url(../../assets/images/kidsland_image/design-parts/FV-parts-pc.png) no-repeat center center;
+    background-size: contain;
+    mask-image: url(../../assets/images/kidsland_image/design-parts/FV-parts-pc.png); /*マスク用画像*/
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 841px 477px;
+            mask-size: 841px 477px; /* 横幅 縦幅 */
+    -webkit-mask-image: url(../../assets/images/kidsland_image/design-parts/FV-parts-pc.png);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center center;
+            mask-position: center center;
+    -webkit-filter: drop-shadow(0px -10px 50px rgba(0, 0, 0, 0.3));
+            filter: drop-shadow(0px -10px 50px rgba(0, 0, 0, 0.3));
+    /* drop-shadow */
+    -webkit-filter: drop-shadow(1.8px 5px 1.7px rgba(0, 0, 0, 0.3)) drop-shadow(-1px -2.5px 4px rgb(255, 255, 255));
+            filter: drop-shadow(1.8px 5px 1.7px rgba(0, 0, 0, 0.3)) drop-shadow(-1px -2.5px 4px rgb(255, 255, 255));
+    position: relative;
+    position: absolute;
+    top: 4%;
+    left: 2%;
+  }
+  #mainvisual .mainvisual__image--item .mainvisual-text {
+    font-size: 3.5vw;
+    letter-spacing: 0.1em;
+    line-height: 2;
+    font-family: "Yusei Magic";
+    font-weight: 300;
+    position: absolute;
+    width: 93%;
+    top: 34.1%;
+    left: 15%;
+  }
+}
+@media (max-width: 500px) {
+  #mainvisual {
+    width: 100%;
+    height: 100vh;
+    padding: 0 10%;
+  }
+  #mainvisual .mainvisual {
+    position: absolute;
+  }
+  #mainvisual .mainvisual__image {
+    width: 100%;
+    height: 540px;
+    margin: 0 auto;
+    background: url(../../assets/images/kidsland_image/FV-sp.jpg) no-repeat 50% 96%;
+    background-size: cover;
+    border-radius: 60px;
+    position: relative;
+    overflow: hidden;
+    top: -25px;
+    z-index: -1;
+  }
+  #mainvisual .mainvisual__image--item {
+    width: 90.67%;
+    height: 72.67%;
+    background: url(../../assets/images/kidsland_image/design-parts/FV-parts-pc.png) no-repeat center center;
+    background-size: contain;
+    mask-image: url(../../assets/images/kidsland_image/design-parts/FV-parts-pc.png); /*マスク用画像*/
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 841px 477px;
+            mask-size: 841px 477px; /* 横幅 縦幅 */
+    -webkit-mask-image: url(../../assets/images/kidsland_image/design-parts/FV-parts-pc.png);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center center;
+            mask-position: center center;
+    -webkit-filter: drop-shadow(0px -10px 50px rgba(0, 0, 0, 0.3));
+            filter: drop-shadow(0px -10px 50px rgba(0, 0, 0, 0.3));
+    /* drop-shadow */
+    -webkit-filter: drop-shadow(1.8px 5px 1.7px rgba(0, 0, 0, 0.3)) drop-shadow(-1px -2.5px 4px rgb(255, 255, 255));
+            filter: drop-shadow(1.8px 5px 1.7px rgba(0, 0, 0, 0.3)) drop-shadow(-1px -2.5px 4px rgb(255, 255, 255));
+    position: relative;
+    position: absolute;
+    top: -59px;
+    left: 13px;
+  }
+  #mainvisual .mainvisual__image--item .mainvisual-text {
+    font-size: 6.4vw;
+    letter-spacing: 0.1em;
+    line-height: 2;
+    font-family: "Yusei Magic";
+    font-weight: 300;
+    position: absolute;
+    width: 93%;
+    top: 38%;
+    left: 8%;
   }
 }
 #news {
