@@ -33,51 +33,40 @@ body {
   height: 100%; // 高さが必要な場合
   background: url('../../assets/images/kidsland_image/bg/bg-pc.webp') no-repeat center top;
   background-size: cover;
-  text-transform: capitalize; //全ての文字を大文字に変換
+  // text-transform: capitalize; //全ての文字を大文字に変換
   .scroll-to-top {
     position: fixed;
-    bottom: 68px;
-    right: 22px;
-    /* ボタンの幅 */
-    height: 80px;
-    /* ボタンの高さ */
-    background-color: rgba(#949E33, 0.7);
-    width: 80px;
-    /* 背景色と半透明度 */
-    border-radius: 50%;
-    /* 円形にする */
+    bottom: 38px;
+    right: 32px;
+    height: 72px;/* ボタンの幅 */
+    width: 72px;/* ボタンの高さ */
+    background-color: map-get(mixin.$colors, "C-white");
+    border-radius: 50%;/* 円形にする */
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 36px;
-    /* 矢印の大きさ */
-    font-weight: bold;
-    /* 矢印を太字に */
-    color: #ffffff;
-    /* 矢印の色 */
+    font-size: 36px;/* 矢印の大きさ */
+    font-weight: bold;/* 矢印を太字に */
+    color: map-get(mixin.$colors, "C-brown");/* 矢印の色 */
     cursor: pointer;
-    opacity: 0;
-    /* 初期状態で非表示 */
+    opacity: 0;/* 初期状態で非表示 */
     visibility: hidden;
-    transform: scale(0.8);
-    /* 初期状態で縮小 */
-    transition: opacity 1s ease, transform 0.3s ease, visibility 0.3s ease;
-    /* 表示のトランジション */
+    transform: scale(0.8);/* 初期状態で縮小 */
+    transition: opacity 1s ease, transform 0.3s ease, visibility 0.3s ease;/* 表示のトランジション */
     z-index: 999;
     &.show {
-      opacity: 1;
-      /* 表示状態 */
-      visibility: visible;
-      /* 表示状態 */
-      transform: scale(1);
-      /* 通常サイズ */
+      opacity: 1;/* 表示状態 */
+      visibility: visible;/* 表示状態 */
+      transform: scale(1);/* 通常サイズ */
       transition: 1s;
     }
     &:hover {
       transition: 1s;
-      background-color: rgba(#CA7F13, 0.9);
+      background-color: map-get(mixin.$colors, "C-brown");
+      color: map-get(mixin.$colors, "C-white");
       /* ホバー時の色 */
     }
+  
   }
 }
 
@@ -106,9 +95,10 @@ li {
 a {
   text-decoration: none;
   color: rgb(0, 0, 0);
-  display:  inline-block;
+  display:  block;
   /* `<a>`全体をクリック可能に */
   transition: .3s;
+  cursor: pointer;
 }
 
 a:hover {
@@ -123,6 +113,15 @@ a:focus-visible {
   box-shadow: 0 0 2px #ffffff, 0 0 0 4px #000000;
   /* 2本目のアウトライン */
   border-radius: 5px;
+}
+
+.brsp {
+  display: none;
+}
+
+//PC版改行
+.brpc {
+  display: block;
 }
 
 //スクロール中に下からフェードイン
@@ -154,7 +153,118 @@ a:focus-visible {
   }
 }
 
+//-------------------------------------------------------------------------------
+// 共通パーツ
+//-------------------------------------------------------------------------------
 
+// --h3
+.title-icon {
+  display: block;
+  width: 345px;
+  margin: 0 auto;
+  text-align: center;
+  &__bg {
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+    background-color: map-get(mixin.$colors, "C-yellow");  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 8px;
+    &--img {
+      width: 72px;
+      height: 72px;
+    }
+  }
+  
+  &__title {
+    @include mixin.font-settings (
+      F-size24,
+      F-line-height36,
+      F-letter-spacing-10,
+      F-family-KosugiMaru,
+      400,
+      F-color-brown);
+      width: 100%;
+    display: block;
+    margin: 0 auto 8px;
+  }
+  &__english {
+    @include mixin.font-settings (
+      F-size10,
+      F-line-height10,
+      F-letter-spacing-20,
+      F-family-Jost,
+      900,
+      F-color-brown);
+      width: 100%;
+    display: block;
+    // margin: 0 auto 4px;
+  }
+}
+
+//btn
+.btn {
+  width: 240px;
+  height: 60px;
+  border-radius: 30px;
+  color: map-get(mixin.$colors, "C-brown");
+  border: 2px solid map-get(mixin.$colors, "C-brown");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: map-get(mixin.$colors, "C-white");
+  transition:  ease, transform 1s ease;
+  position: relative;
+
+  // **すべてのプロパティにスムーズな変化を適用**
+  transition: 
+    background-color 0.5s ease-in-out,
+    color 0.5s ease-in-out,
+    border-color 0.5s ease-in-out;
+  &__text {
+    @include mixin.font-settings
+  ( F-size18
+  , F-line-height18
+  , F-letter-spacing-10
+  , F-family-KosugiMaru
+  , 400
+  , F-color-brown);
+  margin: 0 0 0 0;
+  }
+  i {
+    position: absolute;
+    top: 17px;
+    right: 22.1px;
+    font-size: 22px;
+    transition: transform 0.3s ease-in-out;
+  }
+}
+.btn:hover {
+  color: map-get(mixin.$colors, "C-white");
+  background-color: map-get(mixin.$colors, "C-brown");
+  border-color: map-get(mixin.$colors, "C-white");
+  opacity: 1;
+  transition: 
+    background-color 0.5s ease-in-out,
+    color 0.5s ease-in-out,
+    border-color 0.5s ease-in-out;
+  .btn__text {
+    color: map-get(mixin.$colors, "C-white");
+  }
+}
+// <a> タグに display: block を適用
+a .btn {
+  display: block;
+}
+
+
+.aaaa {
+  width: 100px;
+  height: 100px;
+  display: block
+}
 
 
 //-------------------------------------------------------------------------------
@@ -227,57 +337,145 @@ a:focus-visible {
   .brpc {
     display: none;
   }
+
+  //-------------------------------------------------------------------------------
+// 共通パーツ
+//-------------------------------------------------------------------------------
+// --h3
+.title-icon {
+  width: 100%;
+  margin: 0 auto;
+  &__bg {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: map-get(mixin.$colors, "C-yellow");  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 8px;
+    &--img {
+      width: 53px;
+      height: 53px;
+    }
+  }
+  
+  &__title {
+    @include mixin.font-settings (
+      F-size18,
+      F-line-height27,
+      F-letter-spacing-10,
+      F-family-KosugiMaru,
+      400,
+      F-color-brown);
+      width: 100%;
+    display: block;
+    margin: 0 auto 8px;
+  }
+  &__english {
+    @include mixin.font-settings (
+      F-size10,
+      F-line-height10,
+      F-letter-spacing-20,
+      F-family-Jost,
+      900,
+      F-color-brown);
+      width: 100%;
+    display: block;
+    // margin: 0 auto 4px;
+  }
 }
 
+
+//btn
+  .btn {
+    width: 200px;
+    height: 50px;
+    border-radius: 30px;
+    color: map-get(mixin.$colors, "C-brown");
+    border: 2px solid map-get(mixin.$colors, "C-brown");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: map-get(mixin.$colors, "C-white");
+    transition:  ease, transform 1s ease;
+    position: relative;
+    // **すべてのプロパティにスムーズな変化を適用**
+    transition: 
+      background-color 0.5s ease-in-out,
+      color 0.5s ease-in-out,
+      border-color 0.5s ease-in-out;
+    &__text {
+      @include mixin.font-settings
+    ( F-size16
+    , F-line-height16
+    , F-letter-spacing-10
+    , F-family-KosugiMaru
+    , 400
+    , F-color-brown);
+    }
+    i {
+      position: absolute;
+      top: 15px;
+      right: 13.1px;
+      font-size: 16px;
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+  .btn:hover {
+    color: map-get(mixin.$colors, "C-white");
+    background-color: map-get(mixin.$colors, "C-brown");
+    border-color: map-get(mixin.$colors, "C-white");
+    opacity: 1;
+    transition: 
+      background-color 0.5s ease-in-out,
+      color 0.5s ease-in-out,
+      border-color 0.5s ease-in-out;
+    .btn__text {
+      color: map-get(mixin.$colors, "C-white");
+    }
+  }
+  // <a> タグに display: block を適用
+  a .btn {
+    display: block;
+  }
+}
 
 @include mixin.SP {
   body {
     .scroll-to-top {
       position: fixed;
-      bottom: 62px;
-      right: 10px;
-      width: 40px;
-      /* ボタンの幅 */
-      height: 40px;
-      /* ボタンの高さ */
-      background-color: rgba(#949E33, 0.7);
-      /* 背景色と半透明度 */
-      border-radius: 50%;
-      /* 円形にする */
+      bottom: 18px;
+      right: 16px;
+      height: 48px;/* ボタンの幅 */
+      width: 48px;/* ボタンの高さ */
+      background-color: map-get(mixin.$colors, "C-white");
+      border-radius: 50%;/* 円形にする */
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 18px;
-      /* 矢印の大きさ */
-      font-weight: bold;
-      /* 矢印を太字に */
-      color: #ffffff;
-      /* 矢印の色 */
+      font-size: 20px;/* 矢印の大きさ */
+      font-weight: bold;/* 矢印を太字に */
+      color: map-get(mixin.$colors, "C-brown");/* 矢印の色 */
       cursor: pointer;
-      opacity: 0;
-      /* 初期状態で非表示 */
+      opacity: 0;/* 初期状態で非表示 */
       visibility: hidden;
-      transform: scale(0.8);
-      /* 初期状態で縮小 */
-      transition: opacity 1s ease, transform 0.3s ease, visibility 0.3s ease;
-      /* 表示のトランジション */
+      transform: scale(0.8);/* 初期状態で縮小 */
+      transition: opacity 1s ease, transform 0.3s ease, visibility 0.3s ease;/* 表示のトランジション */
       z-index: 999;
-
       &.show {
-        opacity: 1;
-        /* 表示状態 */
-        visibility: visible;
-        /* 表示状態 */
-        transform: scale(1);
-        /* 通常サイズ */
+        opacity: 1;/* 表示状態 */
+        visibility: visible;/* 表示状態 */
+        transform: scale(1);/* 通常サイズ */
         transition: 1s;
       }
-
       &:hover {
         transition: 1s;
-        background-color: rgba(#CA7F13, 0.9);
+        background-color: map-get(mixin.$colors, "C-brown");
+        color: map-get(mixin.$colors, "C-white");
         /* ホバー時の色 */
       }
+    
     }
   }
 

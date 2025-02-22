@@ -1,0 +1,91 @@
+@use "../_foundation/mixin"as mixin;
+@use "../_foundation/base"as base;
+
+//--h1
+.page-title {
+  width: 100%;
+  min-height:17.11vh;
+  height: 100%;
+  position: relative;
+  padding: 0 10%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 72% 97%;
+  background-image: url(../../assets/images/kidsland_image/design-parts/section-heading-pc.webp) ;
+  .title-wrapper {
+      width: 100%;
+      position: absolute;
+      text-align: center;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      h1 {
+        @include mixin.font-settings (
+          F-size36,
+          F-line-height32,
+          F-letter-spacing-10,
+          F-family-KosugiMaru,
+          400,
+          F-color-brown);
+          display: block;
+          margin: 52px 0 16px;
+      }
+      p {
+        @include mixin.font-settings (
+          F-size10,
+          F-line-height10,
+          F-letter-spacing-10,
+          F-family-Jost,
+          900,
+          F-color-brown);
+      }
+    }
+}
+
+
+
+@include mixin.SP {
+  //--h1
+  .page-title {
+    width: 100%;
+    min-height:19.11vh;
+    height: 100%;
+    position: relative;
+    padding: 0 10%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 72% 97%;
+    background-image: url(../../assets/images/kidsland_image/design-parts/section-heading-sp.webp);
+    .title-wrapper {
+      width: 100%;
+      position: absolute;
+      text-align: center;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      h1 {
+        @include mixin.font-settings (
+          F-size20,
+          F-line-height20,
+          F-letter-spacing-10,
+          F-family-KosugiMaru,
+          400,
+          F-color-brown);
+          display: block;
+          margin: 52px 0 16px;
+      }
+      p {
+        @include mixin.font-settings (
+          F-size10,
+          F-line-height10,
+          F-letter-spacing-10,
+          F-family-Jost,
+          900,
+          F-color-brown);
+      }
+    }
+  }
+
+} 

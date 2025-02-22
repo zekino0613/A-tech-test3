@@ -1,6 +1,8 @@
 <?php
 
 function theme_enqueue_assets(){
+// ファイル管理
+// -------------------------------------------------------------------------------------
   // jQueryを読み込む
   wp_enqueue_script('jquery');
 
@@ -34,6 +36,7 @@ function theme_enqueue_assets(){
     'common-js', // ハンドル名
     get_stylesheet_directory_uri() . '/assets/js/common.js', // common.jsのパス
     array('slick-js'), // slickに依存
+    filemtime(get_template_directory() . '/assets/js/common.js'), // ✅ キャッシュ無効化
     '1.0.0', // バージョン
     true // フッターで読み込む
   );
@@ -56,45 +59,71 @@ function theme_enqueue_assets(){
 add_action('wp_enqueue_scripts', 'theme_enqueue_assets');
 
 
-  // カスタム投稿タイプ news を登録
-  function create_news_post_type() {
-    register_post_type( 'news',
+// カスタム投稿管理
+// -------------------------------------------------------------------------------------
+
+// <お知らせ>
+// カスタム投稿タイプ info を登録
+  function create_info_post_type() {
+    register_post_type( 'info',
       array(
         'labels' => array(
-          'name' => __('news'),  // 管理画面のメニューなどで表示される投稿タイプの名前（複数形）
-          'singular_name' => __('news')  // 管理画面で表示される投稿タイプの名前（単数形）
+          'name' => __('info'),  // 管理画面のメニューなどで表示される投稿タイプの名前（複数形）
+          'singular_name' => __('info')  // 管理画面で表示される投稿タイプの名前（単数形）
         ),
         'public' => true, // 投稿タイプを公開するかどうか。trueにすると、管理画面に表示され、公開されます
         'has_archive' => true, // 投稿タイプにアーカイブページを持たせるかどうか。trueにすると、アーカイブページが生成されます
         'show_in_rest' => true,
-        'rewrite' => array('slug' => 'news'), // 投稿タイプのURLスラッグを指定します。例: yoursite.com/news/
+        'rewrite' => array('slug' => 'info'), // 投稿タイプのURLスラッグを指定します。例: yoursite.com/news/
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'), // この投稿タイプがサポートする機能を指定します
         'taxonomies'  => array('category'),  // カテゴリを有効にする
       )
     );
   }
-  add_action('init', 'create_news_post_type');
+  add_action('init', 'create_info_post_type');
 
 
-  
-  // カスタム投稿タイプ salons を登録
-  function create_salons_post_type() {
-    register_post_type( 'salons',
+  // <各園のご紹介>
+  // カスタム投稿タイプ introduction を登録 
+  function create_introduction_post_type() {
+    register_post_type( 'introduction',
       array(
         'labels' => array(
-          'name' => __('salons'),
-          'singular_name' => __('salons')
+          'name' => __('introduction'),
+          'singular_name' => __('introduction')
         ),
         'public' => true,
         'has_archive' => true,
         'show_in_rest' => true,
-        'rewrite' => array('slug' => 'salons'),
+        'rewrite' => array('slug' => 'introduction'),
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
         'taxonomies' => array('category'), // カテゴリーを有効化
       )
     );
   }
-  add_action('init', 'create_salons_post_type');
+  add_action('init', 'create_introduction_post_type');
+
+
+  // <こもれびだより>
+  // カスタム投稿タイプ letter を登録 
+  function create_letter_post_type() {
+    register_post_type( 'letter',
+      array(
+        'labels' => array(
+          'name' => __('letter'),
+          'singular_name' => __('letter')
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'show_in_rest' => true,
+        'rewrite' => array('slug' => 'letter'),
+        'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
+        'taxonomies' => array('category'), // カテゴリーを有効化
+      )
+    );
+  }
+  add_action('init', 'create_letter_post_type');
+
 
 
 

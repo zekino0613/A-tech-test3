@@ -13,19 +13,18 @@
 // // ==========================================================================
 @use "../sass/_layout/_header";
 @use "../sass/_layout/_footer";
-@use "../sass/_layout/_reserve-footer";
-@use "../sass/_layout/_para-mainvisual";
+@use "../sass/_layout/_title-heading";
 // ==========================================================================
 // Project
 // ==========================================================================
 // TOPページ
 @use "../sass/_project/_top-page/_mainvisual";
-@use "../sass/_project/_top-page/_news";
-@use "../sass/_project/_top-page/_concept";
+@use "../sass/_project/_top-page/_welcome";
+@use "../sass/_project/_top-page/_contact";
+@use "../sass/_project/_top-page/_recruit";
 @use "../sass/_project/_top-page/_feature";
-@use "../sass/_project/_top-page/_price-menu";
 @use "../sass/_project/_top-page/_FAQ";
-// 下層ページ
+//下層ページ
 @use "../sass/_project/_lower/_page-concept";
 @use "../sass/_project/_lower/_page-price-menu";
 // アーカイブページ

@@ -1,8 +1,9 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const browserSync = require('browser-sync').create();
+const cacheBust = require('gulp-cache-bust');
 
-// **SCSSをCSSにコンパイル & ブラウザを更新**
+// **SCSSをCSSにコンパイル & キャッシュバスティング**
 gulp.task('sass', function () {
   console.log("SCSSが変更されました。コンパイルを開始します...");
   return gulp.src('assets/sass/**/*.scss') // SCSSファイルの場所
@@ -10,6 +11,13 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('assets/css')) // CSSを出力
     .pipe(browserSync.stream()) // ✅ ブラウザを更新
     .on('end', () => console.log("CSSが更新されました！"));
+});
+
+// **キャッシュバスティングを適用**
+gulp.task('cacheBust', function () {
+  return gulp.src('assets/css/**/*.css')
+    .pipe(cacheBust({ type: 'timestamp' })) // ✅ タイムスタンプを付与
+    .pipe(gulp.dest('assets/css'));
 });
 
 // **ローカルサーバーを起動 & ファイル変更を監視**
@@ -22,16 +30,14 @@ gulp.task('serve', function () {
     cache: false, // ✅ キャッシュを無効化
     serveStaticOptions: {
       extensions: ["css"]
-    }  
+    }
   });
 
-
   // **CSSファイルの変更を検知し、ブラウザを更新**
-  gulp.watch("assets/sass/**/*.scss", gulp.series('sass', (done) => {
+  gulp.watch("assets/sass/**/*.scss", gulp.series('sass', 'cacheBust', (done) => {
     browserSync.reload();
     done();
   }));
-  
 
   // **JSファイルの変更を検知し、ブラウザを更新**
   gulp.watch("assets/js/**/*.js").on('change', browserSync.reload);
@@ -41,4 +47,4 @@ gulp.task('serve', function () {
 });
 
 // **デフォルトタスク**
-gulp.task('default', gulp.series('sass', 'serve'));
+gulp.task('default', gulp.series('sass', 'cacheBust', 'serve'));

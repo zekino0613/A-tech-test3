@@ -39,156 +39,157 @@
 
       &--pc {
         width: 100%;
-        height: 39vh;
+        height: 43vh;
         background: url(../../assets/images/kidsland_image/design-parts/header-bg-pc.webp) no-repeat center top;
         background-size: contain;
         padding: 111px 5.56% 35.46px;
         position: absolute;
         z-index: 3;
         .h-nav {
-          width: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          position: relative;
-          gap: 1.03%;
-          width: 100%;
-          // background-color: #949E33;
-          &__logo-li {
-            min-width: 245px; // これで縮小を防ぐ
-            width: 280px;
+          &__ul {
+            width: 99%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: relative;
-            .line-border {
-              position: absolute;
-              top: -8px;
-              left: -2px;
-              width: 1px;
-              height: 110px;
-              background: repeating-linear-gradient(to bottom,
-                  #55000C,
-                  #55000C 2px,
-                  transparent 4px,
-                  transparent 5px);
-              transform: translateX(-50%);
-              // 上の点（●）
-              &::before {
-                content: "";
+            gap: 1.03%;
+            &--logo-li {
+              min-width: 245px; // これで縮小を防ぐ
+              width: 280px;
+              position: relative;
+              .line-border {
                 position: absolute;
-                top: -6px;
-                left: 0.5px;
-                width: 8px;
-                height: 8px;
-                background-color: #55000C;
-                border-radius: 50%;
+                top: -8px;
+                left: -2px;
+                width: 1px;
+                height: 110px;
+                background: repeating-linear-gradient(to bottom,
+                    #55000C,
+                    #55000C 2px,
+                    transparent 4px,
+                    transparent 5px);
                 transform: translateX(-50%);
+                // 上の点（●）
+                &::before {
+                  content: "";
+                  position: absolute;
+                  top: -6px;
+                  left: 0.5px;
+                  width: 8px;
+                  height: 8px;
+                  background-color: #55000C;
+                  border-radius: 50%;
+                  transform: translateX(-50%);
+                }
+                // 下の点（●）
+                &::after {
+                  content: "";
+                  position: absolute;
+                  bottom: 0;
+                  left: 0.6px;
+                  width: 8px;
+                  height: 8px;
+                  background-color: #55000C;
+                  border-radius: 50%;
+                  transform: translateX(-50%);
+                }
               }
-              // 下の点（●）
-              &::after {
-                content: "";
-                position: absolute;
-                bottom: 0;
-                left: 0.6px;
-                width: 8px;
-                height: 8px;
-                background-color: #55000C;
-                border-radius: 50%;
-                transform: translateX(-50%);
+              
+              .h-logo-img {
+                width: 100%;
+                // width: 280px;
+                height: 100%;
+                margin: -2px 0px 0px 7px;
               }
             }
-            
-            .h-logo-img {
+          }
+          &__ul {  
+            &--li {
+              max-width: 150px;
               width: 100%;
-              // width: 280px;
-              height: 100%;
-              margin: -2px 0px 0px 7px;
-            }
+              position: relative;
+              text-align: center;
+              padding: 0 0px 0 5px;
+              .line-border {
+                position: absolute;
+                top: -8px;
+                left: -2px;
+                width: 1px;
+                height: 110px;
+                background: repeating-linear-gradient(to bottom,
+                    #55000C,
+                    #55000C 2px,
+                    transparent 4px,
+                    transparent 5px);
+                transform: translateX(-50%);
+                // 上の点（●）
+                &::before {
+                  content: "";
+                  position: absolute;
+                  top: -6px;
+                  left: 0.5px;
+                  width: 8px;
+                  height: 8px;
+                  background-color: #55000C;
+                  border-radius: 50%;
+                  transform: translateX(-50%);
+                }
+                // 下の点（●）
+                &::after {
+                  content: "";
+                  position: absolute;
+                  bottom: 0;
+                  left: 0.6px;
+                  width: 8px;
+                  height: 8px;
+                  background-color: #55000C;
+                  border-radius: 50%;
+                  transform: translateX(-50%);
+                }
+              }
+              // 右側の線（最後のアイコン専用）
+              .line-border-last {
+                left: auto;
+                /* 左の点線とは異なる位置 */
+                right: -2px;
+                /* 右側に配置 */
+              }
+              a {
+                .header-icon {
+                  text-align: center;
+                  width: 150px;
+                  &__img {
+                    display: block;
+                    width: 48px;
+                    height: 48px;
+                    margin: -1px 54px 11px;
+                  }
+                  &__title {
+                    @include mixin.font-settings (
+                      F-size16,
+                      F-line-height19-2,
+                      F-letter-spacing-4,
+                      F-family-KosugiMaru,
+                      normal,
+                      F-color-brown);
+                    display: block;
+                    margin: 13px -18px 2px -11px;
+                  }
+                  &__english {
+                    @include mixin.font-settings (F-size10,
+                      F-line-height12,
+                      F-letter-spacing-10,
+                      F-family-Jost,
+                      bold,
+                      F-color-brown);
+                    display: block;
+                    margin: 1px 0px 0px 5px;
+                  }
+                }
+              }
+            }  
           }
 
-          &__li {
-            max-width: 150px;
-            width: 100%;
-            position: relative;
-            text-align: center;
-            padding: 0 0px 0 5px;
-            .line-border {
-              position: absolute;
-              top: -8px;
-              left: -2px;
-              width: 1px;
-              height: 110px;
-              background: repeating-linear-gradient(to bottom,
-                  #55000C,
-                  #55000C 2px,
-                  transparent 4px,
-                  transparent 5px);
-              transform: translateX(-50%);
-              // 上の点（●）
-              &::before {
-                content: "";
-                position: absolute;
-                top: -6px;
-                left: 0.5px;
-                width: 8px;
-                height: 8px;
-                background-color: #55000C;
-                border-radius: 50%;
-                transform: translateX(-50%);
-              }
-              // 下の点（●）
-              &::after {
-                content: "";
-                position: absolute;
-                bottom: 0;
-                left: 0.6px;
-                width: 8px;
-                height: 8px;
-                background-color: #55000C;
-                border-radius: 50%;
-                transform: translateX(-50%);
-              }
-            }
-            // 右側の線（最後のアイコン専用）
-            .line-border-last {
-              left: auto;
-              /* 左の点線とは異なる位置 */
-              right: -2px;
-              /* 右側に配置 */
-            }
-            a {
-              .header-icon {
-                text-align: center;
-                width: 150px;
-                &__img {
-                  display: block;
-                  width: 48px;
-                  height: 48px;
-                  margin: -1px 54px 11px;
-                }
-                &__title {
-                  @include mixin.font-settings (
-                    F-size16,
-                    F-line-height19-2,
-                    F-letter-spacing-4,
-                    F-family-KosugiMaru,
-                    normal,
-                    F-color-brown);
-                  display: block;
-                  margin: 13px -18px 2px -11px;
-                }
-                &__english {
-                  @include mixin.font-settings (F-size10,
-                    F-line-height12,
-                    F-letter-spacing-10,
-                    F-family-Jost,
-                    bold,
-                    F-color-brown);
-                  display: block;
-                  margin: 1px 0px 0px 5px;
-                }
-              }
-            }
-
-          }
         }
       }
     }
@@ -209,6 +210,7 @@
         &--sp {
           display: block;
           width: 100%;
+          position: absolute;
           z-index: 3;
           .h-bg {
             width: 100%;
@@ -221,6 +223,7 @@
               width: 30vw;
               height: 100%;
               display: block;
+              margin: 0 auto;
               transition: all 0.5s;
               &:hover {
                 opacity: 0.7;
@@ -253,7 +256,7 @@
                   F-color-brown);
                   text-align: center;
                   text-transform: none;
-                  margin: 11px 0 0;
+                  margin: 0 0 0;
                   transition: opacity 0.5s ease, transform 0.5s ease;
               } 
               &__close {
@@ -271,7 +274,7 @@
               }
               &__lines {
                 position: relative;
-                top: 11px;
+                top: 2.4px;
                 left: -17px;
                 width: 35px;
                 height: 19px;
@@ -325,7 +328,7 @@
                     &--line {
                       &:nth-child(1) {
                         // 上の線が45度回転
-                        top: 24%;
+                        top: 45%;
                         left: 61%;
                         width: 32px;
                         transform: rotate(24deg) translate(-50%, -50%);
@@ -336,7 +339,7 @@
                       }
                       &:nth-child(3) {
                         // 下の線が-45度回転
-                        top: -44%;
+                        top: -25%;
                         left: 61%;                
                         width: 32px;
                         transform: rotate(-24deg) translate(-50%, -50%);
@@ -380,77 +383,82 @@
               -webkit-backdrop-filter: blur(3px);
               border-radius: 40px;
               display: none;
-              align-items: left;
-              justify-content: left;
+              align-items: center;
+              justify-content: center;
               z-index: 1000;
-              padding: 150px 0;
+              padding: 150px 4%;
               margin: 0 4%;
               .h-nav {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                align-items: center;
-                min-width: 215px;
-                width: 100%;
-                gap: 15px;
-                // min-height: 421px;
-                height: 421px;
-                &__li {
-                  max-width: 300px;
-                  min-width: 150px;
-                  width: 45%;
-                  height: 32%;
-                  border: 1px solid map-get(mixin.$colors, "C-brown");
-                  border-radius: 12px;
-                  padding: 4% 0 ;
-                  display: block;
-                  a {
-                    display: flex; // ✅ ボックス全体がクリック範囲に
-                    align-items: center;
-                    justify-content: center;
-                    width: 100%;
-                    height: 100%;
-                    text-decoration: none;
+                transition: opacity 0.5s ease, transform 0.5s ease;
+                &__ul {
+                  display: flex;
+                  flex-wrap: wrap;
+                  justify-content: center;
+                  align-items: center;
+                  min-width: 215px;
+                  width: 100%;
+                  gap: 15px;
+                  // min-height: 421px;
+                  height: 421px;
+                  &--li {
+                    max-width: 300px;
+                    min-width: 150px;
+                    width: 45%;
+                    height: 32%;
+                    border: 1px solid map-get(mixin.$colors, "C-brown");
+                    border-radius: 12px;
+                    padding: 4% 0 ;
+                    display: block;
                     cursor: pointer;
-                    .header-icon {
-                      text-align: center;
-                      width: 150px;
-                      &__img {
-                        display: block;
-                        width: 48px;
-                        height: 48px;
-                        margin: -1px 54px 11px;
-                      }
-                      &__title {
-                        @include mixin.font-settings (
-                          F-size16,
-                          F-line-height19-2,
-                          F-letter-spacing-4,
-                          F-family-KosugiMaru,
-                          normal,
-                          F-color-brown);
-                          width: 100%;
-                        display: block;
-                        margin: 0 auto 4px;
-                      }
-                      &__english {
-                        @include mixin.font-settings (F-size10,
-                          F-line-height12,
-                          F-letter-spacing-10,
-                          F-family-Jost,
-                          900,
-                          F-color-brown);
-                          width: 100%;
+                    a {
+                      display: flex; // ✅ ボックス全体がクリック範囲に
+                      align-items: center;
+                      justify-content: center;
+                      width: 100%;
+                      height: 100%;
+                      text-decoration: none;
+                      .header-icon {
+                        text-align: center;
+                        width: 150px;
+                        &__img {
                           display: block;
-                          // margin: 0 auto;
+                          width: 48px;
+                          height: 48px;
+                          margin: -1px 54px 11px;
+                        }
+                        &__title {
+                          @include mixin.font-settings (
+                            F-size16,
+                            F-line-height19-2,
+                            F-letter-spacing-4,
+                            F-family-KosugiMaru,
+                            normal,
+                            F-color-brown);
+                            width: 100%;
+                          display: block;
+                          margin: 0 auto 4px;
+                        }
+                        &__english {
+                          @include mixin.font-settings (F-size10,
+                            F-line-height12,
+                            F-letter-spacing-10,
+                            F-family-Jost,
+                            900,
+                            F-color-brown);
+                            width: 100%;
+                            display: block;
+                            // margin: 0 auto;
+                        }
                       }
                     }
+                    // ✅ ホバー時に浮き上がるアニメーション
                     &:hover {
-                      // display: block;
-                      opacity: 0.7;
+                      transform: translateY(-5px); // 5px上に移動
+                      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); // 影を追加
+                      transition: opacity 0.5s ease, transform 0.5s ease;
                     }
                   }
-                }
+                }  
               }
 
               &.is-open {
@@ -481,6 +489,7 @@
 
         &--sp {
           display: block;
+          position: absolute;
           width: 100%;
           z-index: 3;
           .h-bg {
@@ -494,6 +503,7 @@
               width: 52vw;
               height: 100%;
               display: block;
+              margin: 0 auto;
               transition: all 0.5s;
               &:hover {
                 opacity: 0.7;
@@ -659,82 +669,86 @@
               padding: 150px 0;
               margin: 0 4%;
               .h-nav {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                align-items: center;
-                min-width: 215px;
-                width: 100%;
-                gap: 15px;
-                // min-height: 421px;
-                height: 421px;
-                &__li {
-                  max-width: 300px;
-                  min-width: 150px;
-                  width: 45%;
-                  height: 32%;
-                  border: 1px solid map-get(mixin.$colors, "C-brown");
-                  border-radius: 12px;
-                  padding: 4% 0 ;
-                  display: block;
-                  a {
-                    display: flex; // ✅ ボックス全体がクリック範囲に
-                    align-items: center;
-                    justify-content: center;
-                    width: 100%;
-                    height: 100%;
-                    text-decoration: none;
-                    cursor: pointer;
-                    .header-icon {
-                      text-align: center;
-                      width: 150px;
-                      &__img {
-                        display: block;
-                        width: 48px;
-                        height: 48px;
-                        margin: -1px 54px 11px;
-                      }
-                      &__title {
-                        @include mixin.font-settings (
-                          F-size16,
-                          F-line-height19-2,
-                          F-letter-spacing-4,
-                          F-family-KosugiMaru,
-                          normal,
-                          F-color-brown);
-                          width: 100%;
-                        display: block;
-                        margin: 0 auto 4px;
-                      }
-                      &__english {
-                        @include mixin.font-settings (F-size10,
-                          F-line-height12,
-                          F-letter-spacing-10,
-                          F-family-Jost,
-                          900,
-                          F-color-brown);
-                          width: 100%;
+                transition: opacity 0.5s ease, transform 0.5s ease;
+                &__ul {
+                  display: flex;
+                  flex-wrap: wrap;
+                  justify-content: center;
+                  align-items: center;
+                  min-width: 215px;
+                  width: 100%;
+                  gap: 15px;
+                  // min-height: 421px;
+                  height: 421px;
+                  &--li {
+                    max-width: 300px;
+                    min-width: 150px;
+                    width: 45%;
+                    height: 32%;
+                    border: 1px solid map-get(mixin.$colors, "C-brown");
+                    border-radius: 12px;
+                    padding: 4% 0 ;
+                    display: block;
+                    a {
+                      display: flex; // ✅ ボックス全体がクリック範囲に
+                      align-items: center;
+                      justify-content: center;
+                      width: 100%;
+                      height: 100%;
+                      text-decoration: none;
+                      cursor: pointer;
+                      .header-icon {
+                        text-align: center;
+                        width: 150px;
+                        &__img {
                           display: block;
-                          // margin: 0 auto;
+                          width: 48px;
+                          height: 48px;
+                          margin: -1px 54px 11px;
+                        }
+                        &__title {
+                          @include mixin.font-settings (
+                            F-size16,
+                            F-line-height19-2,
+                            F-letter-spacing-4,
+                            F-family-KosugiMaru,
+                            normal,
+                            F-color-brown);
+                            width: 100%;
+                          display: block;
+                          margin: 0 auto 4px;
+                        }
+                        &__english {
+                          @include mixin.font-settings (F-size10,
+                            F-line-height12,
+                            F-letter-spacing-10,
+                            F-family-Jost,
+                            900,
+                            F-color-brown);
+                            width: 100%;
+                            display: block;
+                            // margin: 0 auto;
+                        }
                       }
                     }
+                    // ✅ ホバー時に浮き上がるアニメーション
                     &:hover {
-                      // display: block;
-                      opacity: 0.7;
+                      transform: translateY(-5px); // 5px上に移動
+                      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); // 影を追加
+                      transition: opacity 0.5s ease, transform 0.5s ease;
                     }
                   }
-                }
+                }  
               }
 
               &.is-open {
-                display: flex; // 表示
-                transition: opacity 0.5s ease, transform 0.5s ease;
-              }
+              display: flex; // 表示
+              transition: opacity 0.5s ease, transform 0.5s ease;
             }
-
           }
         }
       }
     }
   }
+}
 }

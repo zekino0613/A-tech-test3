@@ -3,15 +3,15 @@
 
 #mainvisual {
   width: 100%;
-  height: 100vh;
+  height: 95.4vh;
   padding:0 4%;
-  margin: 0 auto 100px;
+  margin: 0 auto ;
     .mainvisual {
       position: absolute;
       &__image {
         min-width: 96.99%;
         width: 97%;
-        min-height: 57.5%;
+        min-height: 62.2%;
         height: 59%;
         margin: 0 auto;
         background: url(../../assets/images/kidsland_image/FV.png) no-repeat center bottom;
@@ -19,7 +19,7 @@
         border-radius: 120px;
         position: relative;
         top: clamp(100px, 14.3vw, 250px);
-        z-index: -1;
+        z-index: 1;
         &--item {
           width: 516px;
           height: 413px;
@@ -58,8 +58,59 @@
             // transition: opacity 1s,visibility 1s, transform 1s;
           }
         }
+
+        // カスタム投稿タイプ 'info'
+        .info-post {
+          display: block;
+          width: 240px;
+          height: 120px;
+          border-radius: 20px;
+          background-color: map-get(mixin.$colors, "C-yellow");
+          box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.5); /* ✅ ドロップシャドウを再現 */
+          padding: 16px 16px 18px 16px;
+          position: absolute;
+          bottom: 32px;
+          right: -48px;
+          pointer-events: auto;
+          z-index: 3;
+          &__title {
+            @include mixin.font-settings (
+              F-size20,
+              F-line-height20,
+              F-letter-spacing-10,
+              F-family-KosugiMaru, 
+              400, 
+              F-color-brown);
+          }
+          &__single-title{
+            @include mixin.font-settings (
+              F-size14,
+              F-line-height21,
+              F-letter-spacing-10,
+              F-family-KosugiMaru, 
+              400, 
+              F-color-brown);
+              margin: 8px 0 4px
+          }
+          &__single-date {
+            @include mixin.font-settings (
+              F-size12,
+              F-line-height12,
+              F-letter-spacing-10,
+              F-family-KosugiMaru, 
+              400, 
+              F-color-brown);
+              display: block;
+              text-align: right;
+          }
+          &:hover {
+            transform: translateY(-5px); // 5px上に移動
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); // 影を追加
+            transition: opacity 1 0.5s ease, transform 0.5s ease;
+          }
+        }
+      }    
     }
-  }
 }
 
 
@@ -82,7 +133,7 @@
           border-radius: 120px;
           position: relative;
           top: clamp(-57px, -13.7vw, 13px);
-          z-index: -1;
+          z-index: 1;
           &--item {
             width: 47vw;
             height: 44vh;
@@ -110,7 +161,7 @@
               font-family: "Yusei Magic";
               font-weight: 300;
               position: absolute;
-              width: 93%;
+              width: 83%;
               top: 34.1%;
               left: 15%;
               // transition: opacity 1s,visibility 1s, transform 1s;
@@ -130,7 +181,6 @@
       .mainvisual {
         position: absolute;
         &__image {
-          // min-width: 300px;
           width: 100%;
           height: 540px;
           margin: 0 auto;
@@ -138,10 +188,8 @@
           background-size: cover; // コンテナにフィットするようにリサイズ
           border-radius: 60px;
           position: relative;
-          overflow: hidden;
-          // left: 7px;
           top: -25px;  
-          z-index: -1;
+          z-index: 1;
           &--item {
             width: 90.67%;
             height: 72.67%;
@@ -169,14 +217,65 @@
               font-family: "Yusei Magic";
               font-weight: 300;
               position: absolute;
-              width: 93%;
+              width: 100%;
               top: 38%;
               left: 8%;
-              // transition: opacity 1s,visibility 1s, transform 1s;
             }
           }
+
+           // カスタム投稿タイプ 'info'
+          .info-post {
+            display: block;
+            max-width: 240px;
+            width: 100%;
+            height: 110px;
+            border-radius: 20px;
+            background-color: map-get(mixin.$colors, "C-yellow");
+            box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.5); /* ✅ ドロップシャドウを再現 */
+            padding: 16px 16px 18px 16px;
+            position: absolute;
+            bottom: 25px;
+            left: -18px;
+            pointer-events: auto;
+            z-index: 4;
+            &__title {
+              @include mixin.font-settings (
+                F-size16,
+                F-line-height16,
+                F-letter-spacing-10,
+                F-family-KosugiMaru, 
+                400, 
+                F-color-brown);
+            }
+            &__single-title{
+              @include mixin.font-settings (
+                F-size12,
+                F-line-height18,
+                F-letter-spacing-10,
+                F-family-KosugiMaru, 
+                400, 
+                F-color-brown);
+                margin: 8px 0 4px
+            }
+            &__single-date {
+              @include mixin.font-settings (
+                F-size10,
+                F-line-height10,
+                F-letter-spacing-10,
+                F-family-KosugiMaru, 
+                400, 
+                F-color-brown);
+                display: block;
+                text-align: right;
+            }
+            &:hover {
+              transform: translateY(-5px); // 5px上に移動
+              box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); // 影を追加
+              transition: opacity 1 0.5s ease, transform 0.5s ease;
+            }
+          }
+        }
       }
-    }
   }
   
 }  
