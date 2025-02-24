@@ -318,6 +318,147 @@ a .btn {
   }
 }
 
+// 共通設定
+$primary-color: #ff9aa2;
+$secondary-color: #ffc3a0;
+$bg-color: #fff5f7;
+$text-color: #5c3a42;
+$border-color: #e0a0b0;
+
+body {
+  background-color: $bg-color;
+  font-family: "Yu Gothic", sans-serif;
+  color: $text-color;
+}
+
+// タブエリア
+.tab {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  z-index: 1999;
+
+  .tab-list {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+
+    &__item {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: $secondary-color;
+      color: $text-color;
+      border-radius: 20px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: darken($secondary-color, 10%);
+      }
+
+      &.is-btn-active {
+        background-color: $primary-color;
+        color: white;
+        border: 2px solid $border-color;
+      }
+    }
+  }
+
+  .tab-contents-wrap {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+
+  .tab-contents {
+    display: none;
+    padding: 10px;
+    font-size: 14px;
+
+    &.is-contents-active {
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      li {
+        padding: 8px 16px;
+        background-color: lighten($primary-color, 20%);
+        color: $text-color;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: darken($primary-color, 10%);
+          color: white;
+        }
+
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
+      }
+    }
+  }
+}
+
+// 投稿カードのデザイン
+.introduction-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  .introduction-thumbnail {
+    width: 200px;
+    height: auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .nursery-prefecture,
+    .news-header__flex--category {
+      font-size: 12px;
+      color: white;
+      background-color: $primary-color;
+      padding: 3px 5px;
+      border-radius: 5px;
+      display: inline-block;
+      margin: 5px;
+    }
+
+    h2.nursery-name {
+      font-size: 18px;
+      margin: 10px;
+      color: $text-color;
+    }
+  }
+}
 
 
 
@@ -389,7 +530,8 @@ a .btn {
 
 //btn
   .btn {
-    width: 200px;
+    max-width: 200px;
+    width: 100%;
     height: 50px;
     border-radius: 30px;
     color: map-get(mixin.$colors, "C-brown");

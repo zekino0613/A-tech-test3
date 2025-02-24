@@ -67,7 +67,37 @@
         温かく包み込むような雰囲気の中で、<br class="brsp">安心して成長できる環境を提供し、<br>
         笑顔あふれる毎日をお約束します。
       </p>
-    </div><!-- /.welcome__inner -->
+    </div><!-- /.welcome__inner -->   
+  </section>
+
+  <section id="introduction">
+    <?php
+      get_template_part('template-parts/title-icon', null, ['name' => 'introduction']);// title-icon をインクルード
+    ?>
+
+    <ul class="introduction__prefecture-category">
+      <?php
+        $prefecture_terms = get_terms([
+            'taxonomy'   => 'prefecture', // カスタムタクソノミー
+            'hide_empty' => true,
+            'parent'     => 0, 
+        ]);
+        
+        // 都道府県を地理順にソートする関数
+        $sorted_prefectures = sort_prefectures_by_region($prefecture_terms);
+
+        foreach ($sorted_prefectures as $term) {
+            $slug = rawurlencode(sanitize_title($term->name)); // ✅ エンコードを `archive` の形式に統一
+            $archive_link = add_query_arg('prefecture', $slug, get_post_type_archive_link('introduction')); // ✅ クエリパラメータを適用
+            echo '<li><a href="' . esc_url($archive_link) . '" class="prefecture-filter">' . esc_html($term->name) . '</a></li>';
+        }
+      ?>
+    </ul>
+
+    <a href="<?php echo get_post_type_archive_link('introduction'); ?>" class="btn">
+      <p class="btn__text">一覧ページへ</p>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
   </section>
 
   <!--section/ recruit -->
