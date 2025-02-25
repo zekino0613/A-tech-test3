@@ -11,8 +11,6 @@
         <h2 class="mainvisual-text fadein fadein-bottom">一人ひとりの輝きが、 <br class="brsp">未来を彩る</h2>
       </div>
 
-
-
       <?php
         // WP_Query を使ってカスタム投稿タイプ 'info' の最新1件の投稿を取得
         $info_query = new WP_Query(array(
@@ -100,11 +98,84 @@
     </a>
   </section>
 
+  <section id="letter">
+    <!-- title-icon -->  
+    <?php
+      get_template_part('template-parts/title-icon', null, ['name' => 'letter']);// title-icon をインクルード
+    ?>
+
+    <?php
+      $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+      $args = [
+          'post_type'      => 'letter', // 投稿タイプが 'letter'
+          'posts_per_page' => 9,
+          'paged'          => $paged,
+      ];
+
+      // WP_Query 実行
+      $query = new WP_Query($args);
+    ?>
+
+
+  <div class="letter-list">
+    <?php if ($query->have_posts()) : ?>
+      <?php while ($query->have_posts()) : $query->the_post(); ?>
+        <?php
+        $related_nursery_id = get_field('related_nursery'); // ACFリレーションで関連園を取得
+        $nursery_name = $related_nursery_id ? get_the_title($related_nursery_id) : '不明な園';
+        $prefecture = get_field('nursery_address', $related_nursery_id);
+        ?>
+                
+          <a href="<?php the_permalink(); ?>" class="letter-card">
+            <!-- サムネイル画像 -->
+            <?php
+              $thumbnail = get_field('letter_image');
+              if ($thumbnail):
+                ?>
+              <img class="letter-card__image"src="<?php echo esc_url(wp_get_attachment_image_url($thumbnail, 'full')); ?>" alt="<?php the_title(); ?>">
+            <?php endif; ?>
+            <div class="letter-card__textarea">
+              <!-- 記事タイトル -->
+              <h2 class="letter-card__textarea--title"><?php the_title(); ?>からのおたより</h2>
+              <!-- サムネイルタイトル -->
+              <?php if( get_field('letter_title') ): ?>
+                <h3 class="letter-card__textarea--letter-title"><?php the_field('letter_title'); ?></h3>
+              <?php endif; ?>
+              <!-- 投稿日時 -->
+            </div><!-- / -->   
+            
+            <time class="letter-card__post-date" datetime="<?php echo get_the_date('Y-m-d'); ?>">
+              <?php
+              $date = get_the_date('Y年n月j日'); // 例: 2024年4月1日
+              $date_hiragana = str_replace(['年', '月', '日'], ['ねん', 'がつ', 'にち'], $date);
+              echo esc_html($date_hiragana);
+              ?>
+            </time>
+            <!-- <p>園名: <?php echo esc_html($nursery_name); ?></p>
+            <p>都道府県: <?php echo esc_html($prefecture); ?></p>
+            <p>投稿日: <?php echo get_the_date(); ?></p> -->
+          </a>
+
+          <?php endwhile; ?>
+          <?php echo paginate_links(['total' => $query->max_num_pages]); ?>
+      <?php else : ?>
+          <p>該当する記事はありません。</p>
+      <?php endif; ?>
+  </div>
+
+  <a href="<?php echo get_post_type_archive_link('letter'); ?>" class="btn">
+    <p class="btn__text">もっと見る</p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+
+  <?php wp_reset_postdata(); ?>
+
+  </section>
+
   <!--section/ recruit -->
   <?php
       get_template_part('template-parts/recruit'); // recruit をインクルード
   ?>
-
 
   <!-- ---footer読み込み ----------------------------------------------->
   <?php

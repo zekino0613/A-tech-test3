@@ -1,21 +1,28 @@
-  <!-- ---footer読み込み ----------------------------------------------->
-  <?php
-    get_template_part('template-parts/header'); // header.php をインクルード
-  ?>
+  <!-- ---header読み込み ----------------------------------------------->
+  <!-- <?php
+    //get_template_part('template-parts/header'); // header.php をインクルード
+  ?> -->
   <!-- ---------------------------------------------------------------------->
-  <main>
-    <!-- title-heading -->
-    <?php
-        get_template_part('template-parts/title-heading'); // title-heading をインクルード
-    ?>
-
-    
-    
+<main>
+  
   <div class="container">
-    <!-- 投稿日時 -->
-    <time class="info__post-date"><?php echo get_the_date('Y. m. d'); ?></time>
+    
     <!-- 記事タイトル -->
-    <h1 class="letter-title"><?php the_title(); ?></h1>
+    <h1 class="letter-title"><?php the_title(); ?>からのおたより</h1>
+
+    <!-- 投稿日時 -->
+    <time class="letter-card__post-date" datetime="<?php echo get_the_date('Y-m-d'); ?>">
+      <?php
+      $date = get_the_date('Y年n月j日'); // 例: 2024年4月1日
+      $date_hiragana = str_replace(['年', '月', '日'], ['ねん', 'がつ', 'にち'], $date);
+      echo esc_html($date_hiragana);
+      ?>
+    </time>
+
+    <!-- サムネイルタイトル -->
+    <?php if( get_field('article_title') ): ?>
+      <h2 class="letter_title"><?php the_field('article_title'); ?></h2>
+    <?php endif; ?>
 
     <!-- サムネイル画像 -->
     <?php
@@ -49,16 +56,17 @@
     </div>
 
 
-    
-  </main>
+
+
+</main>
 
 
 
 
 
   <!-- ---footer読み込み ----------------------------------------------->
-  <?php
-    get_template_part('template-parts/footer'); // footer.php をインクルード
-  ?>
+  <!-- <?php
+  //  get_template_part('template-parts/footer'); // footer.php をインクルード
+  ?> -->
   <!-- ---------------------------------------------------------------------->
   </body>   

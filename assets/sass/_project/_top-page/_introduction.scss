@@ -2,9 +2,10 @@
 @use "../../_foundation/_base"as base;
 
 #introduction {
-  margin: 0 auto;
-  padding: 80px 4% 71px;
+  margin: 80px auto 162px ;
+  padding:0  4% ;
   width: 100%;
+  height: auto;
   .introduction {
     &__prefecture-category {
       max-width: 1080px;
@@ -21,6 +22,7 @@
         padding: 18px 0;
         border-radius: 20px;
         background-color: map-get(mixin.$colors, "C-white");
+        transition: all 0.3s ease;
         a {
           text-align: center;
           @include mixin.font-settings (
@@ -31,7 +33,13 @@
             400, 
             F-color-black);
         }
+        &:hover {
+          transform: translateY(-5px);
+          transition: all 0.3s ease;
+          box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
       }
+
     }
   }
   .btn {
@@ -46,7 +54,7 @@
 @include mixin.SP {
   #introduction {
     margin: 0 auto;
-    padding: 80px 18%;
+    padding: 80px 18% 120px;
     width: 100%;
     .introduction {
       &__prefecture-category {

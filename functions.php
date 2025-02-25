@@ -258,8 +258,24 @@ add_filter('wp_kses_allowed_html', function ($tags) {
           'show_ui' => true,
       )
   );
+
+
+   // お知らせカテゴリー（新規作成）
+   register_taxonomy(
+    'osirase',
+    'info', // カスタム投稿タイプ
+    array(
+        'label' => 'お知らせ',
+        'rewrite' => array('slug' => 'osirase'), // スラッグを指定
+        'hierarchical' => true,
+        'public' => true,
+        'show_ui' => true,
+    )
+);
 }
 add_action('init', 'register_custom_taxonomies',0);
+
+
 
 
 function set_prefecture_taxonomy_on_save($post_id) {

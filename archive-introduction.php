@@ -1,4 +1,4 @@
-  <!-- ---footer読み込み ----------------------------------------------->
+  <!-- ---header読み込み ----------------------------------------------->
   <?php
     get_template_part('template-parts/header'); // header.php をインクルード
   ?>
@@ -40,7 +40,7 @@
                 'hide_empty' => true,
                 'parent'     => 0, 
             ]);
-            
+
             // 都道府県を地理順にソートする関数
             $sorted_prefectures = sort_prefectures_by_region($prefecture_terms);
 
@@ -59,7 +59,6 @@
   <!-- 投稿カード -->
 <div class="introduction-list">
     <?php
-    
     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
     $introduction_query = new WP_Query([
