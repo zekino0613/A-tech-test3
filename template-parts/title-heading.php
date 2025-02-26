@@ -8,8 +8,8 @@ $title_list = [
     'introduction' => ['title' => '各園のご紹介', 'subtitle' => 'Introduction'],
     'letter'       => ['title' => 'こもれびだより', 'subtitle' => 'Letter'],
     'info'         => ['title' => 'お知らせ', 'subtitle' => 'Info'],
-    'recruit'      => ['title' => '採用情報', 'subtitle' => 'Recruit'],
-    'contact'      => ['title' => 'お問い合わせ', 'subtitle' => 'Contact'],
+    'recruit-form'      => ['title' => '採用情報', 'subtitle' => 'Recruit'],
+    'contact-form'      => ['title' => 'お問い合わせ', 'subtitle' => 'Contact'],
 ];
 
 // デフォルトタイトル（未定義スラッグ用）

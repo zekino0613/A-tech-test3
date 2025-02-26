@@ -59,6 +59,30 @@
           <?php if( get_field('thumbnail_textarea') ): ?>
             <p class="nursery-description"><?php the_field('thumbnail_textarea'); ?></p>
           <?php endif; ?>
+
+          <?php
+            // SCFの繰り返しフィールド（画像ID）を取得
+            $images = SCF::get('sliders'); // 繰り返しフィールドのグループ名
+
+            if (!empty($images)) : ?>
+                <div class="slider">
+                    <?php foreach ($images as $image) : ?>
+                        <div class="slider-item">
+                            <?php
+                            // 画像IDを取得
+                            $image_id = $image['slider']; // サブフィールド 'slider' の画像ID
+
+                            // 画像を出力（'large'サイズで表示）
+                            echo wp_get_attachment_image($image_id, 'large');
+                            ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+
+
+
+
           <!-- 園長からのメッセージ -->
             <!-- 園長からのメッセージ画像 -->
             <?php

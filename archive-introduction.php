@@ -58,8 +58,25 @@
 
   <!-- 投稿カード -->
 <div class="introduction-list">
-<?php if (have_posts()) : ?>
-  <?php while (have_posts()) : the_post(); ?>
+    <?php
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+    $introduction_query = new WP_Query([
+        'post_type'      => 'introduction',
+        'posts_per_page' => 9,
+        'orderby'        => 'date',
+        'category_name' => $category_name, // URLパラメーターから取得したカテゴリー
+        'order'          => 'DESC',
+        'paged'          => $paged,              // ページネーション対応
+    ]);
+
+    if ($introduction_query->have_posts()) :
+        while ($introduction_query->have_posts()) : $introduction_query->the_post();
+            $address = get_field('nursery_address');
+            $prefecture = get_prefecture_from_address($address);
+            $categories = get_the_category();
+            $category_slug = !empty($categories) ? esc_attr($categories[0]->slug) : '';
+    ?>
         <a href="<?php the_permalink(); ?>" 
           class="introduction-thumbnail <?php echo esc_attr(sanitize_title($prefecture)); ?> <?php echo $category_slug; ?>">
           <?php
@@ -72,20 +89,25 @@
             <span class="news-header__flex--category"><?php echo esc_html($categories[0]->name ?? '未分類'); ?></span>
             <h2 class="nursery-name"><?php the_title(); ?></h2>
         </a>
-        <?php
-      endwhile;?>
+      <?php
+      endwhile;
   
-
-      <!-- ✅ ページネーション -->
-      <div class="pagination fade-in">
-          <?php echo paginate_links(); ?>
-      </div>
-  
+       // ページネーション 
+       echo paginate_links([
+        'total'   => $introduction_query->max_num_pages,
+        'current' => $paged,
+        'prev_text' => '<i class="fa-solid fa-chevron-left"></i>',
+        'next_text' => '<i class="fa-solid fa-chevron-right"></i>',
+        'format'    => '/page/%#%/', // ✅ ページ番号のフォーマット
+        'base'      => home_url('/introduction/page/%#%/'), // ✅ 固定URLを使う
+     ]);
+      
+        echo '</div>';
+      
         
-          
-    <?php else : ?>
-      <p>投稿が見つかりませんでした。</p>
-  <?php endif; ?>
+    endif;
+    wp_reset_postdata();
+    ?>
 
 </div>
 

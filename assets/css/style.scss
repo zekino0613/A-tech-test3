@@ -40,7 +40,13 @@
 @use "../sass/_project/_single/_single-letter";
 // @use "../sass/_project/_single/_single-salons";
 // @use "../sass/_project/_single/_single-news";
- // コンタクトフォームページ
+
+// コンタクトフォームページ
+//recruitページ
+@use "../sass/_project/_contact-form/page-recruit-form";
+@use "../sass/_project/_contact-form/page-recruit-form-confirm";
+//contactページ
 @use "../sass/_project/_contact-form/page-contact-form";
 @use "../sass/_project/_contact-form/page-contact-form-confirm";
+@use "../sass/_project/_contact-form/page-thanks";
 @use "../sass/_project/_contact-form/page-contact-form-thanks";

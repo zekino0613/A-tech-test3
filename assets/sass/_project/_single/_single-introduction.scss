@@ -1,2 +1,30 @@
 @use "../../_foundation/_mixin"as mixin;
 @use "../../_foundation/_base"as base;
+
+
+
+
+.slider {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px 0;
+  overflow: hidden; // **余計な描画を防ぐ**
+  white-space: nowrap; // **改行を防ぎ、流れをスムーズに**
+  .slider-item {
+      padding: 10px;
+      img {
+          width: 240%;
+          height: 160px;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          transition: transform 0.3s ease-in-out;
+          
+          &:hover {
+              transform: scale(1.05);
+          }
+      }
+  }
+
+
+}

@@ -154,76 +154,60 @@ $(document).ready(function () {
 });
 
 
+//お知らせカテゴリータブ
+document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll(".filter-button");
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentCategory = urlParams.get("osirase");
 
-
-
-  // PC-featureスライド
-// ーーーーーーーーーーーーー
-  jQuery(document).ready(function($) {
-    let currentIndex = 0;
-    const slideCount = $('.feature-content__image-slider .slide').length;
-    const intervalTime = 5000; // 5秒間隔
-  
-    // スライドを切り替える関数
-    function showSlide(index) {
-      // タブのアクティブ状態更新
-      $('.feature-tabs__tab').removeClass('active').eq(index).addClass('active');
-  
-      // 画像スライダーの切り替え
-      $('.feature-content__image-slider .slide').removeClass('active-slide');
-      $('.feature-content__image-slider .slide').eq(index).addClass('active-slide');
-  
-      // 詳細スライダーの切り替え
-      $('.feature-content__description-slider .description-slide').removeClass('active-slide');
-      $('.feature-content__description-slider .description-slide').eq(index).addClass('active-slide');
-    }
-  
-    // 自動スライド切り替え
-    function startAutoSlide() {
-      setInterval(() => {
-        currentIndex = (currentIndex + 1) % slideCount;
-        showSlide(currentIndex);
-      }, intervalTime);
-    }
-  
-    // タブクリック時の動作
-    $('.feature-tabs__tab').click(function() {
-      currentIndex = $(this).data('index');
-      showSlide(currentIndex);
+    buttons.forEach(button => {
+        const category = button.getAttribute("href").split("osirase=")[1];
+        
+        if ((currentCategory === null && category === undefined) || currentCategory === category) {
+            button.classList.add("active");
+        } else {
+            button.classList.remove("active");
+        }
     });
-  
-    // 初期表示設定
-    showSlide(currentIndex);
-    startAutoSlide();
-  });
+});
 
-// SP-スライダー
-// // ーーーーーーーーーーーーー
-// 
-jQuery(document).ready(function ($) {
-  // 画像スライダーを初期化
-  $(".feature-content-sp__image-slider").slick({
-    slidesToShow: 1, // 中央に1つ表示
-    slidesToScroll: 1,
-    arrows: false,
-    dots: false,
-    infinite: true,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    asNavFor: ".feature-content-sp__description-slider",
-    centerMode: true, // 中央配置
-    variableWidth: true, // 画像本来のサイズを保持
-  });
 
-  // 詳細スライダーを初期化
-  $(".feature-content-sp__description-slider").slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    dots: false,
-    infinite: true,
-    fade: true, // フェードで切り替え
-    asNavFor: ".feature-content-sp__image-slider",
+
+
+
+
+
+  // single-introduction// スライダー
+// ーーーーーーーーーーーーー
+  jQuery(document).ready(function ($) {
+    $(".slider").slick({
+      autoplay: true,          // 自動再生
+      autoplaySpeed: 0,        // 個々のスライドの待ち時間をなくす
+      dots: false,             // ドットナビゲーションを非表示
+      arrows: false,           // 矢印ナビゲーションを非表示
+      infinite: true,          // 無限ループ
+      slidesToShow: 1,         // **常に1枚表示（variableWidth で調整）**
+      slidesToScroll: 1,       // 1枚ずつスクロール
+      speed: 16000,            // **15秒で1周（スムーズな流れ）**
+      // rtl: true,               // **右から左へスライド**
+      cssEase: "linear",       // **一定のスピードを維持**
+      pauseOnHover: false,     // **ホバーで止めない**
+      variableWidth: true,     // **スムーズな流れるスライド**
+      centerMode: false,        // **中央基準を削除（カクつき防止）**
+        responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+              slidesToShow: 1 // **PCと同じスライド数**
+              }
+            },
+            {
+              breakpoint: 768,
+              settings: {
+               slidesToShow: 1 // **スマホでもPCと同じ見え方にする**
+            }
+          }
+        ]
   });
 });
 

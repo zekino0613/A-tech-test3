@@ -2416,6 +2416,98 @@ a .btn {
     margin: 42px auto 0;
   }
 }
+.filter-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.filter-button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #f8d7da;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  color: #d63384;
+  -webkit-transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
+}
+.filter-button:hover {
+  background-color: #e598a6;
+  color: #fff;
+}
+.filter-button.active {
+  background-color: #d63384;
+  color: #fff;
+}
+
+.letter-card {
+  display: block;
+  background: #fffaf0;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  -webkit-transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
+  transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
+  text-decoration: none;
+  color: #444;
+  overflow: hidden;
+  position: relative;
+}
+.letter-card:hover {
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+.letter-card .news-header__flex--category {
+  display: inline-block;
+  background-color: #ffb6c1;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.letter-card .info__post-date {
+  font-size: 12px;
+  color: #777;
+}
+.letter-card .letter-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #444;
+}
+.letter-card .news-section__paragraph {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #444;
+  opacity: 0;
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+  -webkit-transition: opacity 0.5s ease-out, -webkit-transform 0.5s ease-out;
+  transition: opacity 0.5s ease-out, -webkit-transform 0.5s ease-out;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out, -webkit-transform 0.5s ease-out;
+}
+.letter-card .news-section__paragraph.fade-in {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
 .tab {
   width: 100%;
   max-width: 900px;
@@ -2543,6 +2635,801 @@ a .btn {
   font-size: 18px;
   margin: 10px;
   color: #5c3a42;
+}
+
+.slider {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.slider .slider-item {
+  padding: 10px;
+}
+.slider .slider-item img {
+  width: 240%;
+  height: 160px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+}
+.slider .slider-item img:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+#FAQ {
+  padding: 500px 0;
+}
+#FAQ .FAQ__inner .accordion {
+  max-width: 1080px;
+  margin: 60px 0 0 60px;
+}
+#FAQ .FAQ__inner .accordion .accordion-item {
+  margin-bottom: 20px;
+  background-color: #D4CEBE;
+  overflow: hidden;
+}
+#FAQ .FAQ__inner .accordion .accordion-item .accordion-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100px;
+  padding: 47px 32px 47px 20px;
+  cursor: pointer;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  line-height: 0.7777777778;
+  font-weight: normal;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease; /* 背景色の遷移 */
+  position: relative;
+}
+#FAQ .FAQ__inner .accordion .accordion-item .accordion-header:hover {
+  background-color: #e6dfd1;
+}
+#FAQ .FAQ__inner .accordion .accordion-item .accordion-header .accordion-question {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: 8px 0px 4px 41px;
+  position: relative;
+}
+#FAQ .FAQ__inner .accordion .accordion-item .accordion-header .accordion-question::before {
+  content: "Q";
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  line-height: 0.5833333333;
+  font-weight: normal;
+  position: absolute;
+  top: -5px;
+  left: -39px;
+  margin: 0 0px 0 0px;
+}
+#FAQ .FAQ__inner .accordion .accordion-item .accordion-header .accordion-icon {
+  font-size: 14px;
+  color: #54372D;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+  position: absolute;
+  right: 29px;
+  top: 43px;
+}
+#FAQ .FAQ__inner .accordion .accordion-item .accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  line-height: 1.2777777778;
+  font-weight: normal;
+  padding: 0 16px;
+  -webkit-transition: max-height 0.3s ease, padding 0.3s ease;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+#FAQ .FAQ__inner .accordion .accordion-item .accordion-content p {
+  position: relative;
+  margin: -9px 0px 0px 38px;
+}
+#FAQ .FAQ__inner .accordion .accordion-item .accordion-content p::before {
+  content: "A";
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  line-height: 0.5833333333;
+  font-weight: normal;
+  position: absolute;
+  top: 4px;
+  left: -38px;
+}
+#FAQ .FAQ__inner .accordion .accordion-item.active .accordion-content {
+  overflow: visible;
+}
+#FAQ .FAQ__inner .accordion .accordion-item.active .accordion-icon {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.contact-form-wrapper {
+  margin: 90px auto 30px;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .form-list {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 0 32px;
+  padding: 0 39px;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .form-list .wpcf7-not-valid-tip {
+  color: #bd1212;
+  font-size: 1em;
+  font-weight: normal;
+  display: block;
+  margin: 10px 0 0;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .form-list .title-flex {
+  width: 39%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .form-list .title-flex .required-icon {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  line-height: 2.3333333333;
+  font-weight: normal;
+  color: #FFFFFF;
+  background-color: #54372D;
+  border-radius: 15px;
+  padding: 0 18px;
+  margin: 0 16px 0 0;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .form-list .title-flex .optional-icon {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  line-height: 2.3333333333;
+  font-weight: normal;
+  color: #333333;
+  background-color: #D4CEBE;
+  border-radius: 15px;
+  padding: 0 18px;
+  margin: 0 16px 0 0;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .form-list .title-flex .title {
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 1.75;
+  font-weight: normal;
+  color: #333333;
+  color: #333333;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .form-list label {
+  width: 66%;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .form-list label .wpcf7-form-control-wrap {
+  width: 100%;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .form-list label .wpcf7-form-control-wrap .wpcf7-text {
+  max-width: 620px; /* 最大幅を620pxに制限 */
+  width: 100%; /* 親要素の幅に基づいて可変 */
+  height: 50px;
+  background-color: #FFFFFF;
+  margin: 0 -17px 0 0px;
+  padding: 0 0 0 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .hope-time {
+  width: 100%;
+  margin: -21px 0 -13px;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .hope-time .checkbox-group {
+  width: 65%;
+  margin: 3px -4px 18px 0px;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 620px;
+  margin: 19px -18px 21px 0px;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner .wpcf7-form-control-wrap[data-name=weekday-contact-time],
+.contact-form-wrapper .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner .wpcf7-form-control-wrap[data-name=holiday-contact-time] {
+  width: 91%;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner .wpcf7-form-control-wrap[data-name=weekday-contact-time] .wpcf7-list-item,
+.contact-form-wrapper .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner .wpcf7-form-control-wrap[data-name=holiday-contact-time] .wpcf7-list-item {
+  width: 23%;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner legend {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  line-height: 2;
+  font-weight: normal;
+  color: #333333;
+  margin: 5px 19px 0 -2px;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner .wpcf7-checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner .wpcf7-checkbox input[type=checkbox] {
+  -webkit-appearance: checkbox;
+  -moz-appearance: checkbox;
+  appearance: checkbox;
+  width: 31px;
+  height: 30px;
+  cursor: pointer;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner .wpcf7-checkbox .wpcf7-list-item {
+  margin: 0;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner .wpcf7-checkbox .wpcf7-list-item .wpcf7-list-item-label {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  line-height: 2;
+  font-weight: normal;
+  color: #333333;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .form-select {
+  width: 100%;
+  margin: -19px 0 0;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .form-select .checkbox-form-group {
+  width: 65%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 12px -4px 8px 0px;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .form-select .checkbox-form-group .wpcf7-form-control-wrap[data-name=checkbox-475] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .form-select .checkbox-form-group .wpcf7-form-control-wrap[data-name=checkbox-475] .wpcf7-checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 12px; /* チェックボックスの間隔 */
+  width: 100%;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .form-select .checkbox-form-group .wpcf7-form-control-wrap[data-name=checkbox-475] .wpcf7-list-item {
+  width: 41%; /* 2列に並べる */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0; /* 下の余白を調整 */
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .form-select .checkbox-form-group legend {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  line-height: 2;
+  font-weight: normal;
+  color: #333333;
+  margin: 0 20px 0 6px;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .form-select .checkbox-form-group .wpcf7-list-item input[type=checkbox] {
+  -webkit-appearance: checkbox;
+  -moz-appearance: checkbox;
+  appearance: checkbox;
+  width: 31px;
+  height: 30px;
+  margin-right: 8px; /* ラベルとの間隔 */
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .form-select .checkbox-form-group .wpcf7-list-item-label {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  line-height: 2;
+  font-weight: normal;
+  color: #333333;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .hope-store {
+  width: 70.7%;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .hope-store .hope-store-label {
+  width: 46%;
+  margin: 19px 0 0;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .hope-store .hope-store-label .wpcf7-form-control-wrap[data-name=your-store] {
+  width: 45%;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .hope-store .hope-store-label .wpcf7-form-control-wrap[data-name=your-store] .wpcf7-text {
+  max-width: 300px;
+  width: 100%;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .date-field {
+  max-width: 790px;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 39px 0 0;
+  position: relative;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .date-field .title-flex {
+  width: 40%;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .date-field .date-field-wrap {
+  width: 48.6%;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .date-field .date-field-wrap .hopeday-label {
+  width: 100%;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .date-field .date-field-wrap .hopeday-label .my-date-field {
+  max-width: 300px;
+  width: 100%;
+  height: 50px;
+  background-color: #FFFFFF;
+  color: #000 !important;
+  border-radius: 5px;
+  font-size: 14px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none; /* Firefox */
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .date-field .date-field-wrap .my-date-field::-webkit-calendar-picker-indicator {
+  font-size: 3rem; /* アイコンだけ拡大 */
+  width: 50px; /* クリック可能領域を広げたい場合 */
+  height: 50px;
+  cursor: pointer;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .date-field .date-field-wrap .fa-calendar-days {
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  color: #FFFFFF;
+  background-color: #CA7F13;
+  position: absolute;
+  top: 0;
+  right: 85px;
+  padding: 10px 10px 10px 12px;
+  pointer-events: none; /* アイコンへのクリックを無視して、裏のinputをクリック可能にする */
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .textarea {
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin: 49px 0 0;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .textarea .title-flex {
+  width: 37%;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .textarea .textarea-flex {
+  width: 63%;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .textarea .textarea-flex .textarea-label {
+  width: 100%;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .textarea .textarea-flex .textarea-label .wpcf7-form-control-wrap[data-name=your-details] .wpcf7-textarea {
+  max-width: 620px;
+  width: 100%;
+  height: 120px;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 10px 0 0 10px;
+  margin: -12px -15px 0px 1px;
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .textarea .textarea-flex .details-text {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  line-height: 2.3333333333;
+  font-weight: normal;
+  color: #333333;
+  margin: 8px 0 0;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .wpcf7-submit {
+  width: 160px;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #949E33;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 1.625;
+  font-weight: normal;
+  color: #FFFFFF;
+  border-radius: 40px;
+  margin: 32px auto 0;
+  -webkit-transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+.contact-form-wrapper .wpcf7 .wpcf7-form .wpcf7-submit:hover {
+  background-color: #CA7F13;
+}
+
+.contact-form-wrapper-confirm {
+  margin: 90px auto 30px;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 1.125;
+  font-weight: normal;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .form-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 0 32px;
+  padding: 0 0 0 39px;
+  width: 100%;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .form-list .title-flex {
+  width: 39%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .form-list .title-flex .required-icon {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  line-height: 2.3333333333;
+  font-weight: normal;
+  color: #FFFFFF;
+  background-color: #54372D;
+  border-radius: 15px;
+  padding: 0 18px;
+  margin: 0 16px 0 0;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .form-list .title-flex .optional-icon {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  line-height: 2.3333333333;
+  font-weight: normal;
+  color: #333333;
+  background-color: #D4CEBE;
+  border-radius: 15px;
+  padding: 0 18px;
+  margin: 0 16px 0 0;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .form-list .title-flex .title {
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 1.75;
+  font-weight: normal;
+  color: #333333;
+  color: #333333;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .form-list label {
+  width: 66%;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .form-list label .wpcf7-form-control-wrap {
+  width: 66%;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .form-list label .wpcf7-form-control-wrap .wpcf7-text {
+  max-width: 620px; /* 最大幅を620pxに制限 */
+  width: 100%; /* 親要素の幅に基づいて可変 */
+  height: 50px;
+  background-color: #FFFFFF;
+  margin: 0 -17px 0 0px;
+  padding: 0 0 0 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .hope-time {
+  width: 100%;
+  margin: -21px 0 -13px;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .hope-time .checkbox-group {
+  width: 65%;
+  margin: 3px -4px 18px 0px;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 620px;
+  margin: 19px -18px 21px 0px;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner .wpcf7-form-control-wrap[data-name=weekday-contact-time],
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner .wpcf7-form-control-wrap[data-name=holiday-contact-time] {
+  width: 91%;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner .wpcf7-form-control-wrap[data-name=weekday-contact-time] .wpcf7-list-item,
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner .wpcf7-form-control-wrap[data-name=holiday-contact-time] .wpcf7-list-item {
+  width: 23%;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner legend {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  line-height: 2;
+  font-weight: normal;
+  color: #333333;
+  margin: 5px 19px 0 -2px;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner .wpcf7-checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner .wpcf7-checkbox input[type=checkbox] {
+  -webkit-appearance: checkbox;
+  -moz-appearance: checkbox;
+  appearance: checkbox;
+  width: 31px;
+  height: 30px;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner .wpcf7-checkbox .wpcf7-list-item {
+  margin: 0;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .hope-time .checkbox-group__inner .wpcf7-checkbox .wpcf7-list-item .wpcf7-list-item-label {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  line-height: 2;
+  font-weight: normal;
+  color: #333333;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .form-select {
+  width: 100%;
+  margin: -19px 0 0;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .form-select .checkbox-form-group {
+  width: 65%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 12px -4px 8px 0px;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .form-select .checkbox-form-group .wpcf7-form-control-wrap[data-name=checkbox-475] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .form-select .checkbox-form-group .wpcf7-form-control-wrap[data-name=checkbox-475] .wpcf7-checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 12px; /* チェックボックスの間隔 */
+  width: 100%;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .form-select .checkbox-form-group .wpcf7-form-control-wrap[data-name=checkbox-475] .wpcf7-list-item {
+  width: 38%; /* 2列に並べる */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 8px; /* 下の余白を調整 */
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .form-select .checkbox-form-group legend {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  line-height: 2;
+  font-weight: normal;
+  color: #333333;
+  margin: 0 20px 0 6px;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .form-select .checkbox-form-group .wpcf7-list-item input[type=checkbox] {
+  -webkit-appearance: checkbox;
+  -moz-appearance: checkbox;
+  appearance: checkbox;
+  width: 31px;
+  height: 30px;
+  margin-right: 8px; /* ラベルとの間隔 */
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .form-select .checkbox-form-group .wpcf7-list-item-label {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  line-height: 2;
+  font-weight: normal;
+  color: #333333;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .hope-store {
+  max-width: 1080px;
+  width: 100%;
+  margin: 19px 0 0;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .hope-store .hope-store-label {
+  width: 65%;
+  margin: 19px 0 0;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .hope-store .hope-store-label .wpcf7-form-control-wrap[data-name=your-store] {
+  width: 45%;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .hope-store .hope-store-label .wpcf7-form-control-wrap[data-name=your-store] .wpcf7-text {
+  max-width: 300px;
+  width: 100%;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .date-field {
+  max-width: 68%;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 39px 0 0;
+  position: relative;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .date-field .title-flex {
+  width: 42%;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .date-field .date-field-wrap {
+  width: 44%;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .date-field .date-field-wrap .hopeday-label {
+  width: 100%;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .date-field .date-field-wrap .hopeday-label .my-date-field {
+  max-width: 300px;
+  width: 100%;
+  height: 50px;
+  background-color: #FFFFFF;
+  color: #000 !important;
+  border-radius: 5px;
+  font-size: 14px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none; /* Firefox */
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .textarea {
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin: 49px 0 0;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .textarea .title-flex {
+  width: 22%;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .textarea .textarea-flex {
+  width: 63%;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .textarea .textarea-flex .textarea-label {
+  width: 100%;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .textarea .textarea-flex .textarea-label .wpcf7-form-control-wrap[data-name=your-details] .wpcf7-textarea {
+  max-width: 620px;
+  width: 100%;
+  height: 120px;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 10px 0 0 10px;
+  margin: -12px -15px 0px 1px;
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .textarea .textarea-flex .details-text {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  line-height: 2.3333333333;
+  font-weight: normal;
+  color: #333333;
+  margin: 8px 0 0;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .wpcf7-submit {
+  width: 160px;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #949E33;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 1.625;
+  font-weight: normal;
+  color: #FFFFFF;
+  border-radius: 40px;
+  margin: 32px auto 0;
+  -webkit-transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+.contact-form-wrapper-confirm .wpcf7 .wpcf7-form .wpcf7-submit:hover {
+  background-color: #CA7F13;
 }
 
 #section-contects.reserve {
@@ -4943,6 +5830,11 @@ a .btn {
     width: 100%;
   }
 }
+#thanks {
+  padding: 500px 0;
+  background-color: aqua;
+}
+
 .contact-thanks {
   max-width: 670px;
   margin: 64px auto 95px;

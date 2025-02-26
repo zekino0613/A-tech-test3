@@ -277,33 +277,50 @@ add_action('init', 'register_custom_taxonomies',0);
 
 
 
-
-
-// ページネーション管理
-function modify_custom_post_type_queries($query) {
-  if (is_admin() || !$query->is_main_query()) {
-      return;
+function filter_news_by_category($query) {
+  if (!is_admin() && $query->is_main_query() && is_post_type_archive('info')) {
+      if (!empty($_GET['osirase'])) {
+          $query->set('tax_query', [
+              [
+                  'taxonomy' => 'osirase',
+                  'field'    => 'slug',
+                  'terms'    => sanitize_text_field($_GET['osirase']),
+              ]
+          ]);
+      }
   }
-
-  if (is_post_type_archive('info')) {
-      $query->set('posts_per_page', 4);
-  }
-
-  if (is_post_type_archive('introduction')) {
-      $query->set('posts_per_page', 3);
-  }
-
-  if (is_post_type_archive('letter')) {
-      $query->set('posts_per_page', 4);
-  }
-
-  $query->set('orderby', 'date');
-  $query->set('order', 'DESC');
-  $query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1);
 }
-add_action('pre_get_posts', 'modify_custom_post_type_queries');
+add_action('pre_get_posts', 'filter_news_by_category');
 
 
+
+
+//ページネーション
+function modify_info_archive_query($query) {
+  if ($query->is_main_query() && !is_admin() && is_post_type_archive('info')) {
+      $query->set('posts_per_page', 6); // ✅ 1ページあたりの投稿数を指定
+      $query->set('orderby', 'date');
+      $query->set('order', 'DESC');
+      $query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1);
+  }
+}
+add_action('pre_get_posts', 'modify_info_archive_query');
+
+
+function modify_archive_queries($query) {
+    if (is_admin() || !$query->is_main_query()) {
+        return;
+    }
+
+    if (is_post_type_archive('introduction')) {
+      $query->set('posts_per_page', 2); // ✅ 表示件数を指定
+      $query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1); // ✅ ページネーション対応
+  }
+    if (is_post_type_archive('letter')) {
+        $query->set('posts_per_page', 2);
+    }
+}
+add_action('pre_get_posts', 'modify_archive_queries');
 
 
 
