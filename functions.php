@@ -278,6 +278,37 @@ add_action('init', 'register_custom_taxonomies',0);
 
 
 
+
+// ページネーション管理
+function modify_custom_post_type_queries($query) {
+  if (is_admin() || !$query->is_main_query()) {
+      return;
+  }
+
+  if (is_post_type_archive('info')) {
+      $query->set('posts_per_page', 4);
+  }
+
+  if (is_post_type_archive('introduction')) {
+      $query->set('posts_per_page', 3);
+  }
+
+  if (is_post_type_archive('letter')) {
+      $query->set('posts_per_page', 4);
+  }
+
+  $query->set('orderby', 'date');
+  $query->set('order', 'DESC');
+  $query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1);
+}
+add_action('pre_get_posts', 'modify_custom_post_type_queries');
+
+
+
+
+
+
+
 function set_prefecture_taxonomy_on_save($post_id) {
   if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
 

@@ -6,35 +6,11 @@
 
 
 <section id="archive-letter">
-<?php
-$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-$args = [
-    'post_type'      => 'letter', // 投稿タイプが 'letter'
-    'posts_per_page' => 9,
-    'paged'          => $paged,
-];
 
-// 都道府県フィルター
-if (!empty($_GET['prefecture'])) {
-    $args['meta_query'][] = [
-        'key'     => 'related_nursery',
-        'value'   => get_posts([
-            'post_type' => 'introduction',
-            'meta_key'  => 'nursery_address',
-            'meta_value'=> $_GET['prefecture'],
-            'fields'    => 'ids',
-        ]),
-        'compare' => 'IN',
-    ];
-}
-
-// WP_Query 実行
-$query = new WP_Query($args);
-?>
 
 <div class="letter-list">
-  <?php if ($query->have_posts()) : ?>
-    <?php while ($query->have_posts()) : $query->the_post(); ?>
+<?php if (have_posts()) : ?>
+  <?php while (have_posts()) : the_post(); ?>
       <?php
       $related_nursery_id = get_field('related_nursery'); // ACFリレーションで関連園を取得
       $nursery_name = $related_nursery_id ? get_the_title($related_nursery_id) : '不明な園';
@@ -70,11 +46,19 @@ $query = new WP_Query($args);
           <p>都道府県: <?php echo esc_html($prefecture); ?></p>
           <p>投稿日: <?php echo get_the_date(); ?></p> -->
         </a>
+        <?php
+      endwhile;?>
+  
 
-        <?php endwhile; ?>
-        <?php echo paginate_links(['total' => $query->max_num_pages]); ?>
-    <?php else : ?>
-        <p>該当する記事はありません。</p>
+          <!-- ✅ ページネーション -->
+    <div class="pagination fade-in">
+        <?php echo paginate_links(); ?>
+    </div>
+
+      
+            
+      <?php else : ?>
+        <p>投稿が見つかりませんでした。</p>
     <?php endif; ?>
 </div>
 

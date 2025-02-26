@@ -26,22 +26,8 @@ $categories = get_terms([
 </div>
 
 
-  <?php
-    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-
-    $info_query = new WP_Query([
-        'post_type'      => 'info',
-        'posts_per_page' => 4,
-        'orderby'        => 'date',
-        'category_name' => $category_name, // URLパラメーターから取得したカテゴリー
-        'order'          => 'DESC',
-        'paged'          => $paged,              // ページネーション対応
-        
-    ]);
-
-    if ($info_query->have_posts()) :
-      while ($info_query->have_posts()) : $info_query->the_post();
-    ?>
+<?php if (have_posts()) : ?>
+  <?php while (have_posts()) : the_post(); ?>
     <a href="<?php the_permalink(); ?>" class="letter-card">
 
       <!-- おしらせカテゴリーを表示 -->
@@ -84,25 +70,19 @@ if (!empty($categories) && !is_wp_error($categories)) {
       ?>
     </a>
       <?php
-      endwhile;
+      endwhile;?>
   
-       // ページネーション 
-        echo '<div class="pagination fade-in">';
-        echo paginate_links([
-           'total'   => $info_query->max_num_pages, // 修正
-            'current' => $paged,
-            'prev_text' => '<i class="fa-solid fa-chevron-left"></i>',
-            'next_text' => '<i class="fa-solid fa-chevron-right"></i>',
-            'format'    => 'page/%#%/', // ✅ ページ番号のフォーマットを指定
-            'base'      => get_post_type_archive_link('info') . '%_%', // ✅ ベースURLを設定
-        ]);
-        echo '</div>';
+
+          <!-- ✅ ページネーション -->
+    <div class="pagination fade-in">
+        <?php echo paginate_links(); ?>
+    </div>
+
       
         
-    endif;
-    wp_reset_postdata();
-    ?>
-
+  <?php else : ?>
+    <p>投稿が見つかりませんでした。</p>
+<?php endif; ?>
   
   </main>
 
