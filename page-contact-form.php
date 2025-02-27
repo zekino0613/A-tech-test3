@@ -3,9 +3,10 @@ get_template_part('template-parts/header'); // header.php をインクルード
 ?>
 
 <main>
-  <?php
-  get_template_part('template-parts/para-mainvisual'); // header.php をインクルード
-  ?>
+<!-- title-heading -->
+<?php
+    get_template_part('template-parts/title-heading'); // title-heading をインクルード
+?>
 
 
   <section id="section-contects" class="reserve">

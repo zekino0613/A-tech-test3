@@ -3,19 +3,10 @@ get_template_part('template-parts/header'); // header.php をインクルード
 ?>
 
 <main>
-  <?php 
-    get_template_part('template-parts/para-mainvisual'); // header.php をインクルード
-  ?> 
-
-
-  <section id="section-contects" class="reserve">
-    <!-- パンくずリスト -->
-    <?php
-    if (function_exists('yoast_breadcrumb')) {
-        yoast_breadcrumb('<nav id="breadcrumbs">', '</nav>');
-    }
-    ?>
-  </section>
+  <!-- title-heading -->
+  <?php
+      get_template_part('template-parts/title-heading'); // title-heading をインクルード
+  ?>
 
   <div class="privacy-policy">
     <div class="privacy-policy__inner">

@@ -3,6 +3,12 @@
     get_template_part('template-parts/header'); // header.php をインクルード
   ?>
   <!-- ---------------------------------------------------------------------->
+<main>
+  <!-- title-heading -->
+  <?php
+    get_template_part('template-parts/title-heading'); // title-heading をインクルード
+  ?>
+
 
 
 <section id="archive-letter">

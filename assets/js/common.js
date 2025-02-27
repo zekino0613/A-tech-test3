@@ -409,11 +409,62 @@ jQuery(function ($) {
 // });
 
 
+// 採用情報フォーム
+// ラジオボタンで「その他」選択の時にだけテキストエリアが入力できるようにする
+jQuery(document).ready(function ($) {
+  function toggleOtherTextarea() {
+      let selectedValue = $(".inquiry-radio input:checked").val();
+      
+      if (selectedValue === "その他") {
+          $(".other-textarea").prop("disabled", false).focus();
+      } else {
+          $(".other-textarea").prop("disabled", true).val("");
+      }
+  }
+
+  // ページロード時に適用（リロード後の状態保持対策）
+  toggleOtherTextarea();
+
+  // ラジオボタンの変更を監視
+  $(".inquiry-radio input").change(function () {
+      toggleOtherTextarea();
+  });
+});
+
+//採用情報フォーム確認画面
+// ダブルクリックでカレンダー表示
+jQuery(document).ready(function ($) {
+  $(".birthdate").on("dblclick", function () {
+      this.showPicker();
+  });
+});
 
 
+//採用情報フォーム確認画面
+// ラジオボタンで「その他」選択の時にだけテキストエリアが出力されるようにする
+jQuery(document).ready(function ($) {
+  function toggleOtherTextarea() {
+      let selectedValue = $(".confirm-radio").text().trim();
+      let otherLabel = $(".confirm-other-text");
+      let otherTextarea = $(".confirm-other-textarea");
+
+      console.log("選択中のラジオボタン:", selectedValue);
+      console.log("その他入力値:", otherTextarea.text().trim());
+
+      if (selectedValue === "その他" && otherTextarea.text().trim() !== "") {
+          otherLabel.removeClass("hidden");
+          otherTextarea.removeClass("hidden");
+      } else {
+          otherLabel.addClass("hidden");
+          otherTextarea.addClass("hidden");
+      }
+  }
+
+  // 初期状態で実行
+  toggleOtherTextarea();
+});
 
 
-  
 
 
 });

@@ -129,9 +129,9 @@ add_action('wp_enqueue_scripts', 'theme_enqueue_assets');
 
   // 【パンくずリスト】プラグイン名：yoast SEO  ----------------------------------
 
-  // パンくずリストの区切り記号が「|」
+  // パンくずリストの区切り記号が「>」
   add_filter('wpseo_breadcrumb_separator', function () {
-    return ' | '; // 区切り記号を「|」に変更
+    return '  <i class="fa-solid fa-angle-right"></i>'; // 区切り記号を「>」に変更
 });
 
 // パンくずリスト カタカナ表記
@@ -139,7 +139,7 @@ add_filter('wpseo_breadcrumb_single_link', 'custom_breadcrumb_labels', 10, 2);
 function custom_breadcrumb_labels($link_output, $link) {
     // ページタイトルをカタカナに置き換える
     if (strpos($link_output, 'Home') !== false) {
-        $link_output = str_replace('Home', 'ホーム', $link_output);
+        $link_output = str_replace('Home', 'TOP', $link_output);
     }
     if (strpos($link_output, 'concept') !== false) {
       $link_output = str_replace('concept', 'コンセプト', $link_output);

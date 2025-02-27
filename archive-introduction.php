@@ -4,6 +4,11 @@
   ?>
   <!-- ---------------------------------------------------------------------->
 <main>
+  <!-- title-heading -->
+  <?php
+    get_template_part('template-parts/title-heading'); // title-heading をインクルード
+  ?>
+  
   
   <div class="tab">
     <!-- タブを構成するブロック -->

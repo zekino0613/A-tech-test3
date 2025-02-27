@@ -1,46 +1,105 @@
 @use "../_foundation/mixin"as mixin;
 @use "../_foundation/base"as base;
 
-//--h1
-.page-title {
+#sub-mainvisual {
   width: 100%;
-  min-height:17.11vh;
   height: 100%;
-  position: relative;
-  padding: 0 10%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 72% 97%;
-  background-image: url(../../assets/images/kidsland_image/design-parts/section-heading-pc.webp) ;
-  .title-wrapper {
-      width: 100%;
-      position: absolute;
-      text-align: center;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      h1 {
-        @include mixin.font-settings (
-          F-size36,
-          F-line-height32,
-          F-letter-spacing-10,
-          F-family-KosugiMaru,
-          400,
-          F-color-brown);
-          display: block;
-          margin: 52px 0 16px;
+  padding: 300px 10% 0;
+  .sub-mainvisual {
+    &__inner {
+    &--page-title {
+      width: 93.8%;
+      min-height:17.11vh;
+      height: 100%;
+      margin: 0 auto;
+      position: relative;
+      z-index: 9999;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% 97%;
+      background-image: url(../../assets/images/kidsland_image/design-parts/section-heading-pc.webp) ;
+      .title-wrapper {
+        width: 100%;
+        position: absolute;
+        text-align: center;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+          h1 {
+            @include mixin.font-settings (
+              F-size36,
+              F-line-height32,
+              F-letter-spacing-10,
+              F-family-KosugiMaru,
+              400,
+              F-color-brown);
+              display: block;
+              margin: 52px 0 16px;
+          }
+          p {
+            @include mixin.font-settings (
+              F-size10,
+              F-line-height10,
+              F-letter-spacing-10,
+              F-family-Jost,
+              900,
+              F-color-brown);
+          }
+        }
+      }  
+      // 【パンくずリストプラグイン】-------------↓
+      &--breadcrumbs {
+        @include mixin.font-settings
+        ( F-size16
+        , F-line-height24
+        , F-letter-spacing-10
+        , F-family-KosugiMaru
+        , normal
+        , F-color-brown);
+        padding: 0 0 0 0;
+        width: 93.8%;
+        display: flex;
+        margin: 12px auto 134px;
+        /* 各パンくずの要素設定 */
+        span {
+          display: flex;
+          flex-wrap: wrap; // 折り返し設定
+          gap: 5px; // 各要素の間隔を設定
+          margin: 0; // 不要な余白を削除
+          padding: 0;
+          
+          i {
+            display: flex;
+            align-items: center;
+            // align-content: center;
+          }
+          /* リンクのスタイル */
+          a {
+            color: map-get(mixin.$colors, "C-brown"); // リンクの色
+            text-decoration: none; // 下線を削除
+            transition: color 0.3s ease; // ホバー時のスムーズな色変更
+            margin: 0;
+            &:hover {
+              color: map-get(mixin.$colors, "C-pink"); // リンクの色
+            }
+          }
+          /* 最後のパンくず要素 */
+          &.breadcrumb_last {
+            margin-right: 16px; // 必要に応じて調整
+          }
+          /* 最後の区切り線を削除 */
+          &:last-child::after {
+            content: ""; // 空白
+          }
+          &:last-child::after {
+            content: ""; // 最後の要素の区切り線を削除
+          }
+        }
       }
-      p {
-        @include mixin.font-settings (
-          F-size10,
-          F-line-height10,
-          F-letter-spacing-10,
-          F-family-Jost,
-          900,
-          F-color-brown);
-      }
+      
     }
+  }    
 }
 
 

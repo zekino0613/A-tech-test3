@@ -264,53 +264,6 @@ a .btn {
 //-------------------------------------------------------------------------------
 // wordpressテンプレートパーツ
 //-------------------------------------------------------------------------------
-// 【パンくずリストプラグイン】-------------↓
-#breadcrumbs {
-  @include mixin.font-settings
-  ( F-size18
-  , F-line-height36
-  , F-letter-spacing-1-8
-  , F-family-mincho
-  , normal
-  , F-color-orange);
-  padding: 27.5px 0 0px 36px;
-  display: flex;
-
-  /* 各パンくずの要素設定 */
-  span {
-    display: flex;
-    flex-wrap: wrap; // 折り返し設定
-    gap: 4px; // 各要素の間隔を設定
-    margin: 0; // 不要な余白を削除
-    padding: 0;
-
-    /* リンクのスタイル */
-    a {
-      color: #ca7f13; // リンクの色
-      text-decoration: none; // 下線を削除
-      transition: color 0.3s ease; // ホバー時のスムーズな色変更
-      margin: 0;
-
-      &:hover {
-        color: #a8660f; // ホバー時の色
-      }
-    }
-
-    /* 最後のパンくず要素 */
-    &.breadcrumb_last {
-      margin-right: 16px; // 必要に応じて調整
-    }
-
-    /* 最後の区切り線を削除 */
-    &:last-child::after {
-      content: ""; // 空白
-    }
-
-    &:last-child::after {
-      content: ""; // 最後の要素の区切り線を削除
-    }
-  }
-}
 
 
 
@@ -497,7 +450,7 @@ a .btn {
     ,F-letter-spacing-1-4
     ,F-family-mincho
     ,normal, F-color-orange);
-    padding: 12.5px 0 0px 4px;
+    padding: 0 0 0 0;
 
     /* 各パンくずの要素設定 */
     span {

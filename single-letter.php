@@ -1,12 +1,15 @@
   <!-- ---header読み込み ----------------------------------------------->
-  <!-- <?php
-    //get_template_part('template-parts/header'); // header.php をインクルード
-  ?> -->
+  <?php
+    get_template_part('template-parts/header'); // header.php をインクルード
+  ?>
   <!-- ---------------------------------------------------------------------->
 <main>
+  <!-- title-heading -->
+  <?php
+      get_template_part('template-parts/title-heading'); // title-heading をインクルード
+  ?>
   
   <div class="container">
-    
     <!-- 記事タイトル -->
     <h1 class="letter-title"><?php the_title(); ?>からのおたより</h1>
 
@@ -65,8 +68,8 @@
 
 
   <!-- ---footer読み込み ----------------------------------------------->
-  <!-- <?php
-  //  get_template_part('template-parts/footer'); // footer.php をインクルード
-  ?> -->
+  <?php
+    get_template_part('template-parts/footer'); // footer.php をインクルード
+  ?>
   <!-- ---------------------------------------------------------------------->
   </body>   
