@@ -3,6 +3,11 @@ get_template_part('template-parts/header'); // header.php をインクルード
 ?>
 
 <main>
+<!-- title-heading -->
+<?php
+    get_template_part('template-parts/title-heading'); // title-heading をインクルード
+?>
+
   <div class="error-404">
     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/A-TECH-TEST-image/test-image/img/404-error.webp"
       loading="lazy"

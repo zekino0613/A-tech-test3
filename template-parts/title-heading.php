@@ -44,8 +44,17 @@ $title_list = [
     'event'          => ['title' => 'イベント情報', 'subtitle' => 'Event Archive'],
 
     // **フォーム関連**
-    'recruit-form'   => ['title' => '採用情報', 'subtitle' => 'Recruit'],
-    'contact-form'   => ['title' => 'お問い合わせ', 'subtitle' => 'Contact'],
+    'recruit-form'         => ['title' => '採用情報', 'subtitle' => 'Recruit'],
+    'recruit-form-confirm' => ['title' => '採用情報', 'subtitle' => 'Recruit'],
+    'contact-form'         => ['title' => 'お問い合わせ', 'subtitle' => 'Contact'],
+    'contact-form-confirm' => ['title' => 'お問い合わせ', 'subtitle' => 'Contact'],
+    'thanks'               => ['title' => 'お問い合わせありがとうございます。', 'subtitle' => 'Thank You for Contacting Us'],
+];
+// **パンくずリストを非表示にするページ**
+$hide_breadcrumbs = [
+  'contact-form-confirm',
+  'recruit-form-confirm',
+  'thanks',
 ];
 
 // デフォルトタイトル（未定義スラッグ用）
@@ -54,6 +63,8 @@ $default_title = ['title' => 'ページタイトル', 'subtitle' => 'Title'];
 // `$slug` に一致するタイトルがあるかチェック
 $section_title = isset($title_list[$slug]) ? $title_list[$slug] : $default_title;
 ?>
+
+
 
 <section id="sub-mainvisual">
   <div class="sub-mainvisual__inner">
@@ -66,8 +77,11 @@ $section_title = isset($title_list[$slug]) ? $title_list[$slug] : $default_title
     </div>
 
     <?php
-      if (function_exists('yoast_breadcrumb')) {
-        yoast_breadcrumb('<nav class="sub-mainvisual__inner--breadcrumbs">', '</nav>');
+      // **特定のページではパンくずリストを非表示にする**
+      if (!in_array($slug, $hide_breadcrumbs, true)) {
+        if (function_exists('yoast_breadcrumb')) {
+          yoast_breadcrumb('<nav class="sub-mainvisual__inner--breadcrumbs">', '</nav>');
+        }
       }
     ?>
   </div><!-- / -->  
