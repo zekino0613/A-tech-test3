@@ -30,20 +30,21 @@
             }
             ?>
 
-          <?php
-          $address = get_field('nursery_address');
-          $detected_prefecture = get_prefecture_from_address($address);
+            <?php
+            $address = get_field('nursery_address');
+            $detected_prefecture = get_prefecture_from_address($address);
 
-          if ($detected_prefecture) {
-              $prefecture_term = get_term_by('name', $detected_prefecture, 'prefecture_category');
+            if ($detected_prefecture):
+                $prefecture_slug = sanitize_title($detected_prefecture); // スラッグ化
+            ?>
+                <p>
+                    <a href="<?php echo esc_url(home_url('/letter/?prefecture=' . $prefecture_slug)); ?>">
+                        この園の都道府県のおたよりを見る
+                    </a>
+                </p>
+            <?php endif; ?>
 
-              if ($prefecture_term) {
-                  wp_set_post_terms(get_the_ID(), [$prefecture_term->term_id], 'prefecture_category', true);
-              }
-          }
-          ?>
 
-          
 
           <!-- サムネイル画像 -->
           <?php

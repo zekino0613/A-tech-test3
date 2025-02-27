@@ -87,7 +87,7 @@
           <?php endif; ?>
             <p class="nursery-prefecture"><?php echo esc_html($prefecture); ?></p>
             <span class="news-header__flex--category"><?php echo esc_html($categories[0]->name ?? '未分類'); ?></span>
-            <h2 class="nursery-name"><?php the_title(); ?></h2>
+            <h2 class="nursery-name"><?php the_title(); ?>園</h2>
         </a>
       <?php
       endwhile;

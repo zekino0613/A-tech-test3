@@ -2074,19 +2074,20 @@ a .btn {
   }
 }
 #archive-letter {
-  height: 100px;
-  padding: 500px 0;
+  height: 2000px;
+  padding: 800px 0;
+}
+#archive-letter .letter-container .letter-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  gap: 20px;
   padding: 20px;
   max-width: 1500px;
   margin: 0 auto;
 }
-#archive-letter .letter-card {
+#archive-letter .letter-container .letter-list .letter-card {
   max-width: 320px;
   width: 100%;
   height: 280px;
@@ -2097,7 +2098,7 @@ a .btn {
   transition: all 0.3s ease;
   position: relative;
 }
-#archive-letter .letter-card:hover {
+#archive-letter .letter-container .letter-list .letter-card:hover {
   -webkit-transform: translateY(-5px);
           transform: translateY(-5px);
   -webkit-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
@@ -2105,16 +2106,16 @@ a .btn {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-#archive-letter .letter-card__image {
+#archive-letter .letter-container .letter-list .letter-card__image {
   width: 100%;
   height: 135px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-#archive-letter .letter-card__textarea {
+#archive-letter .letter-container .letter-list .letter-card__textarea {
   padding: 12px 12px 0 12px;
 }
-#archive-letter .letter-card__textarea--title {
+#archive-letter .letter-container .letter-list .letter-card__textarea--title {
   font-size: 18px;
   letter-spacing: 0.04em;
   line-height: 1.5;
@@ -2122,7 +2123,7 @@ a .btn {
   font-weight: normal;
   color: #333333;
 }
-#archive-letter .letter-card__textarea--letter-title {
+#archive-letter .letter-container .letter-list .letter-card__textarea--letter-title {
   font-size: 16px;
   letter-spacing: 0.04em;
   line-height: 1.5;
@@ -2131,7 +2132,7 @@ a .btn {
   color: #333333;
   margin: 12px 0 13px;
 }
-#archive-letter .letter-card__post-date {
+#archive-letter .letter-container .letter-list .letter-card__post-date {
   font-size: 14px;
   letter-spacing: 0.04em;
   line-height: 1.5;
@@ -2143,7 +2144,7 @@ a .btn {
   right: 12px;
 }
 @media (max-width: 500px) {
-  #archive-letter {
+  #archive-letter .letter-container .letter-list {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2158,7 +2159,7 @@ a .btn {
     max-width: 1500px;
     margin: 0 auto;
   }
-  #archive-letter .letter-card {
+  #archive-letter .letter-container .letter-list .letter-card {
     max-width: 300px;
     width: 100%;
     height: 280px;
@@ -2169,7 +2170,7 @@ a .btn {
     transition: all 0.3s ease;
     position: relative;
   }
-  #archive-letter .letter-card:hover {
+  #archive-letter .letter-container .letter-list .letter-card:hover {
     -webkit-transform: translateY(-5px);
             transform: translateY(-5px);
     -webkit-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
@@ -2177,16 +2178,16 @@ a .btn {
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
   }
-  #archive-letter .letter-card__image {
+  #archive-letter .letter-container .letter-list .letter-card__image {
     width: 100%;
     height: 135px;
     -o-object-fit: cover;
        object-fit: cover;
   }
-  #archive-letter .letter-card__textarea {
+  #archive-letter .letter-container .letter-list .letter-card__textarea {
     padding: 12px 12px 0 12px;
   }
-  #archive-letter .letter-card__textarea--title {
+  #archive-letter .letter-container .letter-list .letter-card__textarea--title {
     font-size: 18px;
     letter-spacing: 0.04em;
     line-height: 1.5;
@@ -2194,7 +2195,7 @@ a .btn {
     font-weight: normal;
     color: #333333;
   }
-  #archive-letter .letter-card__textarea--letter-title {
+  #archive-letter .letter-container .letter-list .letter-card__textarea--letter-title {
     font-size: 16px;
     letter-spacing: 0.04em;
     line-height: 1.5;
@@ -2203,7 +2204,7 @@ a .btn {
     color: #333333;
     margin: 12px 0 13px;
   }
-  #archive-letter .letter-card__post-date {
+  #archive-letter .letter-container .letter-list .letter-card__post-date {
     font-size: 14px;
     letter-spacing: 0.04em;
     line-height: 1.5;
@@ -2237,7 +2238,6 @@ a .btn {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  gap: 20px;
   padding: 20px;
   max-width: 1500px;
   margin: 0 auto;
@@ -2451,7 +2451,6 @@ a .btn {
   display: block;
   background: #fffaf0;
   border-radius: 15px;
-  padding: 20px;
   margin-bottom: 20px;
   -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

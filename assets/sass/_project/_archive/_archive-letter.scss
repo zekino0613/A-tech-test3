@@ -1,11 +1,9 @@
 @use "../../_foundation/_mixin"as mixin;
 @use "../../_foundation/_base"as base;
 
-
 @mixin letter-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
   padding: 20px;
   max-width: 1500px;
   margin: 0 auto;
@@ -132,15 +130,19 @@
 
 
 #archive-letter {
-    height: 100px;
-    padding: 500px 0;
-    // 投稿カードのデザイン
-    @include letter-list
-}    
+  height: 2000px;
+  padding: 800px 0;
+  .letter-container {
+    .letter-list {
+    @include letter-list;
+
+    }
+  }
+}
 
 
 
 
 
 
-  
+ 

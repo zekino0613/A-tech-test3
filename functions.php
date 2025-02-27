@@ -277,25 +277,11 @@ add_action('init', 'register_custom_taxonomies',0);
 
 
 
-function filter_news_by_category($query) {
-  if (!is_admin() && $query->is_main_query() && is_post_type_archive('info')) {
-      if (!empty($_GET['osirase'])) {
-          $query->set('tax_query', [
-              [
-                  'taxonomy' => 'osirase',
-                  'field'    => 'slug',
-                  'terms'    => sanitize_text_field($_GET['osirase']),
-              ]
-          ]);
-      }
-  }
-}
-add_action('pre_get_posts', 'filter_news_by_category');
-
 
 
 
 //ページネーション
+// archive-info
 function modify_info_archive_query($query) {
   if ($query->is_main_query() && !is_admin() && is_post_type_archive('info')) {
       $query->set('posts_per_page', 6); // ✅ 1ページあたりの投稿数を指定
@@ -306,7 +292,8 @@ function modify_info_archive_query($query) {
 }
 add_action('pre_get_posts', 'modify_info_archive_query');
 
-
+//ページネーション
+// archive-introduction   archive-letter
 function modify_archive_queries($query) {
     if (is_admin() || !$query->is_main_query()) {
         return;
@@ -317,41 +304,147 @@ function modify_archive_queries($query) {
       $query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1); // ✅ ページネーション対応
   }
     if (is_post_type_archive('letter')) {
-        $query->set('posts_per_page', 2);
+        $query->set('posts_per_page', 9);
     }
 }
 add_action('pre_get_posts', 'modify_archive_queries');
 
 
+// archive-letter
+// single-introduction の住所から都道府県を取得
+function get_prefecture_by_nursery_name($nursery_name) {
+  if (empty($nursery_name)) return '';
 
+  // `single-introduction` で `the_title()` と一致する投稿を取得
+  $args = [
+      'post_type'      => 'introduction',
+      'posts_per_page' => 1,
+      'title'          => $nursery_name,
+  ];
 
+  $query = new WP_Query($args);
 
-function set_prefecture_taxonomy_on_save($post_id) {
-  if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+  if ($query->have_posts()) {
+      $query->the_post();
+      $address = get_field('nursery_address'); // `nursery_address` から住所取得
+      wp_reset_postdata();
 
-  if (get_post_type($post_id) !== 'introduction') return;
-
-  $address = get_field('nursery_address', $post_id);
-  if (!$address) return;
-
-  $prefecture = get_prefecture_from_address($address);
-  if ($prefecture === "不明") return;
-
-  $term = get_term_by('name', $prefecture, 'prefecture');
-
-  if (!$term) {
-      $term = wp_insert_term($prefecture, 'prefecture');
-      if (is_wp_error($term)) return;
-      $term_id = $term['term_id'];
-  } else {
-      $term_id = $term->term_id;
+      if ($address) {
+          return get_prefecture_from_address($address); // 住所から都道府県を取得
+      }
   }
 
-  wp_set_post_terms($post_id, [$term_id], 'prefecture', false);
+  return ''; // 一致する投稿がない場合  
 }
-add_action('save_post', 'set_prefecture_taxonomy_on_save');
+
+// archive-letter
+// introduction  「都道府県」カテゴリーが自動で設定
+add_action('save_post', 'debug_prefecture_assignment', 10, 3);
+
+function debug_prefecture_assignment($post_id, $post, $update) {
+    if (get_post_type($post_id) !== 'introduction') return;
+
+    $address = get_field('nursery_address', $post_id);
+    if (!$address) {
+        error_log("デバッグ: nursery_address が取得できません");
+        return;
+    }
+
+    $prefecture = get_prefecture_from_address($address);
+    if (!$prefecture || $prefecture === "不明") {
+        error_log("デバッグ: 住所から都道府県が取得できません");
+        return;
+    }
+
+    $term = get_term_by('name', $prefecture, 'prefecture');
+
+    if (!$term) {
+        $term = wp_insert_term($prefecture, 'prefecture');
+        if (is_wp_error($term)) {
+            error_log("デバッグ: wp_insert_term() でエラー発生 - " . $term->get_error_message());
+            return;
+        }
+        $term_id = $term['term_id'];
+    } else {
+        $term_id = $term->term_id;
+    }
+
+    $result = wp_set_post_terms($post_id, [$term_id], 'prefecture', false);
+    if (is_wp_error($result)) {
+        error_log("デバッグ: wp_set_post_terms() でエラー発生 - " . $result->get_error_message());
+    } else {
+        error_log("デバッグ: 都道府県「{$prefecture}」を適用しました");
+    }
+}
 
 
+
+// archive-letter
+
+// single-introduction のタイトルを比較し、
+// 一致する single-introduction の住所から都道府県を取得し、
+// letter の投稿に 都道府県カテゴリーを自動で設定
+function set_letter_prefecture_category($post_id) {
+  if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+  if (get_post_type($post_id) !== 'letter') return;
+
+  $letter_title = get_the_title($post_id);
+  if (!$letter_title) return;
+
+  // `single-introduction` の園名 (`the_title()`) と一致するものを取得
+  $matching_nursery = get_posts([
+      'post_type'      => 'introduction',
+      'title'          => $letter_title, // `letter` のタイトルと一致するもの
+      'posts_per_page' => 1
+  ]);
+
+  if (!empty($matching_nursery)) {
+      $nursery_post = $matching_nursery[0]; // 最初の一致した投稿
+      $address = get_field('nursery_address', $nursery_post->ID);
+      $prefecture = get_prefecture_from_address($address);
+      
+      if ($prefecture) {
+          $term = get_term_by('name', $prefecture, 'prefecture');
+          if (!$term) {
+              $term = wp_insert_term($prefecture, 'prefecture');
+              if (is_wp_error($term)) return;
+              $term_id = $term['term_id'];
+          } else {
+              $term_id = $term->term_id;
+          }
+          wp_set_post_terms($post_id, [$term_id], 'prefecture', false);
+      }
+  }
+}
+add_action('save_post', 'set_letter_prefecture_category');
+
+// archive-letter
+// すでに投稿されている letter の都道府県カテゴリーを一括で設定・更新したいときだけ使用
+// function update_all_letter_prefectures() {
+//   $letters = get_posts([
+//       'post_type'      => 'letter',
+//       'posts_per_page' => -1,
+//   ]);
+
+//   foreach ($letters as $letter) {
+//       set_letter_prefecture_category($letter->ID);
+//   }
+// }
+// add_action('admin_init', 'update_all_letter_prefectures');
+
+
+
+// archive-letter サイドバーのアーカイブ
+function filter_archive_by_date($query) {
+  if (!is_admin() && $query->is_main_query() && is_date()) {
+      $query->set('post_type', 'letter'); // `single-letter` の投稿タイプに限定
+  }
+}
+add_action('pre_get_posts', 'filter_archive_by_date');
+
+
+
+// archive-introduction
 // 都道府県を地理順にソートする関数
 function sort_prefectures_by_region($prefecture_terms) {
   // 地理順に並べるための手動指定リスト
@@ -376,173 +469,6 @@ function sort_prefectures_by_region($prefecture_terms) {
 
   return $prefecture_terms;
 }
-
-// 【archive-salons】--------------------------------
-
-// // 都道府県のローマ字変換マッピング
-// if (!function_exists('prefecture_to_romaji')) {
-//   function prefecture_to_romaji($prefecture) {
-//       $mapping = [
-//           '北海道' => 'Hokkaido',
-//           '青森県' => 'Aomori',
-//           '岩手県' => 'Iwate',
-//           '宮城県' => 'Miyagi',
-//           '秋田県' => 'Akita',
-//           '山形県' => 'Yamagata',
-//           '福島県' => 'Fukushima',
-//           '茨城県' => 'Ibaraki',
-//           '栃木県' => 'Tochigi',
-//           '群馬県' => 'Gunma',
-//           '埼玉県' => 'Saitama',
-//           '千葉県' => 'Chiba',
-//           '東京都' => 'Tokyo',
-//           '神奈川県' => 'Kanagawa',
-//           '新潟県' => 'Niigata',
-//           '富山県' => 'Toyama',
-//           '石川県' => 'Ishikawa',
-//           '福井県' => 'Fukui',
-//           '山梨県' => 'Yamanashi',
-//           '長野県' => 'Nagano',
-//           '岐阜県' => 'Gifu',
-//           '静岡県' => 'Shizuoka',
-//           '愛知県' => 'Aichi',
-//           '三重県' => 'Mie',
-//           '滋賀県' => 'Shiga',
-//           '京都府' => 'Kyoto',
-//           '大阪府' => 'Osaka',
-//           '兵庫県' => 'Hyogo',
-//           '奈良県' => 'Nara',
-//           '和歌山県' => 'Wakayama',
-//           '鳥取県' => 'Tottori',
-//           '島根県' => 'Shimane',
-//           '岡山県' => 'Okayama',
-//           '広島県' => 'Hiroshima',
-//           '山口県' => 'Yamaguchi',
-//           '徳島県' => 'Tokushima',
-//           '香川県' => 'Kagawa',
-//           '愛媛県' => 'Ehime',
-//           '高知県' => 'Kochi',
-//           '福岡県' => 'Fukuoka',
-//           '佐賀県' => 'Saga',
-//           '長崎県' => 'Nagasaki',
-//           '熊本県' => 'Kumamoto',
-//           '大分県' => 'Oita',
-//           '宮崎県' => 'Miyazaki',
-//           '鹿児島県' => 'Kagoshima',
-//           '沖縄県' => 'Okinawa',
-//       ];
-
-//       return $mapping[$prefecture] ?? $prefecture;
-//   }
-// }
-
-// // 都道府県の一覧を取得（メニューやフィルターに使用）
-// // archive-salonsカスタムフィールド住所から情報取得しカテゴライズ項目の出力（重複削除）
-// if (!function_exists('get_unique_prefectures')) {
-//   function get_unique_prefectures() {
-//       $args = [
-//           'post_type' => 'salons',
-//           'posts_per_page' => -1,
-//       ];
-//       $query = new WP_Query($args);
-
-//       $prefectures = [];
-//       if ($query->have_posts()) {
-//           while ($query->have_posts()) {
-//               $query->the_post();
-//               $address = get_field('address');
-//               if ($address) {
-//                   // 住所から都道府県を取得
-//                   preg_match('/(東京都|北海道|(?:京都|大阪)府|.{2,3}県)/u', $address, $matches);
-//                   if (!empty($matches[0])) {
-//                       $prefectures[] = $matches[0];
-//                   }
-//               }
-//           }
-//           wp_reset_postdata();
-//       }
-
-//       // 重複を排除してソート
-//       $unique_prefectures = array_unique($prefectures);
-//       sort($unique_prefectures);
-
-//       return $unique_prefectures;
-//   }
-// }
-
-// // 都道府県ごとの店舗リストを取得（リスト表示）
-// // archive-salonsカスタムフィールド情報取得
-// if (!function_exists('get_stores_by_prefecture')) {
-//   function get_stores_by_prefecture() {
-//       $args = [
-//           'post_type' => 'salons',
-//           'posts_per_page' => -1,
-//       ];
-//       $query = new WP_Query($args);
-
-//       $stores_by_prefecture = [];
-//       if ($query->have_posts()) {
-//           while ($query->have_posts()) {
-//               $query->the_post();
-
-//               // 店舗情報を取得
-//               $store_id = get_the_ID();
-//               $store_title = get_the_title();
-//               $address = get_field('address'); // カスタムフィールド 'address' を取得
-
-//               if ($address) {
-//                   // 住所から都道府県を取得
-//                   preg_match('/(東京都|北海道|(?:京都|大阪)府|.{2,3}県)/u', $address, $matches);
-//                   if (!empty($matches[0])) {
-//                       $prefecture = $matches[0];
-//                       $stores_by_prefecture[$prefecture][] = [
-//                           'id' => $store_id, // 投稿IDを追加
-//                           'title' => $store_title,
-//                           'address' => $address,
-//                       ];
-//                   }
-//               }
-//           }
-//           wp_reset_postdata();
-//       }
-//       return $stores_by_prefecture;
-//   }
-// }
-
-
-
-// //明視的に漢字をアルファベットに変換
-// function convert_to_romaji($text) {
-//   if (empty($text)) {
-//       return '';
-//   }
-
-//   // 不要な文字を削除（例: 「店」など）
-//   $text = trim(str_replace('店', '', $text));
-
-//   // 漢字変換用マッピング
-//   $map = [
-//       '新宿' => 'Shinjuku',
-//       '渋谷' => 'Shibuya',
-//       '平塚' => 'Hiratsuka',
-//       '横浜' => 'Yokohama',
-//       'さいたま' => 'Saitama',
-//       '春日部' => 'Kasukabe',
-//       '堺' => 'Sakai',
-//       '梅田' => 'Umeda',
-//       '五条' => 'Gojo',
-//       '久留米' => 'Kurume',
-//       '那覇' => 'Naha',
-//   ];
-
-//   // マッピングが存在する場合はローマ字を返し、存在しない場合は元の文字列を返す
-//   if (isset($map[$text])) {
-//     return strtoupper($map[$text]); // 大文字変換
-// }
-
-// // マッピングにない場合、元の文字列をそのまま返す
-// return strtoupper($text); // 元の文字列も大文字に変換
-// }
 
 
 // 【ContactForm7】--------------------------------------
