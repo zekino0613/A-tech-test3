@@ -30,7 +30,15 @@
 
 
 <!-- 共通パーツ確認 --------------------------------->
+<!-- .btn  -->
 <a href="<?php echo home_url('/contact-form/'); ?>" class="btn">
   <p class="btn__text">エントリー</p>
   <i class="fa-solid fa-angle-right"></i>
 </a>
+
+
+<!-- .btn-pattern2  -->
+<a href="<?php echo home_url('/'); ?>" class="btn-pattern2">
+      <p class="btn-pattern2__text">TOPにもどる</p>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>

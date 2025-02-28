@@ -48,7 +48,7 @@ $title_list = [
     'recruit-form-confirm' => ['title' => '採用情報', 'subtitle' => 'Recruit'],
     'contact-form'         => ['title' => 'お問い合わせ', 'subtitle' => 'Contact'],
     'contact-form-confirm' => ['title' => 'お問い合わせ', 'subtitle' => 'Contact'],
-    'thanks'               => ['title' => 'お問い合わせありがとうございます。', 'subtitle' => 'Thank You for Contacting Us'],
+    'thanks'               => ['title' => 'お問い合わせ<br class="brsp">ありがとうございます。', 'subtitle' => 'Thank You for Contacting Us'],
 ];
 // **パンくずリストを非表示にするページ**
 $hide_breadcrumbs = [
