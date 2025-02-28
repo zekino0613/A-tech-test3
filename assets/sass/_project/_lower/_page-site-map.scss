@@ -45,6 +45,9 @@
               400,
               F-color-brown);
               width: 100%; // 幅を均等にする
+              &:hover {
+                color: map-get(mixin.$colors, "C-pink");
+              }
               &::before {
                 content: "●"; /* 例: 矢印 */
                 font-size: 15px;

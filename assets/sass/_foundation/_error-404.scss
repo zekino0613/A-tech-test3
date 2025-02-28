@@ -1,15 +1,49 @@
-// @use "../_foundation/mixin"as mixin;
-// @use "../_foundation/base"as base;
+@use "./mixin"as mixin;
+@use "../_foundation/base"as base;
 
 
 
-.error-404 {
-  margin: 0 auto;
-  padding: 300px 0 300px ;
-  display: flex; /* フレックスボックスを有効化 */
-  justify-content: center; /* 水平方向に中央揃え */
-  align-items: center; /* 垂直方向に中央揃え */
-    img {
-      display: block;
-    }
+#error-404 {
+  padding: 0 12.5% 174px;
+  margin: -9px 0 0 0;
+  p {
+    @include mixin.font-settings (
+      F-size20,
+      F-line-height30,
+      F-letter-spacing-10,
+      F-family-KosugiMaru,
+      400,
+      F-color-black);
+  }
+  // .p1 {
+  //   margin: 0 0 0;
+  // }
+  .p2 {
+    margin: 5px 0 4px;
+  }
+  .p3 {
+    margin: 0 0 0;
+  }
 }
+
+@include mixin.SP {
+  #error-404 {
+    padding: 0 4% 120px;
+    margin: 0;
+    p {
+      @include mixin.font-settings (
+        F-size17,
+        25.5,
+        F-letter-spacing-10,
+        F-family-KosugiMaru,
+        400,
+        F-color-black);
+    }
+    .p2 {
+      margin: 7px 0 8px;
+    }
+    .p3 {
+      margin: 0 0 0;
+    }
+  }
+}  

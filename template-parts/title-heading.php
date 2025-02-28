@@ -34,7 +34,7 @@ $title_list = [
     'about'          => ['title' => 'わたしたちのこと', 'subtitle' => 'About'],
     'site-map'       => ['title' => 'サイトマップ', 'subtitle' => 'Sitemap'],
     'privacy-policy' => ['title' => 'プライバシーポリシー', 'subtitle' => 'Privacy Policy'],
-    '404'            => ['title' => 'お探しのページが見あたりません。', 'subtitle' => 'Page Not Found'],
+    '404'            => ['title' => 'お探しのページが<br class="brsp">見あたりません。', 'subtitle' => 'Page Not Found'],
 
     // **カスタム投稿タイプ（`archive.php` & `single.php` 共通）**
     'introduction'   => ['title' => '各園のご紹介', 'subtitle' => 'Introduction'],
@@ -66,12 +66,15 @@ $section_title = isset($title_list[$slug]) ? $title_list[$slug] : $default_title
 
 
 
+
+
 <section id="sub-mainvisual">
   <div class="sub-mainvisual__inner">
     <div class="sub-mainvisual__inner--page-title">
       <div class="title-wrapper">
-          <h1><?php echo esc_html($section_title['title']); ?></h1>
-          <p><?php echo esc_html($section_title['subtitle']); ?></p>
+        <!-- HTML タグをエスケープ ↓  -->
+        <h1><?php echo wp_kses_post($section_title['title']); ?></h1>
+        <p><?php echo esc_html($section_title['subtitle']); ?></p>
       </div>
       <!-- パンくずリスト -->
     </div>

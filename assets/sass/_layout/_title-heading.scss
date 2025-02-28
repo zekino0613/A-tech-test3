@@ -116,6 +116,19 @@
         &--page-title {
           position: relative;
           z-index: 1;
+          .title-wrapper {
+          h1 {
+            @include mixin.font-settings (
+              F-size28,
+              F-line-height35,
+              F-letter-spacing-10,
+              F-family-KosugiMaru,
+              400,
+              F-color-brown);
+              display: block;
+              margin: 63px 0 12px;
+          }
+        }
         }  
       // 【パンくずリストプラグイン】-------------↓
         &--breadcrumbs {
@@ -159,7 +172,7 @@
             h1 {
               @include mixin.font-settings (
                 F-size20,
-                F-line-height20,
+                F-line-height30,
                 F-letter-spacing-10,
                 F-family-KosugiMaru,
                 400,

@@ -150,8 +150,30 @@ function custom_breadcrumb_labels($link_output, $link) {
     if (strpos($link_output, 'reserve') !== false) {
       $link_output = str_replace('reserve', 'ご予約・お問い合わせ', $link_output);
     }
+    if (strpos($link_output, '404') !== false) {
+      $link_output = str_replace('404', '404', $link_output);
+    }
     return $link_output;
 }
+
+// 404ページの際のパンくずリスト
+add_filter( 'wpseo_breadcrumb_links', function( $links ) {
+  if ( is_404() ) {
+      return array(
+          array(
+              'text' => 'TOP',
+              'url'  => home_url(),
+          ),
+          array(
+              'text' => '404',
+              'url'  => '',
+          )
+      );
+  }
+  return $links;
+});
+
+
 
 
 // 下層ページ【page-price-menu】の各セクションへのページジャンプ  ----------------------
@@ -418,19 +440,6 @@ function set_letter_prefecture_category($post_id) {
 }
 add_action('save_post', 'set_letter_prefecture_category');
 
-// archive-letter
-// すでに投稿されている letter の都道府県カテゴリーを一括で設定・更新したいときだけ使用
-// function update_all_letter_prefectures() {
-//   $letters = get_posts([
-//       'post_type'      => 'letter',
-//       'posts_per_page' => -1,
-//   ]);
-
-//   foreach ($letters as $letter) {
-//       set_letter_prefecture_category($letter->ID);
-//   }
-// }
-// add_action('admin_init', 'update_all_letter_prefectures');
 
 
 
@@ -469,6 +478,10 @@ function sort_prefectures_by_region($prefecture_terms) {
 
   return $prefecture_terms;
 }
+
+
+
+
 
 
 // 【ContactForm7】--------------------------------------

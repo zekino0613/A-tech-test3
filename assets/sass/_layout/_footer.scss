@@ -33,6 +33,9 @@
               F-family-KosugiMaru,
               400,
               F-color-brown);
+              &:hover {
+                color: map-get(mixin.$colors, "C-pink");
+              }
           }
         }  
       }

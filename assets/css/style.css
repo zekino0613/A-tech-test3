@@ -525,23 +525,45 @@ a .btn {
     display: none;
   }
 }
-.error-404 {
-  margin: 0 auto;
-  padding: 300px 0 300px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; /* フレックスボックスを有効化 */
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center; /* 水平方向に中央揃え */
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; /* 垂直方向に中央揃え */
+#error-404 {
+  padding: 0 12.5% 174px;
+  margin: -9px 0 0 0;
 }
-.error-404 img {
-  display: block;
+#error-404 p {
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  font-family: "Kosugi Maru";
+  font-weight: 400;
+  color: #333333;
+}
+#error-404 .p2 {
+  margin: 5px 0 4px;
+}
+#error-404 .p3 {
+  margin: 0 0 0;
 }
 
+@media (max-width: 500px) {
+  #error-404 {
+    padding: 0 4% 120px;
+    margin: 0;
+  }
+  #error-404 p {
+    font-size: 17px;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #333333;
+  }
+  #error-404 .p2 {
+    margin: 7px 0 8px;
+  }
+  #error-404 .p3 {
+    margin: 0 0 0;
+  }
+}
 #header {
   width: 100%;
   height: 100%;
@@ -1331,6 +1353,9 @@ a .btn {
   font-weight: 400;
   color: #55000C;
 }
+#footer .footer__inner .f-nav__ul--li a:hover {
+  color: #EF8F9C;
+}
 #footer .footer__inner .f-text {
   text-align: center;
   font-size: 14px;
@@ -1509,6 +1534,16 @@ a .btn {
     position: relative;
     z-index: 1;
   }
+  #sub-mainvisual .sub-mainvisual__inner--page-title .title-wrapper h1 {
+    font-size: 28px;
+    letter-spacing: 0.1em;
+    line-height: 1.25;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+    display: block;
+    margin: 63px 0 12px;
+  }
   #sub-mainvisual .sub-mainvisual__inner--breadcrumbs {
     width: 93.8%;
     margin: 12px auto 100px;
@@ -1548,7 +1583,7 @@ a .btn {
   #sub-mainvisual .sub-mainvisual__inner--page-title .title-wrapper h1 {
     font-size: 20px;
     letter-spacing: 0.1em;
-    line-height: 1;
+    line-height: 1.5;
     font-family: "Kosugi Maru";
     font-weight: 400;
     color: #55000C;
@@ -2558,6 +2593,9 @@ a .btn {
   font-weight: 400;
   color: #55000C;
   width: 100%;
+}
+#site-map .site-map__inner .site-map-list__ul--li a:hover {
+  color: #EF8F9C;
 }
 #site-map .site-map__inner .site-map-list__ul--li a::before {
   content: "●"; /* 例: 矢印 */
