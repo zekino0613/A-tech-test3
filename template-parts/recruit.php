@@ -10,7 +10,7 @@
       </p><!-- / -->
 
       <div class="recruit__inner--bottom-flex">
-        <a href="<?php echo home_url('/recruit/'); ?>" class="btn bottom-recruit">
+        <a href="<?php echo home_url('/recruit-form/'); ?>" class="btn bottom-recruit">
           <p class="btn__text">採用情報</p>
           <i class="fa-solid fa-angle-right"></i>
         </a>

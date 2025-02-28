@@ -25,7 +25,7 @@
           </a>
         </li>
         <li class="f-nav__ul--li">
-          <a href="<?php echo home_url('/recruit/'); ?>">
+          <a href="<?php echo home_url('/recruit-form/'); ?>">
             採用情報
           </a>
         </li>

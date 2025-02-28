@@ -68,6 +68,9 @@ $title_data = [
         'title' => 'こもれびだより',
         'english_title' => 'letter'
     ],
+    'site-map' => [
+        'image' => 'assets/images/kidsland_image/design-parts/site-map-icon.webp',
+    ],
     // デフォルト（未定義の場合）
     'Default' => [
         'image' => 'assets/images/kidsland_image/design-parts/default-icon.webp',

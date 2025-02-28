@@ -79,11 +79,12 @@
             'taxonomy'   => 'prefecture', // カスタムタクソノミー
             'hide_empty' => true,
             'parent'     => 0, 
+            'number'     => 6, // ✅ ここで6件に制限
         ]);
         
         // 都道府県を地理順にソートする関数
         $sorted_prefectures = sort_prefectures_by_region($prefecture_terms);
-
+        
         foreach ($sorted_prefectures as $term) {
             $slug = rawurlencode(sanitize_title($term->name)); // ✅ エンコードを `archive` の形式に統一
             $archive_link = add_query_arg('prefecture', $slug, get_post_type_archive_link('introduction')); // ✅ クエリパラメータを適用
@@ -98,18 +99,16 @@
     </a>
   </section>
 
-  <section id="letter">
+  <section id="letter" class="pink-bk">
     <!-- title-icon -->  
     <?php
       get_template_part('template-parts/title-icon', null, ['name' => 'letter']);// title-icon をインクルード
     ?>
 
     <?php
-      $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
       $args = [
           'post_type'      => 'letter', // 投稿タイプが 'letter'
-          'posts_per_page' => 9,
-          'paged'          => $paged,
+          'posts_per_page' => 6,
       ];
 
       // WP_Query 実行
@@ -151,13 +150,8 @@
               echo esc_html($date_hiragana);
               ?>
             </time>
-            <!-- <p>園名: <?php echo esc_html($nursery_name); ?></p>
-            <p>都道府県: <?php echo esc_html($prefecture); ?></p>
-            <p>投稿日: <?php echo get_the_date(); ?></p> -->
           </a>
-
           <?php endwhile; ?>
-          <?php echo paginate_links(['total' => $query->max_num_pages]); ?>
       <?php else : ?>
           <p>該当する記事はありません。</p>
       <?php endif; ?>

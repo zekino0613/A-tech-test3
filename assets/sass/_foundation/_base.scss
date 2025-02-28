@@ -204,6 +204,60 @@ a:focus-visible {
   }
 }
 
+
+// ピンク背景画像と点線の背景
+.pink-bk {
+  width: 100%;
+  height: 100%; // 高さが必要な場合
+  background: url('../../assets/images/kidsland_image/bg/top-letters__bg-pc.webp') no-repeat center top;
+  background-size: cover;
+  padding: 160px 4% 120px;
+  position: relative;
+  .title-icon {
+    &__bg {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &__title {
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &__english {
+      position: absolute;
+      top: 110px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+.pink-bk::before,
+.pink-bk::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background: repeating-linear-gradient(
+        90deg
+      , map-get(mixin.$colors, "C-pink")
+      ,map-get(mixin.$colors, "C-pink") 5px
+      , transparent 5px
+      , transparent 10px);
+    transform: translateX(-50%);
+}
+.pink-bk::before {
+  top: 0;
+}
+.pink-bk::after {
+  bottom: 0;
+}
+
+
+
 //btn
 .btn {
   width: 240px;
@@ -333,6 +387,36 @@ a .btn {
   }
 }
 
+// ピンク背景画像と点線の背景
+.pink-bk {
+  width: 100%;
+  height: 100%; // 高さが必要な場合
+  background: url('../../assets/images/kidsland_image/bg/top-letters__bg-pc.webp') no-repeat center top;
+  background-size: cover;
+  padding: 160px 4% 120px;
+  position: relative;
+  .title-icon {
+    &__bg {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &__title {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &__english {
+      position: absolute;
+      top: 90px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
 
 //btn
   .btn {
@@ -438,47 +522,4 @@ a .btn {
   }
 
 
-  
-  //-------------------------------------------------------------------------------
-  // wordpressテンプレートパーツ
-  //-------------------------------------------------------------------------------
-  // 【パンくずリストプラグイン】-------------↓
-  #breadcrumbs {
-    @include mixin.font-settings
-    (F-size14
-    ,F-line-height36
-    ,F-letter-spacing-1-4
-    ,F-family-mincho
-    ,normal, F-color-orange);
-    padding: 0 0 0 0;
-
-    /* 各パンくずの要素設定 */
-    span {
-      display: flex;
-      // flex-wrap: wrap; // 折り返し設定b
-      gap: 4px; // 各要素の間隔を設定
-      margin: 0; // 不要な余白を削除
-      padding: 0;
-      /* リンクのスタイル */
-      a {
-        color: #ca7f13; // リンクの色
-        text-decoration: none; // 下線を削除
-        transition: color 0.3s ease; // ホバー時のスムーズな色変更
-        margin: 0;
-        &:hover {
-          color: #a8660f; // ホバー時の色
-        }
-      }
-
-      /* 最後のパンくず要素 */
-      &.breadcrumb_last {
-        margin-right: 16px; // 必要に応じて調整
-      }
-
-      /* 最後の区切り線を削除 */
-      &:last-child::after {
-        content: ""; // 空白
-      }
-    }
-  }
 }

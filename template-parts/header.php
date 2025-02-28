@@ -188,7 +188,7 @@
             </li>
             <li class="h-nav__ul--li">
               <div class="line-border"></div>
-              <a href="<?php echo home_url('/recruit/'); ?>">
+              <a href="<?php echo home_url('/recruit-form/'); ?>">
                 <div class="header-icon">
                   <img
                     class="header-icon__img"
@@ -296,7 +296,7 @@
                     </a>
                   </li>
                   <li class="h-nav__ul--li">
-                    <a href="<?php echo home_url('/recruit/'); ?>">
+                    <a href="<?php echo home_url('/recruit-form/'); ?>">
                       <div class="header-icon">
                         <img
                           class="header-icon__img"
