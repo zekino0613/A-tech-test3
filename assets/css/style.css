@@ -425,7 +425,7 @@ a .btn-pattern2 {
     height: 53px;
   }
   .title-icon__title {
-    font-size: 18px;
+    font-size: 20px;
     letter-spacing: 0.1em;
     line-height: 1.5;
     font-family: "Kosugi Maru";
@@ -433,7 +433,7 @@ a .btn-pattern2 {
     color: #55000C;
     width: 100%;
     display: block;
-    margin: 0 auto 8px;
+    margin: 0 auto 9px;
   }
   .title-icon__english {
     font-size: 10px;
@@ -473,63 +473,6 @@ a .btn-pattern2 {
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
-  }
-  .btn {
-    max-width: 200px;
-    width: 100%;
-    height: 50px;
-    border-radius: 30px;
-    color: #55000C;
-    border: 2px solid #55000C;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    background-color: #FFFFFF;
-    -webkit-transition: ease, -webkit-transform 1s ease;
-    transition: ease, -webkit-transform 1s ease;
-    transition: ease, transform 1s ease;
-    transition: ease, transform 1s ease, -webkit-transform 1s ease;
-    position: relative;
-    -webkit-transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
-    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
-  }
-  .btn__text {
-    font-size: 16px;
-    letter-spacing: 0.1em;
-    line-height: 1;
-    font-family: "Kosugi Maru";
-    font-weight: 400;
-    color: #55000C;
-  }
-  .btn i {
-    position: absolute;
-    top: 15px;
-    right: 13.1px;
-    font-size: 16px;
-    -webkit-transition: -webkit-transform 0.3s ease-in-out;
-    transition: -webkit-transform 0.3s ease-in-out;
-    transition: transform 0.3s ease-in-out;
-    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-  }
-  .btn:hover {
-    color: #FFFFFF;
-    background-color: #55000C;
-    border-color: #FFFFFF;
-    opacity: 1;
-    -webkit-transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
-    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
-  }
-  .btn:hover .btn__text {
-    color: #FFFFFF;
-  }
-  a .btn {
-    display: block;
   }
 }
 .btn-pattern2 {
@@ -2115,8 +2058,8 @@ a .btn-pattern2 {
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
-  border-radius: 30px;
-  padding: 64px 4%;
+  border-radius: 40px;
+  padding: 66px 4%;
 }
 #contact .contact__inner--text {
   font-size: 18px;
@@ -2139,7 +2082,7 @@ a .btn-pattern2 {
     margin: 0 auto;
     background: url("../../assets/images/kidsland_image/bg/contact-bg-sp.webp") no-repeat center top;
     background-size: cover;
-    padding: 75px 4%;
+    padding: 79px 4% 92px;
   }
   #contact .contact__inner {
     width: 100%;
@@ -2147,18 +2090,18 @@ a .btn-pattern2 {
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
-    border-radius: 30px;
+    border-radius: 40px;
     padding: 64px 8%;
   }
   #contact .contact__inner--text {
-    font-size: 18px;
+    font-size: 16px;
     letter-spacing: 0.1em;
-    line-height: 2;
+    line-height: 1.5;
     font-family: "Kosugi Maru";
     font-weight: 400;
     color: #55000C;
     text-align: center;
-    margin: 32px auto;
+    margin: 44px auto;
   }
   #contact .contact__inner .btn {
     margin: 0 auto;
@@ -2667,6 +2610,181 @@ a .btn-pattern2 {
   }
   #letter .btn {
     margin: 42px auto 0;
+  }
+}
+#philosophy {
+  margin: -13px auto 0;
+}
+#philosophy .philosophy__inner--text {
+  margin: 50px auto 121px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 0.2em;
+  line-height: 3;
+  font-family: "Kosugi Maru";
+  font-weight: 400;
+  color: #55000C;
+}
+
+#yearly-program {
+  padding: 0px 5% 118px 6%;
+  margin: 0 auto;
+}
+#yearly-program .yearly-program__inner .yearly-list {
+  min-width: 1080px;
+  width: 84%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 20px;
+  border-radius: 40px;
+  padding: 60px 3% 116px;
+  margin: 32px auto 0;
+  position: relative;
+  background-color: #FFFFFF;
+}
+#yearly-program .yearly-program__inner .yearly-list .card {
+  max-width: 320px;
+  width: 100%;
+  height: 264px;
+  background: #FFEDF0;
+  padding: 12px;
+  border-radius: 20px;
+  overflow: hidden;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+}
+#yearly-program .yearly-program__inner .yearly-list .card__image {
+  width: 100%;
+  height: 180px;
+  border-radius: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#yearly-program .yearly-program__inner .yearly-list .card__textarea {
+  padding: 9px 0px 0 0px;
+}
+#yearly-program .yearly-program__inner .yearly-list .card__textarea--month {
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  font-family: "Kosugi Maru";
+  font-weight: normal;
+  color: #55000C;
+}
+#yearly-program .yearly-program__inner .yearly-list .card__textarea--event {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  font-family: "Kosugi Maru";
+  font-weight: normal;
+  color: #55000C;
+  margin: 8px 0 0;
+}
+#yearly-program .yearly-program__inner .yearly-list__text {
+  position: absolute;
+  bottom: 59px;
+  left: 38px;
+  padding: 12px 0 0;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  font-family: "Kosugi Maru";
+  font-weight: normal;
+  color: #333333;
+}
+
+@media (max-width: 1200px) {
+  #philosophy {
+    margin: 0px auto;
+    padding: 0 3.5% 0 4%;
+  }
+  #philosophy .philosophy__inner--text {
+    margin: 60px auto 164px;
+    text-align: left;
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    line-height: 3;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+  }
+  #yearly-program {
+    padding: 32px 4% 80px;
+  }
+  #yearly-program .yearly-program__inner .yearly-list {
+    min-width: 0;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    gap: 20px;
+    border-radius: 40px;
+    padding: 60px 3.3% 150px;
+    margin: 31px auto 0;
+    background-color: #FFFFFF;
+  }
+  #yearly-program .yearly-program__inner .yearly-list .card {
+    max-width: 320px;
+    width: 100%;
+    height: 264px;
+    background: #FFEDF0;
+    padding: 12px;
+    border-radius: 20px;
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  #yearly-program .yearly-program__inner .yearly-list .card__image {
+    width: 100%;
+    height: 180px;
+    border-radius: 20px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  #yearly-program .yearly-program__inner .yearly-list .card__textarea {
+    padding: 8px 11px 0 0px;
+  }
+  #yearly-program .yearly-program__inner .yearly-list .card__textarea--month {
+    font-size: 20px;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #55000C;
+  }
+  #yearly-program .yearly-program__inner .yearly-list .card__textarea--event {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #55000C;
+    margin: 8px 0 0;
+  }
+  #yearly-program .yearly-program__inner .yearly-list__text {
+    padding: 4px 8px 0 5px;
+    position: absolute;
+    bottom: 62px;
+    left: 10px;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #333333;
   }
 }
 #site-map {

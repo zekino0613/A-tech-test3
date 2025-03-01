@@ -25,6 +25,10 @@
     get_template_part('template-parts/recruit'); // recruit をインクルード
 ?>
 
+<!--section/ contact -->
+<?php
+    get_template_part('template-parts/contact'); // recruit をインクルード
+?>
 
 
 

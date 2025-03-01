@@ -15,8 +15,8 @@
       background-color: rgba(map-get(mixin.$colors, "C-white"), 0.8);
       backdrop-filter: blur(3px);
       -webkit-backdrop-filter: blur(3px);
-      border-radius: 30px;
-      padding: 64px 4%;
+      border-radius: 40px;
+      padding: 66px 4%;
       &--text {
         @include mixin.font-settings (
           F-size18,
@@ -43,7 +43,7 @@
     margin: 0 auto;
     background: url('../../assets/images/kidsland_image/bg/contact-bg-sp.webp') no-repeat center top;
     background-size: cover;
-    padding: 75px 4% ;
+    padding: 79px 4% 92px;
     .contact {
       &__inner {
         width: 100%;
@@ -51,18 +51,18 @@
         background-color: rgba(map-get(mixin.$colors, "C-white"), 0.8);
         backdrop-filter: blur(3px);
         -webkit-backdrop-filter: blur(3px);
-        border-radius: 30px;
+        border-radius: 40px;
         padding: 64px 8%;
         &--text {
           @include mixin.font-settings (
-            F-size18,
-            F-line-height36,
+            F-size16,
+            F-line-height24,
             F-letter-spacing-10,
             F-family-KosugiMaru, 
             400, 
             F-color-brown);
             text-align: center;
-            margin: 32px auto;
+            margin: 44px auto;
         }
         .btn {
           margin: 0 auto;

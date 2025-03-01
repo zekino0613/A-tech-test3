@@ -18,24 +18,24 @@ $title_data = [
     'philosophy' => [
         'image' => 'assets/images/kidsland_image/design-parts/sakura-single.png',
         'title' => 'わたしたちの想い',
-        'english_title' => 'philosophy'
+        'english_title' => 'Philosophy'
     ],
     'motto' => [
         'image' => 'assets/images/kidsland_image/design-parts/sakura-single.png',
         'title' => 'たいせつにしていること',
-        'english_title' => 'motto'
+        'english_title' => 'Motto'
     ],
     // ----------------------------------------------------------------
     // /共通treeのアイコン ------------------------------------------
     'introduction' => [
         'image' => 'assets/images/kidsland_image/design-parts/tree-icon.webp',
         'title' => '各園のご紹介',
-        'english_title' => 'introduction'
+        'english_title' => 'Introduction'
     ],
-    'yearly-Program' => [
+    'yearly-program' => [
         'image' => 'assets/images/kidsland_image/design-parts/tree-icon.webp',
         'title' => '年間行事予定',
-        'english_title' => 'yearly Program'
+        'english_title' => 'Yearly Program'
     ],
     // ----------------------------------------------------------------
     'recruit' => [
@@ -51,22 +51,22 @@ $title_data = [
     'inside' => [
         'image' => 'assets/images/kidsland_image/design-parts/camera-icon.webp',
         'title' => '園の様子',
-        'english_title' => 'inside'
+        'english_title' => 'Inside'
     ],
     'message' => [
         'image' => 'assets/images/kidsland_image/design-parts/letter-open-icon.webp',
         'title' => '園長からのメッセージ',
-        'english_title' => 'message'
+        'english_title' => 'Message'
     ],
     'about-nursery' => [
         'image' => 'assets/images/kidsland_image/design-parts/bell-icon.webp',
         'title' => '園の概要',
-        'english_title' => 'about nursery'
+        'english_title' => 'About nursery'
     ],
     'letter' => [
         'image' => 'assets/images/kidsland_image/design-parts/tayori-icon.webp',
         'title' => 'こもれびだより',
-        'english_title' => 'letter'
+        'english_title' => 'Letter'
     ],
     'site-map' => [
         'image' => 'assets/images/kidsland_image/design-parts/site-map-icon.webp',

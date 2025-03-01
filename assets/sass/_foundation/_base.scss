@@ -418,15 +418,15 @@ a .btn-pattern2 {
   
   &__title {
     @include mixin.font-settings (
-      F-size18,
-      F-line-height27,
+      F-size20,
+      F-line-height30,
       F-letter-spacing-10,
       F-family-KosugiMaru,
       400,
       F-color-brown);
       width: 100%;
     display: block;
-    margin: 0 auto 8px;
+    margin: 0 auto 9px;
   }
   &__english {
     @include mixin.font-settings (
@@ -474,59 +474,59 @@ a .btn-pattern2 {
 
 
 //btn
-  .btn {
-    max-width: 200px;
-    width: 100%;
-    height: 50px;
-    border-radius: 30px;
-    color: map-get(mixin.$colors, "C-brown");
-    border: 2px solid map-get(mixin.$colors, "C-brown");
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: map-get(mixin.$colors, "C-white");
-    transition:  ease, transform 1s ease;
-    position: relative;
-    // **すべてのプロパティにスムーズな変化を適用**
-    transition: 
-      background-color 0.5s ease-in-out,
-      color 0.5s ease-in-out,
-      border-color 0.5s ease-in-out;
-    &__text {
-      @include mixin.font-settings
-    ( F-size16
-    , F-line-height16
-    , F-letter-spacing-10
-    , F-family-KosugiMaru
-    , 400
-    , F-color-brown);
-    }
-    i {
-      position: absolute;
-      top: 15px;
-      right: 13.1px;
-      font-size: 16px;
-      transition: transform 0.3s ease-in-out;
-    }
-  }
-  .btn:hover {
-    color: map-get(mixin.$colors, "C-white");
-    background-color: map-get(mixin.$colors, "C-brown");
-    border-color: map-get(mixin.$colors, "C-white");
-    opacity: 1;
-    transition: 
-      background-color 0.5s ease-in-out,
-      color 0.5s ease-in-out,
-      border-color 0.5s ease-in-out;
-    .btn__text {
-      color: map-get(mixin.$colors, "C-white");
-    }
-  }
-  // <a> タグに display: block を適用
-  a .btn {
-    display: block;
-  }
-}
+//   .btn {
+//     max-width: 200px;
+//     width: 100%;
+//     height: 50px;
+//     border-radius: 30px;
+//     color: map-get(mixin.$colors, "C-brown");
+//     border: 2px solid map-get(mixin.$colors, "C-brown");
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     background-color: map-get(mixin.$colors, "C-white");
+//     transition:  ease, transform 1s ease;
+//     position: relative;
+//     // **すべてのプロパティにスムーズな変化を適用**
+//     transition: 
+//       background-color 0.5s ease-in-out,
+//       color 0.5s ease-in-out,
+//       border-color 0.5s ease-in-out;
+//     &__text {
+//       @include mixin.font-settings
+//     ( F-size16
+//     , F-line-height16
+//     , F-letter-spacing-10
+//     , F-family-KosugiMaru
+//     , 400
+//     , F-color-brown);
+//     }
+//     i {
+//       position: absolute;
+//       top: 15px;
+//       right: 13.1px;
+//       font-size: 16px;
+//       transition: transform 0.3s ease-in-out;
+//     }
+//   }
+//   .btn:hover {
+//     color: map-get(mixin.$colors, "C-white");
+//     background-color: map-get(mixin.$colors, "C-brown");
+//     border-color: map-get(mixin.$colors, "C-white");
+//     opacity: 1;
+//     transition: 
+//       background-color 0.5s ease-in-out,
+//       color 0.5s ease-in-out,
+//       border-color 0.5s ease-in-out;
+//     .btn__text {
+//       color: map-get(mixin.$colors, "C-white");
+//     }
+//   }
+//   // <a> タグに display: block を適用
+//   a .btn {
+//     display: block;
+//   }
+ }
 
 //btnの追加要素
 .btn-pattern2 {
