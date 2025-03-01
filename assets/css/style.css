@@ -2821,6 +2821,282 @@ a .btn-pattern2 {
     top: 6px;
   }
 }
+#privacy-policy {
+  padding: 0 12.5% 80px;
+  margin: -54px 0 0;
+}
+#privacy-policy .privacy-policy__inner {
+  background-color: #FFFFFF;
+  border-radius: 40px;
+  padding: 12px 2.5% 48px;
+  margin: 0 auto;
+}
+#privacy-policy .privacy-policy__inner .section-title {
+  margin: 36px 0 16px;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  font-family: "Kosugi Maru";
+  font-weight: 400;
+  color: #55000C;
+  border: 1px solid #55000C;
+  position: relative;
+  border-radius: 12px;
+  padding: 12px 0 10px 36px;
+}
+#privacy-policy .privacy-policy__inner .section-title::before {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: 23px;
+  width: 4px;
+  height: 20px;
+  border-radius: 1px;
+  background-color: #55000C;
+}
+#privacy-policy .privacy-policy__inner .section-title-sub {
+  margin: 16px 0 8px;
+  padding: 0 0px 0 23px;
+  position: relative;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  font-family: "Kosugi Maru";
+  font-weight: 400;
+  color: #333333;
+}
+#privacy-policy .privacy-policy__inner .section-title-sub::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 12px;
+  width: 4px;
+  height: 24px;
+  border-radius: 1px;
+  background-color: #FFF7B8;
+}
+#privacy-policy .privacy-policy__inner h4 {
+  padding: 0 12px;
+  margin: 0 0 11px;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  font-family: "Kosugi Maru";
+  font-weight: 400;
+  color: #333333;
+}
+#privacy-policy .privacy-policy__inner p {
+  padding: 0 12px;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  font-family: "Kosugi Maru";
+  font-weight: 400;
+  color: #333333;
+  margin: 0 0 8px;
+}
+#privacy-policy .privacy-policy__inner .pc {
+  display: block;
+}
+#privacy-policy .privacy-policy__inner .sp {
+  display: none;
+}
+#privacy-policy .privacy-policy__inner .privacy-list__li {
+  padding: 0 12px;
+  margin: 0 0 8px;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  font-family: "Kosugi Maru";
+  font-weight: 400;
+  color: #333333;
+}
+#privacy-policy .privacy-policy__inner .privacy-list .second {
+  margin: 0 0 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 10px;
+  counter-increment: list-counter;
+  position: relative;
+  padding-left: 47px;
+}
+#privacy-policy .privacy-policy__inner .privacy-list .second::before {
+  content: attr(data-number) "．";
+  position: absolute;
+  left: 5px;
+  min-width: 40px;
+  text-align: right;
+  font-family: "Kosugi Maru", sans-serif;
+}
+#privacy-policy .privacy-policy__inner .privacy-list .margin {
+  margin: 0 0 8px;
+}
+#privacy-policy .privacy-policy__inner .text-right {
+  text-align: right;
+  margin: 17px -14px 0 0px;
+}
+#privacy-policy .privacy-policy__inner .text-right p {
+  margin: 0 0 0;
+}
+#privacy-policy .privacy-policy__inner .privacy-contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: -6px 0 0;
+}
+#privacy-policy .privacy-policy__inner .privacy-contact__text {
+  margin: 0 23px 0 0;
+}
+#privacy-policy .privacy-policy__inner .privacy-contact__time {
+  margin: 2px 0px 0 -9px;
+}
+
+@media (max-width: 900px) {
+  #privacy-policy {
+    padding: 0 4% 80px;
+    margin: -21px 0 0;
+  }
+  #privacy-policy .privacy-policy__inner {
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    padding: 12px 4% 48px;
+    margin: 0 auto;
+  }
+  #privacy-policy .privacy-policy__inner .section-title {
+    margin: 21px 0 17px;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+    border: 1px solid #55000C;
+    position: relative;
+    border-radius: 12px;
+    padding: 12px 0 10px 36px;
+  }
+  #privacy-policy .privacy-policy__inner .section-title::before {
+    content: "";
+    position: absolute;
+    top: 11px;
+    left: 25px;
+    width: 4px;
+    height: 43%;
+    border-radius: 1px;
+    background-color: #55000C;
+  }
+  #privacy-policy .privacy-policy__inner .section-title-sub {
+    margin: 16px 0 8px;
+    padding: 0 25px;
+    position: relative;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #333333;
+  }
+  #privacy-policy .privacy-policy__inner .section-title-sub::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 12px;
+    width: 4px;
+    height: 100%;
+    border-radius: 1px;
+    background-color: #FFF7B8;
+  }
+  #privacy-policy .privacy-policy__inner h4 {
+    padding: 0 12px;
+    margin: 0 0 11px;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #333333;
+  }
+  #privacy-policy .privacy-policy__inner p {
+    padding: 0 15px;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    line-height: F-line-height21 F-letter-spacing-10/14;
+    margin: 0 0 9px;
+  }
+  #privacy-policy .privacy-policy__inner .pc {
+    display: none;
+  }
+  #privacy-policy .privacy-policy__inner .sp {
+    display: block;
+  }
+  #privacy-policy .privacy-policy__inner .privacy-list__li {
+    padding: 0 12px;
+    margin: 0 0 8px;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    line-height: F-line-height21 F-letter-spacing-10/14;
+  }
+  #privacy-policy .privacy-policy__inner .privacy-list .second {
+    margin: 8.3px 4px 3px -2px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    gap: 10px;
+    counter-increment: list-counter;
+    position: relative;
+    padding: 0 0 0 45px;
+  }
+  #privacy-policy .privacy-policy__inner .privacy-list .second::before {
+    content: attr(data-number) "．";
+    position: absolute;
+    left: 14px;
+    min-width: 32px;
+    text-align: right;
+    font-family: "Kosugi Maru", sans-serif;
+  }
+  #privacy-policy .privacy-policy__inner .privacy-list .margin {
+    margin: 0 0 8px;
+  }
+  #privacy-policy .privacy-policy__inner .text-right {
+    text-align: right;
+    margin: 17px -16px 23px 0px;
+  }
+  #privacy-policy .privacy-policy__inner .text-right p {
+    margin: 0 0 0;
+  }
+  #privacy-policy .privacy-policy__inner .privacy-contact {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    margin: 0;
+  }
+  #privacy-policy .privacy-policy__inner .privacy-contact__text {
+    margin: 0;
+  }
+  #privacy-policy .privacy-policy__inner .privacy-contact address {
+    padding: 0 12px;
+  }
+  #privacy-policy .privacy-policy__inner .privacy-contact__time {
+    margin: 0;
+  }
+}
 .filter-buttons {
   display: -webkit-box;
   display: -ms-flexbox;

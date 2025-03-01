@@ -1,0 +1,288 @@
+@use "../../_foundation/_mixin"as mixin;
+@use "../../_foundation/_base"as base;
+
+
+#privacy-policy {
+  padding: 0 12.5% 80px;
+  margin: -54px 0 0;
+  .privacy-policy {
+    &__inner {
+      background-color: map-get(mixin.$colors, "C-white");
+      border-radius: 40px;
+      padding:12px 2.5% 48px;
+      margin: 0 auto;
+      .section-title {
+        margin:36px 0 16px;
+        @include mixin.font-settings (
+        F-size20,
+        F-line-height20,
+        F-letter-spacing-10,
+        F-family-KosugiMaru,
+        400,
+        F-color-brown);
+        border: 1px solid map-get(mixin.$colors, "C-brown");
+        position: relative;
+        border-radius: 12px;
+        padding: 12px 0 10px 36px;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 11px;
+          left: 23px;
+          width: 4px;
+          height: 20px;
+          border-radius: 1px;
+          background-color: map-get(mixin.$colors, "C-brown");
+        }
+      }
+      .section-title-sub {
+        margin: 16px 0 8px;
+        padding: 0 0px 0 23px;
+        position: relative;
+        @include mixin.font-settings (
+          F-size16,
+          F-line-height24,
+          F-letter-spacing-10,
+          F-family-KosugiMaru,
+          400,
+          F-color-black);
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 12px;
+            width: 4px;
+            height: 24px;
+            border-radius: 1px;
+            background-color: map-get(mixin.$colors, "C-yellow");
+          }
+      }
+      h4 {
+        padding: 0 12px;
+        margin: 0 0 11px;
+        @include mixin.font-settings (
+          F-size16,
+          F-line-height24,
+          F-letter-spacing-10,
+          F-family-KosugiMaru,
+          400,
+          F-color-black);
+      }
+      p {
+        padding: 0 12px;
+        @include mixin.font-settings (
+          F-size16,
+          F-line-height24,
+          F-letter-spacing-10,
+          F-family-KosugiMaru,
+          400,
+          F-color-black);
+          margin: 0 0 8px;
+      }
+      .pc {
+        display: block;
+      }
+      .sp {
+        display: none;
+      }
+      .privacy-list {
+        &__li {
+          padding: 0 12px;
+          margin: 0 0 8px;
+          @include mixin.font-settings (
+          F-size16,
+          F-line-height24,
+          F-letter-spacing-10,
+          F-family-KosugiMaru,
+          400,
+          F-color-black);
+        }
+
+        .second {
+          margin: 0 0 4px;
+          display: flex;
+          align-items: flex-start; // テキストを上揃え
+          gap: 10px; // 番号と本文の間隔調整
+          counter-increment: list-counter;
+          position: relative;
+          padding-left: 47px; // 番号分の余白を確保
+          &::before {
+            content: attr(data-number) "．"; // 全角数字 + 全角ドット
+            position: absolute;
+            left: 5px;
+            min-width: 40px; // 番号の固定幅
+            text-align: right;
+            font-family: "Kosugi Maru", sans-serif; // 和文フォント（適宜変更）
+          }
+        }
+        .margin {
+          margin: 0 0 8px;
+        }
+      }
+      .text-right {
+        text-align: right;
+        margin: 17px -14px 0 0px;
+        p {
+          margin: 0 0 0;
+        }
+      }
+      .privacy-contact {
+        display: flex;
+        align-items: center;
+        margin: -6px 0 0;
+        &__text {
+          margin: 0 23px 0 0;
+        }
+        &__time {
+          margin: 2px 0px 0 -9px;
+        }
+      }
+    }
+  }
+}
+
+
+@include mixin.TAB1 {
+  #privacy-policy {
+    padding: 0 4% 80px;
+    margin: -21px 0 0;
+    .privacy-policy {
+      &__inner {
+        background-color: map-get(mixin.$colors, "C-white");
+        border-radius: 30px;
+        padding:12px 4% 48px;
+        margin: 0 auto;
+        .section-title {
+          margin:21px 0 17px;
+          @include mixin.font-settings (
+          F-size16,
+          F-line-height16,
+          F-letter-spacing-10,
+          F-family-KosugiMaru,
+          400,
+          F-color-brown);
+          border: 1px solid map-get(mixin.$colors, "C-brown");
+          position: relative;
+          border-radius: 12px;
+          padding: 12px 0 10px 36px;
+          &::before {
+            content: "";
+            position: absolute;
+            top: 11px;
+            left: 25px;
+            width: 4px;
+            height: 43%;
+            border-radius: 1px;
+            background-color: map-get(mixin.$colors, "C-brown");
+          }
+        }
+        .section-title-sub {
+          margin: 16px 0 8px;
+          padding: 0 25px;
+          position: relative;
+          @include mixin.font-settings (
+            F-size14,
+            F-line-height21,
+            F-letter-spacing-10,
+            F-family-KosugiMaru,
+            400,
+            F-color-black);
+            &::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 12px;
+              width: 4px;
+              height: 100%;
+              border-radius: 1px;
+              background-color: map-get(mixin.$colors, "C-yellow");
+            }
+        }
+        h4 {
+          padding: 0 12px;
+          margin: 0 0 11px;
+          @include mixin.font-settings (
+            F-size14,
+            F-line-height21,
+            F-letter-spacing-10,
+            F-family-KosugiMaru,
+            400,
+            F-color-black);
+        }
+        p {
+          padding: 0 15px;
+          @include mixin.font-settings (
+            F-size14,
+            F-line-height21
+            F-letter-spacing-10,
+            F-family-KosugiMaru,
+            400,
+            F-color-black);
+            margin: 0 0 9px;
+        }
+        .pc {
+          display: none;
+        }
+        .sp {
+          display: block;
+        }
+        .privacy-list {
+          &__li {
+            padding: 0 12px;
+            margin: 0 0 8px;
+            @include mixin.font-settings (
+              F-size14,
+              F-line-height21
+            F-letter-spacing-10,
+            F-family-KosugiMaru,
+            400,
+            F-color-black);
+          }
+
+          .second {
+            margin: 8.3px 4px 3px -2px;
+            display: flex;
+            align-items: flex-start; // テキストを上揃え
+            gap: 10px; // 番号と本文の間隔調整
+            counter-increment: list-counter;
+            position: relative;
+            padding: 0 0 0 45px; // 番号分の余白を確保
+            &::before {
+              content: attr(data-number) "．"; // 全角数字 + 全角ドット
+              position: absolute;
+              left: 14px;
+              min-width: 32px;
+              text-align: right;
+              font-family: "Kosugi Maru", sans-serif; // 和文フォント（適宜変更）
+            }
+          }
+          .margin {
+            margin: 0 0 8px;
+          }
+        }
+        .text-right {
+          text-align: right;
+          margin: 17px -16px 23px 0px;
+          p {
+            margin: 0 0 0;
+          }
+        }
+        .privacy-contact {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          margin:0;
+          &__text {
+            margin: 0;
+          }
+          address {
+            padding: 0 12px;
+          }
+          &__time {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}  

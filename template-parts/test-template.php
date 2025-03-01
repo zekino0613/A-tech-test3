@@ -42,3 +42,11 @@
       <p class="btn-pattern2__text">TOPにもどる</p>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+
+
+    <h2 class="section-title">基本理念</h2>
+    <h3 class="section-title-sub">（１）個人情報の収集、利用及び提供について</h3>
+    <h4>＜スタッフの個人情報＞</h4>
+    <ul class="privacy-list">
+      <li class="privacy-list__li">お客様に対する育児支援コンサルティング（認可保育所事業、小規模保育所事業、認証保育所事業、自治体保育室事業等）提供のため</li>
+    </ul>
