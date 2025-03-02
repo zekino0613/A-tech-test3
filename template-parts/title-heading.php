@@ -67,19 +67,37 @@ $section_title = isset($title_list[$slug]) ? $title_list[$slug] : $default_title
 
 
 
+<!-- 新 -->
+<?php
+// スラッグを取得
+$slug = get_current_slug();
 
+// `single-introduction` の場合
+if (is_singular('introduction')) :
+?>
 <section id="sub-mainvisual">
   <div class="sub-mainvisual__inner">
     <div class="sub-mainvisual__inner--page-title">
       <div class="title-wrapper">
-        <!-- HTML タグをエスケープ ↓  -->
-        <h1><?php echo wp_kses_post($section_title['title']); ?></h1>
-        <p><?php echo esc_html($section_title['subtitle']); ?></p>
+        <h1>桜のこもれびキッズランド</h1>      
+        <div class="title-wrapper__flex">
+          <!-- 園のカテゴリー -->
+          <?php
+            $categories = get_the_category();
+            if (!empty($categories)) {
+              echo '<span class="category-badge">' . esc_html($categories[0]->name) . '</span>';
+            } else {
+              echo '<span class="category-badge">未分類</span>';
+            }
+          ?>
+          <!-- ページタイトル -->
+          <p class="single-title"><?php the_title(); ?></p>
+        </div><!-- / -->  
       </div>
-      <!-- パンくずリスト -->
     </div>
-
+    
     <?php
+      //パンくずリスト
       // **特定のページではパンくずリストを非表示にする**
       if (!in_array($slug, $hide_breadcrumbs, true)) {
         if (function_exists('yoast_breadcrumb')) {
@@ -87,5 +105,30 @@ $section_title = isset($title_list[$slug]) ? $title_list[$slug] : $default_title
         }
       }
     ?>
-  </div><!-- / -->  
+  </div>  
 </section>
+<?php else : ?>
+
+  <!-- 通常のページ -->
+  <section id="sub-mainvisual">
+    <div class="sub-mainvisual__inner">
+      <div class="sub-mainvisual__inner--page-title">
+        <div class="title-wrapper">
+          <h1><?php echo wp_kses_post($section_title['title']); ?></h1>
+          <p><?php echo esc_html($section_title['subtitle']); ?></p>
+        </div>
+      </div>
+
+      <?php
+        //パンくずリスト
+        // **特定のページではパンくずリストを非表示にする**
+        if (!in_array($slug, $hide_breadcrumbs, true)) {
+          if (function_exists('yoast_breadcrumb')) {
+            yoast_breadcrumb('<nav class="sub-mainvisual__inner--breadcrumbs">', '</nav>');
+          }
+        }
+      ?>
+    </div>  
+  </section>
+  <?php endif; ?>
+

@@ -27,28 +27,41 @@
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 1000;
-          h1 {
-            @include mixin.font-settings (
-              F-size32,
-              F-line-height32,
-              F-letter-spacing-10,
-              F-family-KosugiMaru,
-              400,
-              F-color-brown);
-              display: block;
-              margin: 32px 0 16px;
-          }
-          p {
-            @include mixin.font-settings (
-              F-size10,
-              F-line-height10,
-              F-letter-spacing-10,
-              F-family-Jost,
-              900,
-              F-color-brown);
-          }
+        h1 {
+          @include mixin.font-settings (
+            F-size32,
+            F-line-height32,
+            F-letter-spacing-10,
+            F-family-KosugiMaru,
+            400,
+            F-color-brown);
+            display: block;
+            margin: 32px 0 16px;
         }
-      }  
+        p {
+          @include mixin.font-settings (
+            F-size10,
+            F-line-height10,
+            F-letter-spacing-10,
+            F-family-Jost,
+            900,
+            F-color-brown);
+        }
+        &__flex,.single-title {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 15px;
+          @include mixin.font-settings (
+            F-size14,
+            F-line-height14,
+            F-letter-spacing-10,
+            F-family-KosugiMaru,
+            400,
+            F-color-brown);
+        }
+      }
+    }  
       // 【パンくずリストプラグイン】-------------↓
       &--breadcrumbs {
         @include mixin.font-settings

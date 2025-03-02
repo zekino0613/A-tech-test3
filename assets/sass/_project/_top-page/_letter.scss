@@ -6,24 +6,20 @@
   width: 100%;
   height: 100%; // 高さが必要な場合
   padding: 160px 4% 120px;
-  // .title-icon {
-  //   position: absolute;
-  //   top: 30px;
-  //   left: 50%;
-  //   transform: translate(-50%, -50%);
-  // }
   .letter-list {
   //  @mixin で archive-letter.scssの`letter-list` を呼び出し
     @include letter.letter-list;
     max-width: 1200px;
     width: 100%;
     justify-content: center;
-    gap: 50px;
-    margin: 0 auto 62px;
+    // gap: 50px;
+    row-gap: 30px;
+    column-gap: 52px;
+    margin: 0 auto 41px;
     padding: 0 ;
   }
   .btn {
-    margin: 0 auto  ;
+    margin: 23px auto -41px;
   }
 }
 
@@ -38,7 +34,7 @@
   padding: 160px 0 120px;
   position: relative;
   .btn {
-    margin: 42px auto 0 ;
+    margin: 22px auto -39px;
   }
   }
 } 

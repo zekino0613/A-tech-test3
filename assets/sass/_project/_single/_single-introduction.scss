@@ -1,30 +1,366 @@
 @use "../../_foundation/_mixin"as mixin;
 @use "../../_foundation/_base"as base;
 
+#single-nursery {
+  .single-nursery {
+    &__inner {
+      // サムネイル
+      .thumbnail {
+        max-width: 1080px;
+        width: 100%;
+        margin: -54px auto 174px;
+        text-align: center;
 
+        &__inner {
+          padding: 0 3%;
 
-
-.slider {
-  position: relative;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 20px 0;
-  overflow: hidden; // **余計な描画を防ぐ**
-  white-space: nowrap; // **改行を防ぎ、流れをスムーズに**
-  .slider-item {
-      padding: 10px;
-      img {
-          width: 240%;
-          height: 160px;
-          border-radius: 10px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-          transition: transform 0.3s ease-in-out;
-          
-          &:hover {
-              transform: scale(1.05);
+          &--image {
+            max-width: 800px;
+            width: 100%;
+            height: 450px;
+            border-radius: 40px;
           }
+
+          &--title {
+            margin: 32px 0 16px;
+            @include mixin.font-settings (
+              F-size20,
+              F-line-height20,
+              F-letter-spacing-20,
+              F-family-KosugiMaru,
+              400,
+              F-color-brown);
+          }
+
+          &--textarea {
+            @include mixin.font-settings (
+              F-size18,
+              F-line-height36,
+              F-letter-spacing-20,
+              F-family-KosugiMaru,
+              400,
+              F-color-brown);
+          }
+        }
+
       }
+
+      // スライダー
+      .inside {
+        .slider {
+          position: relative;
+          max-width: 100%;
+          margin: 0 auto;
+          padding: 20px 0;
+          overflow: hidden; // **余計な描画を防ぐ**
+          white-space: nowrap; // **改行を防ぎ、流れをスムーズに**
+
+          .slider-item {
+            padding: 10px;
+
+            img {
+              width: 240%;
+              height: 160px;
+              border-radius: 10px;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+              transition: transform 0.3s ease-in-out;
+
+              &:hover {
+                transform: scale(1.05);
+              }
+            }
+          }
+        }
+      }
+
+      .pink-bk {
+        padding: 152px 0 89px;
+      }
+
+      // 園長からのメッセージ
+      .message {
+        max-width: 800px;
+        width: 100%;
+        margin: 119px auto;
+        padding: 0 0.3%;
+
+        &__flex {
+          display: flex;
+          gap: 28px;
+          margin: 64px 0 120px;
+
+          &--image {
+            max-width: 300px;
+            width: 100%;
+            height: 400px;
+            border-radius: 20px;
+          }
+
+          &--textarea {
+            @include mixin.font-settings (
+              F-size16,
+              F-line-height32,
+              F-letter-spacing-10,
+              F-family-KosugiMaru,
+              400,
+              F-color-brown);
+          }
+        }
+      }
+
+      //園の概要
+      .about-nursery {
+        padding: 0 4%;
+        margin: 0 0 174px;
+        &__inner {
+          max-width: 1080px;
+          width: 100%;
+          margin: 0 auto;
+
+          .nursery-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin: 66px auto 120px;
+
+            .info-box {
+              display: flex;
+              // border-bottom: 1px dotted map-get(mixin.$colors, "C-brown");
+              border-bottom: 1.3px solid transparent;
+              border-image: repeating-linear-gradient(90deg, #55000C 4px, #55000C 7px, transparent 5px, transparent 10px) 20;
+
+              strong {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                max-width: 200px;
+                width: 100%;
+                padding: 32px 0;
+                background-color: map-get(mixin.$colors, "C-white");
+                @include mixin.font-settings (
+                  F-size18,
+                  F-line-height18,
+                  F-letter-spacing-20,
+                  F-family-KosugiMaru,
+                  400,
+                  F-color-brown);
+              }
+
+              &__text {
+                padding: 33px 0 33px 25px;
+                @include mixin.font-settings (
+                  F-size16,
+                  F-line-height16,
+                  F-letter-spacing-20,
+                  F-family-KosugiMaru,
+                  400,
+                  F-color-brown);
+              }
+
+              &__textarea {
+                padding: 30px 0 30px 25px;
+                @include mixin.font-settings (
+                  F-size16,
+                  F-line-height24,
+                  F-letter-spacing-20,
+                  F-family-KosugiMaru,
+                  400,
+                  F-color-brown);
+              }
+
+              // 開園日
+              &__flex {
+                padding: 32px 25px;
+                @include mixin.font-settings (
+                  F-size16,
+                  F-line-height16,
+                  F-letter-spacing-20,
+                  F-family-KosugiMaru,
+                  400,
+                  F-color-brown);
+
+                table {
+                  width: 20%;
+
+                  th,
+                  td {
+                    text-align: center;
+                    padding: 0 5px 8px 0;
+                  }
+
+                  th {
+                    font-weight: normal
+                  }
+                }
+
+                &--text {
+                  // padding: 8px 0 0;
+                  @include mixin.font-settings (
+                    F-size14,
+                    F-line-height14,
+                    F-letter-spacing-20,
+                    F-family-KosugiMaru,
+                    400,
+                    F-color-brown);
+                }
+              }
+
+              // 保育時間
+              .nursery-hours {
+                width: 100%;
+                padding: 32px 25px;
+                &__text {
+                  margin: 0 0 4px;
+                  @include mixin.font-settings (F-size16,
+                    F-line-height16,
+                    F-letter-spacing-20,
+                    F-family-KosugiMaru,
+                    400,
+                    F-color-brown);
+                }
+                table {
+                  max-width: 600px;
+                  width: 100%;
+                  background-color: map-get(mixin.$colors, "C-white");
+                  border: 1px solid map-get(mixin.$colors, "C-brown");
+                  th,
+                  td {
+                    border: 1px solid map-get(mixin.$colors, "C-brown");
+                    @include mixin.font-settings (F-size16,
+                      F-line-height16,
+                      F-letter-spacing-20,
+                      F-family-KosugiMaru,
+                      400,
+                      F-color-brown);
+                  }
+                  th {
+                    width: 25%;
+                    font-weight: normal;
+                    text-align: center;
+                    padding: 15px 0px 0px 1px;
+                  }
+                  td {
+                    padding: 15.3px 19px;
+                  }
+                  .extension-th {
+                    padding: 26px 19px;
+                  }
+                }
+                .t1 {
+                  margin: 0 0 24px;
+                }
+              }
+
+              // 定員
+              .capacity {
+                padding: 32px 25px;
+                table {
+                  @include mixin.font-settings (
+                    F-size16,
+                    F-line-height16,
+                    F-letter-spacing-0,
+                    F-family-KosugiMaru,
+                    400,
+                    F-color-brown);
+                  th {
+                    font-weight: normal;
+                    text-align: center;
+                    padding: 7px 0px 0 6px;
+                  }
+                  td {
+                    text-align: center;
+                    padding: 8px 16px 0 15px;
+                  }
+                  .total-capacity {
+                    width: 100px;
+                    height: 32px;
+                    background-color: map-get(mixin.$colors, "C-light-pink");
+                    @include mixin.font-settings (
+                    F-size16,
+                    F-line-height19-2,
+                    F-letter-spacing-20,
+                    F-family-KosugiMaru,
+                    400,
+                    F-color-brown);
+                  }
+                  .th {
+                    padding: 13px 0px 0px 0px;
+                  }
+                  .td {
+                    padding: 0px 7px 0 8px;
+                  }
+                }
+                &__text {
+                  margin: 8px 0 0;
+                  @include mixin.font-settings (F-size16,
+                    F-line-height16,
+                    F-letter-spacing-20,
+                    F-family-KosugiMaru,
+                    400,
+                    F-color-brown);
+                }
+              }
+
+              // 職員
+              .staff {
+                padding: 32px 25px;
+                table {
+                  margin: 0 0 10px 0;
+                  @include mixin.font-settings (F-size16,
+                    F-line-height16,
+                    F-letter-spacing-0,
+                    F-family-KosugiMaru,
+                    400,
+                    F-color-brown);
+                  th {
+                    text-align: center;
+                    padding: 6px 0px 0 15px;
+                    font-weight: normal;
+                  }
+                  td {
+                    text-align: center;
+                    padding: 7px 10px 0 22px;
+                  }
+                  .total-staff {
+                    width: 100px;
+                    height: 32px;
+                    @include mixin.font-settings (
+                      F-size16,
+                      F-line-height19-2,
+                      F-letter-spacing-20,
+                      F-family-KosugiMaru,
+                      400,
+                      F-color-brown);
+                    background-color: map-get(mixin.$colors, "C-light-pink");
+                  }
+                  .th {
+                    padding: 12px 0px 0 1px;
+                  }
+                  .td {
+                    padding: 0px 0px 4px 3px;
+                  }
+                }
+                &__text {
+                  margin: 2px 0 0;
+                  @include mixin.font-settings (F-size16,
+                    F-line-height16,
+                    F-letter-spacing-20,
+                    F-family-KosugiMaru,
+                    400,
+                    F-color-brown);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .introduction-letter {
+        .btn {
+          margin: 40px auto -40px;
+        }
+      }
+
+    }
   }
-
-
 }

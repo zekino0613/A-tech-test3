@@ -45,14 +45,14 @@
         &--text {
           @include mixin.font-settings (
             F-size14,
-            F-line-height27,
+            F-line-height28,
             F-letter-spacing-20,
             F-family-KosugiMaru, 
             400, 
             F-color-brown);
         }
         .t-top {
-          margin: 48px 0 31px;
+          margin: 47px 0 30px;
         }
       }
     }

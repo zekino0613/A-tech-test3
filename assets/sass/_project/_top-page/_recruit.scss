@@ -82,9 +82,29 @@
           align-items: center;
           gap:24px;
           // margin: 24px auto 0 ;
+          .btn {
+            max-width: 240px;
+            height: 60px;
+            &__text {
+              @include mixin.font-settings
+            ( F-size18
+            , F-line-height18
+            , F-letter-spacing-10
+            , F-family-KosugiMaru
+            , 400
+            , F-color-brown);
+            margin: 0 0 0 0;
+            }
+            i {
+              top: 18px;
+              right: 20.1px;
+              font-size: 24px;
+            }
+          }
           .bottom-recruit {
             background-color: map-get(mixin.$colors, "C-light-pink");
           }
+
           .bottom-contact{
             background-color: map-get(mixin.$colors, "C-yellow");
           }

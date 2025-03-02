@@ -141,8 +141,8 @@ function custom_breadcrumb_labels($link_output, $link) {
     if (strpos($link_output, 'Home') !== false) {
         $link_output = str_replace('Home', 'TOP', $link_output);
     }
-    if (strpos($link_output, 'concept') !== false) {
-      $link_output = str_replace('concept', 'コンセプト', $link_output);
+    if (strpos($link_output, 'introduction') !== false) {
+      $link_output = str_replace('introduction', '各園のご紹介', $link_output);
     }
     if (strpos($link_output, 'News') !== false) {
       $link_output = str_replace('News', 'ニュース一覧', $link_output);
@@ -480,7 +480,20 @@ function sort_prefectures_by_region($prefecture_terms) {
 }
 
 
+// sectionこもれびだより
+// 二か所でそれぞれ違うCSSを当てる
+function enqueue_custom_styles() {
+  // single-introduction.php 用の CSS
+  if (is_singular('introduction')) {
+    wp_enqueue_style('single-introduction-style', get_template_directory_uri() . '/css/single-introduction.css');
+  }
 
+  // front-page.php 用の CSS
+  if (is_front_page()) {
+    wp_enqueue_style('front-page-style', get_template_directory_uri() . '/css/front-page.css');
+  }
+}
+add_action('wp_enqueue_scripts', 'enqueue_custom_styles');
 
 
 
