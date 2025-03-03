@@ -10,7 +10,7 @@
     <nav class="f-nav">
       <ul class= "f-nav__ul">
         <li class="f-nav__ul--li">
-          <a href="<?php echo get_post_type_archive_link('about'); ?>">
+        <a href="<?php echo home_url('/about/'); ?>">
             私たちのこと
           </a>
         </li>

@@ -32,7 +32,7 @@ body {
 }
 body .scroll-to-top {
   position: fixed;
-  bottom: 38px;
+  bottom: 31px;
   right: 32px;
   height: 72px; /* ボタンの幅 */
   width: 72px; /* ボタンの高さ */
@@ -448,7 +448,7 @@ a .btn-pattern2 {
   .pink-bk {
     width: 100%;
     height: 100%;
-    background: url("../../assets/images/kidsland_image/bg/top-letters__bg-pc.webp") no-repeat center top;
+    background: url("../../assets/images/kidsland_image/bg/top-letters__bg-sp.webp") no-repeat center top;
     background-size: cover;
     padding: 160px 4% 120px;
     position: relative;
@@ -2016,7 +2016,7 @@ a .btn-pattern2 {
     position: absolute;
     width: 100%;
     top: 38%;
-    left: 8%;
+    left: 9%;
   }
   #mainvisual .mainvisual__image .info-post {
     display: block;
@@ -2029,8 +2029,8 @@ a .btn-pattern2 {
             box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.5); /* ✅ ドロップシャドウを再現 */
     padding: 16px 16px 18px 16px;
     position: absolute;
-    bottom: 25px;
-    left: -18px;
+    bottom: 24px;
+    left: -13px;
     pointer-events: auto;
     z-index: 4;
   }
@@ -2179,7 +2179,37 @@ a .btn-pattern2 {
     margin: 44px auto;
   }
   #contact .contact__inner .btn {
+    max-width: 240px;
+    height: 60px;
     margin: 0 auto;
+  }
+  #contact .contact__inner .btn__text {
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+    margin: 0 0 0 0;
+  }
+  #contact .contact__inner .btn i {
+    top: 16px;
+    right: 20.1px;
+    font-size: 24px;
+  }
+  #contact .contact__inner .btn:hover {
+    color: #FFFFFF;
+    background-color: #55000C;
+    border-color: #FFFFFF;
+    opacity: 1;
+    -webkit-transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+  }
+  #contact .contact__inner .btn:hover .btn__text {
+    color: #FFFFFF;
+  }
+  #contact .contact__inner a .btn {
+    display: block;
   }
 }
 #recruit {
@@ -2289,6 +2319,17 @@ a .btn-pattern2 {
     top: 18px;
     right: 20.1px;
     font-size: 24px;
+  }
+  #recruit .recruit__inner--bottom-flex .btn:hover {
+    color: #FFFFFF;
+    background-color: #55000C;
+    border-color: #FFFFFF;
+    opacity: 1;
+    -webkit-transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+  }
+  #recruit .recruit__inner--bottom-flex .btn:hover .btn__text {
+    color: #FFFFFF;
   }
   #recruit .recruit__inner--bottom-flex .bottom-recruit {
     background-color: #FFEDF0;
@@ -3402,135 +3443,561 @@ a .btn-pattern2 {
           transform: translateY(0);
 }
 
-.tab {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-  z-index: 1999;
+.introduction-list__inner {
+  min-width: 1080px;
+  width: 81%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 20px;
+  border-radius: 40px;
+  padding: 0 3%;
+  margin: 0px auto -37px;
+  position: relative;
+  z-index: 10;
+  background-color: #FFFFFF;
+  /* 園の種類ごとに背景色を変更 */
 }
-.tab .tab-list {
+.introduction-list__inner .tab {
+  width: 100%;
+  height: 107px;
+  margin: 0;
+  padding: 0;
+  z-index: -1;
+  position: relative;
+  top: -50px;
+  left: 0px;
+}
+.introduction-list__inner .tab .tab-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  gap: 15px;
-  margin-bottom: 20px;
+  gap: 8px;
+  padding: 0 0 32px;
 }
-.tab .tab-list__item {
-  padding: 10px 20px;
+.introduction-list__inner .tab .tab-list__item {
   font-size: 16px;
-  background-color: #ffc3a0;
-  color: #5c3a42;
-  border-radius: 20px;
-  border: 2px solid transparent;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  font-family: "Kosugi Maru";
+  font-weight: normal;
+  color: #EF8F9C;
+  background-color: #FFFFFF;
+  border: 1px solid #EF8F9C;
+  border-bottom: none;
+  text-align: center;
+  padding: 8px 18px 4px;
+  border-radius: 12px 12px 0 0;
+  width: 150px;
   cursor: pointer;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.tab .tab-list__item:hover {
-  background-color: #ffa36d;
+.introduction-list__inner .tab .tab-list__item.is-btn-active {
+  text-align: center;
+  background-color: #EF8F9C;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  font-family: "Kosugi Maru";
+  font-weight: normal;
+  color: #FFFFFF;
 }
-.tab .tab-list__item.is-btn-active {
-  background-color: #ff9aa2;
-  color: white;
-  border: 2px solid #e0a0b0;
-}
-.tab .tab-contents-wrap {
+.introduction-list__inner .tab .tab-contents-wrap {
   background: white;
   border-radius: 15px;
-  -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-          box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
 }
-.tab .tab-contents {
+.introduction-list__inner .tab .tab-contents {
   display: none;
-  padding: 10px;
   font-size: 14px;
 }
-.tab .tab-contents.is-contents-active {
+.introduction-list__inner .tab .tab-contents.is-contents-active {
   display: block;
 }
-.tab .tab-contents ul {
+.introduction-list__inner .tab .tab-contents ul {
   list-style: none;
-  padding: 0;
+  margin: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  padding: 30px 0px;
   gap: 10px;
 }
-.tab .tab-contents ul li {
-  padding: 8px 16px;
-  background-color: white;
-  color: #5c3a42;
-  border-radius: 15px;
+.introduction-list__inner .tab .tab-contents ul li {
+  border-radius: 8px;
+  border: 1px solid #EF8F9C;
   cursor: pointer;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.tab .tab-contents ul li:hover {
-  background-color: #ff6773;
+.introduction-list__inner .tab .tab-contents ul li a {
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  font-family: "Kosugi Maru";
+  font-weight: normal;
+  color: #EF8F9C;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.introduction-list__inner .tab .tab-contents ul li .category-filter {
+  width: 200px;
+  padding: 8px 0;
+}
+.introduction-list__inner .tab .tab-contents ul li .prefecture-filter {
+  width: 150px;
+  padding: 8px 0;
+}
+.introduction-list__inner .tab .tab-contents ul li:hover {
+  background: #EF8F9C;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.introduction-list__inner .tab .tab-contents ul li:hover a {
+  opacity: 1;
   color: white;
 }
-.tab .tab-contents ul li a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.introduction-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-.introduction-list .introduction-thumbnail {
-  width: 200px;
-  height: auto;
-  background: white;
-  border-radius: 10px;
-  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.introduction-list__inner .introduction-thumbnail {
+  max-width: 320px;
+  width: 100%;
+  height: 272px;
+  padding: 12px;
+  border-radius: 20px;
   overflow: hidden;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  position: relative;
 }
-.introduction-list .introduction-thumbnail:hover {
+.introduction-list__inner .introduction-thumbnail:hover {
   -webkit-transform: translateY(-5px);
           transform: translateY(-5px);
   -webkit-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
           box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
-.introduction-list .introduction-thumbnail img {
+.introduction-list__inner .introduction-thumbnail img {
   width: 100%;
-  height: 150px;
+  height: 180px;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 20px;
 }
-.introduction-list .introduction-thumbnail .nursery-prefecture,
-.introduction-list .introduction-thumbnail .news-header__flex--category {
-  font-size: 12px;
-  color: white;
-  background-color: #ff9aa2;
-  padding: 3px 5px;
-  border-radius: 5px;
+.introduction-list__inner .introduction-thumbnail .nursery-prefecture,
+.introduction-list__inner .introduction-thumbnail .news-header__flex--category {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  font-family: "Kosugi Maru";
+  font-weight: normal;
+  color: #55000C;
+  background-color: #FFFFFF;
+  padding: 4px 8px;
+  border-radius: 8px;
   display: inline-block;
-  margin: 5px;
+  margin: 10px 0;
 }
-.introduction-list .introduction-thumbnail h2.nursery-name {
-  font-size: 18px;
-  margin: 10px;
-  color: #5c3a42;
+.introduction-list__inner .introduction-thumbnail .news-header__flex--category {
+  margin: 0 2px 0 0;
+}
+.introduction-list__inner .introduction-thumbnail h2.nursery-name {
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  font-family: "Kosugi Maru";
+  font-weight: normal;
+  color: #55000C;
+}
+.introduction-list__inner .nintei-hoiku {
+  background-color: #FFEDF0;
+}
+.introduction-list__inner .shokibo-hoiku {
+  background-color: #FFF9CB;
+}
+.introduction-list__inner .shokibo-a-gata {
+  background-color: #EDF4FF;
 }
 
+.pagination {
+  display: block; /* ✅ flex内に入らないようにblock指定 */
+  width: 100%; /* 横幅を最大に */
+  text-align: center; /* 中央揃え */
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 16px auto 58px;
+}
+.pagination__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 201px;
+  margin: 0 auto;
+}
+.pagination__inner a, .pagination__inner span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+  width: 36px; /* ボタンの大きさ */
+  height: 36px;
+  border-radius: 8px; /* 丸い形 */
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  font-family: "Kosugi Maru";
+  font-weight: normal;
+  color: #EF8F9C;
+  text-decoration: none;
+  padding: 0 0 0 0;
+  background: #FFFFFF; /* 背景色 */
+  border: 1px solid #EF8F9C; /* 枠線 */
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.pagination__inner a i, .pagination__inner span i {
+  font-size: 11px;
+}
+.pagination__inner a:hover, .pagination__inner span:hover {
+  opacity: 1;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background: #EF8F9C;
+  color: #FFFFFF;
+}
+.pagination__inner .current {
+  background: #EF8F9C;
+  color: #FFFFFF;
+  border: none;
+}
+
+@media (max-width: 1200px) {
+  .introduction-list__inner {
+    min-width: 0;
+    width: 100%;
+  }
+  .introduction-list__inner .tab {
+    width: 100%;
+    height: 126px;
+    margin: 0;
+    padding: 0;
+    z-index: -1;
+    position: relative;
+    top: -46px;
+    left: 0;
+  }
+  .introduction-list__inner .tab .tab-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    gap: 8px;
+    padding: 0 0 22px;
+  }
+  .introduction-list__inner .tab .tab-list__item {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #EF8F9C;
+    background-color: #FFFFFF;
+    border: 1px solid #EF8F9C;
+    border-bottom: none;
+    text-align: center;
+    padding: 8px 18px 5px;
+    border-radius: 12px 12px 0 0;
+    width: 120px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  .introduction-list__inner .tab .tab-list__item.is-btn-active {
+    text-align: center;
+    background-color: #EF8F9C;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #FFFFFF;
+  }
+}
+@media (max-width: 500px) {
+  .introduction-list__inner {
+    min-width: 0%;
+    max-width: 1080px;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    gap: 20px;
+    border-radius: 30px;
+    padding: 0 4% -19px;
+    margin: -3px auto -42px;
+    position: relative;
+    z-index: 10;
+    background-color: #FFFFFF;
+    /* 園の種類ごとに背景色を変更 */
+  }
+  .introduction-list__inner .tab {
+    width: 100%;
+    height: 126px;
+    margin: 0;
+    padding: 0;
+    z-index: -1;
+    position: relative;
+    top: -46px;
+    left: 0;
+  }
+  .introduction-list__inner .tab .tab-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    gap: 8px;
+    padding: 0 0 22px;
+  }
+  .introduction-list__inner .tab .tab-list__item {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #EF8F9C;
+    background-color: #FFFFFF;
+    border: 1px solid #EF8F9C;
+    border-bottom: none;
+    text-align: center;
+    padding: 8px 18px 5px;
+    border-radius: 12px 12px 0 0;
+    width: 120px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  .introduction-list__inner .tab .tab-list__item.is-btn-active {
+    text-align: center;
+    background-color: #EF8F9C;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #FFFFFF;
+  }
+  .introduction-list__inner .tab .tab-contents-wrap {
+    background: white;
+    border-radius: 15px;
+  }
+  .introduction-list__inner .tab .tab-contents {
+    display: none;
+    font-size: 14px;
+  }
+  .introduction-list__inner .tab .tab-contents.is-contents-active {
+    display: block;
+  }
+  .introduction-list__inner .tab .tab-contents ul {
+    list-style: none;
+    margin: -5px 0 24px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    padding: 0px 3px 14px 0px;
+    gap: 10px;
+  }
+  .introduction-list__inner .tab .tab-contents ul li {
+    border-radius: 8px;
+    border: 1px solid #EF8F9C;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  .introduction-list__inner .tab .tab-contents ul li a {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #EF8F9C;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  .introduction-list__inner .tab .tab-contents ul li .category-filter {
+    width: 150px;
+    padding: 8px 0;
+  }
+  .introduction-list__inner .tab .tab-contents ul li .prefecture-filter {
+    width: 150px;
+    padding: 8px 0;
+  }
+  .introduction-list__inner .tab .tab-contents ul li:hover {
+    background: #EF8F9C;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  .introduction-list__inner .tab .tab-contents ul li:hover a {
+    opacity: 1;
+    color: white;
+  }
+  .introduction-list__inner .introduction-thumbnail {
+    max-width: 320px;
+    width: 100%;
+    height: 269px;
+    padding: 12px;
+    border-radius: 20px;
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .introduction-list__inner .introduction-thumbnail:hover {
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+    -webkit-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  .introduction-list__inner .introduction-thumbnail img {
+    width: 100%;
+    height: 180px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 20px;
+  }
+  .introduction-list__inner .introduction-thumbnail .nursery-prefecture,
+  .introduction-list__inner .introduction-thumbnail .news-header__flex--category {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #55000C;
+    background-color: #FFFFFF;
+    padding: 4px 8px;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 8px 0;
+  }
+  .introduction-list__inner .introduction-thumbnail .news-header__flex--category {
+    margin: 0 8px 0 0;
+  }
+  .introduction-list__inner .introduction-thumbnail h2.nursery-name {
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #55000C;
+  }
+  .introduction-list__inner .nintei-hoiku {
+    background-color: #FFEDF0;
+  }
+  .introduction-list__inner .shokibo-hoiku {
+    background-color: #FFF9CB;
+  }
+  .introduction-list__inner .shokibo-a-gata {
+    background-color: #EDF4FF;
+  }
+  .pagination {
+    display: block; /* ✅ flex内に入らないようにblock指定 */
+    width: 100%; /* 横幅を最大に */
+    text-align: center; /* 中央揃え */
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 5px auto 48px;
+  }
+  .pagination__inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 90px;
+    margin: 0 auto;
+  }
+  .pagination__inner a, .pagination__inner span {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 0 auto;
+    width: 24px; /* ボタンの大きさ */
+    height: 24px;
+    border-radius: 8px; /* 丸い形 */
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #EF8F9C;
+    text-decoration: none;
+    padding: 0 0 0 0;
+    background: #FFFFFF; /* 背景色 */
+    border: 1px solid #EF8F9C; /* 枠線 */
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+  }
+  .pagination__inner a i, .pagination__inner span i {
+    font-size: 11px;
+  }
+  .pagination__inner a:hover, .pagination__inner span:hover {
+    opacity: 1;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    background: #EF8F9C;
+    color: #FFFFFF;
+  }
+  .pagination__inner .current {
+    background: #EF8F9C;
+    color: #FFFFFF;
+    border: none;
+  }
+}
 #single-nursery .single-nursery__inner .thumbnail {
   max-width: 1080px;
   width: 100%;
@@ -3577,7 +4044,7 @@ a .btn-pattern2 {
 #single-nursery .single-nursery__inner .inside .slider .slider-item img {
   width: 240%;
   height: 160px;
-  border-radius: 10px;
+  border-radius: 20px;
   -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   -webkit-transition: -webkit-transform 0.3s ease-in-out;
@@ -3857,6 +4324,862 @@ a .btn-pattern2 {
   margin: 40px auto -40px;
 }
 
+@media (max-width: 900px) {
+  #single-nursery .single-nursery__inner .thumbnail {
+    max-width: 1080px;
+    width: 100%;
+    margin: -19px auto 120px;
+    text-align: center;
+  }
+  #single-nursery .single-nursery__inner .thumbnail__inner {
+    padding: 0 3.7%;
+  }
+  #single-nursery .single-nursery__inner .thumbnail__inner--image {
+    min-width: 100%;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+  }
+  #single-nursery .single-nursery__inner .thumbnail__inner--title {
+    margin: 20px 0 12px;
+    font-size: 18px;
+    letter-spacing: 0.2em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+  }
+  #single-nursery .single-nursery__inner .thumbnail__inner--textarea {
+    text-align: left;
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    line-height: 2;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+  }
+  #single-nursery .single-nursery__inner .inside .slider {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  #single-nursery .single-nursery__inner .inside .slider .slider-item {
+    padding: 10px;
+  }
+  #single-nursery .single-nursery__inner .inside .slider .slider-item img {
+    width: 120px;
+    height: 80px;
+    border-radius: 12px;
+    -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    -webkit-transition: -webkit-transform 0.3s ease-in-out;
+    transition: -webkit-transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  }
+  #single-nursery .single-nursery__inner .inside .slider .slider-item img:hover {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+  }
+  #single-nursery .single-nursery__inner .pink-bk {
+    padding: 112px 0 66px;
+  }
+  #single-nursery .single-nursery__inner .message {
+    max-width: 800px;
+    width: 100%;
+    margin: 79px auto -39px;
+    padding: 0 4%;
+  }
+  #single-nursery .single-nursery__inner .message__flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 32px;
+    margin: 49px auto 120px;
+  }
+  #single-nursery .single-nursery__inner .message__flex--image {
+    max-width: 200px;
+    width: 100%;
+    height: 266px;
+    border-radius: 20px;
+  }
+  #single-nursery .single-nursery__inner .message__flex--textarea {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    line-height: 2;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+  }
+  #single-nursery .single-nursery__inner .about-nursery {
+    padding: 0 4%;
+    margin: 0 0 151px;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner {
+    max-width: 1080px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 66px auto 120px;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    border-bottom: none;
+    -o-border-image: none;
+       border-image: none;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box strong {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    max-width: 100%;
+    width: 100%;
+    padding: 17px 0;
+    background-color: #FFFFFF;
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    line-height: 1;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box__text {
+    padding: 12px 0 16px 12px;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box__textarea {
+    padding: 24px 0 24px 12px;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .tel-sp {
+    margin: 5px 0 0;
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    line-height: 1;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .target-sp {
+    margin: 13px 0 8px;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box__flex {
+    padding: 24px 0px;
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    line-height: 1;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box__flex table {
+    width: 100%;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box__flex table th,
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box__flex table td {
+    text-align: center;
+    padding: 0 0px 8px 4px;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box__flex table th {
+    font-weight: normal;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box__flex--text {
+    padding: 5px 0 0 12px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .nursery-hours {
+    width: 100%;
+    padding: 24px 12px;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .nursery-hours__text {
+    margin: 0 0 4px;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    line-height: 1;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .nursery-hours table {
+    max-width: 600px;
+    width: 100%;
+    background-color: #FFFFFF;
+    border: 1px solid #55000C;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .nursery-hours table th,
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .nursery-hours table td {
+    border: 1px solid #55000C;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    line-height: 1;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .nursery-hours table th {
+    width: 43.7%;
+    font-weight: normal;
+    text-align: center;
+    padding: 18px 0px 0px 1px;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .nursery-hours table td {
+    padding: 17.3px 19px;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .nursery-hours table .extension-th {
+    padding: 26px 19px;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .nursery-hours .t1 {
+    margin: 0 0 24px;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .capacity {
+    padding: 24px 0;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .capacity table {
+    font-size: 14px;
+    letter-spacing: 0em;
+    line-height: 1;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .capacity table th {
+    font-weight: normal;
+    text-align: center;
+    padding: 7px 0px 0 6px;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .capacity table td {
+    text-align: center;
+    padding: 8px 3px 0 13px;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .capacity table .total-capacity {
+    width: 75px;
+    height: 29px;
+    background-color: #FFEDF0;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    line-height: 1.2;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .capacity table .th {
+    padding: 12px 0px 0px 2px;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .capacity table .td {
+    padding: -1px 0 0 0;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .capacity__text {
+    margin: 8px 0 0;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .staff {
+    padding: 24px 0;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .staff table {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    letter-spacing: 0em;
+    line-height: 1;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .staff table th {
+    text-align: center;
+    padding: 8px 1px 0 6px;
+    font-weight: normal;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .staff table td {
+    text-align: center;
+    padding: 8px 6px 0 12px;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .staff table .total-staff {
+    width: 75px;
+    height: 29px;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    line-height: 1.2;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+    background-color: #FFEDF0;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .staff table .th {
+    padding: 12px 0px 0 1px;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .staff table .td {
+    padding: 0px 0px 4px 3px;
+  }
+  #single-nursery .single-nursery__inner .about-nursery__inner .nursery-info .info-box .staff__text {
+    margin: 2px 0 0;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: 400;
+    color: #55000C;
+  }
+  #single-nursery .single-nursery__inner .introduction-letter .btn {
+    margin: 40px auto -40px;
+  }
+  #single-nursery .single-nursery #letter {
+    width: 100%;
+    height: 100%;
+    padding: 160px 4% 120px;
+  }
+  #single-nursery .single-nursery #letter .letter-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    padding: 20px;
+    max-width: 1500px;
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    row-gap: 30px;
+    -webkit-column-gap: 52px;
+       -moz-column-gap: 52px;
+            column-gap: 52px;
+    margin: 0 auto 41px;
+    padding: 0;
+  }
+  #single-nursery .single-nursery #letter .letter-list .letter-card {
+    max-width: 320px;
+    width: 100%;
+    height: 280px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  #single-nursery .single-nursery #letter .letter-list .letter-card:hover {
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+    -webkit-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  #single-nursery .single-nursery #letter .letter-list .letter-card__image {
+    width: 100%;
+    height: 135px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  #single-nursery .single-nursery #letter .letter-list .letter-card__textarea {
+    padding: 12px 12px 0 12px;
+  }
+  #single-nursery .single-nursery #letter .letter-list .letter-card__textarea--title {
+    font-size: 18px;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #333333;
+  }
+  #single-nursery .single-nursery #letter .letter-list .letter-card__textarea--letter-title {
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #333333;
+    margin: 12px 0 13px;
+  }
+  #single-nursery .single-nursery #letter .letter-list .letter-card__post-date {
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #333333;
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+  }
+}
+@media (max-width: 900px) and (max-width: 500px) {
+  #single-nursery .single-nursery #letter .letter-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    gap: 4px;
+    padding: 0 10%;
+    max-width: 1500px;
+    margin: 0px auto 7px;
+  }
+  #single-nursery .single-nursery #letter .letter-list .letter-card {
+    max-width: 300px;
+    width: 100%;
+    height: 280px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  #single-nursery .single-nursery #letter .letter-list .letter-card:hover {
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+    -webkit-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  #single-nursery .single-nursery #letter .letter-list .letter-card__image {
+    width: 100%;
+    height: 135px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  #single-nursery .single-nursery #letter .letter-list .letter-card__textarea {
+    padding: 12px 12px 0 12px;
+  }
+  #single-nursery .single-nursery #letter .letter-list .letter-card__textarea--title {
+    font-size: 18px;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #333333;
+  }
+  #single-nursery .single-nursery #letter .letter-list .letter-card__textarea--letter-title {
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #333333;
+    margin: 12px 0 13px;
+  }
+  #single-nursery .single-nursery #letter .letter-list .letter-card__post-date {
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #333333;
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+  }
+}
+@media (max-width: 900px) {
+  #single-nursery .single-nursery #letter .btn {
+    margin: 23px auto -41px;
+  }
+  #single-nursery .single-nursery #letter .intro-btn {
+    max-width: 240px;
+    height: 60px;
+  }
+}
+#letter-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0 31px 0 0px;
+  margin: -12px auto 120px;
+}
+#letter-container .letter {
+  width: 70%;
+  border-radius: 40px;
+  margin: 0 32px 0 60px;
+  padding: 35px 32px 0 32px;
+  background-color: #FFFFFF;
+}
+#letter-container .letter__title-date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+#letter-container .letter__title-date--letter-title {
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  font-family: "Kosugi Maru";
+  font-weight: normal;
+  color: #333333;
+}
+#letter-container .letter__title-date--letter-title i {
+  padding: 0 9px 0 0;
+}
+#letter-container .letter__title-date--post-date {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  font-family: "Kosugi Maru";
+  font-weight: normal;
+  color: #333333;
+}
+#letter-container .letter__title {
+  border-bottom: 2px solid #333333;
+  padding: 11px 0;
+  font-size: 32px;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  font-family: "Kosugi Maru";
+  font-weight: normal;
+  color: #333333;
+}
+#letter-container .letter__image {
+  max-width: 640px;
+  width: 100%;
+  height: 320px;
+  border-radius: 40px;
+  display: block;
+  margin: 32px auto 0;
+}
+#letter-container .letter .text-content__inner {
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 2;
+  font-family: "Kosugi Maru";
+  font-weight: normal;
+  color: #333333;
+}
+#letter-container .letter .text-content__inner--subheading {
+  padding: 0 17px;
+  margin: 30px 0 8px;
+  position: relative;
+}
+#letter-container .letter .text-content__inner--subheading::before {
+  content: "";
+  width: 4px;
+  height: 32px;
+  border-radius: 2px;
+  position: absolute;
+  top: 2px;
+  left: 0;
+  background-color: #EF8F9C;
+}
+#letter-container .letter .text-content__inner--paragraph {
+  margin: 0 0 8px;
+}
+#letter-container .letter .btn {
+  max-width: 300px;
+  width: 100%;
+  height: 60px;
+  margin: 64px auto;
+}
+#letter-container .archive-sidebar {
+  padding: 12px 0 0 24px;
+  border-left: 1.5px solid #55000C;
+  width: 26%;
+}
+#letter-container .archive-sidebar h3 {
+  font-size: 24px;
+  letter-spacing: 0.2em;
+  line-height: 1.5;
+  font-family: "Kosugi Maru";
+  font-weight: normal;
+  color: #55000C;
+  margin: 0 0 10px;
+}
+#letter-container .archive-sidebar .archive-year {
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  font-family: "Kosugi Maru";
+  font-weight: normal;
+  color: #55000C;
+  position: relative;
+}
+#letter-container .archive-sidebar .archive-year p {
+  padding: 2px 0 0 15px;
+  margin: 0 0 10px;
+}
+#letter-container .archive-sidebar .archive-year::before {
+  content: "";
+  width: 4px;
+  height: 24px;
+  border-radius: 2px;
+  position: absolute;
+  background-color: #EF8F9C;
+}
+#letter-container .archive-sidebar .archive-months {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+#letter-container .archive-sidebar .archive-months li {
+  margin: 0 7px 12px 8px;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  font-family: "Kosugi Maru";
+  font-weight: normal;
+  color: #55000C;
+  background: #FFFFFF;
+  padding: 4px 12px;
+  border-radius: 8px;
+}
+#letter-container .archive-sidebar .archive-months li a {
+  color: #55000C;
+}
+
+@media (max-width: 900px) {
+  #letter-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+    padding: 0 31px 0 0px;
+    margin: -7px auto 107px;
+  }
+  #letter-container .letter {
+    width: 100%;
+    border-radius: 40px;
+    margin: 0 32px 29px 60px;
+    padding: 35px 4.6% 0;
+    background-color: #FFFFFF;
+  }
+  #letter-container .letter__title-date {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  #letter-container .letter__title-date--letter-title {
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #333333;
+    margin: 0 0 12px;
+  }
+  #letter-container .letter__title-date--letter-title i {
+    padding: 0 12px 0 0;
+  }
+  #letter-container .letter__title-date--post-date {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    line-height: F-line-height14-4 F-letter-spacing-10/12;
+  }
+  #letter-container .letter__title {
+    border-bottom: 2px solid #333333;
+    padding: 11px 0;
+    font-size: 20px;
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #333333;
+  }
+  #letter-container .letter__image {
+    max-width: 315px;
+    width: 100%;
+    height: 240px;
+    border-radius: 30px;
+    display: block;
+    margin: 23px auto 0;
+  }
+  #letter-container .letter .text-content__inner {
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    line-height: 2;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #333333;
+  }
+  #letter-container .letter .text-content__inner--subheading {
+    padding: 0 18px;
+    margin: 24px 0 7px;
+    position: relative;
+  }
+  #letter-container .letter .text-content__inner--subheading::before {
+    content: "";
+    width: 4px;
+    height: 32px;
+    border-radius: 2px;
+    position: absolute;
+    top: 0px;
+    left: 3px;
+    background-color: #EF8F9C;
+  }
+  #letter-container .letter .text-content__inner--paragraph {
+    margin: 0 0 9px;
+  }
+  #letter-container .letter .btn {
+    max-width: 300px;
+    height: 60px;
+    width: 100%;
+    margin: 68px auto;
+  }
+  #letter-container .letter .btn p {
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #55000C;
+  }
+  #letter-container .letter .btn i {
+    font-size: 19px;
+    top: 20px;
+    right: 21px;
+  }
+  #letter-container .archive-sidebar {
+    padding: 12px 0 0 24px;
+    border-left: 1.5px solid #55000C;
+    width: 100%;
+  }
+  #letter-container .archive-sidebar h3 {
+    font-size: 20px;
+    letter-spacing: 0.2em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #55000C;
+    margin: 0 0 10px;
+  }
+  #letter-container .archive-sidebar .archive-year {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #55000C;
+    position: relative;
+  }
+  #letter-container .archive-sidebar .archive-year p {
+    padding: 0px 0 0 19px;
+    margin: 0 0 10px;
+  }
+  #letter-container .archive-sidebar .archive-year::before {
+    content: "";
+    width: 4px;
+    height: 22px;
+    top: -2px;
+    left: 5px;
+    border-radius: 2px;
+    position: absolute;
+    background-color: #EF8F9C;
+  }
+  #letter-container .archive-sidebar .archive-months {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  #letter-container .archive-sidebar .archive-months li {
+    margin: 0 7px 12px 8px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    font-family: "Kosugi Maru";
+    font-weight: normal;
+    color: #55000C;
+    background: #FFFFFF;
+    padding: 4px 12px;
+    border-radius: 8px;
+  }
+  #letter-container .archive-sidebar .archive-months li a {
+    color: #55000C;
+  }
+}
 #FAQ {
   padding: 500px 0;
 }

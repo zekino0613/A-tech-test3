@@ -122,7 +122,7 @@
           <ul class="h-nav__ul">
             <li class="h-nav__ul--li">
               <div class="line-border"></div>
-              <a href="<?php echo get_post_type_archive_link('about'); ?>">
+              <a href="<?php echo home_url('/about/'); ?>">
                 <div class="header-icon">
                   <img
                     class="header-icon__img"
@@ -244,7 +244,7 @@
               <nav class="h-nav">
                 <ul class="h-nav__ul">
                   <li class="h-nav__ul--li">
-                    <a href="<?php echo get_post_type_archive_link('about'); ?>">
+                  <a href="<?php echo home_url('/about/'); ?>">
                       <div class="header-icon">
                         <img
                           class="header-icon__img"

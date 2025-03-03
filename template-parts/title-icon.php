@@ -37,6 +37,10 @@ $title_data = [
         'title' => '年間行事予定',
         'english_title' => 'Yearly Program'
     ],
+		'archive-introduction' => [
+        'image' => 'assets/images/kidsland_image/design-parts/tree-icon.webp',
+        
+    ],
     // ----------------------------------------------------------------
     'recruit' => [
         'image' => 'assets/images/kidsland_image/design-parts/pen-icon.webp',

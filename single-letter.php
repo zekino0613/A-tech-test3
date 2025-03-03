@@ -9,54 +9,122 @@
       get_template_part('template-parts/title-heading'); // title-heading をインクルード
   ?>
   
-  <div class="container">
-    <!-- 記事タイトル -->
-    <h1 class="letter-title"><?php the_title(); ?>からのおたより</h1>
+	<section id="letter-container">
+		<div class="letter">
+			<div class="letter__title-date fade-in">
+				<!-- 記事タイトル -->
+				<h1 class="letter__title-date--letter-title"><i class="fas fa-pencil"></i><?php the_title(); ?>からのおたより</h1>
 
-    <!-- 投稿日時 -->
-    <time class="letter-card__post-date" datetime="<?php echo get_the_date('Y-m-d'); ?>">
-      <?php
-      $date = get_the_date('Y年n月j日'); // 例: 2024年4月1日
-      $date_hiragana = str_replace(['年', '月', '日'], ['ねん', 'がつ', 'にち'], $date);
-      echo esc_html($date_hiragana);
-      ?>
-    </time>
+				<!-- 投稿日時 -->
+				<time class="letter__title-date--post-date" datetime="<?php echo get_the_date('Y-m-d'); ?>">
+					<?php
+					$date = get_the_date('Y年n月j日'); // 例: 2024年4月1日
+					$date_hiragana = str_replace(['年', '月', '日'], ['ねん', 'がつ', 'にち'], $date);
+					echo esc_html($date_hiragana);
+					?>
+				</time>
+			</div><!-- / -->
+			
+			<!-- サムネイルタイトル -->
+			<?php if( get_field('article_title') ): ?>
+				<h2 class="letter__title fade-in"><?php the_field('article_title'); ?></h2>
+			<?php endif; ?>
 
-    <!-- サムネイルタイトル -->
-    <?php if( get_field('article_title') ): ?>
-      <h2 class="letter_title"><?php the_field('article_title'); ?></h2>
-    <?php endif; ?>
+			<!-- サムネイル画像 -->
+			<?php
+				$thumbnail = get_field('article_image'); // 画像IDを取得
+				$default_image = get_template_directory_uri() . '/assets/images/kidsland_image/design-parts/no-image.webp'; // デフォルト画像のパス
+			?>
+			<img class="letter__image fade-in" 
+					src="<?php echo esc_url($thumbnail ? wp_get_attachment_image_url($thumbnail, 'full') : $default_image); ?>" 
+					alt="<?php the_title(); ?>">
 
-    <!-- サムネイル画像 -->
-    <?php
-      $thumbnail = get_field('article_image');
-      if ($thumbnail):
-      ?>
-      <img src="<?php echo esc_url(wp_get_attachment_image_url($thumbnail, 'full')); ?>" alt="<?php the_title(); ?>">
-    <?php endif; ?>
+			<!-- 小見出しと段落内容 -->
+			<div class="text-content">
+			<?php
+				// リピートフィールドを取得
+				$repeater_data = SCF::get('subheading_content'); // リピートフィールドのグループ名
 
-    <!-- 小見出しと段落内容 -->
-    <div class="news-content">
-      <?php
-      // リピートフィールドを取得
-      $repeater_data = SCF::get('subheading_content'); // リピートフィールドのグループ名
-      if (!empty($repeater_data)) {
-          foreach ($repeater_data as $item) {
-              // 小見出しと段落内容を取得
-              $subheading = isset($item['subheading']) ? esc_html($item['subheading']) : '小見出し未設定';
-              $paragraph_content = isset($item['paragraph_content']) ? nl2br(esc_html($item['paragraph_content'])) : '段落内容未設定';
+				if (!empty($repeater_data)) {
+						foreach ($repeater_data as $item) {
+								// 小見出しと段落を取得
+								$subheading = isset($item['subheading']) ? esc_html($item['subheading']) : '';
+								$paragraph_content = isset($item['paragraph_content']) ? esc_html($item['paragraph_content']) : '';
 
-              // 出力
-              echo '<div class="news-section ">';
-              echo '<h2 class="news-section__subheading fade-in">' . $subheading . '</h2>';
-              echo '<p class="news-section__paragraph fade-in">' . $paragraph_content . '</p>';
-              echo '</div>';
-          }
-      } else {
-          echo '<p>コンテンツが設定されていません。</p>';
-      }
-      ?>
-    </div>
+								// **改行ごとに `<p>` タグで分割**
+								$paragraphs = explode("\n", trim($paragraph_content));
+
+								echo '<div class="text-content__inner">';
+								if ($subheading) {
+										echo '<h3 class="text-content__inner--subheading fade-in">' . $subheading . '</h3>';
+								}
+
+								foreach ($paragraphs as $para) {
+										if (!empty(trim($para))) { // 空行をスキップ
+												echo '<p class="text-content__inner--paragraph fade-in">' . esc_html($para) . '</p>';
+										}
+								}
+								echo '</div>';
+						}
+				} else {
+						echo '<p>コンテンツが設定されていません。</p>';
+				}
+				?>
+
+				
+				<a href="<?php echo home_url('/letter/'); ?>" class="btn fade-in">
+					<p class="btn__text">こもれびだより一覧へ</p>
+					<i class="fa-solid fa-angle-right"></i>
+				</a>
+			</div>
+		</div>
+		
+		<aside class="archive-sidebar fade-in">
+    <h3>アーカイブ</h3>
+    <ul class="archive-list">
+        <?php
+        global $wpdb;
+        $archives = $wpdb->get_results("
+            SELECT DISTINCT YEAR(post_date) as year, MONTH(post_date) as month, COUNT(ID) as post_count
+            FROM $wpdb->posts
+            WHERE post_type = 'letter' AND post_status = 'publish'
+            GROUP BY YEAR(post_date), MONTH(post_date)
+            ORDER BY post_date DESC
+        ");
+
+        $grouped_archives = [];
+        foreach ($archives as $archive) {
+            $year  = esc_html($archive->year);
+            $month = esc_html($archive->month);
+            $count = esc_html($archive->post_count);
+
+            // 年ごとにグループ化
+            if (!isset($grouped_archives[$year])) {
+                $grouped_archives[$year] = [];
+            }
+            $grouped_archives[$year][] = [
+                'month' => $month,
+                'count' => $count
+            ];
+        }
+
+        // 表示処理
+        foreach ($grouped_archives as $year => $months) {
+            echo '<li class="archive-year"><p>' . $year . 'ねん</p>';
+            echo '<ul class="archive-months">';
+            foreach ($months as $data) {
+                $month_link = get_month_link($year, $data['month']);
+                echo '<li><a href="' . $month_link . '">' . $data['month'] . 'がつ </a></li>';
+            }
+            echo '</ul>';
+            echo '</li>';
+        }
+        ?>
+    </ul>
+</aside>
+
+
+	</div>
 
 
 

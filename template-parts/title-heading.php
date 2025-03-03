@@ -97,8 +97,6 @@ if (is_singular('introduction')) :
     </div>
     
     <?php
-      //パンくずリスト
-      // **特定のページではパンくずリストを非表示にする**
       if (!in_array($slug, $hide_breadcrumbs, true)) {
         if (function_exists('yoast_breadcrumb')) {
           yoast_breadcrumb('<nav class="sub-mainvisual__inner--breadcrumbs">', '</nav>');
@@ -131,4 +129,21 @@ if (is_singular('introduction')) :
     </div>  
   </section>
   <?php endif; ?>
+	
+	<?php
+	add_filter('wpseo_breadcrumb_links', function ($links) {
+    if (is_singular('letter')) { // single-letter ページの時のみ変更
+        $post_id = get_the_ID();
+        $custom_title = get_the_title($post_id); // 投稿のメインタイトル
+        $custom_field_title = get_field('article_title', $post_id); // ACFのカスタムフィールド（記事タイトル）
 
+        if ($custom_field_title) {
+            // 最後のパンくずのタイトルを「一番上のタイトル + 記事タイトル」に変更
+            $last_index = count($links) - 1;
+            $links[$last_index]['text'] = esc_html($custom_title . ' - ' . $custom_field_title);
+        }
+    }
+    return $links;
+});
+
+	?>

@@ -144,8 +144,10 @@ function custom_breadcrumb_labels($link_output, $link) {
     if (strpos($link_output, 'introduction') !== false) {
       $link_output = str_replace('introduction', '各園のご紹介', $link_output);
     }
-    if (strpos($link_output, 'News') !== false) {
-      $link_output = str_replace('News', 'ニュース一覧', $link_output);
+    if (strpos($link_output, 'letter') !== false) {
+      $link_output = str_replace('letter', 'こもれびだより', $link_output);
+			
+			
     }
     if (strpos($link_output, 'reserve') !== false) {
       $link_output = str_replace('reserve', 'ご予約・お問い合わせ', $link_output);
@@ -155,6 +157,24 @@ function custom_breadcrumb_labels($link_output, $link) {
     }
     return $link_output;
 }
+
+// single-letterのパンくずリスト
+function custom_yoast_breadcrumb_for_letter($links) {
+	if (is_singular('letter')) { // single-letter ページの時のみ変更
+			$post_id = get_the_ID();
+			$custom_title = get_the_title($post_id); // 投稿のメインタイトル
+			$custom_field_title = get_field('article_title', $post_id); // ACFのカスタムフィールド（記事タイトル）
+
+			if ($custom_field_title) {
+					// 最後のパンくずのタイトルを「一番上のタイトル + 記事タイトル」に変更
+					$last_index = count($links) - 1;
+					$links[$last_index]['text'] = esc_html($custom_title . 'からのおたより'.'『' . $custom_field_title.'』' );
+			}
+	}
+	return $links;
+}
+add_filter('wpseo_breadcrumb_links', 'custom_yoast_breadcrumb_for_letter');
+
 
 // 404ページの際のパンくずリスト
 add_filter( 'wpseo_breadcrumb_links', function( $links ) {
@@ -454,12 +474,12 @@ add_action('pre_get_posts', 'filter_archive_by_date');
 
 
 // archive-introduction
-// 都道府県を地理順にソートする関数
+// 都道府県を関東圏優先でソートする関数
 function sort_prefectures_by_region($prefecture_terms) {
   // 地理順に並べるための手動指定リスト
   $custom_order = [
-      '北海道', '青森県', '岩手県', '宮城県', '秋田県', '山形県', '福島県', // 東北
-      '東京都', '神奈川県', '千葉県', '埼玉県', '茨城県', '栃木県', '群馬県', // 関東
+		  '北海道', '青森県', '岩手県', '宮城県', '秋田県', '山形県', '福島県', // 東北
+		  '東京都', '神奈川県', '千葉県', '埼玉県', '茨城県', '栃木県', '群馬県', // 関東（最優先）
       '新潟県', '富山県', '石川県', '福井県', '山梨県', '長野県', // 甲信越・北陸
       '岐阜県', '静岡県', '愛知県', '三重県', // 東海
       '滋賀県', '京都府', '大阪府', '兵庫県', '奈良県', '和歌山県', // 近畿
@@ -469,10 +489,15 @@ function sort_prefectures_by_region($prefecture_terms) {
       '沖縄県' // 沖縄
   ];
 
-  // 取得した都道府県リストを並び替え
+  // 都道府県をカスタム順序に従って並び替え
   usort($prefecture_terms, function($a, $b) use ($custom_order) {
       $indexA = array_search($a->name, $custom_order);
       $indexB = array_search($b->name, $custom_order);
+
+      // 都道府県がリストにない場合、最後に配置
+      if ($indexA === false) $indexA = count($custom_order);
+      if ($indexB === false) $indexB = count($custom_order);
+
       return $indexA - $indexB;
   });
 

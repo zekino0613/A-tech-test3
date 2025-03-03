@@ -2,140 +2,538 @@
 @use "../../_foundation/_base"as base;
 
 
-// 共通設定
-$primary-color: #ff9aa2;
-$secondary-color: #ffc3a0;
-$bg-color: #fff5f7;
-$text-color: #5c3a42;
-$border-color: #e0a0b0;
 
-
-
-// タブエリア
-.tab {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-  z-index: 1999;
-
-  .tab-list {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 20px;
-
-    &__item {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: $secondary-color;
-      color: $text-color;
-      border-radius: 20px;
-      border: 2px solid transparent;
-      cursor: pointer;
-      transition: all 0.3s ease;
-
-      &:hover {
-        background-color: darken($secondary-color, 10%);
-      }
-
-      &.is-btn-active {
-        background-color: $primary-color;
-        color: white;
-        border: 2px solid $border-color;
-      }
-    }
-  }
-
-  .tab-contents-wrap {
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-  }
-
-  .tab-contents {
-    display: none;
-    padding: 10px;
-    font-size: 14px;
-
-    &.is-contents-active {
-      display: block;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-
-      li {
-        padding: 8px 16px;
-        background-color: lighten($primary-color, 20%);
-        color: $text-color;
-        border-radius: 15px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-
-        &:hover {
-          background-color: darken($primary-color, 10%);
-          color: white;
-        }
-
-        a {
-          text-decoration: none;
-          color: inherit;
-        }
-      }
-    }
-  }
-}
-
-// 投稿カードのデザイン
 .introduction-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
+	&__inner {
+		min-width: 1080px;
+		width: 81%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 20px;
+		border-radius: 40px;
+		padding: 0 3%;
+		margin: 0px auto -37px;
+		position: relative;
+		z-index: 10;
+		background-color: map-get(mixin.$colors, "C-white");
+		// タブエリア
+		.tab {
+			width: 100%;
+			height: 107px;
+			margin: 0 ;
+			padding: 0;
+			z-index: -1;
+			position: relative;
+			top: -50px;
+			left: 0px;
+			.tab-list {
+				display: flex;
+				justify-content: center;
+				gap: 8px;
+				padding: 0 0 32px;
+				&__item {
+					@include mixin.font-settings (
+					F-size16,
+					F-line-height19-2,
+					F-letter-spacing-10,
+					F-family-KosugiMaru,
+					normal,
+					F-color-pink);
+					background-color: map-get(mixin.$colors, "C-white");
+					border: 1px solid map-get(mixin.$colors, "C-pink");
+					border-bottom:none ;
+					text-align: center;
+					padding: 8px 18px 4px;
+					border-radius:12px 12px 0 0;
+					width: 150px;
+					// border: 2px solid transparent;
+					cursor: pointer;
+					transition: all 0.3s ease;
+					&.is-btn-active {
+						text-align: center;
+						background-color: map-get(mixin.$colors, "C-pink");
+						@include mixin.font-settings (
+							F-size16,
+							F-line-height19-2,
+							F-letter-spacing-10,
+							F-family-KosugiMaru,
+							normal,
+							F-color-white);
+					}
+				}
+			}
+			.tab-contents-wrap {
+				background: white;
+				border-radius: 15px;
+			}
+			.tab-contents {
+				display: none;
+				font-size: 14px;
+				&.is-contents-active {
+					display: block;
+				}
+				ul {
+					list-style: none;
+					margin: 0 ;
+					display: flex;
+					flex-wrap: wrap;
+					padding:30px 0px;
+					gap: 10px;
+					li {
+						border-radius: 8px;
+						border: 1px solid map-get(mixin.$colors, "C-pink");
+						cursor: pointer;
+						transition: all 0.3s ease;
+						a {
+							@include mixin.font-settings(
+								F-size16,
+								F-line-height19-2,
+								F-letter-spacing-10,
+								F-family-KosugiMaru,
+								normal,
+								F-color-pink
+							);
+							text-align: center;
+							text-decoration: none;
+							display: block;
+							transition: all 0.3s ease; // a要素にもスムーズな変化を適用
+						}
+						.category-filter {
+							width: 200px;
+							padding:8px 0;
+						}			
+						.prefecture-filter {
+							width: 150px;
+							padding: 8px 0;
+						}			
+					}
+					// li全体をホバーしたときに、aにも適用
+					li:hover {
+						background: map-get(mixin.$colors, "C-pink");
+						transition: all 0.3s ease;
+						a {
+							opacity: 1;
+							color: white; // aの文字色も白に
+						}
+					}
+					
+				}
+			}
+		}
+		
+		
+		
+		//// 投稿カードのデザイン
+		.introduction-thumbnail {
+			max-width: 320px;
+			width: 100%;
+			height: 272px;
+			// background: map-get(mixin.$colors, "C-light-pink");
+			padding: 12px;
+			border-radius: 20px;
+			overflow: hidden;
+			transition: all 0.3s ease;
+			position: relative;
+			&:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+			}
+			img {
+				width: 100%;
+				height: 180px;
+				object-fit: cover;
+				border-radius: 20px;
+			}
+			.nursery-prefecture,
+			.news-header__flex--category {
+				@include mixin.font-settings (
+					F-size14,
+					F-line-height14,
+					F-letter-spacing-10,
+					F-family-KosugiMaru,
+					normal,
+					F-color-brown);
+				background-color: map-get(mixin.$colors, "C-white");
+				padding: 4px 8px;
+				border-radius: 8px;
+				display: inline-block;
+				margin: 10px 0;
+			}
+			.news-header__flex--category {
+				margin: 0 2px 0 0;
+			}
 
-  .introduction-thumbnail {
-    width: 200px;
-    height: auto;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: all 0.3s ease;
-
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-    }
-
-    img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-    }
-
-    .nursery-prefecture,
-    .news-header__flex--category {
-      font-size: 12px;
-      color: white;
-      background-color: $primary-color;
-      padding: 3px 5px;
-      border-radius: 5px;
-      display: inline-block;
-      margin: 5px;
-    }
-
-    h2.nursery-name {
-      font-size: 18px;
-      margin: 10px;
-      color: $text-color;
-    }
-  }
+			h2.nursery-name {
+				@include mixin.font-settings (
+					F-size20,
+					F-line-height30,
+					F-letter-spacing-10,
+					F-family-KosugiMaru,
+					normal,
+					F-color-brown);
+			}
+		}
+		/* 園の種類ごとに背景色を変更 */
+		.nintei-hoiku { 
+			background-color: map-get(mixin.$colors, "C-light-pink"); // ピンク
+		}
+		.shokibo-hoiku { 
+			background-color:#FFF9CB; // 黄色
+		}
+		.shokibo-a-gata { 
+			background-color: #EDF4FF; // 青色
+		}
+	}
 }
+
+.pagination {
+		display: block; /* ✅ flex内に入らないようにblock指定 */
+    width: 100%; /* 横幅を最大に */
+    text-align: center; /* 中央揃え */
+		justify-content: center;
+		margin: 16px auto 58px;
+		&__inner {
+			display: flex;
+			width: 201px;
+			margin: 0 auto;
+			a, span {
+				display: flex;
+        justify-content: center;
+        align-items: center;
+				margin: 0 auto;
+        width: 36px; /* ボタンの大きさ */
+        height: 36px;
+        border-radius: 8px; /* 丸い形 */
+				@include mixin.font-settings (
+					F-size16,
+					F-line-height19-2,
+					F-letter-spacing-10,
+					F-family-KosugiMaru,
+					normal,
+					F-color-pink);
+        text-decoration: none;
+				padding: 0 0 0 0;
+        background:map-get(mixin.$colors, "C-white"); /* 背景色 */
+        border: 1px solid map-get(mixin.$colors, "C-pink"); /* 枠線 */
+        transition: 0.3s ease;
+				i {
+					font-size: 11px;
+				}
+        &:hover {
+					opacity: 1;
+					transition: all 0.3s ease;
+          background: map-get(mixin.$colors, "C-pink");
+          color: map-get(mixin.$colors, "C-white");
+        }
+      }
+    .current {
+        background: map-get(mixin.$colors, "C-pink");
+        color: map-get(mixin.$colors, "C-white");
+        border: none;
+    }
+	}
+}
+
+
+@include mixin.TAB2 {
+	.introduction-list {
+		&__inner {
+			min-width: 0;
+			width: 100%;
+				// タブエリア
+				.tab {
+					width: 100%;
+					height: 126px;
+					margin: 0 ;
+					padding: 0;
+					z-index: -1;
+					position: relative;
+					top: -46px;
+					left: 0;
+					.tab-list {
+						display: flex;
+						justify-content: center;
+						gap: 8px;
+						padding: 0 0 22px;
+						&__item {
+							@include mixin.font-settings (
+							F-size14,
+							F-line-height16-8,
+							F-letter-spacing-10,
+							F-family-KosugiMaru,
+							normal,
+							F-color-pink);
+							background-color: map-get(mixin.$colors, "C-white");
+							border: 1px solid map-get(mixin.$colors, "C-pink");
+							border-bottom:none ;
+							text-align: center;
+							padding: 8px 18px 5px;
+							border-radius:12px 12px 0 0;
+							width: 120px;
+							// border: 2px solid transparent;
+							cursor: pointer;
+							transition: all 0.3s ease;
+							&.is-btn-active {
+								text-align: center;
+								background-color: map-get(mixin.$colors, "C-pink");
+								@include mixin.font-settings (
+									F-size14,
+									F-line-height16-8,
+									F-letter-spacing-10,
+									F-family-KosugiMaru,
+									normal,
+									F-color-white);
+							}
+						}
+					}
+				}
+		}
+	}
+}	
+
+
+
+
+
+@include mixin.SP {
+	.introduction-list {
+		&__inner {
+			min-width: 0%;
+			max-width: 1080px;
+			width: 100%;
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 20px;
+			border-radius: 30px;
+			padding: 0 4% -19px;
+			margin: -3px auto -42px;
+			position: relative;
+			z-index: 10;
+			background-color: map-get(mixin.$colors, "C-white");
+			// タブエリア
+			.tab {
+				width: 100%;
+				height: 126px;
+				margin: 0 ;
+				padding: 0;
+				z-index: -1;
+				position: relative;
+				top: -46px;
+        left: 0;
+				.tab-list {
+					display: flex;
+					justify-content: center;
+					gap: 8px;
+					padding: 0 0 22px;
+					&__item {
+						@include mixin.font-settings (
+						F-size14,
+						F-line-height16-8,
+						F-letter-spacing-10,
+						F-family-KosugiMaru,
+						normal,
+						F-color-pink);
+						background-color: map-get(mixin.$colors, "C-white");
+						border: 1px solid map-get(mixin.$colors, "C-pink");
+						border-bottom:none ;
+						text-align: center;
+						padding: 8px 18px 5px;
+						border-radius:12px 12px 0 0;
+						width: 120px;
+						// border: 2px solid transparent;
+						cursor: pointer;
+						transition: all 0.3s ease;
+						&.is-btn-active {
+							text-align: center;
+							background-color: map-get(mixin.$colors, "C-pink");
+							@include mixin.font-settings (
+								F-size14,
+								F-line-height16-8,
+								F-letter-spacing-10,
+								F-family-KosugiMaru,
+								normal,
+								F-color-white);
+						}
+					}
+				}
+				.tab-contents-wrap {
+					background: white;
+					border-radius: 15px;
+				}
+				.tab-contents {
+					display: none;
+					font-size: 14px;
+					&.is-contents-active {
+						display: block;
+					}
+					ul {
+						list-style: none;
+						margin: -5px 0 24px 0;
+						display: flex;
+						justify-content: space-between;
+						flex-wrap: wrap;
+						padding:0px 3px 14px 0px;
+						gap: 10px;
+						li {
+							border-radius: 8px;
+							border: 1px solid map-get(mixin.$colors, "C-pink");
+							cursor: pointer;
+							transition: all 0.3s ease;
+							a {
+								@include mixin.font-settings(
+									F-size14,
+									F-line-height16-8,
+									F-letter-spacing-10,
+									F-family-KosugiMaru,
+									normal,
+									F-color-pink
+								);
+								text-align: center;
+								text-decoration: none;
+								display: block;
+								transition: all 0.3s ease; // a要素にもスムーズな変化を適用
+							}
+							.category-filter {
+								width: 150px;
+								padding:8px 0;
+							}			
+							.prefecture-filter {
+								width: 150px;
+								padding: 8px 0;
+							}			
+						}
+						// li全体をホバーしたときに、aにも適用
+						li:hover {
+							background: map-get(mixin.$colors, "C-pink");
+							transition: all 0.3s ease;
+							a {
+								opacity: 1;
+								color: white; // aの文字色も白に
+							}
+						}
+						
+					}
+				}
+			}
+			
+			
+			
+			//// 投稿カードのデザイン
+			.introduction-thumbnail {
+				max-width: 320px;
+				width: 100%;
+				height: 269px;
+				// background: map-get(mixin.$colors, "C-light-pink");
+				padding: 12px;
+				border-radius: 20px;
+				overflow: hidden;
+				transition: all 0.3s ease;
+				position: relative;
+				&:hover {
+					transform: translateY(-5px);
+					box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+				}
+				img {
+					width: 100%;
+					height: 180px;
+					object-fit: cover;
+					border-radius: 20px;
+				}
+				.nursery-prefecture,
+				.news-header__flex--category {
+					@include mixin.font-settings (
+						F-size14,
+						F-line-height14,
+						F-letter-spacing-10,
+						F-family-KosugiMaru,
+						normal,
+						F-color-brown);
+					background-color: map-get(mixin.$colors, "C-white");
+					padding: 4px 8px;
+					border-radius: 8px;
+					display: inline-block;
+					margin: 8px 0;
+				}
+				.news-header__flex--category {
+					margin: 0 8px 0 0;
+				}
+	
+				h2.nursery-name {
+					@include mixin.font-settings (
+						F-size18,
+						F-line-height27,
+						F-letter-spacing-10,
+						F-family-KosugiMaru,
+						normal,
+						F-color-brown);
+				}
+			}
+			/* 園の種類ごとに背景色を変更 */
+			.nintei-hoiku { 
+				background-color: map-get(mixin.$colors, "C-light-pink"); // ピンク
+			}
+			.shokibo-hoiku { 
+				background-color:#FFF9CB; // 黄色
+			}
+			.shokibo-a-gata { 
+				background-color: #EDF4FF; // 青色
+			}
+		}
+	}
+	
+	.pagination {
+		display: block; /* ✅ flex内に入らないようにblock指定 */
+    width: 100%; /* 横幅を最大に */
+    text-align: center; /* 中央揃え */
+		justify-content: center;
+		margin: 5px auto 48px;
+		&__inner {
+			display: flex;
+			width: 90px;
+			margin: 0 auto;
+			a, span {
+				display: flex;
+        justify-content: center;
+        align-items: center;
+				margin: 0 auto;
+        width: 24px; /* ボタンの大きさ */
+        height: 24px;
+        border-radius: 8px; /* 丸い形 */
+				@include mixin.font-settings (
+					F-size14,
+					F-line-height16-8,
+					F-letter-spacing-10,
+					F-family-KosugiMaru,
+					normal,
+					F-color-pink);
+        text-decoration: none;
+				padding: 0 0 0 0;
+        background:map-get(mixin.$colors, "C-white"); /* 背景色 */
+        border: 1px solid map-get(mixin.$colors, "C-pink"); /* 枠線 */
+        transition: 0.3s ease;
+				i {
+					font-size: 11px;
+				}
+        &:hover {
+					opacity: 1;
+					transition: all 0.3s ease;
+          background: map-get(mixin.$colors, "C-pink");
+          color: map-get(mixin.$colors, "C-white");
+        }
+      }
+    .current {
+        background: map-get(mixin.$colors, "C-pink");
+        color: map-get(mixin.$colors, "C-white");
+        border: none;
+    }
+	}
+}
+	
+	
+}
+	
+		

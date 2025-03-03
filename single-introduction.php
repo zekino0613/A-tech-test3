@@ -19,20 +19,42 @@
             <!-- サムネイル画像 -->
             <?php
               $thumbnail = get_field('thumbnail_image'); // 画像IDを取得
-              if ($thumbnail): ?>
-                <img class="thumbnail__inner--image" src="<?php echo esc_url(wp_get_attachment_image_url($thumbnail, 'full')); ?>" alt="<?php the_title(); ?>" class="nursery-thumbnail">
-            <?php endif; ?>
+              $default_image = get_template_directory_uri() . '/assets/images/kidsland_image/design-parts/no-image.webp'; // デフォルト画像のパス
+            ?>
+            <img class="thumbnail__inner--image" 
+                src="<?php echo esc_url($thumbnail ? wp_get_attachment_image_url($thumbnail, 'full') : $default_image); ?>" 
+                alt="<?php the_title(); ?>" 
+                class="nursery-thumbnail">
+
             <!-- サムネイルタイトル -->
             <?php if( get_field('thumbnail_title') ): ?>
               <h2 class="thumbnail__inner--title"><?php the_field('thumbnail_title'); ?></h2>
             <?php endif; ?>
             <!-- サムネイル説明 -->
-            <?php //カスタムフィールド入力欄で改行
+            <!-- <?php //カスタムフィールド入力欄で改行
               $nursery_message = get_field('thumbnail_textarea');
               if ($nursery_message) {
                   echo '<p class="thumbnail__inner--textarea">' . nl2br(wp_kses_post($nursery_message)) . '</p>';
               }
-            ?>
+            ?> -->
+            <?php 
+              // カスタムフィールド入力欄のテキスト取得
+              $nursery_message = get_field('thumbnail_textarea');
+
+              if ($nursery_message) {
+                  echo '<p class="thumbnail__inner--textarea">';
+                  
+                  if (wp_is_mobile()) {
+                      // SPでは改行を `<br>` に変換
+                      echo nl2br(wp_kses_post($nursery_message));
+                  } else {
+                      // PCでは改行をスペースに変換
+                      echo str_replace(["\r\n", "\r", "\n"], ' ', wp_kses_post($nursery_message));
+                  }
+                  
+                  echo '</p>';
+              }
+              ?>
           </div><!-- / -->  
         </div><!-- / -->  
 
@@ -111,13 +133,13 @@
             <!-- TEL / FAX -->
             <div class="info-box">
                 <strong>TEL / FAX</strong>
-                <address class="info-box__text"><?php the_field('nursery_tel_fax'); ?></address>
+                <address class="info-box__text tel-sp"><?php the_field('nursery_tel_fax'); ?></address>
             </div>
 
             <!-- 対象 -->
             <div class="info-box">
                 <strong>対象</strong>
-                <p class="info-box__text"><?php the_field('nursery_target'); ?></p>
+                <p class="info-box__text target-sp"><?php the_field('nursery_target'); ?></p>
             </div>
 
             <!-- 入園日 -->
@@ -225,39 +247,41 @@
               <strong>定員</strong>
 
               <div class="capacity">
-                <table>
-                  <tr>
-                      <th class="total-capacity th">定員</th>
-                      <th>1歳児</th>
-                      <th>2歳児</th>
-                      <th>3歳児</th>
-                      <th>4歳児</th>
-                      <th>5歳児</th>
-                  </tr>
-                  <?php foreach ($capacities as $capacity) : ?>
-                  <?php
-                    $age_counts = [
-                      $capacity['nursery_capacity_1'],
-                      $capacity['nursery_capacity_2'],
-                      $capacity['nursery_capacity_3'],
-                      $capacity['nursery_capacity_4'],
-                      $capacity['nursery_capacity_5']
-                    ];
-                    $row_total = array_sum($age_counts); // 行ごとの合計
-                    $total_capacity = array_sum($age_counts) * 2; // 全体の合計を計算
-                  ?>
-                  <tr>
-                    <td class="total-capacity td"><?php echo esc_html($row_total); ?>名</td>
-                    <td><?php echo esc_html($capacity['nursery_capacity_1']); ?>名</td>
-                    <td><?php echo esc_html($capacity['nursery_capacity_2']); ?>名</td>
-                    <td><?php echo esc_html($capacity['nursery_capacity_3']); ?>名</td>
-                    <td><?php echo esc_html($capacity['nursery_capacity_4']); ?>名</td>
-                    <td><?php echo esc_html($capacity['nursery_capacity_5']); ?>名</td>
-                  </tr>
-                  <?php endforeach; ?>
-                </table>
-                <p class="capacity__text">※定員は、開園初年度から数年をかけて<?php echo esc_html($total_capacity); ?>名の定員に変更していきます。</p>
-              </div><!-- / -->
+    <table>
+        <tr>
+            <th class="total-capacity th">定員</th>
+            <th>1歳児</th>
+            <th>2歳児</th>
+            <th>3歳児</th>
+            <th>4歳児</th>
+            <th>5歳児</th>
+        </tr>
+        <?php 
+        $total_capacity = 0; // 合計値を初期化
+        foreach ($capacities as $capacity) : 
+            $age_counts = [
+                $capacity['nursery_capacity_1'],
+                $capacity['nursery_capacity_2'],
+                $capacity['nursery_capacity_3'],
+                $capacity['nursery_capacity_4'],
+                $capacity['nursery_capacity_5']
+            ];
+            $row_total = array_sum($age_counts); // 各行の合計
+            $total_capacity += $row_total; // 全体の合計を累積
+        ?>
+        <tr>
+            <td class="total-capacity td"><?php echo esc_html($row_total); ?>名</td>
+            <td><?php echo esc_html($capacity['nursery_capacity_1']); ?>名</td>
+            <td><?php echo esc_html($capacity['nursery_capacity_2']); ?>名</td>
+            <td><?php echo esc_html($capacity['nursery_capacity_3']); ?>名</td>
+            <td><?php echo esc_html($capacity['nursery_capacity_4']); ?>名</td>
+            <td><?php echo esc_html($capacity['nursery_capacity_5']); ?>名</td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
+    <p class="capacity__text">※定員は、開園初年度から数年をかけて102名の定員に変更していきます。</p>
+</div><!-- / -->
+
             </div>
             <?php endif; ?>
 
@@ -373,7 +397,7 @@
         <?php endif; ?>
     </div>
 
-    <a href="<?php echo get_post_type_archive_link('letter'); ?>" class="btn">
+    <a href="<?php echo get_post_type_archive_link('letter'); ?>" class="btn intro-btn">
       <p class="btn__text">もっと見る</p>
       <i class="fa-solid fa-angle-right"></i>
     </a>
