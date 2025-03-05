@@ -146,8 +146,9 @@ function custom_breadcrumb_labels($link_output, $link) {
     }
     if (strpos($link_output, 'letter') !== false) {
       $link_output = str_replace('letter', 'こもれびだより', $link_output);
-			
-			
+    }
+		if (strpos($link_output, 'info') !== false) {
+      $link_output = str_replace('info', 'お知らせ', $link_output);
     }
     if (strpos($link_output, 'reserve') !== false) {
       $link_output = str_replace('reserve', 'ご予約・お問い合わせ', $link_output);
@@ -194,29 +195,6 @@ add_filter( 'wpseo_breadcrumb_links', function( $links ) {
 });
 
 
-
-
-// 下層ページ【page-price-menu】の各セクションへのページジャンプ  ----------------------
-// function enqueue_custom_scroll_script() {
-//   wp_enqueue_script('custom-scroll', get_template_directory_uri() . '/assets/js/custom-scroll.js', array('jquery'), null, true);
-// }
-// add_action('wp_enqueue_scripts', 'enqueue_custom_scroll_script');
-
-
-
-// 下層ページ【page-concept】インスタグラム埋め込み際の＜iframeタグ生成の削除＞  ----------------------
-add_filter('wp_kses_allowed_html', function ($tags) {
-  $tags['iframe'] = [
-      'src' => true,
-      'width' => true,
-      'height' => true,
-      'frameborder' => true,
-      'allow' => true,
-      'allowfullscreen' => true,
-      'loading' => true,
-  ];
-  return $tags;
-});
 
 
 // archive＜一覧ページ＞
@@ -324,15 +302,17 @@ add_action('init', 'register_custom_taxonomies',0);
 
 //ページネーション
 // archive-info
+// archive-info のクエリを変更
 function modify_info_archive_query($query) {
-  if ($query->is_main_query() && !is_admin() && is_post_type_archive('info')) {
-      $query->set('posts_per_page', 6); // ✅ 1ページあたりの投稿数を指定
-      $query->set('orderby', 'date');
-      $query->set('order', 'DESC');
-      $query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1);
-  }
+	if ($query->is_main_query() && !is_admin() && is_post_type_archive('info')) {
+			$query->set('posts_per_page', 10); // ✅ 1ページあたりの投稿数を指定
+			$query->set('orderby', 'date');
+			$query->set('order', 'DESC');
+			$query->set('paged', max(1, get_query_var('paged', 1))); // ✅ ページ番号を取得
+	}
 }
 add_action('pre_get_posts', 'modify_info_archive_query');
+
 
 //ページネーション
 // archive-introduction   archive-letter

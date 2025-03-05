@@ -397,7 +397,7 @@
         <?php endif; ?>
     </div>
 
-    <a href="<?php echo get_post_type_archive_link('letter'); ?>" class="btn intro-btn">
+    <a href="<?php echo get_post_type_archive_link('letter'); ?>" class="btn intro-btn fe">
       <p class="btn__text">もっと見る</p>
       <i class="fa-solid fa-angle-right"></i>
     </a>

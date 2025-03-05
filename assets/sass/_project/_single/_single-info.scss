@@ -1,2 +1,170 @@
-@use "../../_foundation/_mixin"as mixin;
-@use "../../_foundation/_base"as base;
+		@use "../../_foundation/_mixin"as mixin;
+		@use "../../_foundation/_base"as base;
+
+
+		#single-info {
+				padding: 0 4%;
+				margin: -11px auto 120px;
+			.info-post {
+				max-width: 1080px;
+				width: 100%;
+				border-radius: 40px;
+				margin: 0 auto;
+				padding: 32px;
+				background-color: map-get(mixin.$colors, "C-white");
+				&__post-date {
+					@include mixin.font-settings (
+							F-size14,
+							F-line-height16-8,
+							F-letter-spacing-10,
+							F-family-KosugiMaru,
+							normal,
+							F-color-black);
+				}
+				&__title {
+					border-bottom:2px solid map-get(mixin.$colors, "C-black"); 
+					padding: 11px 0 ;
+					@include mixin.font-settings (
+							F-size32,
+							F-line-height38-4,
+							F-letter-spacing-10,
+							F-family-KosugiMaru,
+							normal,
+							F-color-black);
+				}
+				&__image {
+					max-width: 640px;
+					width: 100%;
+					height: 320px;
+					display: block;
+					margin: 0 auto;
+					margin: 32px auto 0;
+				}
+				.text-content {
+					&__inner {
+						@include mixin.font-settings (
+							F-size16,
+							F-line-height32,
+							F-letter-spacing-10,
+							F-family-KosugiMaru,
+							normal,
+							F-color-black);
+						&--subheading {
+							padding: 0 17px;
+							margin: 8px 0;
+							position: relative;
+						}
+						&--subheading::before {
+							content: "";
+							width: 4px;
+							height: 32px;
+							border-radius: 2px;
+							position: absolute;
+							top: 2px;
+							left: 0;
+							background-color: map-get(mixin.$colors, "C-pink");
+						}		
+						&--paragraph {
+							margin: 0 0 8px;
+							
+						}
+					}
+				}
+				
+				.btn {
+					max-width: 300px;
+					width: 100%;
+					height: 60px;
+					margin: 64px auto;
+				}
+				
+			}
+		}
+
+
+@include mixin.TAB1 {
+	#single-info {
+		padding: 0 4%;
+		margin: -28px auto 79.5px;
+		.info-post {
+		max-width: 1080px;
+		width: 100%;
+		border-radius: 40px;
+		margin: 0 auto;
+		padding: 32px 4% 48px;
+		background-color: map-get(mixin.$colors, "C-white");
+		&__post-date {
+			@include mixin.font-settings (
+				F-size12,
+				F-line-height14-4
+				F-letter-spacing-10,
+				F-family-KosugiMaru,
+				normal,
+				F-color-black);
+			}
+			&__title {
+				border-bottom:2px solid map-get(mixin.$colors, "C-black"); 
+				padding: 10px 0 ;
+				@include mixin.font-settings (
+					F-size20,
+					F-line-height24,
+					F-letter-spacing-10,
+					F-family-KosugiMaru,
+					normal,
+					F-color-black);
+			}
+			&__image {
+				max-width: 315px;
+				width: 100%;
+				height: 157.5px;
+				border-radius: 20px;
+				display: block;
+				margin: 23px auto 0;
+			}	
+			
+			.text-content {
+				&__inner {
+					@include mixin.font-settings (
+						F-size16,
+						F-line-height32,
+						F-letter-spacing-10,
+						F-family-KosugiMaru,
+						normal,
+						F-color-black);
+					&--subheading {
+						padding: 0 18px;
+						margin: 9px 0 7px;
+						position: relative;
+					}
+					&--subheading::before {
+						content: "";
+						width: 4px;
+						height: 32px;
+						border-radius: 2px;
+						position: absolute;
+						top: 0px;
+						left: 2px;
+						background-color: map-get(mixin.$colors, "C-pink");
+					}		
+					&--paragraph {
+						margin: 0 0 9px;
+						
+					}
+				}
+			}
+			
+			.btn {
+				max-width: 300px;
+				width: 100%;
+				height: 60px;
+				margin: 48px auto 0;
+				i{
+					font-size: 19px;
+					top: 20px;
+					right: 21px;
+				}
+			}
+			
+		}
+  }
+}	

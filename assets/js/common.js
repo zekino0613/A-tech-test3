@@ -154,21 +154,29 @@ $(document).ready(function () {
 });
 
 
-//お知らせカテゴリータブ
-document.addEventListener("DOMContentLoaded", function () {
-    const buttons = document.querySelectorAll(".filter-button");
-    const urlParams = new URLSearchParams(window.location.search);
-    const currentCategory = urlParams.get("osirase");
+// // //お知らせカテゴリータブ
+jQuery(document).ready(function($) {
+	$(".filter-button").click(function(event) {
+			event.preventDefault(); // ページ遷移を防ぐ
 
-    buttons.forEach(button => {
-        const category = button.getAttribute("href").split("osirase=")[1];
-        
-        if ((currentCategory === null && category === undefined) || currentCategory === category) {
-            button.classList.add("active");
-        } else {
-            button.classList.remove("active");
-        }
-    });
+			let category = $(this).data("category");
+			console.log("選択されたカテゴリー:", category); // ✅ デバッグ用
+
+			// すべてのタブから active クラスを削除し、クリックされたタブに追加
+			$(".filter-button").removeClass("active");
+			$(this).addClass("active");
+
+			// 記事をフィルタリング
+			$(".info-card").each(function() {
+					let articleCategory = $(this).data("category");
+
+					if (category === "all" || articleCategory === category) {
+							$(this).show();  // 該当する記事を表示
+					} else {
+							$(this).hide();  // 該当しない記事を非表示
+					}
+			});
+	});
 });
 
 

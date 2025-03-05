@@ -80,8 +80,8 @@
 		</div>
 		
 		<aside class="archive-sidebar fade-in">
-    <h3>アーカイブ</h3>
-    <ul class="archive-list">
+      <h3>アーカイブ</h3>
+      <ul class="archive-list">
         <?php
         global $wpdb;
         $archives = $wpdb->get_results("
@@ -120,8 +120,8 @@
             echo '</li>';
         }
         ?>
-    </ul>
-</aside>
+      </ul>
+    </aside>
 
 
 	</div>

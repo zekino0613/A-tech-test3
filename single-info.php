@@ -4,54 +4,59 @@
   ?>
   <!-- ---------------------------------------------------------------------->
   <main>
-    <!-- title-heading -->
-    <?php
-        get_template_part('template-parts/title-heading'); // title-heading をインクルード
-    ?>
+			<!-- title-heading -->
+			<?php
+					get_template_part('template-parts/title-heading'); // title-heading をインクルード
+			?>
 
-    
-    
-  <div class="container">
-    <!-- 投稿日時 -->
-    <time class="info__post-date"><?php echo get_the_date('Y. m. d'); ?></time>
-    <!-- 記事タイトル -->
-    <h1 class="letter-title"><?php the_title(); ?></h1>
+				
+		<section id="single-info">
+			<div class="info-post">
+				<!-- 投稿日時 -->
+				<time class="info-post__post-date fade-in"><?php echo get_the_date('Y.m.d'); ?></time>
+				<!-- 記事タイトル -->
+				<h1 class="info-post__title fade-in"><?php the_title(); ?></h1>
 
-    <!-- サムネイル画像 -->
-    <?php
-      $thumbnail = get_field('article_image');
-      if ($thumbnail):
-      ?>
-      <img src="<?php echo esc_url(wp_get_attachment_image_url($thumbnail, 'full')); ?>" alt="<?php the_title(); ?>">
-    <?php endif; ?>
+				<!-- サムネイル画像 -->
+					<?php
+						$thumbnail = get_field('info_image'); // 画像IDを取得
+						$default_image = get_template_directory_uri() . '/assets/images/kidsland_image/design-parts/no-image.webp'; // デフォルト画像のパス
+					?>
+					<img class="info-post__image fade-in" 
+							src="<?php echo esc_url($thumbnail ? wp_get_attachment_image_url($thumbnail, 'full') : $default_image); ?>" 
+							alt="<?php the_title(); ?>">
 
-    <!-- 小見出しと段落内容 -->
-    <div class="news-content">
-      <?php
-      // リピートフィールドを取得
-      $repeater_data = SCF::get('subheading_content'); // リピートフィールドのグループ名
-      if (!empty($repeater_data)) {
-          foreach ($repeater_data as $item) {
-              // 小見出しと段落内容を取得
-              $subheading = isset($item['subheading']) ? esc_html($item['subheading']) : '小見出し未設定';
-              $paragraph_content = isset($item['paragraph_content']) ? nl2br(esc_html($item['paragraph_content'])) : '段落内容未設定';
+				<!-- 小見出しと段落内容 -->
+				<div class="text-content fade-in">
+					<?php
+					// リピートフィールドを取得
+					$repeater_data = SCF::get('subheading_content'); // リピートフィールドのグループ名
+					if (!empty($repeater_data)) {
+							foreach ($repeater_data as $item) {
+									// 小見出しと段落内容を取得
+									$subheading = isset($item['subheading']) ? esc_html($item['subheading']) : '小見出し未設定';
+									$paragraph_content = isset($item['paragraph_content']) ? nl2br(esc_html($item['paragraph_content'])) : '段落内容未設定';
 
-              // 出力
-              echo '<div class="news-section ">';
-              echo '<h2 class="news-section__subheading fade-in">' . $subheading . '</h2>';
-              echo '<p class="news-section__paragraph fade-in">' . $paragraph_content . '</p>';
-              echo '</div>';
-          }
-      } else {
-          echo '<p>コンテンツが設定されていません。</p>';
-      }
-      ?>
-    </div>
-
-
-    
+									// 出力
+									echo '<div class="text-content__inner ">';
+									echo '<h2 class="text-content__inner--subheading fade-in">' . $subheading . '</h2>';
+									echo '<p class="news-section__inner--paragraph fade-in">' . $paragraph_content . '</p>';
+									echo '</div>';
+							}
+					} else {
+							echo '<p>コンテンツが設定されていません。</p>';
+					}
+					?>
+					
+					<a href="<?php echo home_url('/info/'); ?>" class="btn fade-in">
+						<p class="btn__text">こもれびだより一覧へ</p>
+						<i class="fa-solid fa-angle-right"></i>
+					</a>
+				</div>
+			</div>		
+		</section>
   </main>
-
+					
 
 
 

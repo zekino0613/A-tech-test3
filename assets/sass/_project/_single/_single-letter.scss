@@ -3,8 +3,8 @@
 
 #letter-container {
 	display: flex;
-	width: 100%;
 	justify-content: center;
+	width: 100%;
 	padding: 0 31px 0 0px;
 	margin: -12px auto 120px;
 	.letter {
@@ -151,9 +151,18 @@
 				background: map-get(mixin.$colors, "C-white");
 				padding: 4px 12px;
 				border-radius: 8px;
-			a {
-				color: map-get(mixin.$colors, "C-brown");
+				transition: 0.5s;
+				a {
+					color: map-get(mixin.$colors, "C-brown");
+				}
 			}
+			li:hover {
+				transition: 0.5s;
+				background: map-get(mixin.$colors, "C-brown");
+				a {
+					opacity: 1;
+					color: map-get(mixin.$colors, "C-white");
+				}
 			}
 		}
 	}
@@ -167,13 +176,13 @@
 		justify-content: center;
 		align-items: center;
 		width: 100%;
-		padding: 0 31px 0 0px;
+		padding: 0 4%;
 		margin: -7px auto 107px;
 		.letter {
 			width: 100%;
-			border-radius: 40px;
-			margin: 0 32px 29px 60px;
-			padding: 35px 4.6% 0;
+			border-radius: 30px;
+			margin: 0 auto 26px;
+			padding: 32px 4%;
 			background-color: map-get(mixin.$colors, "C-white");
 			&__title-date {
 				display: flex;
@@ -187,7 +196,7 @@
 						F-family-KosugiMaru,
 						normal,
 						F-color-black);
-						margin: 0 0 12px;
+						margin: 2px 0 13px;
 						i {
 							padding: 0 12px 0 0
 						}
@@ -275,11 +284,15 @@
 					right: 21px;
 				}
 			}
+			.btn:hover p{
+				color: map-get(mixin.$colors, "C-white");
+			}
 			
 		}
 		.archive-sidebar {
-			padding: 12px 0 0 24px;
-			border-left: 1.5px solid map-get(mixin.$colors, "C-brown");	
+			padding: 12px 4% 0 ;
+			border-top: 1.5px solid map-get(mixin.$colors, "C-brown");	
+			border-left: none;	
 			width: 100%;
 			h3 {
 				@include mixin.font-settings (
@@ -331,10 +344,11 @@
 					background: map-get(mixin.$colors, "C-white");
 					padding: 4px 12px;
 					border-radius: 8px;
-				a {
-					color: map-get(mixin.$colors, "C-brown");
+					a {
+						color: map-get(mixin.$colors, "C-brown");
+					}
 				}
-				}
+			
 			}
 		}
 	}

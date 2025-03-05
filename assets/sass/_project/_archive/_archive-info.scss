@@ -2,105 +2,340 @@
 @use "../../_foundation/_base"as base;
 
 
-// カラーパレット
-$primary-pink: #ffb6c1;
-$accent-pink: #ff69b4;
-$light-pink: #ffe4e1;
-$text-dark: #444;
-$text-light: #777;
-$bg-light: #fffaf0;
-
-
-
-.filter-buttons {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
+#archive-info {
+	margin: -11px auto 0;
+	.archive-info {
+		&__inner {	
+		.filter-buttons {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 6px;
+			margin: 0 0 64px;
+			.filter-button {
+				@include mixin.font-settings (
+					F-size16,
+					F-line-height19-2,
+					F-letter-spacing-10,
+					F-family-KosugiMaru,
+					normal,
+					F-color-pink);
+					border-radius: 8px;
+					padding: 8.5px 16px;
+					text-align: center;
+					background-color: map-get(mixin.$colors, "C-white");
+					border: 1px solid map-get(mixin.$colors, "C-pink");
+					cursor: pointer;
+					transition: all 0.3s ease;
+					// border: 2px solid transparent;
+					cursor: pointer;
+					transition: all 0.3s ease;
+				&:hover {
+					color:map-get(mixin.$colors, "C-white");
+					background-color: map-get(mixin.$colors, "C-pink");
+				}
+			
+				&.active {
+					color:map-get(mixin.$colors, "C-white");
+					background-color: map-get(mixin.$colors, "C-pink");
+				}
+			}
+		}
+		
+		.info-list {
+			// 投稿リストのデザイン
+			.info-card {
+				display: block;
+				transition: transform 0.3s ease, box-shadow 0.3s ease;
+				text-decoration: none;
+				max-width: 1080px;
+				width: 100%;
+				padding: 0;
+				margin: 0 auto;
+				&:hover {
+					transform: translateY(-5px);
+				}
+				&__inner{
+					display: flex;
+					padding: 0 0 20px 0;
+					margin: 0px auto 34px;
+					align-items: flex-start;
+					border-bottom:1.5px solid map-get(mixin.$colors, "C-black");
+					&--flex {
+						display: flex;	
+						align-items: flex-end;
+						.category-icon{
+							width: 120px;
+							height: 120px; 
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+							justify-content: center;
+							border-radius: 12px;
+							background-color: black;	
+							.category-image {
+								width: 48px;
+								height: 48px; // 高さが必要な場合
+								background-size: cover;
+							}
+							.category {
+								@include mixin.font-settings (
+									F-size18,
+									F-line-height27,
+									F-letter-spacing-0,
+									F-family-KosugiMaru,
+									normal,
+									F-color-brown);
+									margin: 8px 0 0;
+							}
+						}
+						.post-date {
+							display: none;
+							@include mixin.font-settings (
+								F-size16,
+								F-line-height24,
+								F-letter-spacing-4,
+								F-family-KosugiMaru,
+								normal,
+								F-color-black);
+								padding: 0 0 12px;
+								margin: 0;
+						}
+					}
+					
+					
+					.textarea {
+						width: 100%;
+						padding: 12px 0;
+						margin: 0 0 0 24px;
+						&__post-date {
+							@include mixin.font-settings (
+								F-size16,
+								F-line-height24,
+								F-letter-spacing-4,
+								F-family-KosugiMaru,
+								normal,
+								F-color-black);
+								padding: 0 ;
+								margin: 0px 0 10px;
+								display: block;
+						}
+						&__info-title {
+							@include mixin.font-settings (
+								F-size20,
+								F-line-height30,
+								F-letter-spacing-4,
+								F-family-KosugiMaru,
+								normal,
+								F-color-brown);
+								margin: 0 0 12px;
+						}
+						&__paragraph {
+							@include mixin.font-settings (
+								F-size18,
+								F-line-height27,
+								F-letter-spacing-0,
+								F-family-KosugiMaru,
+								normal,
+								F-color-black);
+						}
+					}
+				}
+				
+			}
+			.pagination {
+				margin: -5px auto 121px;
+			}
+			}
+		}	
+	}
 }
 
-.filter-button {
-  padding: 10px 20px;
-  border-radius: 20px;
-  background-color: #f8d7da;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  font-weight: bold;
-  color: #d63384;
-  transition: background-color 0.3s, color 0.3s;
-  
-  &:hover {
-      background-color: #e598a6;
-      color: #fff;
-  }
 
-  &.active {
-      background-color: #d63384;
-      color: #fff;
-  }
+
+
+@include mixin.TAB1 {
+	#archive-info {
+		margin: 0px auto 0;
+		.archive-info {
+			&__inner {	
+			.filter-buttons {
+				display: flex;
+				justify-content: flex-start;
+				gap: 5px;
+        padding: 3px 4% 0px;
+        margin: 8px 0 34px;
+				.filter-button {
+					@include mixin.font-settings (
+						F-size16,
+						F-line-height19-2,
+						F-letter-spacing-10,
+						F-family-KosugiMaru,
+						normal,
+						F-color-pink);
+						border-radius: 8px;
+						padding: 8.5px 16px;
+						text-align: center;
+						background-color: map-get(mixin.$colors, "C-white");
+						border: 1px solid map-get(mixin.$colors, "C-pink");
+						cursor: pointer;
+						transition: all 0.3s ease;
+						// border: 2px solid transparent;
+						cursor: pointer;
+						transition: all 0.3s ease;
+							&:hover {
+								color:map-get(mixin.$colors, "C-white");
+								background-color: map-get(mixin.$colors, "C-pink");
+							}
+						
+							&.active {
+								color:map-get(mixin.$colors, "C-white");
+								background-color: map-get(mixin.$colors, "C-pink");
+							}
+				}
+			}
+			
+			.info-list {
+				// 投稿リストのデザイン
+				.info-card {
+					display: block;
+					transition: transform 0.3s ease, box-shadow 0.3s ease;
+					text-decoration: none;
+					max-width: 1080px;
+					width: 100%;
+					padding: 0 4%;
+					margin: 0 auto;
+					&:hover {
+						transform: translateY(-5px);
+					}
+					&__inner{
+						display: flex;
+						flex-direction: column;
+						padding: 0 0 23px 0;
+						margin: 0 auto 42px;
+						border-bottom:1.5px solid map-get(mixin.$colors, "C-black");
+						&--flex {
+							display: flex;	
+							align-items: flex-end;
+							.category-icon{
+								width: 72px;
+								height: 72px; 
+								display: flex;
+								flex-direction: column;
+								align-items: center;
+								justify-content: center;
+								border-radius: 7.2px;
+								.category-image {
+									width: 28.8px;
+									height: 28.8px; // 高さが必要な場合
+									background-size: cover;
+								}
+								.category {
+									@include mixin.font-settings (
+										F-size10-8,
+										F-line-height16-2,
+										F-letter-spacing-0,
+										F-family-KosugiMaru,
+										normal,
+										F-color-brown);
+										margin: 5px 0 0;
+								}
+							}
+							.post-date {
+								display: block;
+								@include mixin.font-settings (
+									F-size14,
+									F-line-height21,
+									F-letter-spacing-4,
+									F-family-KosugiMaru,
+									normal,
+									F-color-black);
+									padding: 0 0 0 10px;
+							}
+						}
+						
+						.textarea {
+							padding: 12px 0;
+							margin: 0;
+							&__post-date {
+								display: none;
+								@include mixin.font-settings (
+									F-size14,
+									F-line-height21,
+									F-letter-spacing-4,
+									F-family-KosugiMaru,
+									normal,
+									F-color-black);
+									padding: 0 0 12px;
+							}
+							&__info-title {
+								@include mixin.font-settings (
+									F-size18,
+									F-line-height27,
+									F-letter-spacing-4,
+									F-family-KosugiMaru,
+									normal,
+									F-color-brown);
+									margin: 0 0 12px;
+							}
+							&__paragraph {
+								@include mixin.font-settings (
+									F-size14,
+									F-line-height21,
+									F-letter-spacing-4,
+									F-family-KosugiMaru,
+									normal,
+									F-color-black);
+							}
+						}
+					}
+					
+				}
+				.pagination {
+					margin: 32px auto 80px;
+					&__inner {
+						display: flex;
+						width: 150px;
+						margin: 0 auto;
+						a, span {
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							margin: 0 auto;
+							width: 36px; /* ボタンの大きさ */
+							height: 36px;
+							border-radius: 8px; /* 丸い形 */
+							@include mixin.font-settings (
+								F-size14,
+								F-line-height16-8,
+								F-letter-spacing-10,
+								F-family-KosugiMaru,
+								normal,
+								F-color-pink);
+							text-decoration: none;
+							padding: 0 0 0 0;
+							background:map-get(mixin.$colors, "C-white"); /* 背景色 */
+							border: 1px solid map-get(mixin.$colors, "C-pink"); /* 枠線 */
+							transition: 0.3s ease;
+							i {
+								font-size: 11px;
+							}
+							&:hover {
+								opacity: 1;
+								transition: all 0.3s ease;
+								background: map-get(mixin.$colors, "C-pink");
+								color: map-get(mixin.$colors, "C-white");
+							}
+						}
+						.current {
+								background: map-get(mixin.$colors, "C-pink");
+								color: map-get(mixin.$colors, "C-white");
+								border: none;
+						}
+					}
+				}
+			}
+		}
+	}
 }
-
-
-
-
-// 投稿リストのデザイン
-.letter-card {
-  display: block;
-  background: $bg-light;
-  border-radius: 15px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-decoration: none;
-  color: $text-dark;
-  overflow: hidden;
-  position: relative;
-
-  &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-
-  // カテゴリータグ
-  .news-header__flex--category {
-      display: inline-block;
-      background-color: $primary-pink;
-      color: white;
-      padding: 5px 12px;
-      border-radius: 10px;
-      font-size: 12px;
-      font-weight: bold;
-      margin-bottom: 10px;
-  }
-
-  // 投稿日時
-  .info__post-date {
-      font-size: 12px;
-      color: $text-light;
-  }
-
-  // タイトル
-  .letter-title {
-      font-size: 18px;
-      font-weight: bold;
-      margin: 10px 0;
-      color: $text-dark;
-  }
-
-  // フェードインエフェクト
-  .news-section__paragraph {
-      font-size: 14px;
-      line-height: 1.6;
-      color: $text-dark;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-
-      &.fade-in {
-          opacity: 1;
-          transform: translateY(0);
-      }
-  }
-}
-
+}	

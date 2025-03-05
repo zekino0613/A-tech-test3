@@ -65,10 +65,10 @@
     display: flex;
     flex-direction: column;
     align-content: center;
-    gap:4px;
-    padding: 0 10%;
+    gap:20px;
+    padding: 0 ;
     max-width: 1500px;
-    margin: 0px auto 7px;
+    margin: 30px auto 7px;
     .letter-card {
       max-width: 300px;
       width: 100%;
@@ -92,8 +92,8 @@
         padding: 12px 12px 0 12px;
         &--title {
           @include mixin.font-settings (
-            F-size18,
-            F-line-height27,
+            F-size16,
+            F-line-height24,
             F-letter-spacing-4,
             F-family-KosugiMaru,
             normal,
@@ -101,25 +101,25 @@
         }
         &--letter-title {
           @include mixin.font-settings (
-            F-size16,
-            F-line-height24,
+            F-size14,
+            F-line-height21,
             F-letter-spacing-4,
             F-family-KosugiMaru,
             normal,
             F-color-black);
-            margin: 12px 0 13px;
+            margin: 15px 0 0px;
         }
       }
       &__post-date {
         @include mixin.font-settings (
-          F-size14,
-          F-line-height21,
+          F-size12,
+          F-line-height18,
           F-letter-spacing-4,
           F-family-KosugiMaru,
           normal,
           F-color-black);
           position: absolute;
-          bottom: 12px;
+          bottom: 22px;
           right: 12px;
       }
     }
@@ -130,17 +130,392 @@
 
 
 #archive-letter {
-  height: 2000px;
-  padding: 800px 0;
-  .letter-container {
-    .letter-list {
-    @include letter-list;
-
-    }
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	padding: 0 2%;
+	margin: -40px 0 0;
+	.archive-letter {
+		&__inner {
+			width: 70%;
+			padding: 0 ;
+			.search-form {
+				padding: 30px 0px 12px 4px;
+				border-bottom: 1.5px solid map-get(mixin.$colors, "C-brown");
+				h2 {
+					@include mixin.font-settings (
+					F-size24,
+					F-line-height28-8,
+					F-letter-spacing-10,
+					F-family-KosugiMaru,
+					normal,
+				F-color-brown);
+					i {
+						padding: 0 6px 9px 0;
+					}
+				}
+				select {
+					background: #fff;
+          appearance: none;
+					position: relative;
+					cursor: pointer;
+					pointer-events: none; /* アイコン部分がクリックされないようにする */
+					background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+					background-repeat: no-repeat;
+					background-size: 21px;
+				}
+				
+				#search-nursery {
+					width: 200px;
+					height: 36px;
+					border-radius: 8px;
+					padding: 4.5px 14px 5.5px 14px;
+					background-position: 172px;
+					@include mixin.font-settings (
+						F-size16,
+						F-line-height19-2,
+						F-letter-spacing-10,
+						F-family-KosugiMaru,
+						normal,
+					F-color-black);
+					border: 1px solid map-get(mixin.$colors, "C-black");
+				}
+				#search-prefecture {
+					width: 241px;
+					height: 36px;
+					border-radius: 8px;
+					padding: 4.5px 14px 5.5px 16px;
+					background-position: 207px;
+					@include mixin.font-settings (
+						F-size16,
+						F-line-height19-2,
+						F-letter-spacing-10,
+						F-family-KosugiMaru,
+						normal,
+					F-color-black);
+					border: 1px solid map-get(mixin.$colors, "C-black");
+				
+				}
+				button {
+					width: 36px;
+					height: 36px;
+					border-radius: 8px;
+					margin: 0 0 0 4px;
+					background-color: map-get(mixin.$colors, "C-brown");
+					color: map-get(mixin.$colors, "C-white");
+					i {
+						font-size: 20px;
+						padding: 4px 0px 0 7px;
+						margin: 0 0 0 0;
+					}
+				}
+			}
+			.letter-container {
+				.letter-list {
+				@include letter-list;
+				width: 100%;
+				justify-content: center;
+				margin: 32px auto;
+				padding: 0;
+				gap: 30px;
+					.letter-card {
+						max-width: 300px;
+						width: 100%;
+						margin: 0;
+					}
+				}
+				.pagination  {
+					margin: 0px auto 87px;
+				}
+			}
+		}	
+	}
+		
+	.archive-sidebar {
+		padding: 11px 0 0 24px;
+    margin: 30px 0px 0 30px;
+		border-left: 1.5px solid map-get(mixin.$colors, "C-brown");	
+		width: 24%;
+		h3 {
+			@include mixin.font-settings (
+				F-size24,
+				F-line-height36,
+				F-letter-spacing-20,
+				F-family-KosugiMaru,
+				normal,
+				F-color-brown);
+				margin: 0 0 10px;
+		}
+		.archive-year {
+			@include mixin.font-settings (
+				F-size16,
+				F-line-height24,
+				F-letter-spacing-10,
+				F-family-KosugiMaru,
+				normal,
+				F-color-brown);
+				
+				position: relative;
+				p {
+					padding: 2px 0 0 15px;
+					margin: 0 0 10px;
+				}
+		}
+		.archive-year::before {
+			content: "";
+			width: 4px;
+			height: 24px;
+			border-radius: 2px;
+			position: absolute;
+			background-color: map-get(mixin.$colors, "C-pink");
+		}		
+		.archive-months {
+			display: flex;
+			flex-wrap: wrap;
+			li {
+				margin: 0 7px 12px 8px;
+				@include mixin.font-settings (
+					F-size14,
+					F-line-height14,
+					F-letter-spacing-10,
+					F-family-KosugiMaru,
+					normal,
+					F-color-brown);
+				background: map-get(mixin.$colors, "C-white");
+				padding: 4px 12px;
+				border-radius: 8px;
+				a {
+					color: map-get(mixin.$colors, "C-brown");
+				}
+			}
+			li:hover {
+				transition: 0.5s;
+				background: map-get(mixin.$colors, "C-brown");
+				a {
+					opacity: 1;
+					color: map-get(mixin.$colors, "C-white");
+				}
+			}
+		}
   }
 }
 
 
 
+
+@include mixin.SP {
+	#archive-letter {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 100%;
+		padding: 0 4%;
+		margin: -40px 0 55px;
+		.archive-letter {
+			&__inner {
+				width: 100%;
+				padding: 0 ;
+				.search-form {
+					padding: 40px 0px 10px 0px;
+					border-bottom: 1.5px solid map-get(mixin.$colors, "C-brown");
+					h2 {
+						@include mixin.font-settings (
+						F-size20,
+						F-line-height24,
+						F-letter-spacing-10,
+						F-family-KosugiMaru,
+						normal,
+						F-color-brown);
+						i {
+							padding: 0 6px 9px 0;
+						}
+					}
+					select {
+						background: #fff;
+						appearance: none;
+						position: relative;
+						cursor: pointer;
+						pointer-events: none; /* アイコン部分がクリックされないようにする */
+						background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+						background-repeat: no-repeat;
+						background-size: 21px;
+					}
+					
+					#search-nursery {
+						width: 200px;
+						height: 36px;
+						border-radius: 8px;
+						padding: 5.5px 14px 5.5px 12px;
+						background-position: 172px;
+						@include mixin.font-settings (
+							F-size14,
+							F-line-height16-8,
+							F-letter-spacing-10,
+							F-family-KosugiMaru,
+							normal,
+						F-color-black);
+						border: 1px solid map-get(mixin.$colors, "C-black");
+					}
+					#search-prefecture {
+						width: 241px;
+						height: 36px;
+						border-radius: 8px;
+						padding: 5.5px 14px 5.5px 16px;
+						margin: 0 0 8px;
+						background-position: 207px;
+						@include mixin.font-settings (
+							F-size14,
+							F-line-height16-8,
+							F-letter-spacing-10,
+							F-family-KosugiMaru,
+							normal,
+						F-color-black);
+						border: 1px solid map-get(mixin.$colors, "C-black");
+					
+					}
+					button {
+						width: 36px;
+						height: 36px;
+						border-radius: 8px;
+						margin: 0 0 0 2px;
+						background-color: map-get(mixin.$colors, "C-brown");
+						color: map-get(mixin.$colors, "C-white");
+						i {
+							font-size: 20px;
+							padding: 4px 0px 0 7px;
+							margin: 0 0 0 0;
+						}
+					}
+				}
+				.letter-container {
+					.letter-list {
+					@include letter-list;
+					width: 100%;
+					justify-content: center;
+					align-items: center;
+					margin: 32px auto;
+					padding: 0 0;
+					gap: 20px;                            
+						.letter-card {
+							max-width: 300px;
+							width: 100%;
+							margin: 0;
+						}
+					}
+					.pagination {
+						display: block; /* ✅ flex内に入らないようにblock指定 */
+						width: 100%; /* 横幅を最大に */
+						text-align: center; /* 中央揃え */
+						justify-content: center;
+						margin: 14px auto 25px;
+						&__inner {
+							display: flex;
+							width: 150px;
+							margin: 0 auto;
+							a, span {
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								margin: 0 auto;
+								width: 36px; /* ボタンの大きさ */
+								height: 36px;
+								border-radius: 8px; /* 丸い形 */
+								@include mixin.font-settings (
+									F-size14,
+									F-line-height16-8,
+									F-letter-spacing-10,
+									F-family-KosugiMaru,
+									normal,
+									F-color-pink);
+								text-decoration: none;
+								padding: 0 0 0 0;
+								background:map-get(mixin.$colors, "C-white"); /* 背景色 */
+								border: 1px solid map-get(mixin.$colors, "C-pink"); /* 枠線 */
+								transition: 0.3s ease;
+								i {
+									font-size: 11px;
+								}
+								&:hover {
+									opacity: 1;
+									transition: all 0.3s ease;
+									background: map-get(mixin.$colors, "C-pink");
+									color: map-get(mixin.$colors, "C-white");
+								}
+							}
+						.current {
+								background: map-get(mixin.$colors, "C-pink");
+								color: map-get(mixin.$colors, "C-white");
+								border: none;
+						}
+					}
+				}
+				}
+			}	
+		}
+			
+		.archive-sidebar {
+			padding: 0 4%;
+			margin: 0 auto 50px;
+			border-top: 1.5px solid map-get(mixin.$colors, "C-brown");	
+			border-left:none;	
+			width: 100%;
+			h3 {
+				@include mixin.font-settings (
+					F-size20,
+					F-line-height32,
+					F-letter-spacing-20,
+					F-family-KosugiMaru,
+					normal,
+					F-color-brown);
+					margin: 10px 0 5px 0;
+			}
+			.archive-year {
+				@include mixin.font-settings (
+					F-size14,
+					F-line-height21,
+					F-letter-spacing-10,
+					F-family-KosugiMaru,
+					normal,
+					F-color-brown);
+					
+					position: relative;
+					p {
+						padding: 4px 0 0 17px;
+						margin: 0 0 10px;
+					}
+			}
+			.archive-year::before {
+				content: "";
+				width: 4px;
+        height: 22px;
+        top: 4px;
+        left: 3px;
+				border-radius: 2px;
+				position: absolute;
+				background-color: map-get(mixin.$colors, "C-pink");
+			}		
+			.archive-months {
+				display: flex;
+				flex-wrap: wrap;
+				li {
+					margin: 0 7px 12px 8px;
+					@include mixin.font-settings (
+						F-size12,
+						F-line-height12,
+						F-letter-spacing-10,
+						F-family-KosugiMaru,
+						normal,
+						F-color-brown);
+					background: map-get(mixin.$colors, "C-white");
+					padding: 4px 12px;
+					border-radius: 8px;
+					a {
+						color: map-get(mixin.$colors, "C-brown");
+					}
+				}
+			}
+		}
+	}
+}	
 
 
