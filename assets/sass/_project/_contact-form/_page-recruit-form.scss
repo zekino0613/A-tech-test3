@@ -2,237 +2,921 @@
 @use "../../_foundation/_base"as base;
 
 
+#motto {
+	padding: 0 4.1%;
+	margin: -13px 0 120px;
+	.motto-content {		
+		margin: 67px auto 0;
+		&__flex {
+			display: flex;
+			justify-content: flex-start;
+			margin: 0 0 29px;
+			&--image {
+				max-width: 480px;
+				width: 100%;
+				height: 320px;
+				border-radius: 40px;
+				object-fit: cover;
+			}
+			&--textarea {
+				padding: 0 0 0 48px;
+				.textarea-title {
+					@include mixin.font-settings (
+					F-size20,
+					F-line-height20,
+					F-letter-spacing-20,
+					F-family-KosugiMaru,
+					400,
+					F-color-brown);
+					width: fit-content;
+					padding: 2px 80px 14px 34px;
+					border-bottom: 1px solid map-get(mixin.$colors, "C-brown");
+					position: relative;
+					&::before {
+						content: "";
+						width: 24px;
+						height: 24px;
+						background: url('../../assets/images/kidsland_image/design-parts/pink-sakura.webp') no-repeat center ;
+						background-size: contain;
+						position: absolute;
+						top: 0;
+						left: 0;
+					}
+				}
+				
+				.textarea-text {
+					@include mixin.font-settings (
+						F-size16,
+						F-line-height32,
+						F-letter-spacing-10,
+						F-family-KosugiMaru,
+						400,
+						F-color-brown);
+						margin: 24px auto 36px;
+				}
+			}
+			&.content2 {
+				.motto-content__flex--textarea {
+					padding: 0 48px 0 0;
+					margin: 0 0px 4px 0px;
+					.textarea-text {
+						@include mixin.font-settings (
+							F-size16,
+							F-line-height32,
+							F-letter-spacing-20,
+							F-family-KosugiMaru,
+							400,
+							F-color-brown);
+							// margin: 24px auto 36px;
+					}
+				}
+			}	
+		}
+	}
+
+}
+
+#requirements {
+	padding: 0 4%;
+	.requirements {
+		&__inner {
+			max-width: 1080px;
+			width: 100%;
+			margin: 64px auto 0;
+			padding: 26px 26px 12px 26px;
+			background-color: map-get(mixin.$colors, "C-white");
+			border-radius: 40px;
+			&--list {
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				width: 100%;
+				border-bottom: 1.3px solid transparent;
+				border-image: repeating-linear-gradient(
+					90deg, 
+					#55000C 4px, #55000C 7px, 
+					transparent 5px, transparent 10px) 20;
+					&:last-child {
+					border-image: none;
+					
+					}
+				.list-label {
+					width: 19.5%;
+					height: 30px;
+					border-radius: 15px;
+					text-align: center;
+					background-color: map-get(mixin.$colors, "C-pink");
+					@include mixin.font-settings (
+						F-size18,
+						F-line-height32,
+						F-letter-spacing-20,
+						F-family-KosugiMaru,
+						400,
+						F-color-white);
+						// padding: 41px 0;
+				}
+				.list-text {
+					@include mixin.font-settings (
+						F-size16,
+						F-line-height24,
+						F-letter-spacing-20,
+						F-family-KosugiMaru,
+						400,
+						F-color-brown);
+						width: calc(100% - 18.5%);
+						padding: 31.2px 25px;
+						span {
+							@include mixin.font-settings (
+								F-size14,
+								F-line-height24,
+								F-letter-spacing-20,
+								F-family-KosugiMaru,
+								400,
+								F-color-brown);
+						}
+				}
+				.fzsm {
+					@include mixin.font-settings (
+						F-size14,
+						F-line-height24,
+						F-letter-spacing-20,
+						F-family-KosugiMaru,
+						400,
+						F-color-brown);
+						padding: 27.1px 25px;
+				}
+				.padding {
+					padding: 39px 25px;
+				}
+			}
+			.margin {
+				margin: 0px 0 -10px;
+			}
+			.margin2 {
+				margin: -7px 0 -15px;
+			}
+		}
+	}
+}
+
+
+
 #FAQ {
-  padding: 500px 0;
+  padding:0 4%;
+	margin: 127px auto 0px;
   .FAQ {
     &__inner {
       .accordion {
         max-width: 1080px;
-        margin: 60px 0 0 60px;
+        margin: 60px auto;
         // padding: 0 60px;
         .accordion-item {
           margin-bottom: 20px;
-          background-color: #D4CEBE;
+					padding:  25px 32px 22px 32px;
+          background-color: map-get(mixin.$colors, "C-white");
+					border: 2px solid map-get(mixin.$colors, "C-pink");
+					border-radius: 20px;
           overflow: hidden; // 必要以上の高さを表示しないように設定
-      
           .accordion-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 100px;
-            padding: 47px 32px 47px 20px;
+						height: 36px;
+						padding: 0;
             cursor: pointer;
             @include mixin.font-settings
             ( F-size18
-            , F-line-height14
-            , F-letter-spacing-0-72
-            , F-family-mincho
+            , F-line-height24
+            , F-letter-spacing-20
+            , F-family-KosugiMaru
             , normal
-            , F-color-orange);
+            , F-color-brown);
             transition: background-color 0.3s ease; /* 背景色の遷移 */
             position: relative;
-            &:hover {
-              background-color: #e6dfd1;
-            }
-      
             // Q:タイトルテキストを中央に配置
             .accordion-question {
               flex: 1;
-              margin: 8px 0px 4px 41px;
+              margin: -2px 0px -7px 41px;
               position: relative;
               &::before {
                 content: "Q";
                 @include mixin.font-settings
-                ( F-size24
-                , F-line-height14
-                , 0.96
-                , F-family-mincho
-                , normal
-                , F-color-orange);
+								( F-size18
+								, F-line-height24
+								, F-letter-spacing-20
+								, F-family-KosugiMaru
+								, normal
+								, F-color-brown);
                 position: absolute;
-                top: -5px;
-                left: -39px;
+                top: 0px;
+                left: -42px;
                 margin: 0 0px 0 0px;
               }  
             }
       
             // アイコンの配置
             .accordion-icon {
-              font-size: 14px;
-              color: #54372D;
+							font-size: 15px;
+              color:map-get(mixin.$colors, "C-pink");
               transition: transform 0.3s;
               position: absolute;
-              right: 29px;
-              top: 43px;
+							right: -4px;
+							top: 11px;
             }
           }
-      
           .accordion-content {
             max-height: 0; // 初期状態で高さを 0 に設定
             overflow: hidden; // テキストのオーバーフローを隠す
             @include mixin.font-settings
-            ( F-size18
-            , 23
-            , F-letter-spacing-0-72
-            , F-family-mincho
+            ( F-size16
+            , F-line-height24
+            , F-letter-spacing-10
+            , F-family-KosugiMaru
             , normal
-            , F-color-orange);
+            , F-color-brown);
             padding: 0 16px; // 初期状態でパディングを 0 に設定
             transition: max-height 0.3s ease, padding 0.3s ease; // 滑らかな開閉
             p {
               position: relative;
-              margin:-9px 0px 0px 38px;
+              margin:28px 32px 14px 32px;
               &::before {
                 content: "A";
                 @include mixin.font-settings
-                ( F-size24
-                , F-line-height14
-                , 0.96
-                , F-family-mincho
-                , normal
-                , F-color-orange);
+								( F-size18
+								, F-line-height24
+								, F-letter-spacing-20
+								, F-family-KosugiMaru
+								, normal
+								, F-color-brown);
                 position: absolute;
-                top: 4px;
-                left: -38px;
+                top: -3px;
+                left: -41px;
               }
             }
           }
       
           &.active {
+						.accordion-header {
+							border-bottom: 1.3px solid transparent;
+							border-image: repeating-linear-gradient(
+							90deg, 
+							#55000C 4px, #55000C 7px, 
+							transparent 5px, transparent 10px) 20;
+							.accordion-question {
+								margin: -2px 0px 4px 41px;
+							}
+						}	
             .accordion-content {
               // 開いた時に高さとパディングを適切に設定
               overflow: visible;
+							p {
+								padding: 0 0 0 0;
+							}
             }
-      
-            .accordion-icon {
-              transform: rotate(180deg); // ▼を▲に
-            }
+
           }
         }
+			
       }
     }
   }
 }
 
 
-
-
-
-
 .contact-form-wrapper {
   // Contact Form 7 のスタイル
-.wpcf7-form {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+	.wpcf7-form {
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: 20px;
+		background: #fff;
+		border-radius: 10px;
+		box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 
-  label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 8px;
-    font-size: 16px;
-    color: #333;
+		label {
+			font-weight: bold;
+			display: block;
+			margin-bottom: 8px;
+			font-size: 16px;
+			color: #333;
 
-    .required {
-      color: #e74c3c;
-      font-size: 14px;
-      margin-left: 5px;
-    }
-  }
+			.required {
+				color: #e74c3c;
+				font-size: 14px;
+				margin-left: 5px;
+			}
+		}
 
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="date"],
-  textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s;
-    background: #fafafa;
+		input[type="text"],
+		input[type="email"],
+		input[type="tel"],
+		input[type="date"],
+		textarea {
+			width: 100%;
+			padding: 12px;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			font-size: 16px;
+			transition: border-color 0.3s;
+			background: #fafafa;
 
-    &:focus {
-      border-color: #f39c12;
-      background: #fff;
-      outline: none;
-    }
-  }
+			&:focus {
+				border-color: #f39c12;
+				background: #fff;
+				outline: none;
+			}
+		}
 
-  /* カレンダーアイコンを非表示 */
-  input[type="date"]::-webkit-calendar-picker-indicator {
-  display: none;
-  appearance: none;
-  }
+		/* カレンダーアイコンを非表示 */
+		input[type="date"]::-webkit-calendar-picker-indicator {
+		display: none;
+		appearance: none;
+		}
 
 
-  textarea {
-    height: 120px;
-    resize: vertical;
-  }
+		textarea {
+			height: 120px;
+			resize: vertical;
+		}
 
-  input[type="radio"],
-  input[type="checkbox"] {
-    -webkit-appearance: checkbox; // Webkitブラウザ用
-    -moz-appearance: checkbox;    // Mozillaブラウザ用
-    appearance: checkbox;         // モダンブラウザ用
-    margin-right: 10px;
-  }
+		input[type="radio"],
+		input[type="checkbox"] {
+			-webkit-appearance: checkbox; // Webkitブラウザ用
+			-moz-appearance: checkbox;    // Mozillaブラウザ用
+			appearance: checkbox;         // モダンブラウザ用
+			margin-right: 10px;
+		}
 
-  .radio-group,
-  .checkbox-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 15px;
-  }
+		.radio-group,
+		.checkbox-group {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 15px;
+			margin-bottom: 15px;
+		}
 
-  .address-group {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
+		.address-group {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 10px;
 
-    @media (min-width: 768px) {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
+			@media (min-width: 768px) {
+				grid-template-columns: 1fr 1fr;
+			}
+		}
 
-  .submit-button {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    background: linear-gradient(135deg, #f39c12, #e67e22);
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out;
+		.submit-button {
+			display: block;
+			width: 100%;
+			padding: 15px;
+			background: linear-gradient(135deg, #f39c12, #e67e22);
+			color: #fff;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			border: none;
+			border-radius: 50px;
+			cursor: pointer;
+			transition: background 0.3s ease-in-out;
 
-    &:hover {
-      background: linear-gradient(135deg, #e67e22, #d35400);
-    }
-  }
+			&:hover {
+				background: linear-gradient(135deg, #e67e22, #d35400);
+			}
+		}
+	}
+
+
+	.other-textarea {
+		background: #f5f5f5;
+		border: 1px solid #ddd;
+		cursor: not-allowed;
+		transition: background 0.3s;
+
+		&:not([disabled]) {
+				background: #fff;
+				cursor: text;
+				border-color: #f39c12;
+		}
+	}
 }
 
 
-.other-textarea {
-  background: #f5f5f5;
-  border: 1px solid #ddd;
-  cursor: not-allowed;
-  transition: background 0.3s;
 
-  &:not([disabled]) {
-      background: #fff;
-      cursor: text;
-      border-color: #f39c12;
-  }
-}
 
-}
+
+
+
+
+
+@include mixin.TAB1 {
+	#motto {
+		padding: 0 4%;
+		margin: 0px 0 42px;
+		.motto-content {		
+			margin: 67px auto 0;
+			&__flex {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				margin: -10px 0 0;
+				&--image {
+					max-width: 240px;
+					width: 100%;
+					height: 160px;
+					border-radius: 20px;
+					object-fit: cover;
+					margin: 0px 0 26px;
+				}
+				&--textarea {
+					padding: 0 4%;
+					.textarea-title {
+						@include mixin.font-settings (
+						F-size18,
+						F-line-height20,
+						F-letter-spacing-20,
+						F-family-KosugiMaru,
+						400,
+						F-color-brown);
+						width: fit-content;
+						padding: 8px 67px 9px 34px;
+						margin: 0;
+						border-bottom: 1px solid map-get(mixin.$colors, "C-brown");
+						position: relative;
+						&::before {
+							content: "";
+							width: 24px;
+							height: 24px;
+							background: url('../../assets/images/kidsland_image/design-parts/pink-sakura.webp') no-repeat center ;
+							background-size: contain;
+							position: absolute;
+							top: 6px;
+							left: 1px;
+						}
+					}
+					
+					.textarea-text {
+						@include mixin.font-settings (
+							F-size14,
+							F-line-height28,
+							F-letter-spacing-10,
+							F-family-KosugiMaru,
+							400,
+							F-color-brown);
+							margin: 16.9px auto 41px;
+					}
+				}
+				&.content2 {
+					display: flex;
+					flex-direction: column-reverse;
+					.motto-content__flex--textarea {
+						padding:  0 4%;
+						margin: 0;
+						.textarea-text {
+							@include mixin.font-settings (
+								F-size14,
+								F-line-height28,
+								F-letter-spacing-10,
+								F-family-KosugiMaru,
+								400,
+								F-color-brown);
+								margin: 17.8px auto 41px;
+								letter-spacing: 0.2em;
+						}
+					}
+				}	
+			}
+		}
+	
+	}
+	
+	#requirements {
+		padding: 0 4%;
+		.requirements {
+			&__inner {
+				max-width: 1080px;
+				width: 100%;
+				margin: 46px auto 0;
+				padding: 26px 26px 12px 26px;
+				background-color: map-get(mixin.$colors, "C-white");
+				border-radius: 40px;
+				&--list {
+					display: flex;
+					justify-content: flex-start;
+					flex-direction: column;
+					align-items: center;
+					width: 100%;
+					border-bottom: 1.3px solid transparent;
+					border-image: none;
+						&:last-child {
+						border-image: none;
+						}
+					.list-label {
+						width: 102%;
+						height: 30px;
+						border-radius: 15px;
+						text-align: center;
+						background-color: map-get(mixin.$colors, "C-pink");
+						@include mixin.font-settings (
+							F-size18,
+							F-line-height32,
+							F-letter-spacing-20,
+							F-family-KosugiMaru,
+							400,
+							F-color-white);
+							// padding: 41px 0;
+					}
+					
+					.list-text {
+						@include mixin.font-settings (
+							F-size14,
+							F-line-height24,
+							F-letter-spacing-20,
+							F-family-KosugiMaru,
+							400,
+							F-color-brown);
+							width: 100%;
+							margin: 0px 0 5px;
+							padding: 21px 12px;
+							span {
+								@include mixin.font-settings (
+									F-size12,
+									F-line-height12,
+									F-letter-spacing-20,
+									F-family-KosugiMaru,
+									400,
+									F-color-brown);
+									display: block;
+									line-height: 1.3;
+									margin: -0.6px 0 0;
+							}
+					}
+					.spfz16 {
+						@include mixin.font-settings (
+							F-size16,
+							F-line-height24,
+							F-letter-spacing-20,
+							F-family-KosugiMaru,
+							400,
+							F-color-brown);
+							padding: 23px 9px 18px 10px;
+					}
+					.fzsm {
+						@include mixin.font-settings (
+							F-size14,
+							F-line-height24,
+							F-letter-spacing-20,
+							F-family-KosugiMaru,
+							400,
+							F-color-brown);
+							line-height: 1.6;
+							padding: 23.2px 8.5px 15.5px 13.5px;
+					}
+					.sp-holiday {
+						margin: 8px 0 12px;
+					}
+					.padding {
+						padding: 26px 16px 51px 16px;
+					}
+				}
+				//処遇
+				&--list.sp-margin {
+					margin: -7px 0 3px 0;
+					.list-text {
+						margin: 1px 0 -1px 0;
+						line-height: 1.5;
+					}
+				}
+				//保険
+				&--list.margin {
+					margin: 0px 0 -35px;
+					padding: 0 0 0 0;
+					.list-text {
+						@include mixin.font-settings (
+							F-size16,
+							F-line-height24,
+							F-letter-spacing-20,
+							F-family-KosugiMaru,
+							400,
+							F-color-brown);
+					}
+				}
+				//手当
+				&--list.teate-pad {
+					margin: 0px 0 -35px;
+					padding: 0 0 0 0;
+					.list-text {
+						@include mixin.font-settings (
+							F-size16,
+							F-line-height24,
+							F-letter-spacing-20,
+							F-family-KosugiMaru,
+							400,
+							F-color-brown);
+					}
+				}
+				//昇給
+				.margin2 {
+					margin: -7px 0 -15px;
+					.list-text {
+						padding: 20px 13px 28px 13px;
+					}
+				}
+				//休暇
+				&--list.kyuka-pa {
+					margin: 0 0 0;
+					.list-text {
+						padding: 23px 13px 19px 13px;
+						@include mixin.font-settings (
+							F-size16,
+							F-line-height24,
+							F-letter-spacing-20,
+							F-family-KosugiMaru,
+							400,
+							F-color-brown);
+					}
+				}	
+				//その他
+				&--list.sonota-pa {
+					margin: 0 0 0;
+					.list-text {
+						padding: 11px 13px 19px 13px;
+						@include mixin.font-settings (
+							F-size16,
+							F-line-height24,
+							F-letter-spacing-20,
+							F-family-KosugiMaru,
+							400,
+							F-color-brown);
+					}
+				}	
+			}
+		}
+	}
+	
+	
+	
+	#FAQ {
+		padding:0 4%;
+		margin: 109px auto 0px;
+		.FAQ {
+			&__inner {
+				.accordion {
+					max-width: 1080px;
+					margin: 69px auto;
+					// padding: 0 60px;
+					.accordion-item {
+						margin: 19px 0;
+						padding:  20px 24px;
+						background-color: map-get(mixin.$colors, "C-white");
+						border: 2px solid map-get(mixin.$colors, "C-pink");
+						border-radius: 20px;
+						overflow: hidden; // 必要以上の高さを表示しないように設定
+						.accordion-header {
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+							height: 100px;
+							padding: 0;
+							cursor: pointer;
+							@include mixin.font-settings
+							( F-size16
+							, F-line-height24
+							, F-letter-spacing-20
+							, F-family-KosugiMaru
+							, normal
+							, F-color-brown);
+							transition: background-color 0.3s ease; /* 背景色の遷移 */
+							position: relative;
+							// Q:タイトルテキストを中央に配置
+							.accordion-question {
+								flex: 1;
+								margin: -2px 26px -7px 47px;
+								position: relative;
+								&::before {
+									content: "Q";
+									@include mixin.font-settings
+									( F-size18
+									, F-line-height24
+									, F-letter-spacing-20
+									, F-family-KosugiMaru
+									, normal
+									, F-color-brown);
+									position: absolute;
+									top: -3px;
+									left: -42px;
+									margin: 0 0px 0 0px;
+								}  
+							}
+				
+							// アイコンの配置
+							.accordion-icon {
+								font-size: 15px;
+								color:map-get(mixin.$colors, "C-pink");
+								transition: transform 0.3s;
+								position: absolute;
+								right: 6px;
+								top: 43px;
+							}
+						}
+						.accordion-content {
+							max-height: 0; // 初期状態で高さを 0 に設定
+							overflow: hidden; // テキストのオーバーフローを隠す
+							@include mixin.font-settings
+							( F-size14
+							, F-line-height24
+							, F-letter-spacing-10
+							, F-family-KosugiMaru
+							, normal
+							, F-color-brown);
+							padding: 0 16px; // 初期状態でパディングを 0 に設定
+							transition: max-height 0.3s ease, padding 0.3s ease; // 滑らかな開閉
+							p {
+								position: relative;
+								margin:14px 0px 14px 22px;
+								&::before {
+									content: "A";
+									@include mixin.font-settings
+									( F-size18
+									, F-line-height24
+									, F-letter-spacing-20
+									, F-family-KosugiMaru
+									, normal
+									, F-color-brown);
+									position: absolute;
+                  top: -4px;
+                  left: -32px;
+								}
+							}
+						}
+				
+						&.active {
+							.accordion-header {
+								height: 69px;
+								border-bottom: 1.3px solid transparent;
+								border-image: repeating-linear-gradient(
+								90deg, 
+								#55000C 4px, #55000C 7px, 
+								transparent 5px, transparent 10px) 20;
+								.accordion-question {
+									margin: 0;
+									padding: 20px 14px 22px 38px;
+									&::before {
+										content: "Q";
+										top: 17px;
+										left: -2px;
+									}
+								}
+									// アイコンの配置
+								.accordion-icon {
+									font-size: 15px;
+									color:map-get(mixin.$colors, "C-pink");
+									transition: transform 0.3s;
+									position: absolute;
+									right: -4px;
+									top: 23px;
+								}
+							}	
+							.accordion-content {
+								// 開いた時に高さとパディングを適切に設定
+								overflow: visible;
+								p {
+									padding: 0px 0 3px 15px;
+									margin: 31px 0px 3px 25px;
+									line-height: 1.5;
+									&::before {
+										top: -2px;
+										left: -27px;
+									}
+								}
+							}
+	
+						}
+					}
+				
+				}
+			}
+		}
+	}
+	
+	
+	.contact-form-wrapper {
+		// Contact Form 7 のスタイル
+		.wpcf7-form {
+			max-width: 1000px;
+			margin: 0 auto;
+			padding: 20px;
+			background: #fff;
+			border-radius: 10px;
+			box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+	
+			label {
+				font-weight: bold;
+				display: block;
+				margin-bottom: 8px;
+				font-size: 16px;
+				color: #333;
+	
+				.required {
+					color: #e74c3c;
+					font-size: 14px;
+					margin-left: 5px;
+				}
+			}
+	
+			input[type="text"],
+			input[type="email"],
+			input[type="tel"],
+			input[type="date"],
+			textarea {
+				width: 100%;
+				padding: 12px;
+				border: 1px solid #ddd;
+				border-radius: 5px;
+				font-size: 16px;
+				transition: border-color 0.3s;
+				background: #fafafa;
+	
+				&:focus {
+					border-color: #f39c12;
+					background: #fff;
+					outline: none;
+				}
+			}
+	
+			/* カレンダーアイコンを非表示 */
+			input[type="date"]::-webkit-calendar-picker-indicator {
+			display: none;
+			appearance: none;
+			}
+	
+	
+			textarea {
+				height: 120px;
+				resize: vertical;
+			}
+	
+			input[type="radio"],
+			input[type="checkbox"] {
+				-webkit-appearance: checkbox; // Webkitブラウザ用
+				-moz-appearance: checkbox;    // Mozillaブラウザ用
+				appearance: checkbox;         // モダンブラウザ用
+				margin-right: 10px;
+			}
+	
+			.radio-group,
+			.checkbox-group {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 15px;
+				margin-bottom: 15px;
+			}
+	
+			.address-group {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 10px;
+	
+				@media (min-width: 768px) {
+					grid-template-columns: 1fr 1fr;
+				}
+			}
+	
+			.submit-button {
+				display: block;
+				width: 100%;
+				padding: 15px;
+				background: linear-gradient(135deg, #f39c12, #e67e22);
+				color: #fff;
+				font-size: 18px;
+				font-weight: bold;
+				text-align: center;
+				border: none;
+				border-radius: 50px;
+				cursor: pointer;
+				transition: background 0.3s ease-in-out;
+	
+				&:hover {
+					background: linear-gradient(135deg, #e67e22, #d35400);
+				}
+			}
+		}
+	
+	
+		.other-textarea {
+			background: #f5f5f5;
+			border: 1px solid #ddd;
+			cursor: not-allowed;
+			transition: background 0.3s;
+	
+			&:not([disabled]) {
+					background: #fff;
+					cursor: text;
+					border-color: #f39c12;
+			}
+		}
+	}
+	
+	
+	
+}	

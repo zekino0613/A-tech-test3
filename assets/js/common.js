@@ -228,15 +228,15 @@ jQuery(document).ready(function ($) {
     if (isMobile) {
       // 900px以下の場合
       content.css({
-        maxHeight: 150 + 'px', // モバイル用の高さ
-        padding: '10px 20px 16px 16px', // モバイル用のパディング
+        maxHeight: 300 + 'px', // モバイル用の高さ
+        padding: '0', // モバイル用のパディング
       });
     } else {
       // 900px以上の場合
       const height = content.prop('scrollHeight'); // コンテンツの高さを取得
       content.css({
         maxHeight: 200 + 'px',
-        padding: '0px 32px 35px 24px', // デスクトップ用のパディング
+        padding: '13px 6px 0px', // デスクトップ用のパディング
       });
     }
   }

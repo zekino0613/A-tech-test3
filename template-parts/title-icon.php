@@ -66,13 +66,26 @@ $title_data = [
         'image' => 'assets/images/kidsland_image/design-parts/bell-icon.webp',
         'title' => '園の概要',
         'english_title' => 'About nursery'
-    ],
+			],
+		'requirements' => [
+				'image' => 'assets/images/kidsland_image/design-parts/Requirements-icon.webp',
+				'title' => '募集要項',
+				'english_title' => 'Requirements'
+			],
     'letter' => [
         'image' => 'assets/images/kidsland_image/design-parts/tayori-icon.webp',
         'title' => 'こもれびだより',
         'english_title' => 'Letter'
     ],
+		'FAQ' => [
+			'image' => 'assets/images/kidsland_image/design-parts/question-icon.webp',
+			'title' => 'よくある質問',
+			'english_title' => 'FAQ'
+		],
     'site-map' => [
+        'image' => 'assets/images/kidsland_image/design-parts/site-map-icon.webp',
+    ],
+		'site-map' => [
         'image' => 'assets/images/kidsland_image/design-parts/site-map-icon.webp',
     ],
     // デフォルト（未定義の場合）
