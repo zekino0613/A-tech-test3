@@ -473,7 +473,14 @@ jQuery(document).ready(function ($) {
 });
 
 
-
+document.addEventListener("DOMContentLoaded", function() {
+	let submitBtn = document.querySelector(".btn");
+	if (submitBtn) {
+			let icon = document.createElement("i");
+			icon.classList.add("fa-solid", "fa-angle-right");
+			submitBtn.appendChild(icon);
+	}
+});
 
 });
   

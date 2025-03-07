@@ -230,10 +230,10 @@
   </section>
 
 
-    <div class="contact-form-wrapper fade-in">
-      <?php echo apply_shortcodes('[contact-form-7 id="81f108b" title="採用情報"]'); ?>
-    </div>
-    
+	<section class="recruit-form-wrapper fade-in">
+		<?php echo apply_shortcodes('[contact-form-7 id="81f108b" title="採用情報"]'); ?>
+	</section>
+	
 
 
 

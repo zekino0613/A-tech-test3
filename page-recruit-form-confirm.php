@@ -10,7 +10,7 @@
   ?>
 
 
-    <div class="contact-form-wrapper-confirm fade-in"> 
+    <div class="recruit-form-confirm-wrapper fade-in"> 
       <?php echo apply_shortcodes('[contact-form-7 id="0c9e778" title="採用情報_確認画面"]'); ?> 
     </div>
 
