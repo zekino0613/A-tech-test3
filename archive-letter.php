@@ -56,6 +56,7 @@
 
 			// ✅ GETパラメータ取得
 			$selected_prefecture = isset($_GET['prefecture']) ? urldecode(sanitize_text_field($_GET['prefecture'])) : '';
+			$selected_nursery = isset($_GET['nursery']) ? urldecode(sanitize_text_field($_GET['nursery'])) : '';
 			$args = [
 			'post_type'      => 'letter',
 			'posts_per_page' => 9,
@@ -72,9 +73,12 @@
 					]
 				];
 			}
-
+			//園検索の制御function内で対応
+			
 			$letter_query = new WP_Query($args);
 			?>
+			
+			
 
 
 

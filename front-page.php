@@ -128,7 +128,7 @@
           <a href="<?php the_permalink(); ?>" class="letter-card">
             <!-- サムネイル画像 -->
             <?php
-              $thumbnail = get_field('letter_image');
+              $thumbnail = get_field('article_image');
               if ($thumbnail):
                 ?>
               <img class="letter-card__image"src="<?php echo esc_url(wp_get_attachment_image_url($thumbnail, 'full')); ?>" alt="<?php the_title(); ?>">
@@ -137,8 +137,8 @@
               <!-- 記事タイトル -->
               <h2 class="letter-card__textarea--title"><?php the_title(); ?>からのおたより</h2>
               <!-- サムネイルタイトル -->
-              <?php if( get_field('letter_title') ): ?>
-                <h3 class="letter-card__textarea--letter-title"><?php the_field('letter_title'); ?></h3>
+              <?php if( get_field('article_title') ): ?>
+                <h3 class="letter-card__textarea--letter-title"><?php the_field('article_title'); ?></h3>
               <?php endif; ?>
               <!-- 投稿日時 -->
             </div><!-- / -->   

@@ -441,6 +441,26 @@ function set_letter_prefecture_category($post_id) {
 add_action('save_post', 'set_letter_prefecture_category');
 
 
+// archive-letter
+// 園検索のフィルタリング機能
+function filter_by_nursery_title($where, $query) {
+	global $wpdb;
+
+	if (is_admin() || !$query->is_main_query()) {
+			return $where;
+	}
+
+	if (!empty($_GET['nursery'])) {
+			$nursery = esc_sql($_GET['nursery']);
+			$where .= " AND {$wpdb->posts}.post_title LIKE '%{$nursery}%'";
+	}
+
+	return $where;
+}
+add_filter('posts_where', 'filter_by_nursery_title', 10, 2);
+
+
+
 
 
 // archive-letter サイドバーのアーカイブ

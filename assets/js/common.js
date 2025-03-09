@@ -77,106 +77,83 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+// archive-introduction
+
+
 
 jQuery(document).ready(function ($) {
-    console.log("✅ jQuery 読み込み完了");
+	console.log("✅ jQuery 読み込み完了");
 
-    // タブの切り替え
-    $(".tab-list__item").click(function () {
-        console.log("タブがクリックされました:", $(this).text());
+	// タブの切り替え
+	$(".tab-list__item").click(function () {
+			console.log("タブがクリックされました:", $(this).text());
 
-        $(".tab-list__item").removeClass("is-btn-active");
-        $(this).addClass("is-btn-active");
+			$(".tab-list__item").removeClass("is-btn-active");
+			$(this).addClass("is-btn-active");
 
-        let index = $(this).index();
-        $(".tab-contents").hide();
-        $(".tab-contents").eq(index).fadeIn();
-    });
+			let index = $(this).index();
+			$(".tab-contents").hide();
+			$(".tab-contents").eq(index).fadeIn();
+	});
 
-    // フィルタリング機能
-    function applyFilter(filterClass) {
-        console.log("フィルタリング実行: ", filterClass);
+	// フィルタリング機能
+	function applyFilter(filterClass) {
+			console.log("フィルタリング実行: ", filterClass);
 
-        $(".introduction-thumbnail").each(function () {
-            if (filterClass === "all" || $(this).hasClass(filterClass)) {
-                $(this).fadeIn();
-            } else {
-                $(this).fadeOut();
-            }
-        });
-    }
+			$(".introduction-thumbnail").each(function () {
+					if (filterClass === "all" || $(this).hasClass(filterClass)) {
+							$(this).fadeIn();
+					} else {
+							$(this).fadeOut();
+					}
+			});
+	}
 
-    // カテゴリーフィルタリング
-    $(".category-filter").click(function (event) {
-        event.preventDefault();
-        let filter = $(this).data("filter");
-        console.log("カテゴリー選択:", filter);
-        applyFilter(filter);
-    });
+	// カテゴリーフィルタリング
+	$(".category-filter").click(function (event) {
+			event.preventDefault();
+			let filter = $(this).data("filter");
+			console.log("カテゴリー選択:", filter);
+			applyFilter(filter);
+	});
 
 // 都道府県フィルタリング
 $(".prefecture-filter").click(function () {
-  let filter = $(this).data("filter");
-  console.log("都道府県選択:", filter);
+let filter = $(this).data("filter");
+console.log("都道府県選択:", filter);
 
-  // ✅ URLを更新して遷移
-  let url = new URL(window.location);
-  url.searchParams.set('prefecture', filter);
-  window.location.href = url.toString();
+// ✅ URLを更新して遷移
+let url = new URL(window.location);
+url.searchParams.set('prefecture', filter);
+window.location.href = url.toString();
 });
 
 // ✅ ページロード時に都道府県フィルターを適用
 $(document).ready(function () {
-  let url = new URL(window.location);
-  let prefecture = url.searchParams.get("prefecture");
+let url = new URL(window.location);
+let prefecture = url.searchParams.get("prefecture");
 
-  if (prefecture) {
-      console.log("ページロード時の都道府県フィルター適用:", prefecture);
-      
-      // ✅ フィルターを適用
-      $(".introduction-thumbnail").each(function () {
-          if ($(this).hasClass(prefecture)) {
-              $(this).fadeIn();
-          } else {
-              $(this).fadeOut();
-          }
-      });
+if (prefecture) {
+		console.log("ページロード時の都道府県フィルター適用:", prefecture);
+		
+		// ✅ フィルターを適用
+		$(".introduction-thumbnail").each(function () {
+				if ($(this).hasClass(prefecture)) {
+						$(this).fadeIn();
+				} else {
+						$(this).fadeOut();
+				}
+		});
 
-      // ✅ 都道府県タブをアクティブにする
-      $(".tab-list__item").removeClass("is-btn-active");
-      $(".tab-list__item[data-tab='prefecture']").addClass("is-btn-active");
+		// ✅ 都道府県タブをアクティブにする
+		$(".tab-list__item").removeClass("is-btn-active");
+		$(".tab-list__item[data-tab='prefecture']").addClass("is-btn-active");
 
-      $(".tab-contents").hide();
-      $("#prefecture-tab").fadeIn();
-  }
+		$(".tab-contents").hide();
+		$("#prefecture-tab").fadeIn();
+}
 });
 
-});
-
-
-// // //お知らせカテゴリータブ
-jQuery(document).ready(function($) {
-	$(".filter-button").click(function(event) {
-			event.preventDefault(); // ページ遷移を防ぐ
-
-			let category = $(this).data("category");
-			console.log("選択されたカテゴリー:", category); // ✅ デバッグ用
-
-			// すべてのタブから active クラスを削除し、クリックされたタブに追加
-			$(".filter-button").removeClass("active");
-			$(this).addClass("active");
-
-			// 記事をフィルタリング
-			$(".info-card").each(function() {
-					let articleCategory = $(this).data("category");
-
-					if (category === "all" || articleCategory === category) {
-							$(this).show();  // 該当する記事を表示
-					} else {
-							$(this).hide();  // 該当しない記事を非表示
-					}
-			});
-	});
 });
 
 
