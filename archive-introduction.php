@@ -8,18 +8,18 @@ get_template_part('template-parts/header'); // header.php をインクルード
     <?php get_template_part('template-parts/title-heading'); ?>
 
     <!-- 投稿カード -->
-    <div class="introduction-list pink-bk">
+    <div class="introduction-list pink-bk fade-in">
         <?php get_template_part('template-parts/title-icon', null, ['name' => 'archive-introduction']); ?>
 
         <div class="introduction-list__inner">
-            <div class="tab">
+            <div class="tab fade-in">
                 <!-- タブリスト -->
                 <div class="tab-list">
                     <button class="tab-list__item is-btn-active" data-tab="category">園の種類<br>から探す</button>
                     <button class="tab-list__item" data-tab="prefecture">都道府県<br>から探す</button>
                 </div>
 
-                <div class="tab-contents-wrap">
+                <div class="tab-contents-wrap fade-in">
                     <!-- 園の種類カテゴリー -->
                     <div class="tab-contents is-contents-active" id="category-tab">
                         <ul>
@@ -66,13 +66,13 @@ get_template_part('template-parts/header'); // header.php をインクルード
             </div>
 
             <?php
-            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-            $selected_prefecture = isset($_GET['prefecture']) ? rawurldecode(sanitize_text_field($_GET['prefecture'])) : '';
+						$paged = max(1, get_query_var('paged', 1));
+						$selected_prefecture = isset($_GET['prefecture']) ? rawurldecode(sanitize_text_field($_GET['prefecture'])) : '';
 
             // WP_Query の条件
             $args = [
                 'post_type'      => 'introduction',
-                'posts_per_page' => 9,
+								'posts_per_page' => -1, 
                 'orderby'        => 'date',
                 'order'          => 'DESC',
                 'paged'          => $paged,
@@ -87,7 +87,7 @@ get_template_part('template-parts/header'); // header.php をインクルード
             }
 
             $introduction_query = new WP_Query($args);
-
+			
             if ($introduction_query->have_posts()) :
                 while ($introduction_query->have_posts()) : $introduction_query->the_post();
                     $prefecture_terms = get_the_terms(get_the_ID(), 'prefecture');
@@ -112,16 +112,20 @@ get_template_part('template-parts/header'); // header.php をインクルード
 
             <?php endwhile; ?>
 
-                <div class="pagination">
+                <div class="pagination-introduction fade-in">
                     <div class="pagination__inner">
                         <?php
+												$base_url = home_url('/introduction/'); // ✅ 基本URL
+												if (!empty($selected_prefecture)) {
+														$base_url = add_query_arg('prefecture', urlencode($selected_prefecture), $base_url); // ✅ 都道府県パラメータを引き継ぐ
+												}
                         echo paginate_links([
                             'total'   => $introduction_query->max_num_pages,
                             'current' => $paged,
                             'prev_text' => '<i class="fa-solid fa-chevron-left"></i>',
                             'next_text' => '<i class="fa-solid fa-chevron-right"></i>',
                             'format'    => '/page/%#%/',
-                            'base'      => home_url('/introduction/page/%#%/'),
+                            'base'      => trailingslashit($base_url) . 'page/%#%/', // ✅ 選択された都道府県を引き継ぐ
                         ]);
                         ?>
                     </div>

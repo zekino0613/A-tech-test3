@@ -177,13 +177,14 @@
 					border: 2px solid map-get(mixin.$colors, "C-pink");
 					border-radius: 20px;
           overflow: hidden; // 必要以上の高さを表示しないように設定
+					cursor: pointer;
           .accordion-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
 						height: 36px;
 						padding: 0;
-            cursor: pointer;
+            // cursor: pointer;
             @include mixin.font-settings
             ( F-size18
             , F-line-height24
@@ -264,6 +265,10 @@
 							transparent 5px, transparent 10px) 20;
 							.accordion-question {
 								margin: -2px 0px 4px 41px;
+							}
+							 // アイコンの配置
+							.accordion-icon {
+								transform: rotate(180deg);
 							}
 						}	
             .accordion-content {
@@ -358,6 +363,8 @@
 						gap: 10px;
 						.wpcf7-list-item {
 							margin: 6px 0px 0px -1px;
+							width: fit-content;
+							transition: .3s;
 							@include mixin.font-settings
 							( F-size16
 							, F-line-height16
@@ -365,6 +372,10 @@
 							, F-family-KosugiMaru
 							, 400
 							, F-color-black);
+							&:hover {
+								color: map-get(mixin.$colors, "C-pink");
+								transition: .3s;
+							}
 						}
 					}
 					//その他テキストエリア
@@ -510,6 +521,7 @@
 				width: 16px;
 				height: 16px;
 			}
+			
 
 			.radio-group,
 			.checkbox-group {

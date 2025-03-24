@@ -13,8 +13,8 @@
 
 
 <section id="privacy-policy">
-  <div class="privacy-policy__inner">
-    <h2 class="section-title">基本理念</h2>
+  <div class="privacy-policy__inner fade-in">
+    <h2 class="section-title ">基本理念</h2>
     <p>株式会社桜のこもれび、（以下、当社）は、育児支援コンサルティング及び家庭総合支援事業コンサルティング事業等を通して、
         お客様の個人情報を取り扱うにあたり、以下の事項を事業活動の基本とすると共に、社会的責務であると考えます。
     </p>
@@ -25,9 +25,9 @@
     当社はこれを確実に実践していく為に以下、基本方針に基づき、役員及び社員が一体となり、個人情報の適切な取り扱いに努めております。
     </p>
 
-    <h2 class="section-title">基本方針</h2>
-      <h3 class="section-title-sub">（１）個人情報の収集、利用及び提供について</h3>
-        <ul class="privacy-list">
+    <h2 class="section-title ">基本方針</h2>
+      <h3 class="section-title-sub ">（１）個人情報の収集、利用及び提供について</h3>
+        <ul class="privacy-list ">
           <li class="privacy-list__li">
             １．当社は、育児支援コンサルティング及び家庭総合支援事業コンサルティングにおける個人情報の取得にあたり、利用目的を明らかにし、
             同意を得た必要な範囲内で適切な取得、利用目的の範囲内で利用を致します。

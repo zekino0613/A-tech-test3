@@ -49,7 +49,7 @@
 					?>
 					
 					<a href="<?php echo home_url('/info/'); ?>" class="btn fade-in">
-						<p class="btn__text">こもれびだより一覧へ</p>
+						<p class="btn__text fade-in">こもれびだより一覧へ</p>
 						<i class="fa-solid fa-angle-right"></i>
 					</a>
 				</div>

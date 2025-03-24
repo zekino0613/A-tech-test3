@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  //ロード後に要素フェードイン 
+  //ロード後に要素フェードイン
 // ーーーーーーーーーーーーー
   jQuery(document).ready(function ($) {
     $(document).ready(function () {
@@ -76,10 +76,41 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
+//FV mainvisu info 
+jQuery(function($) {
+	function toggleInfoPost() {
+			let mainvisual = $('#mainvisual'); // ファーストビューの要素を取得
+			let infoPost = $('.info-post');
 
+			if (mainvisual.length) {
+					let fvOffset = mainvisual.offset().top;
+					let fvHeight = mainvisual.outerHeight();
+					let scrollTop = $(window).scrollTop();
+
+					if (scrollTop > fvOffset + fvHeight) {
+							infoPost.fadeOut(); // FVが見えなくなったら非表示
+					} else {
+							infoPost.fadeIn(); // FVが見えている間は表示
+					}
+			}
+	}
+
+	// 初回実行
+	toggleInfoPost();
+
+	// スクロール時に実行
+	$(window).on('scroll', function() {
+			toggleInfoPost();
+	});
+});
+
+
+
+	
+	
+	
+	
 // archive-introduction
-
-
 
 jQuery(document).ready(function ($) {
 	console.log("✅ jQuery 読み込み完了");
@@ -135,7 +166,7 @@ let prefecture = url.searchParams.get("prefecture");
 
 if (prefecture) {
 		console.log("ページロード時の都道府県フィルター適用:", prefecture);
-		
+
 		// ✅ フィルターを適用
 		$(".introduction-thumbnail").each(function () {
 				if ($(this).hasClass(prefecture)) {
@@ -151,9 +182,159 @@ if (prefecture) {
 
 		$(".tab-contents").hide();
 		$("#prefecture-tab").fadeIn();
-}
+	}
+	});
 });
 
+
+
+
+
+
+
+
+
+
+
+
+jQuery(document).ready(function ($) {
+    // ✅ `archive-introduction.php` 以外では動作しないようにする
+    if (!$("body").hasClass("post-type-archive-introduction")) return;
+
+    console.log("✅ `archive-introduction.php` のページネーション制御を適用");
+
+    let postsPerPage = 9; // ✅ 1ページに9件表示
+    let currentPage = 1;
+    let currentFilter = "all";
+    let isPrefectureFilter = false;
+
+    function showPage(page) {
+        let filteredPosts = (currentFilter === "all") ? $(".introduction-thumbnail") : $(".introduction-thumbnail." + currentFilter);
+
+        $(".introduction-thumbnail").hide(); // すべての投稿を非表示
+        let start = (page - 1) * postsPerPage;
+        let end = start + postsPerPage;
+        filteredPosts.slice(start, end).fadeIn(); // ✅ 9件ずつ表示
+
+        let totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+        if (totalPages <= 1 || isPrefectureFilter) {
+            $(".pagination-introduction").hide();
+        } else {
+            $(".pagination-introduction").html(createPagination(page, totalPages)).show();
+        }
+    }
+
+    function createPagination(current, totalPages) {
+        if (totalPages <= 1 || isPrefectureFilter) return "";
+
+        let paginationHtml = '<div class="pagination__inner">';
+        if (current > 1) {
+            paginationHtml += `<a href="#" class="pagination-prev" data-page="${current - 1}"><i class="fa-solid fa-chevron-left"></i></a>`;
+        }
+        for (let i = 1; i <= totalPages; i++) {
+            paginationHtml += `<a href="#" class="pagination-page ${i === current ? "is-active" : ""}" data-page="${i}">${i}</a>`;
+        }
+        if (current < totalPages) {
+            paginationHtml += `<a href="#" class="pagination-next" data-page="${current + 1}"><i class="fa-solid fa-chevron-right"></i></a>`;
+        }
+        paginationHtml += "</div>";
+
+        return paginationHtml;
+    }
+
+    // ✅ `archive-introduction.php` のページネーションクリックイベント
+    $(document).on("click", ".pagination-introduction a", function (event) {
+        event.preventDefault();
+        let page = $(this).data("page");
+        currentPage = page;
+        showPage(currentPage);
+    });
+
+    function applyFilter(filterClass, isPrefecture = false) {
+        currentFilter = filterClass;
+        isPrefectureFilter = isPrefecture;
+        $(".introduction-thumbnail").hide();
+        let filteredPosts = (filterClass === "all") ? $(".introduction-thumbnail") : $(".introduction-thumbnail." + filterClass);
+
+        currentPage = 1;
+        showPage(currentPage);
+
+        if (isPrefecture) {
+            $(".pagination-introduction").hide();
+        } else {
+            $(".pagination-introduction").show();
+        }
+    }
+
+    $(".category-filter").click(function (event) {
+        event.preventDefault();
+        let filter = $(this).data("filter");
+        applyFilter(filter, false);
+    });
+
+    $(".prefecture-filter").click(function (event) {
+        event.preventDefault();
+        let filter = $(this).data("filter");
+        applyFilter(filter, true);
+    });
+
+    $(".tab-list__item[data-tab='category']").click(function () {
+        applyFilter("all", false);
+        $(".pagination-introduction").show();
+    });
+
+    let urlParams = new URLSearchParams(window.location.search);
+    let savedPage = urlParams.get("page");
+    let savedFilter = urlParams.get("filter");
+
+    if (savedFilter) {
+        applyFilter(savedFilter, savedFilter.includes("prefecture"));
+    }
+
+    if (savedPage) {
+        currentPage = parseInt(savedPage);
+        showPage(currentPage);
+    } else {
+        showPage(1); // ✅ 初回表示時は1ページ目を表示
+    }
+
+    $(window).on("popstate", function () {
+        let urlParams = new URLSearchParams(window.location.search);
+        let savedPage = urlParams.get("page") || 1;
+        let savedFilter = urlParams.get("filter") || "all";
+
+        currentPage = parseInt(savedPage);
+        currentFilter = savedFilter;
+        showPage(currentPage);
+    });
+});
+
+
+//お知らせカテゴリータブ
+
+// // //お知らせカテゴリータブ
+jQuery(document).ready(function($) {
+	$(".filter-button").click(function(event) {
+			event.preventDefault(); // ページ遷移を防ぐ
+
+			let category = $(this).data("category");
+			console.log("選択されたカテゴリー:", category); // ✅ デバッグ用
+
+			// すべてのタブから active クラスを削除し、クリックされたタブに追加
+			$(".filter-button").removeClass("active");
+			$(this).addClass("active");
+
+			// 記事をフィルタリング
+			$(".info-card").each(function() {
+					let articleCategory = $(this).data("category");
+
+					if (category === "all" || articleCategory === category) {
+							$(this).show();  // 該当する記事を表示
+					} else {
+							$(this).hide();  // 該当しない記事を非表示
+					}
+			});
+	});
 });
 
 
@@ -222,7 +403,7 @@ jQuery(document).ready(function ($) {
     return window.matchMedia('(max-width: 900px)').matches;
   }
 
-  $('.accordion-header').on('click', function () {
+  $('.accordion-item').on('click', function () {
     const parentItem = $(this).closest('.accordion-item');
     const content = parentItem.find('.accordion-content');
 
@@ -288,110 +469,9 @@ jQuery(document).ready(function ($) {
 
 
 
-// page-price-menuの各セクションへのページジャンプ
-// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-jQuery(document).ready(function ($) {
-  // ヘッダーの高さを指定
-  var headerHeight = 250; // ヘッダーの高さ（px）
-
-  // ページ内リンクのクリックイベント
-  $('a[href*="#"]').on('click', function (e) {
-      // 現在のリンク先
-      var target = $(this.hash);
-      if (target.length) {
-          e.preventDefault(); // デフォルトの動作をキャンセル
-
-          // スクロール位置を計算
-          var scrollTo = target.offset().top - headerHeight;
-
-          // スムーズスクロール
-          $('html, body').animate(
-              {
-                  scrollTop: scrollTo,
-              },
-              500 // スクロール速度（ms）
-          );
-      }
-  });
-});
 
 
 
-
-
-
-//-------------------------------------------------------------------------------
-// wordpressテンプレートパーツ
-//-------------------------------------------------------------------------------
-// 【テンプレートmainvisual】-------------↓
-
-//背景パララックス
-// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-// 
-jQuery(function ($) {
-  const parallaxImage = $('.parallax-image');
-  const salonConcept = $('.section-title');
-  const parallaxSection = $('.parallax-section');
-
-  // SALON CONCEPT の終了位置を取得
-  const salonEnd = salonConcept.offset().top + salonConcept.outerHeight();
-
-  // レスポンシブ画像の切り替え
-  function setResponsiveImage() {
-    const windowWidth = $(window).width();
-    let imageUrl = parallaxSection.parent().data('desktop'); // デスクトップ用デフォルト
-
-    // if (windowWidth <= 900) {
-    //   imageUrl = parallaxSection.parent().data('tablet'); // タブレット用画像
-    // }
-    if (windowWidth <= 900) {
-      imageUrl = parallaxSection.parent().data('mobile'); // モバイル用画像
-    }
-
-    parallaxImage.css('background-image', `url(${imageUrl})`);
-  }
-
-  // 初期表示時とリサイズ時に画像を切り替え
-  setResponsiveImage();
-  $(window).on('resize', setResponsiveImage);
-
-  // パララックス効果
-  $(window).on('scroll', function () {
-    const scrollTop = $(window).scrollTop();
-
-    if (scrollTop < salonEnd) {
-      // スクロール位置が SALON CONCEPT の中にある場合
-      parallaxImage.css({
-        top: salonEnd - scrollTop + 'px',
-      });
-    } else {
-      // 通常セクションに入った場合
-      parallaxImage.css({
-        top: '80px', // 固定位置
-      });
-    }
-  });
-});
-
-
-
-
-// document.addEventListener("DOMContentLoaded", function () {
-//   // すべてのカレンダーアイコンを取得
-//   const calendarIcons = document.querySelectorAll(".custom-calendar-icon");
-
-//   calendarIcons.forEach((icon) => {
-//     icon.addEventListener("click", function () {
-//       // アイコンの data-target 属性から対応する input[type="date"] を特定
-//       const targetId = icon.getAttribute("data-target");
-//       const targetInput = document.getElementById(targetId);
-
-//       if (targetInput) {
-//         targetInput.showPicker(); // カレンダーを表示する
-//       }
-//     });
-//   });
-// });
 
 
 // 採用情報フォーム
@@ -399,7 +479,7 @@ jQuery(function ($) {
 jQuery(document).ready(function ($) {
   function toggleOtherTextarea() {
       let selectedValue = $(".inquiry-radio input:checked").val();
-      
+
       if (selectedValue === "その他") {
           $(".other-textarea").prop("disabled", false).focus();
       } else {
@@ -460,11 +540,11 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 });
-  
 
-  
 
-  
+
+
+
 
 
 

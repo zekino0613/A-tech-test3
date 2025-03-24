@@ -15,26 +15,26 @@
       <div class="single-nursery__inner">
         <!-- サムネイル-->
         <div class="thumbnail">
-          <div class="thumbnail__inner">
+          <div class="thumbnail__inner fade-in">
             <!-- サムネイル画像 -->
             <?php
               $thumbnail = get_field('thumbnail_image'); // 画像IDを取得
               $default_image = get_template_directory_uri() . '/assets/images/kidsland_image/design-parts/no-image.webp'; // デフォルト画像のパス
             ?>
-            <img class="thumbnail__inner--image" 
+            <img class="thumbnail__inner--image fade-in" 
                 src="<?php echo esc_url($thumbnail ? wp_get_attachment_image_url($thumbnail, 'full') : $default_image); ?>" 
                 alt="<?php the_title(); ?>" 
                 class="nursery-thumbnail">
 
             <!-- サムネイルタイトル -->
             <?php if( get_field('thumbnail_title') ): ?>
-              <h2 class="thumbnail__inner--title"><?php the_field('thumbnail_title'); ?></h2>
+              <h2 class="thumbnail__inner--title fade-in"><?php the_field('thumbnail_title'); ?></h2>
             <?php endif; ?>
             <!-- サムネイル説明 -->
             <!-- <?php //カスタムフィールド入力欄で改行
               $nursery_message = get_field('thumbnail_textarea');
               if ($nursery_message) {
-                  echo '<p class="thumbnail__inner--textarea">' . nl2br(wp_kses_post($nursery_message)) . '</p>';
+                  echo '<p class="thumbnail__inner--textarea fade-in">' . nl2br(wp_kses_post($nursery_message)) . '</p>';
               }
             ?> -->
             <?php 
@@ -60,7 +60,7 @@
 
 
         <!-- スライダー -->
-        <div class="inside pink-bk">
+        <div class="inside pink-bk fade-in">
           <!-- title-icon -->
           <?php
           get_template_part('template-parts/title-icon', null, ['name' => 'inside']);// title-icon をインクルード
@@ -95,12 +95,12 @@
             get_template_part('template-parts/title-icon', null, ['name' => 'message']);// title-icon をインクルード
           ?>
 
-          <div class="message__flex">
+          <div class="message__flex fade-in">
             <!-- 園長からのメッセージ画像 -->
             <?php
               $message_image = get_field('message_image');
               if ($message_image): ?>
-                <img class="message__flex--image" src="<?php echo esc_url(wp_get_attachment_image_url($message_image, 'full')); ?>" alt="園長からのメッセージ" class="nursery-message-image">
+                <img class="message__flex--image fade-in" src="<?php echo esc_url(wp_get_attachment_image_url($message_image, 'full')); ?>" alt="園長からのメッセージ" class="nursery-message-image">
             <?php endif; ?>
             <!-- 園長からのメッセージ内容 -->
             <!-- <?php if( get_field('message_area') ): ?>
@@ -116,7 +116,7 @@
         </div><!-- / -->
 
       <!-- 園の概要 -->
-      <div class="about-nursery">
+      <div class="about-nursery fade-in">
         <div class="about-nursery__inner">
           <!-- title-icon -->
           <?php
@@ -365,25 +365,25 @@
           $prefecture = get_field('nursery_address', $related_nursery_id);
           ?>
                   
-            <a href="<?php the_permalink(); ?>" class="letter-card">
+            <a href="<?php the_permalink(); ?>" class="letter-card fade-in">
               <!-- サムネイル画像 -->
               <?php
                 $thumbnail = get_field('article_image');
                 if ($thumbnail):
                   ?>
-                <img class="letter-card__image"src="<?php echo esc_url(wp_get_attachment_image_url($thumbnail, 'full')); ?>" alt="<?php the_title(); ?>">
+                <img class="letter-card__image fade-in"src="<?php echo esc_url(wp_get_attachment_image_url($thumbnail, 'full')); ?>" alt="<?php the_title(); ?>">
               <?php endif; ?>
-              <div class="letter-card__textarea">
+              <div class="letter-card__textarea fade-in">
                 <!-- 記事タイトル -->
-                <h2 class="letter-card__textarea--title"><?php the_title(); ?>からのおたより</h2>
+                <h2 class="letter-card__textarea--title fade-in"><?php the_title(); ?>からのおたより</h2>
                 <!-- サムネイルタイトル -->
                 <?php if( get_field('article_title') ): ?>
-                  <h3 class="letter-card__textarea--letter-title"><?php the_field('article_title'); ?></h3>
+                  <h3 class="letter-card__textarea--letter-title fade-in"><?php the_field('article_title'); ?></h3>
                 <?php endif; ?>
                 <!-- 投稿日時 -->
               </div><!-- / -->   
               
-              <time class="letter-card__post-date" datetime="<?php echo get_the_date('Y-m-d'); ?>">
+              <time class="letter-card__post-date fade-in" datetime="<?php echo get_the_date('Y-m-d'); ?>">
                 <?php
                 $date = get_the_date('Y年n月j日'); // 例: 2024年4月1日
                 $date_hiragana = str_replace(['年', '月', '日'], ['ねん', 'がつ', 'にち'], $date);

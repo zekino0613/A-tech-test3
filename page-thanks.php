@@ -12,9 +12,9 @@
 
     
   <section id="thanks">
-    <p class="p1">数日以内に担当の者からご入力いただいた<br class="brsp">メールアドレスに返信いたします。</p>
+    <p class="p1 fade-in">数日以内に担当の者からご入力いただいた<br class="brsp">メールアドレスに返信いたします。</p>
     
-    <a href="<?php echo home_url('/'); ?>" class="btn-pattern2">
+    <a href="<?php echo home_url('/'); ?>" class="btn-pattern2 fade-in">
       <p class="btn-pattern2__text">TOPにもどる</p>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="桜のこもれびキッズランドは関東、関西など日本全国各地で保育園を運営しています。子供たちが楽しく学び、成長するための保育環境を提供しています。さまざまな情報やイベント情報をお届けします。">
   <link rel="canonical" href="https://a-tech2.zekino0613.com/" />
-  <!-- <meta name="robots" content="noindex">公開前はnoindexを無効にする -->
+	<!-- --公開前はnoindexを無効にする  -->
+  <meta name="robots" content="noindex">
   <!-- 【TOPページのOGP設定】 -->
   <meta property="og:site_name" content="桜のこもれびキッズランド｜日本全国の認証・認可保育園">
   <meta property="og:title" content="桜のこもれびキッズランド｜日本全国の認証・認可保育園">

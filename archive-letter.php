@@ -14,7 +14,7 @@
   <section id="archive-letter">
 		<div class="archive-letter__inner">
 			
-			<form method="get" action="<?php echo esc_url(home_url('/letter/')); ?>" class="search-form">
+			<form method="get" action="<?php echo esc_url(home_url('/letter/')); ?>" class="search-form fade-in">
 				<h2><i class="fa fa-search search-icon"></i>園をさがす</h2>
 				<label for="search-prefecture"></label>
 				<select name="prefecture" id="search-prefecture">
@@ -83,7 +83,7 @@
 
 
 			<div class="letter-container">
-				<div class="letter-list">
+				<div class="letter-list ">
 					<?php if (have_posts()) : ?>
 					<?php while (have_posts()) : the_post(); ?>
 						<?php
@@ -91,7 +91,7 @@
 							$nursery_name = $related_nursery_id ? get_the_title($related_nursery_id) : '不明な園';
 							$prefecture = get_field('nursery_address', $related_nursery_id);
 						?>	
-							<a href="<?php the_permalink(); ?>" class="letter-card">
+							<a href="<?php the_permalink(); ?>" class="letter-card fade-in">
 								<!-- サムネイル画像 -->
 								<?php
 									$thumbnail = get_field('article_image');

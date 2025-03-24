@@ -76,8 +76,8 @@ $slug = get_current_slug();
 if (is_singular('introduction')) :
 ?>
 <section id="sub-mainvisual">
-  <div class="sub-mainvisual__inner">
-    <div class="sub-mainvisual__inner--page-title">
+  <div class="sub-mainvisual__inner fade-in">
+    <div class="sub-mainvisual__inner--page-title fade-in">
       <div class="title-wrapper">
         <h1>桜のこもれびキッズランド</h1>      
         <div class="title-wrapper__flex">
@@ -109,7 +109,7 @@ if (is_singular('introduction')) :
 
   <!-- 通常のページ -->
   <section id="sub-mainvisual">
-    <div class="sub-mainvisual__inner">
+    <div class="sub-mainvisual__inner fade-in">
       <div class="sub-mainvisual__inner--page-title">
         <div class="title-wrapper">
           <h1><?php echo wp_kses_post($section_title['title']); ?></h1>

@@ -321,15 +321,17 @@ function modify_archive_queries($query) {
         return;
     }
 
-    if (is_post_type_archive('introduction')) {
-      $query->set('posts_per_page', 2); // ✅ 表示件数を指定
-      $query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1); // ✅ ページネーション対応
-  }
+  //   if (is_post_type_archive('introduction')) {
+  //     $query->set('posts_per_page', 6); // ✅ 表示件数を指定
+  //     $query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1); // ✅ ページネーション対応
+  // }
     if (is_post_type_archive('letter')) {
         $query->set('posts_per_page', 9);
     }
 }
 add_action('pre_get_posts', 'modify_archive_queries');
+
+
 
 
 // archive-letter
@@ -536,28 +538,52 @@ function custom_wpcf7_validation($result, $tags) {
         $type = $tag['type'];
         $name = $tag['name'];
         $post = isset($_POST[$name]) ? trim(strtr((string) $_POST[$name], "\n", "")) : '';
+				
 
         // ✅ 必須項目チェック（対象フィールドのみ）
         $required_fields = [
             'your-name' => 'お名前',
             'your-kana' => 'ふりがな',
-            // 'your-phone' => '電話番号',
-            'your-email' => 'メールアドレス',
-            'your-contact-method' => 'ご希望の連絡方法',
-            'checkbox-475' => 'お問い合わせ項目',
-            'your-store' => '希望店舗'
+						'your-birthdate' => '生年月日',
+						'postal-code' => '郵便番号',
+						'prefecture' => '都道府県',
+						'city' => '市区町村',
+						'address' => '番地・建物名',
+						'work-area' => '希望就業エリア',
+						'city' => '市区町村',
+						'city' => '市区町村',
+						
+						'your-furigana' => 'ふりがな',
+            'phone-number' => '電話番号',
+            'email' => 'メールアドレス',
+            'hoikuen-name' => 'お問い合わせの保育園',
+						'hoikuen-name' => 'お問い合わせ内容',
+            'inquiry-details' => 'お問い合わせ項目',
+						'inquiry-details' => 'ご要望・ご質問',
+            'agree' => '利用規約と個人情報'
         ];
 
-        if (array_key_exists($name, $required_fields) && empty($post)) {
-            $result->invalidate($name, "{$required_fields[$name]}は必須です。");
-        }
+				if (array_key_exists($name, $required_fields) && empty($post) && $name !== 'agree') {
+					$result->invalidate($name, "{$required_fields[$name]}は必須です。");
+			}
+
+    // ✅ `agree` のチェックボックスバリデーション
+		if ($name === 'agree' && (!isset($_POST[$name]) || !in_array($_POST[$name], ['yes', 'on'], true))) {
+			$result->invalidate($name, "利用規約と個人情報の取り扱いに同意してください。");
+		}
+		
+		     // ✅ `gender` はバリデーションしない
+				 if ($name === 'gender') {
+					continue; // スキップして何もしない
+			}
+	
 
         switch ($name) {
             case 'your-name':
                 // ✅ お名前：特別なバリデーションなし（必須のみ）
                 break;
 
-            case 'your-kana':
+            case 'your-furigana':
                 // ✅ ふりがな（ひらがな＋スペースのみ許可）
                 if (!empty($post) && !preg_match("/^[ぁ-んー\s]+$/u", $post)) {
                     $result->invalidate($name, "ふりがなは全角ひらがなで入力してください（スペース可）。");
@@ -571,33 +597,14 @@ function custom_wpcf7_validation($result, $tags) {
                 }
                 break;
 
-            case 'your-email':
+            case 'email':
                 // ✅ メールアドレスの形式チェック
                 if (!empty($post) && !filter_var($post, FILTER_VALIDATE_EMAIL)) {
                     $result->invalidate($name, "メールアドレスの形式が正しくありません。");
                 }
                 break;
 
-            case 'your-contact-method':
-                // ✅ ご希望の連絡方法（必須）
-                if (empty($post)) {
-                    $result->invalidate($name, "ご希望の連絡方法は必須です。");
-                }
-                break;
-
-            case 'checkbox-475':
-                // ✅ お問い合わせ項目（最低1つ選択必須）
-                if (empty($_POST[$name])) {
-                    $result->invalidate($name, "お問い合わせ項目は必須です。");
-                }
-                break;
-
-            case 'your-store':
-                // ✅ 希望店舗（必須）
-                if (empty($post)) {
-                    $result->invalidate($name, "希望店舗は必須です。");
-                }
-                break;
+        
         }
     }
     return $result;

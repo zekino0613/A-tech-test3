@@ -20,7 +20,7 @@
   ?>
 
   <div class="site-map__inner">
-      <nav class="site-map-list">
+      <nav class="site-map-list fade-in">
         <ul class="site-map-list__ul">
           <!-- 左側のカラム（PC時） -->
           <div class="site-map-list__column">

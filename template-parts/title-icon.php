@@ -39,7 +39,8 @@ $title_data = [
     ],
 		'archive-introduction' => [
         'image' => 'assets/images/kidsland_image/design-parts/tree-icon.webp',
-        
+        'title' => '',
+        'english_title' => ''
     ],
     // ----------------------------------------------------------------
     'recruit' => [
@@ -101,7 +102,7 @@ $data = $title_data[$name] ?? $title_data['Default'];
 ?>
 
 <h3 class="title-icon">
-  <div class="title-icon__bg">
+  <div class="title-icon__bg fade-in">
     <img class="title-icon__bg--img"
         src="<?php echo esc_url(get_template_directory_uri() . '/' . $data['image']); ?>"
         loading="lazy"
@@ -109,6 +110,6 @@ $data = $title_data[$name] ?? $title_data['Default'];
   </div><!-- /title-icon -->
 
   <!-- `wp_kses_post()` を使用して `<br>` を適用可能にする -->
-  <p class="title-icon__title"><?php echo wp_kses_post($data['title']); ?></p>
-  <span class="title-icon__english"><?php echo esc_html($data['english_title']); ?></span>
+  <p class="title-icon__title fade-in"><?php echo wp_kses_post($data['title']); ?></p>
+  <span class="title-icon__english fade-in"><?php echo esc_html($data['english_title']); ?></span>
 </h3>

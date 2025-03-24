@@ -15,7 +15,7 @@
 			get_template_part('template-parts/title-icon', null, ['name' => 'motto']);// title-icon をインクルード
 		?>
 		<div class="motto-content">
-			<div class="motto-content__flex">
+			<div class="motto-content__flex fade-in">
 				<img
 						class="motto-content__flex--image"
 						src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/yearly-program/yearly-program-3.webp"
@@ -34,7 +34,7 @@
 				</div><!-- / -->		
 			</div><!-- /.motto__flex -->
 			
-			<div class="motto-content__flex content2">
+			<div class="motto-content__flex content2 fade-in">
 				<div class="motto-content__flex--textarea">
 					<h3 class="textarea-title">
 						自由な風土	
@@ -53,7 +53,7 @@
 						alt="motto-image2">
 			</div><!-- /.motto__flex -->
 			
-			<div class="motto-content__flex">
+			<div class="motto-content__flex fade-in">
 				<img
 						class="motto-content__flex--image"
 						src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/human/human-wide.webp"
@@ -81,7 +81,7 @@
 			get_template_part('template-parts/title-icon', null, ['name' => 'requirements']);// title-icon をインクルード
 		?>
 		
-		<div class="requirements__inner">
+		<div class="requirements__inner fade-in">
 			<div class="requirements__inner--list">
 				<h3 class="list-label">
 					勤務地

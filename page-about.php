@@ -15,7 +15,7 @@
         get_template_part('template-parts/title-icon', null, ['name' => 'philosophy']);// title-icon をインクルード
       ?>
 
-      <p class="philosophy__inner--text">
+      <p class="philosophy__inner--text fade-in">
         桜のこもれびキッズランドは<br>
         子どもたち一人ひとりが独自の輝きを<br class="brsp">放つように、大切な個性を<br class="brsp">伸ばす場所です。<br> 
         風に揺れる木々の葉が織りなす光と影の美しい揺らめきのように、<br>
@@ -37,7 +37,7 @@
         get_template_part('template-parts/title-icon', null, ['name' => 'yearly-program']);// title-icon をインクルード
       ?>
 
-      <div class="yearly-list">
+      <div class="yearly-list fade-in">
         <div class="card">
           <img class="card__image"
             src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/yearly-program/yearly-program-4.webp"

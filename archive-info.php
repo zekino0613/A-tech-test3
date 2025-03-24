@@ -37,7 +37,7 @@
 				// var_dump($categories);
 				?>
 
-				<div class="filter-buttons">
+				<div class="filter-buttons fade-in">
 					<a href="#" class="filter-button active" data-category="all">すべて</a>
 						<?php foreach ($categories as $category): ?>
 							<a href="#" class="filter-button" data-category="<?php echo esc_attr($category->slug); ?>">
@@ -68,10 +68,10 @@
 						?>
 
 						<a href="<?php the_permalink(); ?>" class="info-card" data-category="<?php echo esc_attr($category_slug); ?>">
-							<div class="info-card__inner">
-								<div class="info-card__inner--flex">
+							<div class="info-card__inner fade-in">
+								<div class="info-card__inner--flex fade-in">
 									<div class="category-icon" style="background-color: <?php echo esc_attr($icon_bg); ?>;">
-										<div class="category-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/<?php echo esc_attr($icon); ?>');"></div>
+										<div class="category-image fade-in" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/<?php echo esc_attr($icon); ?>');"></div>
 										<?php
 											if (!empty($categories) && !is_wp_error($categories)) {
 												echo '<p class="category" style="color: ' . esc_attr($color) . ';">';
@@ -83,14 +83,14 @@
 										?>
 									</div><!-- / -->
 									<!-- 投稿日時 -->
-									<time class="post-date"><?php echo get_the_date('Y.m.d'); ?></time>
+									<time class="post-date fade-in"><?php echo get_the_date('Y.m.d'); ?></time>
 								</div>
 								
 								<div class="textarea">
 									<!-- 投稿日時 -->
-									<time class="textarea__post-date"><?php echo get_the_date('Y.m.d'); ?></time>
+									<time class="textarea__post-date fade-in"><?php echo get_the_date('Y.m.d'); ?></time>
 									<!-- 記事タイトル -->
-									<h1 class="textarea__info-title"><?php the_title(); ?></h1>
+									<h1 class="textarea__info-title fade-in"><?php the_title(); ?></h1>
 									<?php
 										// リピートフィールドを取得
 										$repeater_data = SCF::get('subheading_content'); // リピートフィールドのグループ名
@@ -122,8 +122,8 @@
 					<?php endif; ?>
 					<?php wp_reset_postdata(); ?>
 
-					<div class="pagination">
-						<div class="pagination__inner">
+					<div class="pagination fade-in">
+						<div class="pagination__inner fade-in">
 							<?php
 							global $wp_query; // ✅ メインクエリを参照
 

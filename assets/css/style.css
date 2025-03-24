@@ -1967,7 +1967,7 @@ a .btn-pattern2 {
 @media (max-width: 500px) {
   #mainvisual {
     width: 100%;
-    height: 73.7vh;
+    height: 56.7vh;
     padding: 0 10%;
   }
   #mainvisual .mainvisual {
@@ -4255,13 +4255,13 @@ a .btn-pattern2 {
   padding: 0 3%;
   margin: 0px auto -37px;
   position: relative;
-  z-index: 10;
+  z-index: 1;
   background-color: #FFFFFF;
   /* 園の種類ごとに背景色を変更 */
 }
 .introduction-list__inner .tab {
   width: 100%;
-  height: 107px;
+  height: 144px;
   margin: 0;
   padding: 0;
   z-index: -1;
@@ -4439,7 +4439,7 @@ a .btn-pattern2 {
   display: -ms-flexbox;
   display: flex;
   width: 201px;
-  margin: 0 auto;
+  margin: 16px auto 58px;
 }
 .pagination__inner a, .pagination__inner span {
   display: -webkit-box;
@@ -4491,7 +4491,7 @@ a .btn-pattern2 {
   }
   .introduction-list__inner .tab {
     width: 100%;
-    height: 126px;
+    height: 222px;
     margin: 0;
     padding: 0;
     z-index: -1;
@@ -4569,7 +4569,7 @@ a .btn-pattern2 {
   }
   .introduction-list__inner .tab {
     width: 100%;
-    height: 126px;
+    height: 328px;
     margin: 0;
     padding: 0;
     z-index: -1;
@@ -4744,14 +4744,14 @@ a .btn-pattern2 {
             justify-content: center;
     margin: 5px auto 48px;
   }
-  .pagination__inner {
+  .pagination .pagination__inner {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     width: 90px;
-    margin: 0 auto;
+    margin: 300px auto;
   }
-  .pagination__inner a, .pagination__inner span {
+  .pagination .pagination__inner a, .pagination .pagination__inner span {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -4778,17 +4778,17 @@ a .btn-pattern2 {
     -webkit-transition: 0.3s ease;
     transition: 0.3s ease;
   }
-  .pagination__inner a i, .pagination__inner span i {
+  .pagination .pagination__inner a i, .pagination .pagination__inner span i {
     font-size: 11px;
   }
-  .pagination__inner a:hover, .pagination__inner span:hover {
+  .pagination .pagination__inner a:hover, .pagination .pagination__inner span:hover {
     opacity: 1;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     background: #EF8F9C;
     color: #FFFFFF;
   }
-  .pagination__inner .current {
+  .pagination .pagination__inner .current {
     background: #EF8F9C;
     color: #FFFFFF;
     border: none;
@@ -6304,6 +6304,7 @@ a .btn-pattern2 {
   border: 2px solid #EF8F9C;
   border-radius: 20px;
   overflow: hidden;
+  cursor: pointer;
 }
 #FAQ .FAQ__inner .accordion .accordion-item .accordion-header {
   display: -webkit-box;
@@ -6317,7 +6318,6 @@ a .btn-pattern2 {
           align-items: center;
   height: 36px;
   padding: 0;
-  cursor: pointer;
   font-size: 18px;
   letter-spacing: 0.2em;
   line-height: 1.3333333333;
@@ -6395,6 +6395,10 @@ a .btn-pattern2 {
 }
 #FAQ .FAQ__inner .accordion .accordion-item.active .accordion-header .accordion-question {
   margin: -2px 0px 4px 41px;
+}
+#FAQ .FAQ__inner .accordion .accordion-item.active .accordion-header .accordion-icon {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 #FAQ .FAQ__inner .accordion .accordion-item.active .accordion-content {
   overflow: visible;
@@ -6491,12 +6495,22 @@ a .btn-pattern2 {
 }
 .recruit-form-wrapper .wpcf7 .wpcf7-form .form-list .input-content .inquiry-radio .wpcf7-list-item {
   margin: 6px 0px 0px -1px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   font-size: 16px;
   letter-spacing: 0.1em;
   line-height: 1;
   font-family: "Kosugi Maru";
   font-weight: 400;
   color: #333333;
+}
+.recruit-form-wrapper .wpcf7 .wpcf7-form .form-list .input-content .inquiry-radio .wpcf7-list-item:hover {
+  color: #EF8F9C;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 .recruit-form-wrapper .wpcf7 .wpcf7-form .form-list .input-content .other-textarea {
   margin: 14px 0 0;
@@ -8053,7 +8067,7 @@ a .btn-pattern2 {
   color: #FFFFFF;
 }
 #contact-form-section .contact-form-section__inner .contact-form-wrapper .wpcf7 .wpcf7-form .form-list .input-content {
-  width: 100%;
+  width: 468px;
 }
 #contact-form-section .contact-form-section__inner .contact-form-wrapper .wpcf7 .wpcf7-form .form-list .input-content.address {
   margin: 0px 0 -9px;
@@ -8328,6 +8342,9 @@ a .btn-pattern2 {
     font-family: "Kosugi Maru";
     font-weight: 400;
     color: #FFFFFF;
+  }
+  #contact-form-section .contact-form-section__inner .contact-form-wrapper .wpcf7 .wpcf7-form .form-list .input-content {
+    width: 100%;
   }
   #contact-form-section .contact-form-section__inner .contact-form-wrapper .wpcf7 .wpcf7-form .form-list .input-content.address {
     margin: -4px 0 3px;

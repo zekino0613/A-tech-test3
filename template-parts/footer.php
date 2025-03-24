@@ -1,5 +1,5 @@
 <footer id="footer"> 
-  <div class="footer__inner">
+  <div class="footer__inner fade-in">
     <a class="f-logo-img" href="<?php echo home_url('/'); ?>#">
       <img 
         src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/sakura-logo.webp"

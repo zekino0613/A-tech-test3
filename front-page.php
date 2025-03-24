@@ -6,7 +6,7 @@
 
 <main>
   <section id="mainvisual">
-    <div class="mainvisual__image">
+    <div class="mainvisual__image fade-infade-in">
       <div class="mainvisual__image--item">
         <h2 class="mainvisual-text fadein fadein-bottom">一人ひとりの輝きが、 <br class="brsp">未来を彩る</h2>
       </div>
@@ -48,7 +48,7 @@
   </section>
 
   <section id="welcome">
-    <div class="welcome__inner">      
+    <div class="welcome__inner fade-in">      
       <!-- title-icon -->
       <?php
         get_template_part('template-parts/title-icon', null, ['name' => 'welcome']);// title-icon をインクルード
@@ -68,29 +68,26 @@
     </div><!-- /.welcome__inner -->   
   </section>
 
-  <section id="introduction">
+  <section id="introduction" class= 'fade-in'>
     <?php
       get_template_part('template-parts/title-icon', null, ['name' => 'introduction']);// title-icon をインクルード
     ?>
 
     <ul class="introduction__prefecture-category">
-      <?php
-        $prefecture_terms = get_terms([
-            'taxonomy'   => 'prefecture', // カスタムタクソノミー
-            'hide_empty' => true,
-            'parent'     => 0, 
-            'number'     => 6, // ✅ ここで6件に制限
-        ]);
+		<?php
+        // ✅ 表示する都道府県を指定
+        $selected_prefectures = ["東京都", "神奈川県", "埼玉県", "千葉県", "大阪府", "京都府"];
         
-        // 都道府県を地理順にソートする関数
-        $sorted_prefectures = sort_prefectures_by_region($prefecture_terms);
-        
-        foreach ($sorted_prefectures as $term) {
-            $slug = rawurlencode(sanitize_title($term->name)); // ✅ エンコードを `archive` の形式に統一
-            $archive_link = add_query_arg('prefecture', $slug, get_post_type_archive_link('introduction')); // ✅ クエリパラメータを適用
-            echo '<li><a href="' . esc_url($archive_link) . '" class="prefecture-filter">' . esc_html($term->name) . '</a></li>';
+        foreach ($selected_prefectures as $prefecture_name) {
+            $term = get_term_by('name', $prefecture_name, 'prefecture');
+            if ($term) {
+                $slug = rawurlencode(sanitize_title($term->name)); // ✅ スラッグをエンコード
+                $archive_link = add_query_arg('prefecture', $slug, get_post_type_archive_link('introduction')); // ✅ クエリパラメータを適用
+                
+                echo '<li><a href="' . esc_url($archive_link) . '" class="prefecture-filter">' . esc_html($term->name) . '</a></li>';
+            }
         }
-      ?>
+        ?>
     </ul>
 
     <a href="<?php echo get_post_type_archive_link('introduction'); ?>" class="btn">
@@ -116,7 +113,7 @@
     ?>
 
 
-  <div class="letter-list">
+  <div class="letter-list fade-in">
     <?php if ($query->have_posts()) : ?>
       <?php while ($query->have_posts()) : $query->the_post(); ?>
         <?php
@@ -157,7 +154,7 @@
       <?php endif; ?>
   </div>
 
-  <a href="<?php echo get_post_type_archive_link('letter'); ?>" class="btn">
+  <a href="<?php echo get_post_type_archive_link('letter'); ?>" class="btn fade-in">
     <p class="btn__text">もっと見る</p>
     <i class="fa-solid fa-angle-right"></i>
   </a>
