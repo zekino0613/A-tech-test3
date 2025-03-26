@@ -43,7 +43,6 @@
               F-color-brown);
           }
         }
-
       }
 
       // スライダー
@@ -55,17 +54,14 @@
           padding: 20px 0;
           overflow: hidden; // **余計な描画を防ぐ**
           white-space: nowrap; // **改行を防ぎ、流れをスムーズに**
-
           .slider-item {
-            padding: 10px;
-
-            img {
-              width: 240%;
+						padding: 10px;
+            .slider-img {
+              width: 240px;
               height: 160px;
               border-radius: 20px;
               box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
               transition: transform 0.3s ease-in-out;
-
               &:hover {
                 transform: scale(1.05);
               }
@@ -424,7 +420,7 @@
             white-space: nowrap; // **改行を防ぎ、流れをスムーズに**
             .slider-item {
               padding: 10px;
-              img {
+              .slider-img {
                 width: 120px;
                 height: 80px;
                 border-radius: 12px;

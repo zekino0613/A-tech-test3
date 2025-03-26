@@ -14,7 +14,9 @@
 
 <section id="privacy-policy">
   <div class="privacy-policy__inner fade-in">
-    <h2 class="section-title ">基本理念</h2>
+    <div class="section-title">
+			<h2>基本理念</h2>
+		</div>
     <p>株式会社桜のこもれび、（以下、当社）は、育児支援コンサルティング及び家庭総合支援事業コンサルティング事業等を通して、
         お客様の個人情報を取り扱うにあたり、以下の事項を事業活動の基本とすると共に、社会的責務であると考えます。
     </p>
@@ -25,7 +27,9 @@
     当社はこれを確実に実践していく為に以下、基本方針に基づき、役員及び社員が一体となり、個人情報の適切な取り扱いに努めております。
     </p>
 
-    <h2 class="section-title ">基本方針</h2>
+    <div class="section-title">
+			<h2>基本方針</h2>
+		</div>
       <h3 class="section-title-sub ">（１）個人情報の収集、利用及び提供について</h3>
         <ul class="privacy-list ">
           <li class="privacy-list__li">
@@ -66,12 +70,16 @@
         <p>代表取締役 津田健次郎</p>
       </div><!-- / -->
       
-    <h2 class="section-title">個人情報の利用について</h2>
+    <div class="section-title">
+			<h2>個人情報の利用について</h2>
+		</div>
       <p>
         当社は、お預かりする個人情報を正確かつ安全に保つとともに、不正アクセス・紛失・破壊・改竄・漏洩等に対する予防並びに是正の為、社内規程を整備し、必要かつ適切な措置を講じます。
       </p>
 
-    <h2 class="section-title">株式会社桜のこもれび</h2>
+    <div class="section-title">
+			<h2>株式会社桜のこもれび</h2>
+		</div>
       <h3 class="section-title-sub">（１）利用目的</h3>
       <ul class="privacy-list pc">
         <!-- pc -->
@@ -179,24 +187,32 @@
         </li>
       </ul>
 
-      <h2 class="section-title">個人情報の収集項目における任意性について</h2>
+      <div class="section-title">
+				<h2>個人情報の収集項目における任意性について</h2>
+			</div>
       <p>
         当社が取得致します個人情報の項目は、あくまでも任意のものですが、必要な項目を頂けない場合は当社をご提供できない、又は、スタッフ登録ができない場合があります。
       </p>
 
-      <h2 class="section-title">個人情報の開示、訂正、削除等について</h2>
+      <div class="section-title">
+				<h2>個人情報の開示、訂正、削除等について</h2>
+			</div>
       <p>
         当社は、個人情報に関する個人の権利を尊重し、ご本人の個人情報の開示、訂正、削除等をご希望される場合は、速やかに対応致します。
         また、開示の結果当該情報に誤りがあった場合は、その内容に関する訂正等についても同様に対応致します。
       </p>
 
-      <h2 class="section-title">本人確認</h2>
+      <div class="section-title">
+				<h2>本人確認</h2>
+			</div>
       <p>
         お問合せの際は、ご本人確認を目的として、お名前及びご本人様に関する情報等にて確認の上、対応させて頂きます。
         また必要に応じ、免許書等身分証明のコピーを頂く場合がございます。
       </p>
 
-      <h2 class="section-title">個人情報の第三者への開示、提供について</h2>
+      <div class="section-title">
+				<h2>個人情報の第三者への開示、提供について</h2>
+			</div>
       <p>
         お預かりした個人情報については、次の場合を除き第三者に提供することはありません。
       </p>
@@ -225,14 +241,18 @@
         </li>
       </ul>
 
-      <h2 class="section-title">個人情報に関する業務委託について</h2>
+      <div class="section-title">
+				<h2>個人情報に関する業務委託について</h2>
+			</div>
       <p>
         当社は事業運営上、サービス提供、内部管理の為に、必要な範囲内において、個人情報を取扱う業務を、
         当社グループ会社、システム会社等へ委託致します。業務委託先については、当社で定める選定基準を基に選定し、
         機密保持契約を締結した上で、適切な管理、監督を行います。
       </p>
 
-      <h2 class="section-title">お問い合わせについて</h2>
+      <div class="section-title">
+				<h2>お問い合わせについて</h2>
+			</div>
       
       <p>株式会社桜のこもれび</p>
       <div class="privacy-contact">

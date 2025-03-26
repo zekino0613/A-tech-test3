@@ -101,7 +101,7 @@ $title_data = [
 $data = $title_data[$name] ?? $title_data['Default'];
 ?>
 
-<h3 class="title-icon">
+<div class="title-icon">
   <div class="title-icon__bg fade-in">
     <img class="title-icon__bg--img"
         src="<?php echo esc_url(get_template_directory_uri() . '/' . $data['image']); ?>"
@@ -110,6 +110,6 @@ $data = $title_data[$name] ?? $title_data['Default'];
   </div><!-- /title-icon -->
 
   <!-- `wp_kses_post()` を使用して `<br>` を適用可能にする -->
-  <p class="title-icon__title fade-in"><?php echo wp_kses_post($data['title']); ?></p>
+  <h3 class="title-icon__title fade-in"><?php echo wp_kses_post($data['title']); ?></h3>
   <span class="title-icon__english fade-in"><?php echo esc_html($data['english_title']); ?></span>
-</h3>
+</div>

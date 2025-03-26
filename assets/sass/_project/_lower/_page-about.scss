@@ -39,23 +39,18 @@
         position: relative;
         background-color: map-get(mixin.$colors, "C-white");
         .card {
-          max-width: 320px;
-          width: 100%;
-          height: 264px;
+          width: 320px;
+					height: 264px;
+					display: block;
           background: map-get(mixin.$colors, "C-light-pink");
           padding: 12px;
           border-radius: 20px;
           overflow: hidden;
           transition: all 0.3s ease;
           position: relative;
-          // &:hover {
-          //   transform: translateY(-5px);
-          //   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-          //   transition: all 0.3s ease;
-          // }
           &__image {
+						aspect-ratio: 296 / 180;	//レイアウトシフト対策
             width: 100%;
-            height: 180px;
             border-radius: 20px;
             object-fit: cover;
           }
@@ -140,23 +135,18 @@
           margin: 31px auto 0;
           background-color: map-get(mixin.$colors, "C-white");
           .card {
-            max-width: 320px;
-            width: 100%;
-            height: 264px;
+            width: 320px;
+						height: 264px;
+						display: block;
             background: map-get(mixin.$colors, "C-light-pink");
             padding: 12px;
             border-radius: 20px;
             overflow: hidden;
             transition: all 0.3s ease;
             position: relative;
-            // &:hover {
-            //   transform: translateY(-5px);
-            //   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-            //   transition: all 0.3s ease;
-            // }
             &__image {
+							aspect-ratio: 296 / 180;	//レイアウトシフト対策
               width: 100%;
-              height: 180px;
               border-radius: 20px;
               object-fit: cover;
             }

@@ -9,31 +9,37 @@
     &__inner {
       background-color: map-get(mixin.$colors, "C-white");
       border-radius: 40px;
-      padding:12px 2.5% 48px;
+      padding:14px 3.4% 48px;
       margin: 0 auto;
       .section-title {
         margin:36px 0 16px;
-        @include mixin.font-settings (
-        F-size20,
-        F-line-height20,
-        F-letter-spacing-10,
-        F-family-KosugiMaru,
-        400,
-        F-color-brown);
         border: 1px solid map-get(mixin.$colors, "C-brown");
         position: relative;
         border-radius: 12px;
-        padding: 12px 0 10px 36px;
-        &::before {
-          content: "";
-          position: absolute;
-          top: 11px;
-          left: 23px;
-          width: 4px;
-          height: 20px;
-          border-radius: 1px;
-          background-color: map-get(mixin.$colors, "C-brown");
-        }
+				padding: 12px 0 10px 36px;
+				h2 {
+					display: flex;
+					align-items: stretch; // 子要素の高さを親と同じに
+					position: relative;
+					@include mixin.font-settings (
+					F-size20,
+					F-line-height20,
+					F-letter-spacing-10,
+					F-family-KosugiMaru,
+					400,
+					F-color-brown);
+					&::before {
+						content: "";
+						position: absolute;
+						display: inline-block;
+						top: 0;
+						left: -15.5px;
+						width: 4px;
+						height: 100%;
+						border-radius: 1px;
+						background-color: map-get(mixin.$colors, "C-brown");
+					}
+				}
       }
       .section-title-sub {
         margin: 16px 0 8px;
@@ -154,27 +160,33 @@
         margin: 0 auto;
         .section-title {
           margin:21px 0 17px;
-          @include mixin.font-settings (
-          F-size16,
-          F-line-height16,
-          F-letter-spacing-10,
-          F-family-KosugiMaru,
-          400,
-          F-color-brown);
           border: 1px solid map-get(mixin.$colors, "C-brown");
           position: relative;
           border-radius: 12px;
           padding: 12px 0 10px 36px;
-          &::before {
-            content: "";
-            position: absolute;
-            top: 11px;
-            left: 25px;
-            width: 4px;
-            height: 43%;
-            border-radius: 1px;
-            background-color: map-get(mixin.$colors, "C-brown");
-          }
+					h2 {
+						display: flex;
+						align-items: stretch; // 子要素の高さを親と同じに
+						position: relative;
+						@include mixin.font-settings (
+							F-size16,
+							F-line-height16,
+							F-letter-spacing-10,
+							F-family-KosugiMaru,
+							400,
+							F-color-brown);
+						&::before {
+							content: "";
+							position: absolute;
+							display: inline-block;
+							top: 0;
+							left: -15.5px;
+							width: 4px;
+							height: 100%;
+							border-radius: 1px;
+							background-color: map-get(mixin.$colors, "C-brown");
+						}
+					}
         }
         .section-title-sub {
           margin: 16px 0 8px;

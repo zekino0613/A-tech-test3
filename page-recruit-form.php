@@ -19,6 +19,8 @@
 				<img
 						class="motto-content__flex--image"
 						src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/yearly-program/yearly-program-3.webp"
+						width="480"
+						height="320"
 						loading="lazy"
 						alt="motto-image1">
 				<div class="motto-content__flex--textarea">
@@ -49,6 +51,8 @@
 				<img
 						class="motto-content__flex--image"
 						src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/introduction/introduction-img17.webp"
+						width="480"
+						height="320"
 						loading="lazy"
 						alt="motto-image2">
 			</div><!-- /.motto__flex -->
@@ -57,6 +61,8 @@
 				<img
 						class="motto-content__flex--image"
 						src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/human/human-wide.webp"
+						width="480"
+						height="320"
 						loading="lazy"
 						alt="motto-image3">
 				<div class="motto-content__flex--textarea">

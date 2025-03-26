@@ -69,17 +69,20 @@
           <?php
             // SCFの繰り返しフィールド（画像ID）を取得
             $images = SCF::get('sliders'); // 繰り返しフィールドのグループ名
-
             if (!empty($images)) : ?>
             <div class="slider">
               <?php foreach ($images as $image) : ?>
                 <div class="slider-item">
                   <?php
-                  // 画像IDを取得
-                  $image_id = $image['slider']; // サブフィールド 'slider' の画像ID
-
-                  // 画像を出力（'large'サイズで表示）
-                  echo wp_get_attachment_image($image_id, 'large');
+										// 画像IDを取得
+										$image_id = $image['slider']; // サブフィールド 'slider' の画像ID
+									  // alt を固定で「スライダー画像」とする
+										echo wp_get_attachment_image($image_id, 'large', false, array(
+											'class' => 'slider-img',
+											'width' => 240,	
+											'height' => 160,
+											'alt' => 'スライダー画像'
+										));
                   ?>
                 </div>
               <?php endforeach; ?>

@@ -41,7 +41,9 @@
         <div class="card">
           <img class="card__image"
             src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/yearly-program/yearly-program-4.webp"
-            loading="lazy"
+            width="296" 
+						height="180"
+						loading="lazy"
             alt="yearly-program1">
           <div class="card__textarea">
             <p class="card__textarea--month">4がつ</p>
@@ -52,7 +54,9 @@
         <div class="card">
           <img class="card__image"
             src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/yearly-program/yearly-program-5.webp"
-            loading="lazy"
+            width="296" 
+						height="180"
+						loading="lazy"
             alt="yearly-program5">
           <div class="card__textarea">
             <p class="card__textarea--month">5がつ</p>
@@ -63,7 +67,9 @@
         <div class="card">
           <img class="card__image"
             src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/yearly-program/yearly-program-6.webp"
-            loading="lazy"
+            width="296" 
+						height="180"
+						loading="lazy"
             alt="yearly-program6">
           <div class="card__textarea">
             <p class="card__textarea--month">6がつ</p>
@@ -73,7 +79,9 @@
 
         <div class="card">
           <img class="card__image"
-            src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/yearly-program/yearly-program-7.webp"
+						src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/yearly-program/yearly-program-7.webp"
+						width="296" 
+						height="180"
             loading="lazy"
             alt="yearly-program7">
           <div class="card__textarea">
@@ -85,7 +93,9 @@
         <div class="card">
           <img class="card__image"
             src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/yearly-program/yearly-program-8.webp"
-            loading="lazy"
+            width="296" 
+						height="180"
+						loading="lazy"
             alt="yearly-program8">
           <div class="card__textarea">
             <p class="card__textarea--month">8がつ</p>
@@ -96,7 +106,9 @@
         <div class="card">
           <img class="card__image"
             src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/yearly-program/yearly-program-9.webp"
-            loading="lazy"
+            width="296" 
+						height="180"
+						loading="lazy"
             alt="yearly-program9">
           <div class="card__textarea">
             <p class="card__textarea--month">9がつ</p>
@@ -107,7 +119,9 @@
         <div class="card">
           <img class="card__image"
             src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/yearly-program/yearly-program-10.webp"
-            loading="lazy"
+            width="296" 
+						height="180"
+						loading="lazy"
             alt="yearly-program10">
           <div class="card__textarea">
             <p class="card__textarea--month">10がつ</p>
@@ -118,7 +132,9 @@
         <div class="card">
           <img class="card__image"
             src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/yearly-program/yearly-program-11.webp"
-            loading="lazy"
+            width="296" 
+						height="180"
+						loading="lazy"
             alt="yearly-program11">
           <div class="card__textarea">
             <p class="card__textarea--month">11がつ</p>
@@ -129,7 +145,9 @@
         <div class="card">
           <img class="card__image"
             src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/yearly-program/yearly-program-12.webp"
-            loading="lazy"
+            width="296" 
+						height="180"
+						loading="lazy"
             alt="yearly-program12">
           <div class="card__textarea">
             <p class="card__textarea--month">12がつ</p>
@@ -140,7 +158,9 @@
         <div class="card">
           <img class="card__image"
             src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/yearly-program/yearly-program-1.webp"
-            loading="lazy"
+            width="296" 
+						height="180"
+						loading="lazy"
             alt="yearly-program1">
           <div class="card__textarea">
             <p class="card__textarea--month">1がつ</p>
@@ -151,7 +171,9 @@
         <div class="card">
           <img class="card__image"
             src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/yearly-program/yearly-program-2.webp"
-            loading="lazy"
+            width="296" 
+						height="180"
+						loading="lazy"
             alt="yearly-program2">
           <div class="card__textarea">
             <p class="card__textarea--month">2がつ</p>
@@ -162,7 +184,9 @@
         <div class="card">
           <img class="card__image"
             src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/yearly-program/yearly-program-3.webp"
-            loading="lazy"
+            width="296" 
+						height="180"
+						loading="lazy"
             alt="yearly-program3">
           <div class="card__textarea">
             <p class="card__textarea--month">3がつ</p>
