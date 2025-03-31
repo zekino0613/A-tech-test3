@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  //スクロール中にフェードイン
+//   スクロール中にフェードイン
 // ーーーーーーーーーーーーー
   jQuery(document).ready(function($) {
     // ここにコードを書く。'$'を安全に使用できます。
@@ -467,13 +467,6 @@ jQuery(document).ready(function ($) {
 })(jQuery);
 
 
-
-
-
-
-
-
-
 // 採用情報フォーム
 // ラジオボタンで「その他」選択の時にだけテキストエリアが入力できるようにする
 jQuery(document).ready(function ($) {
@@ -538,6 +531,26 @@ document.addEventListener("DOMContentLoaded", function() {
 			submitBtn.appendChild(icon);
 	}
 });
+
+// 【同意チェック欄】のバリデーション
+jQuery(function ($) {
+	const $form = $('.wpcf7 form'); // CF7のフォーム
+	const $checkbox = $('#agree-check');
+	const $errorMsg = $('#agree-error');
+
+	$form.on('submit', function (e) {
+		if (!$checkbox.prop('checked')) {
+			e.preventDefault(); // フォーム送信を止める
+			$errorMsg.fadeIn(); // エラーメッセージ表示
+		} else {
+			$errorMsg.fadeOut(); // エラー非表示
+		}
+	});
+});
+
+
+
+
 
 });
 

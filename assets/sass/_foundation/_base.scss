@@ -26,7 +26,7 @@ html {
 
 body {
   scroll-behavior: smooth;
-  margin: 0; // 
+  margin: 0; //
   padding: 0;
   scroll-margin-top: 250px;
   width: 100%;
@@ -66,7 +66,7 @@ body {
       color: map-get(mixin.$colors, "C-white");
       /* ホバー時の色 */
     }
-  
+
   }
 }
 
@@ -153,6 +153,16 @@ a:focus-visible {
   }
 }
 
+// // reCAPTCHAのロゴ非表示
+// // Googleが明示的に禁止していない以下のようなCSSは現実的に多く使われています
+// .grecaptcha-badge {
+//   opacity: 0.01;         /* 限りなく透明に */
+//   transform: scale(0.1); /* 10%サイズに縮小 */
+//   bottom: 5px !important;
+//   left: 5px !important;
+//   z-index: 1;
+// }
+
 //-------------------------------------------------------------------------------
 // 共通パーツ
 //-------------------------------------------------------------------------------
@@ -167,7 +177,7 @@ a:focus-visible {
     width: 108px;
     height: 108px;
     border-radius: 50%;
-    background-color: map-get(mixin.$colors, "C-yellow");  
+    background-color: map-get(mixin.$colors, "C-yellow");
     display: flex;
     justify-content: center;
     align-items: center;
@@ -177,7 +187,7 @@ a:focus-visible {
       height: 72px;
     }
   }
-  
+
   &__title {
     @include mixin.font-settings (
       F-size24,
@@ -272,7 +282,7 @@ a:focus-visible {
   transition:  ease, transform 1s ease;
   position: relative;
   // **すべてのプロパティにスムーズな変化を適用**
-    transition: 
+    transition:
     background-color 0.5s ease-in-out,
     color 0.5s ease-in-out,
     border-color 0.5s ease-in-out;
@@ -285,7 +295,7 @@ a:focus-visible {
   , 400
   , F-color-brown);
   margin: 0 0 0 0;
-  } 
+  }
   i {
     position: absolute;
     top: 17px;
@@ -299,7 +309,7 @@ a:focus-visible {
   background-color: map-get(mixin.$colors, "C-brown");
   border-color: map-get(mixin.$colors, "C-white");
   opacity: 1;
-  transition: 
+  transition:
     background-color 0.5s ease-in-out,
     color 0.5s ease-in-out,
     border-color 0.5s ease-in-out;
@@ -327,7 +337,7 @@ a .btn {
   transition:  ease, transform 1s ease;
   position: relative;
   // **すべてのプロパティにスムーズな変化を適用**
-  transition: 
+  transition:
   background-color 0.5s ease-in-out,
   color 0.5s ease-in-out,
   border-color 0.5s ease-in-out;
@@ -354,7 +364,7 @@ a .btn {
   background-color: map-get(mixin.$colors, "C-brown");
   border-color: map-get(mixin.$colors, "C-white");
   opacity: 1;
-  transition: 
+  transition:
     background-color 0.5s ease-in-out,
     color 0.5s ease-in-out,
     border-color 0.5s ease-in-out;
@@ -405,7 +415,7 @@ a .btn-pattern2 {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background-color: map-get(mixin.$colors, "C-yellow");  
+    background-color: map-get(mixin.$colors, "C-yellow");
     display: flex;
     justify-content: center;
     align-items: center;
@@ -415,7 +425,7 @@ a .btn-pattern2 {
       height: 53px;
     }
   }
-  
+
   &__title {
     @include mixin.font-settings (
       F-size20,
@@ -488,7 +498,7 @@ a .btn-pattern2 {
     transition:  ease, transform 1s ease;
     position: relative;
     // **すべてのプロパティにスムーズな変化を適用**
-    transition: 
+    transition:
       background-color 0.5s ease-in-out,
       color 0.5s ease-in-out,
       border-color 0.5s ease-in-out;
@@ -514,7 +524,7 @@ a .btn-pattern2 {
     background-color: map-get(mixin.$colors, "C-brown");
     border-color: map-get(mixin.$colors, "C-white");
     opacity: 1;
-    transition: 
+    transition:
       background-color 0.5s ease-in-out,
       color 0.5s ease-in-out,
       border-color 0.5s ease-in-out;
@@ -566,7 +576,7 @@ a .btn-pattern2 {
   background-color: map-get(mixin.$colors, "C-brown");
   border-color: map-get(mixin.$colors, "C-white");
   opacity: 1;
-  transition: 
+  transition:
     background-color 0.5s ease-in-out,
     color 0.5s ease-in-out,
     border-color 0.5s ease-in-out;
@@ -614,7 +624,7 @@ a .btn-pattern2 {
         color: map-get(mixin.$colors, "C-white");
         /* ホバー時の色 */
       }
-    
+
     }
   }
 
@@ -629,6 +639,6 @@ a .btn-pattern2 {
   }
 
 
-  
+
 
 }

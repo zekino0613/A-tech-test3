@@ -12,7 +12,7 @@
 
   <section id="contact-form-section">
     <div class="contact-form-section__inner">
-			<div class="contact-form-section__inner--textarea">
+			<div class="contact-form-section__inner--textarea fade-in">
 				<p>
 					下記フォームにご記入の上、送信してください。折り返し、弊社担当よりご連絡させて頂きます。<br>
 					また、ご入力頂きました個人に関する情報につきましては、弊社で責任をもって管理し、お問い合わせへのご回答及び弊社のサービス向上のために利用させて頂き、第三者への開示や他の目的で利用は致しません。

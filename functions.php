@@ -58,6 +58,25 @@ function theme_enqueue_assets(){
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_assets');
 
+// 【head,メタ情報、OGP設定】
+// -------------------------------------------------------------------------------------
+// Yoastのタイトルが反映
+add_theme_support( 'title-tag' );
+//Yoastの head 出力を削除するコード(TOP,archive一覧ページ)
+function disable_all_yoast_head_output_on_manual_meta_pages() {
+  if (
+    is_front_page() ||
+    is_post_type_archive('introduction') ||
+    is_post_type_archive('letter') ||
+    is_post_type_archive('info')
+  ) {
+    // Yoast SEO の head 出力を確実に無効化
+    remove_all_actions('wpseo_head');
+  }
+}
+add_action('template_redirect', 'disable_all_yoast_head_output_on_manual_meta_pages');
+
+
 
 // カスタム投稿管理
 // -------------------------------------------------------------------------------------
@@ -331,6 +350,22 @@ function modify_archive_queries($query) {
 }
 add_action('pre_get_posts', 'modify_archive_queries');
 
+// post_type=introduction というカスタム投稿タイプで、
+// URLが https://example.com/introduction/page/2/ のようになったときに
+// 正しく2ページ目以降を表示させるためのリライトルールと変数登録をしています。
+function add_custom_query_vars($vars) {
+  $vars[] = 'paged';
+  return $vars;
+}
+add_filter('query_vars', 'add_custom_query_vars');
+
+
+function custom_post_type_rewrite_fix() {
+  add_rewrite_rule('introduction/page/([0-9]+)/?$', 'index.php?post_type=introduction&paged=$matches[1]', 'top');
+}
+add_action('init', 'custom_post_type_rewrite_fix');
+
+
 
 
 
@@ -404,7 +439,6 @@ function debug_prefecture_assignment($post_id, $post, $update) {
 
 
 // archive-letter
-
 // single-introduction のタイトルを比較し、
 // 一致する single-introduction の住所から都道府県を取得し、
 // letter の投稿に 都道府県カテゴリーを自動で設定
@@ -529,100 +563,99 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_styles');
 //CF7 に自動で追加される <p> タグを削除
 add_filter('wpcf7_autop_or_not', '__return_false');
 
+// reCAPTCHA v3 のスコアしきい値を緩める（0.3に設定）
+// add_filter('wpcf7_recaptcha_threshold', function () {
+//   return 0.3;
+// });
 
-/* ContactForm7 のカスタムバリデーション */
+
+// 共通フィルター（フォームIDで分岐）
 add_filter('wpcf7_validate', 'custom_wpcf7_validation', 11, 2);
-
 function custom_wpcf7_validation($result, $tags) {
-    foreach ($tags as $tag) {
-        $type = $tag['type'];
-        $name = $tag['name'];
-        $post = isset($_POST[$name]) ? trim(strtr((string) $_POST[$name], "\n", "")) : '';
-				
+    $form = WPCF7_ContactForm::get_current();
+    $form_id = $form->id();
 
-        // ✅ 必須項目チェック（対象フィールドのみ）
-        $required_fields = [
-            'your-name' => 'お名前',
-            'your-kana' => 'ふりがな',
-						'your-birthdate' => '生年月日',
-						'postal-code' => '郵便番号',
-						'prefecture' => '都道府県',
-						'city' => '市区町村',
-						'address' => '番地・建物名',
-						'work-area' => '希望就業エリア',
-						'city' => '市区町村',
-						'city' => '市区町村',
-						
-						'your-furigana' => 'ふりがな',
-            'phone-number' => '電話番号',
-            'email' => 'メールアドレス',
-            'hoikuen-name' => 'お問い合わせの保育園',
-						'hoikuen-name' => 'お問い合わせ内容',
-            'inquiry-details' => 'お問い合わせ項目',
-						'inquiry-details' => 'ご要望・ご質問',
-            'agree' => '利用規約と個人情報'
-        ];
-
-				if (array_key_exists($name, $required_fields) && empty($post) && $name !== 'agree') {
-					$result->invalidate($name, "{$required_fields[$name]}は必須です。");
-			}
-
-    // ✅ `agree` のチェックボックスバリデーション
-		if ($name === 'agree' && (!isset($_POST[$name]) || !in_array($_POST[$name], ['yes', 'on'], true))) {
-			$result->invalidate($name, "利用規約と個人情報の取り扱いに同意してください。");
-		}
-		
-		     // ✅ `gender` はバリデーションしない
-				 if ($name === 'gender') {
-					continue; // スキップして何もしない
-			}
-	
-
-        switch ($name) {
-            case 'your-name':
-                // ✅ お名前：特別なバリデーションなし（必須のみ）
-                break;
-
-            case 'your-furigana':
-                // ✅ ふりがな（ひらがな＋スペースのみ許可）
-                if (!empty($post) && !preg_match("/^[ぁ-んー\s]+$/u", $post)) {
-                    $result->invalidate($name, "ふりがなは全角ひらがなで入力してください（スペース可）。");
-                }
-                break;
-
-            case 'your-phone':
-                // ✅ 電話番号（半角数字、ハイフンなし、10〜11桁のみ許可）
-                if (!empty($post) && !preg_match('/^0\d{9,10}$/', $post)) {
-                    $result->invalidate($name, "電話番号はハイフンなしの半角数字で入力してください（例：09012345678）。");
-                }
-                break;
-
-            case 'email':
-                // ✅ メールアドレスの形式チェック
-                if (!empty($post) && !filter_var($post, FILTER_VALIDATE_EMAIL)) {
-                    $result->invalidate($name, "メールアドレスの形式が正しくありません。");
-                }
-                break;
-
-        
-        }
+    if ($form_id == 132) {
+        return validate_recruit_form($result, $tags); // 採用フォーム
     }
+
+    if ($form_id == 16) {
+        return validate_contact_form($result, $tags); // お問い合わせフォーム
+    }
+
     return $result;
 }
 
 
 
-function add_custom_query_vars($vars) {
-  $vars[] = 'paged';
-  return $vars;
-}
-add_filter('query_vars', 'add_custom_query_vars');
 
+// 採用フォーム用バリデーション
+function validate_recruit_form($result, $tags) {
+    foreach ($tags as $tag) {
+        $name = $tag['name'];
+        $post = isset($_POST[$name]) ? trim($_POST[$name]) : '';
 
-function custom_post_type_rewrite_fix() {
-  add_rewrite_rule('introduction/page/([0-9]+)/?$', 'index.php?post_type=introduction&paged=$matches[1]', 'top');
+        $required = [
+            'your-name' => 'お名前',
+            'your-furigana' => 'ふりがな',
+            'your-birthdate' => '生年月日',
+            'postal-code' => '郵便番号',
+            'prefecture' => '都道府県',
+            'city' => '市区町村',
+            'address' => '番地・建物名',
+            'phone-number' => '電話番号',
+            'email' => 'メールアドレス',
+            'work-area' => '希望就業エリア',
+        ];
+
+        if (array_key_exists($name, $required) && empty($post)) {
+            $result->invalidate($name, "{$required[$name]}は必須です。");
+        }
+
+        if ($name === 'your-furigana' && !empty($post) && !preg_match('/^[ぁ-んー\s]+$/u', $post)) {
+            $result->invalidate($name, 'ふりがなは全角ひらがなで入力してください。');
+        }
+				
+				  // ✅ 電話番号：半角数字のみ（ハイフンなし）10～11桁
+					if ($name === 'phone-number' && !empty($post) && !preg_match('/^0\d{9,10}$/', $post)) {
+            $result->invalidate($name, '電話番号はハイフンなしの半角数字で入力してください（例：09012345678）。');
+        }
+
+        // ✅ メールアドレス形式チェック
+        if ($name === 'email' && !empty($post) && !filter_var($post, FILTER_VALIDATE_EMAIL)) {
+            $result->invalidate($name, 'メールアドレスの形式が正しくありません。');
+        }
+				
+				
+    }
+	
+    return $result;
 }
-add_action('init', 'custom_post_type_rewrite_fix');
+
+// お問い合わせフォーム用バリデーション
+function validate_contact_form($result, $tags) {
+    foreach ($tags as $tag) {
+        $name = $tag['name'];
+        $post = isset($_POST[$name]) ? trim($_POST[$name]) : '';
+				
+        $required = [
+					'your-name' => 'お名前',
+					'email' => 'メールアドレス',
+					'hoikuen-name' => 'お問い合わせの保育園',
+					'inquiry-details' => 'お問い合わせ内容',
+        ];
+
+        if (array_key_exists($name, $required) && empty($post)) {
+            $result->invalidate($name, "{$required[$name]}は必須です。");
+        }
+
+       // ✅ メールアドレス形式チェック
+				if ($name === 'email' && !empty($post) && !filter_var($post, FILTER_VALIDATE_EMAIL)) {
+				$result->invalidate($name, 'メールアドレスの形式が正しくありません。');
+		}
+    }
+    return $result;
+}
 
 
 

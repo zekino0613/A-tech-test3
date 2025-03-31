@@ -6,7 +6,7 @@
 
 <main>
   <section id="mainvisual">
-    <div class="mainvisual__image fade-infade-in">
+    <div class="mainvisual__image fade-in">
       <div class="mainvisual__image--item">
         <h2 class="mainvisual-text fadein fadein-bottom">一人ひとりの輝きが、 <br class="brsp">未来を彩る</h2>
       </div>

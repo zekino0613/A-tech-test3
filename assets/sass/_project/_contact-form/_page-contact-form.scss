@@ -132,24 +132,54 @@
 								.input-agree {
 									display: flex;
 									justify-content: center;
+									flex-direction: column;
 									input[type="checkbox"] {
 										-webkit-appearance: checkbox; // Webkitブラウザ用
 										-moz-appearance: checkbox;    // Mozillaブラウザ用
 										appearance: checkbox;         // モダンブラウザ用
-										margin: 0 13px 0 -7px;
+										margin-right: 4px;
 										width: 20px;
 										height: 20px;
+										border: 1px solid map-get(mixin.$colors, "C-brown");
+										// appearance: none;
+										&:checked {
+											background-color: map-get(mixin.$colors, "C-pink");
+											border: 1px solid map-get(mixin.$colors, "C-brown");
+										}
+										&:hover {
+											border-color: map-get(mixin.$colors, "C-pink");
+											box-shadow: 0 0 0 2px rgba(255, 0, 128, 0.2); // ピンク色の柔らかいリング
+										}
 									}
 									label {
 										display: flex;
-										align-items: center;
-										@include mixin.font-settings
-										( F-size16
-										, F-line-height16
-										, F-letter-spacing-10
-										, F-family-KosugiMaru
-										, 400
-										, F-color-black);
+										flex-direction: row;
+										align-items: flex-start;
+										.agree-flex {
+											display: flex;
+											align-items: flex-start;
+											width: 100%;
+											input[type="checkbox"] {
+												-webkit-appearance: checkbox; // Webkitブラウザ用
+												-moz-appearance: checkbox;    // Mozillaブラウザ用
+												appearance: checkbox;         // モダンブラウザ用
+												margin: 0 12px 0 0;
+												width: 20px;
+												height: 20px;			
+												flex: 0 0 20px; // ← 幅を絶対確保！
+											}
+											.agree-label-text {
+												flex: 1;
+												word-break: break-word;
+												@include mixin.font-settings
+												( F-size16
+												, F-line-height24
+												, F-letter-spacing-10
+												, F-family-KosugiMaru
+												, 400
+												, F-color-black);
+											}
+										}
 										.required {
 											display: block;
 											width: 42px;
@@ -157,7 +187,7 @@
 											border-radius: 4px;
 											text-align: center;
 											padding: 4px 0;
-											margin: 0 0 0 12px;
+											margin: 0 0 0 4px;
 											background-color: map-get(mixin.$colors, "C-pink");
 											@include mixin.font-settings
 											( F-size12
@@ -167,6 +197,9 @@
 											, 400
 											, F-color-white);
 										}
+									}
+									#agree-error {
+										margin: 6px 0 0 30px;
 									}
 								}
 							}
@@ -198,8 +231,8 @@
 								-moz-appearance: checkbox;    // Mozillaブラウザ用
 								appearance: checkbox;         // モダンブラウザ用
 								margin-right: 4px;
-								width: 16px;
-								height: 16px;
+								width: 20px;
+								height: 20px;
 							}
 						
 							.btn-wrapper {
@@ -434,30 +467,38 @@
 								justify-content: center;
 								.input-agree {
 									display: flex;
-									align-items: center;
+									flex-direction: column;
+									align-items: flex-start;
 									justify-content: flex-start;
-									input[type="checkbox"] {
-										-webkit-appearance: checkbox; // Webkitブラウザ用
-										-moz-appearance: checkbox;    // Mozillaブラウザ用
-										appearance: checkbox;         // モダンブラウザ用
-										margin: 16px 11px 11px 0px;
-										width: 20px;
-										height: 20px;			
-									}
 									label {
 										display: flex;
 										flex-direction: column-reverse;
 										align-items: flex-start;
-										gap: 13px;
-										@include mixin.font-settings
-										( F-size16
-										, F-line-height16
-										, F-letter-spacing-10
-										, F-family-KosugiMaru
-										, 400
-										, F-color-black);
-										line-height: 1.3;
-
+										.agree-flex {
+											display: flex;
+											align-items: flex-start;
+											width: 100%;
+											input[type="checkbox"] {
+												-webkit-appearance: checkbox; // Webkitブラウザ用
+												-moz-appearance: checkbox;    // Mozillaブラウザ用
+												appearance: checkbox;         // モダンブラウザ用
+												margin: 0 12px 0 0;
+												width: 20px;
+												height: 20px;			
+												flex: 0 0 20px; // ← 幅を絶対確保！
+											}
+											.agree-label-text {
+												flex: 1;
+												word-break: break-word;
+												@include mixin.font-settings
+												( F-size16
+												, F-line-height24
+												, F-letter-spacing-10
+												, F-family-KosugiMaru
+												, 400
+												, F-color-black);
+											}
+										}
 										.required {
 											display: block;
 											width: 42px;
@@ -465,7 +506,7 @@
 											border-radius: 4px;
 											text-align: center;
 											padding: 4px 0;
-											margin:2px 0 3px;
+											margin: 0 0 12px 32px;
 											background-color: map-get(mixin.$colors, "C-pink");
 											@include mixin.font-settings
 											( F-size12
@@ -475,6 +516,9 @@
 											, 400
 											, F-color-white);
 										}
+									}
+									#agree-error {
+										margin: 6px 0 0 30px;
 									}
 								}
 							}
