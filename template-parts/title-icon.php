@@ -85,11 +85,10 @@ $title_data = [
 		],
     'site-map' => [
         'image' => 'assets/images/kidsland_image/design-parts/site-map-icon.webp',
+				'title' => '',
+        'english_title' => ''
     ],
-		'site-map' => [
-        'image' => 'assets/images/kidsland_image/design-parts/site-map-icon.webp',
-    ],
-    // デフォルト（未定義の場合）
+	  // デフォルト（未定義の場合）
     'Default' => [
         'image' => 'assets/images/kidsland_image/design-parts/default-icon.webp',
         'title' => 'ページタイトル',

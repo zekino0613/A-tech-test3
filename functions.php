@@ -318,52 +318,47 @@ add_action('init', 'register_custom_taxonomies',0);
 
 
 
+// function modify_archive_queries($query) {
+// 	if (is_admin() || !$query->is_main_query()) return;
 
-//ページネーション
-// archive-info
-// archive-info のクエリを変更
-function modify_info_archive_query($query) {
-	if ($query->is_main_query() && !is_admin() && is_post_type_archive('info')) {
-			$query->set('posts_per_page', 10); // ✅ 1ページあたりの投稿数を指定
-			$query->set('orderby', 'date');
-			$query->set('order', 'DESC');
-			$query->set('paged', max(1, get_query_var('paged', 1))); // ✅ ページ番号を取得
-	}
-}
-add_action('pre_get_posts', 'modify_info_archive_query');
+// 	// archive-introduction
+// 	if (is_post_type_archive('introduction')) {
+// 			$query->set('posts_per_page', 9);
+// 			$query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1);
+// 	}
+
+// 	// archive-letter
+// 	if (is_post_type_archive('letter')) {
+// 			$query->set('posts_per_page', 9);
+// 			$query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1);
+// 	}
+
+// 	// archive-info（必要であれば有効化）
+// 	if (is_post_type_archive('info')) {
+// 			$query->set('posts_per_page', 10);
+// 			$query->set('orderby', 'date');
+// 			$query->set('order', 'DESC');
+// 			$query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1);
+// 	}
+// }
+// add_action('pre_get_posts', 'modify_archive_queries');
+
+// // paged クエリ変数を有効にする
+// function add_custom_query_vars($vars) {
+// 	$vars[] = 'paged';
+// 	return $vars;
+// }
+// add_filter('query_vars', 'add_custom_query_vars');
+
+// // カスタム投稿タイプのページネーションURLを有効化
+// function custom_post_type_rewrite_fix() {
+// 	add_rewrite_rule('letter/page/([0-9]+)/?$', 'index.php?post_type=letter&paged=$matches[1]', 'top');
+// 	add_rewrite_rule('introduction/page/([0-9]+)/?$', 'index.php?post_type=introduction&paged=$matches[1]', 'top');
+// 	add_rewrite_rule('info/page/([0-9]+)/?$', 'index.php?post_type=info&paged=$matches[1]', 'top');
+// }
+// add_action('init', 'custom_post_type_rewrite_fix');
 
 
-//ページネーション
-// archive-introduction   archive-letter
-function modify_archive_queries($query) {
-    if (is_admin() || !$query->is_main_query()) {
-        return;
-    }
-
-  //   if (is_post_type_archive('introduction')) {
-  //     $query->set('posts_per_page', 6); // ✅ 表示件数を指定
-  //     $query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1); // ✅ ページネーション対応
-  // }
-    if (is_post_type_archive('letter')) {
-        $query->set('posts_per_page', 9);
-    }
-}
-add_action('pre_get_posts', 'modify_archive_queries');
-
-// post_type=introduction というカスタム投稿タイプで、
-// URLが https://example.com/introduction/page/2/ のようになったときに
-// 正しく2ページ目以降を表示させるためのリライトルールと変数登録をしています。
-function add_custom_query_vars($vars) {
-  $vars[] = 'paged';
-  return $vars;
-}
-add_filter('query_vars', 'add_custom_query_vars');
-
-
-function custom_post_type_rewrite_fix() {
-  add_rewrite_rule('introduction/page/([0-9]+)/?$', 'index.php?post_type=introduction&paged=$matches[1]', 'top');
-}
-add_action('init', 'custom_post_type_rewrite_fix');
 
 
 

@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-//FV mainvisu info 
+//FV mainvisu info
 jQuery(function($) {
 	function toggleInfoPost() {
 			let mainvisual = $('#mainvisual'); // ファーストビューの要素を取得
@@ -106,10 +106,10 @@ jQuery(function($) {
 
 
 
-	
-	
-	
-	
+
+
+
+
 // archive-introduction
 
 jQuery(document).ready(function ($) {
@@ -140,24 +140,35 @@ jQuery(document).ready(function ($) {
 			});
 	}
 
+
 	// カテゴリーフィルタリング
 	$(".category-filter").click(function (event) {
-			event.preventDefault();
-			let filter = $(this).data("filter");
-			console.log("カテゴリー選択:", filter);
-			applyFilter(filter);
+		event.preventDefault();
+		let filter = $(this).data("filter");
+		console.log("カテゴリー選択:", filter);
+
+		$(".category-filter").removeClass("is-btn-active");
+		$(this).addClass("is-btn-active");
+
+		applyFilter(filter);
 	});
 
-// 都道府県フィルタリング
-$(".prefecture-filter").click(function () {
-let filter = $(this).data("filter");
-console.log("都道府県選択:", filter);
+	// 都道府県フィルタリング
+	$(".prefecture-filter").click(function (event) {
+		event.preventDefault();
+		let filter = $(this).data("filter");
+		console.log("都道府県選択:", filter);
 
-// ✅ URLを更新して遷移
-let url = new URL(window.location);
-url.searchParams.set('prefecture', filter);
-window.location.href = url.toString();
-});
+			// アクティブ化（見た目）
+			$(".prefecture-filter").removeClass("is-btn-active");
+			$(this).addClass("is-btn-active");
+
+		// URLを更新してページ遷移（フィルタ処理は遷移後に発火）
+		let url = new URL(window.location);
+		url.searchParams.set("prefecture", filter);
+		window.location.href = url.toString();
+	});
+
 
 // ✅ ページロード時に都道府県フィルターを適用
 $(document).ready(function () {
@@ -176,21 +187,18 @@ if (prefecture) {
 				}
 		});
 
-		// ✅ 都道府県タブをアクティブにする
+				// タブ切り替え
 		$(".tab-list__item").removeClass("is-btn-active");
 		$(".tab-list__item[data-tab='prefecture']").addClass("is-btn-active");
-
 		$(".tab-contents").hide();
 		$("#prefecture-tab").fadeIn();
+
+		// 該当都道府県ボタンをアクティブ化
+		$(".prefecture-filter").removeClass("is-btn-active");
+		$(`.prefecture-filter[data-filter="${prefecture}"]`).addClass("is-btn-active");
 	}
 	});
 });
-
-
-
-
-
-
 
 
 

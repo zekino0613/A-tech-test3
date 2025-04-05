@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="canonical" href="https://a-tech2.zekino0613.com/a-tech2" />
+  <link rel="canonical" href="https://a-tech2.zekino0613.com" />
 	<!-- --公開前はnoindexを無効にする  -->
   <!-- <meta name="robots" content="noindex"> -->
 	<!-- 【TOPページのOGP設定】 -->

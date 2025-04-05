@@ -122,7 +122,7 @@
 					<?php endif; ?>
 					<?php wp_reset_postdata(); ?>
 
-					<div class="pagination fade-in">
+					<!-- <div class="pagination fade-in">
 						<div class="pagination__inner fade-in">
 							<?php
 							global $wp_query; // ✅ メインクエリを参照
@@ -137,7 +137,15 @@
 							]);
 							?>
 						</div>  
-					</div>
+					</div> -->
+					<?php
+						global $wp_query;
+						get_template_part('template-parts/pagination', null, [
+							'query'    => $wp_query,
+							'base_url' => get_post_type_archive_link('info'),
+						]);
+					?>
+
 				</div>	
 		</sectin>			
 

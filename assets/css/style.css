@@ -168,6 +168,15 @@ a:focus-visible {
           transform: translate(0, 0) !important;
 }
 
+.grecaptcha-badge {
+  opacity: 0.01; /* 限りなく透明に */
+  -webkit-transform: scale(0.1);
+          transform: scale(0.1); /* 10%サイズに縮小 */
+  bottom: 5px !important;
+  left: 5px !important;
+  z-index: 1;
+}
+
 .title-icon {
   display: block;
   width: 345px;
@@ -4389,6 +4398,45 @@ a .btn-pattern2 {
     border: none;
   }
 }
+.tab-list {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 8px;
+}
+.tab-list__item {
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  font-family: "Kosugi Maru";
+  font-weight: normal;
+  color: #EF8F9C;
+  background-color: #FFFFFF;
+  border: 1px solid #EF8F9C;
+  border-bottom: none;
+  text-align: center;
+  padding: 8px 18px 4px;
+  border-radius: 12px 12px 0 0;
+  width: 150px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.tab-list__item.is-btn-active {
+  text-align: center;
+  background-color: #EF8F9C;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  font-family: "Kosugi Maru";
+  font-weight: normal;
+  color: #FFFFFF;
+}
+
 .introduction-list__inner {
   min-width: 1080px;
   width: 81%;
@@ -4409,66 +4457,23 @@ a .btn-pattern2 {
   background-color: #FFFFFF;
   /* 園の種類ごとに背景色を変更 */
 }
-.introduction-list__inner .tab {
+.introduction-list__inner .tab-contents-wrap {
+  background: white;
+  border-radius: 15px;
   width: 100%;
-  height: 144px;
-  margin: 0;
-  padding: 0;
-  z-index: -1;
-  position: relative;
-  top: -50px;
-  left: 0px;
-}
-.introduction-list__inner .tab .tab-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  gap: 8px;
-  padding: 0 0 32px;
+  padding: 60px 0 12px;
 }
-.introduction-list__inner .tab .tab-list__item {
-  font-size: 16px;
-  letter-spacing: 0.1em;
-  line-height: 1.2;
-  font-family: "Kosugi Maru";
-  font-weight: normal;
-  color: #EF8F9C;
-  background-color: #FFFFFF;
-  border: 1px solid #EF8F9C;
-  border-bottom: none;
-  text-align: center;
-  padding: 8px 18px 4px;
-  border-radius: 12px 12px 0 0;
-  width: 150px;
-  cursor: pointer;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-.introduction-list__inner .tab .tab-list__item.is-btn-active {
-  text-align: center;
-  background-color: #EF8F9C;
-  font-size: 16px;
-  letter-spacing: 0.1em;
-  line-height: 1.2;
-  font-family: "Kosugi Maru";
-  font-weight: normal;
-  color: #FFFFFF;
-}
-.introduction-list__inner .tab .tab-contents-wrap {
-  background: white;
-  border-radius: 15px;
-}
-.introduction-list__inner .tab .tab-contents {
+.introduction-list__inner .tab-contents-wrap .tab-contents {
   display: none;
   font-size: 14px;
 }
-.introduction-list__inner .tab .tab-contents.is-contents-active {
+.introduction-list__inner .tab-contents-wrap .tab-contents.is-contents-active {
   display: block;
 }
-.introduction-list__inner .tab .tab-contents ul {
+.introduction-list__inner .tab-contents-wrap .tab-contents ul {
   list-style: none;
   margin: 0;
   display: -webkit-box;
@@ -4476,17 +4481,17 @@ a .btn-pattern2 {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  padding: 30px 0px;
+  padding: 0px;
   gap: 10px;
 }
-.introduction-list__inner .tab .tab-contents ul li {
+.introduction-list__inner .tab-contents-wrap .tab-contents ul li {
   border-radius: 8px;
   border: 1px solid #EF8F9C;
   cursor: pointer;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.introduction-list__inner .tab .tab-contents ul li a {
+.introduction-list__inner .tab-contents-wrap .tab-contents ul li a {
   font-size: 16px;
   letter-spacing: 0.1em;
   line-height: 1.2;
@@ -4499,20 +4504,26 @@ a .btn-pattern2 {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.introduction-list__inner .tab .tab-contents ul li .category-filter {
+.introduction-list__inner .tab-contents-wrap .tab-contents ul li .category-filter {
   width: 200px;
   padding: 8px 0;
 }
-.introduction-list__inner .tab .tab-contents ul li .prefecture-filter {
+.introduction-list__inner .tab-contents-wrap .tab-contents ul li .prefecture-filter {
   width: 150px;
   padding: 8px 0;
 }
-.introduction-list__inner .tab .tab-contents ul li:hover {
+.introduction-list__inner .tab-contents-wrap .tab-contents ul li .category-filter.is-btn-active,
+.introduction-list__inner .tab-contents-wrap .tab-contents ul li .prefecture-filter.is-btn-active {
+  border-radius: 8px;
+  color: white;
+  background-color: #EF8F9C;
+}
+.introduction-list__inner .tab-contents-wrap .tab-contents ul li:hover {
   background: #EF8F9C;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.introduction-list__inner .tab .tab-contents ul li:hover a {
+.introduction-list__inner .tab-contents-wrap .tab-contents ul li:hover a {
   opacity: 1;
   color: white;
 }
@@ -4639,27 +4650,9 @@ a .btn-pattern2 {
     min-width: 0;
     width: 100%;
   }
-  .introduction-list__inner .tab {
-    width: 100%;
-    height: 222px;
-    margin: 0;
-    padding: 0;
-    z-index: -1;
-    position: relative;
-    top: -46px;
-    left: 0;
-  }
-  .introduction-list__inner .tab .tab-list {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    gap: 8px;
-    padding: 0 0 22px;
-  }
-  .introduction-list__inner .tab .tab-list__item {
+}
+@media (max-width: 500px) {
+  .tab-list__item {
     font-size: 14px;
     letter-spacing: 0.1em;
     line-height: 1.2;
@@ -4677,7 +4670,7 @@ a .btn-pattern2 {
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
   }
-  .introduction-list__inner .tab .tab-list__item.is-btn-active {
+  .tab-list__item.is-btn-active {
     text-align: center;
     background-color: #EF8F9C;
     font-size: 14px;
@@ -4687,11 +4680,8 @@ a .btn-pattern2 {
     font-weight: normal;
     color: #FFFFFF;
   }
-}
-@media (max-width: 500px) {
   .introduction-list__inner {
-    min-width: 0%;
-    max-width: 1080px;
+    min-width: 0;
     width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -4717,87 +4707,44 @@ a .btn-pattern2 {
     background-color: #FFFFFF;
     /* 園の種類ごとに背景色を変更 */
   }
-  .introduction-list__inner .tab {
+  .introduction-list__inner .tab-contents-wrap {
+    background: white;
+    border-radius: 15px;
     width: 100%;
-    height: 328px;
-    margin: 0;
-    padding: 0;
-    z-index: -1;
-    position: relative;
-    top: -46px;
-    left: 0;
-  }
-  .introduction-list__inner .tab .tab-list {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    gap: 8px;
-    padding: 0 0 22px;
+    padding: 24px 0 12px;
   }
-  .introduction-list__inner .tab .tab-list__item {
-    font-size: 14px;
-    letter-spacing: 0.1em;
-    line-height: 1.2;
-    font-family: "Kosugi Maru";
-    font-weight: normal;
-    color: #EF8F9C;
-    background-color: #FFFFFF;
-    border: 1px solid #EF8F9C;
-    border-bottom: none;
-    text-align: center;
-    padding: 8px 18px 5px;
-    border-radius: 12px 12px 0 0;
-    width: 120px;
-    cursor: pointer;
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-  }
-  .introduction-list__inner .tab .tab-list__item.is-btn-active {
-    text-align: center;
-    background-color: #EF8F9C;
-    font-size: 14px;
-    letter-spacing: 0.1em;
-    line-height: 1.2;
-    font-family: "Kosugi Maru";
-    font-weight: normal;
-    color: #FFFFFF;
-  }
-  .introduction-list__inner .tab .tab-contents-wrap {
-    background: white;
-    border-radius: 15px;
-  }
-  .introduction-list__inner .tab .tab-contents {
+  .introduction-list__inner .tab-contents-wrap .tab-contents {
     display: none;
     font-size: 14px;
   }
-  .introduction-list__inner .tab .tab-contents.is-contents-active {
+  .introduction-list__inner .tab-contents-wrap .tab-contents.is-contents-active {
     display: block;
   }
-  .introduction-list__inner .tab .tab-contents ul {
+  .introduction-list__inner .tab-contents-wrap .tab-contents ul {
     list-style: none;
-    margin: -5px 0 24px 0;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    padding: 0px 3px 14px 0px;
-    gap: 10px;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+    gap: 12px;
   }
-  .introduction-list__inner .tab .tab-contents ul li {
+  .introduction-list__inner .tab-contents-wrap .tab-contents ul li {
     border-radius: 8px;
     border: 1px solid #EF8F9C;
     cursor: pointer;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
   }
-  .introduction-list__inner .tab .tab-contents ul li a {
+  .introduction-list__inner .tab-contents-wrap .tab-contents ul li a {
     font-size: 14px;
     letter-spacing: 0.1em;
     line-height: 1.2;
@@ -4810,23 +4757,57 @@ a .btn-pattern2 {
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
   }
-  .introduction-list__inner .tab .tab-contents ul li .category-filter {
+  .introduction-list__inner .tab-contents-wrap .tab-contents ul li .category-filter {
     width: 150px;
     padding: 8px 0;
   }
-  .introduction-list__inner .tab .tab-contents ul li .prefecture-filter {
+  .introduction-list__inner .tab-contents-wrap .tab-contents ul li .prefecture-filter {
     width: 150px;
     padding: 8px 0;
   }
-  .introduction-list__inner .tab .tab-contents ul li:hover {
+  .introduction-list__inner .tab-contents-wrap .tab-contents ul li:hover {
     background: #EF8F9C;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
   }
-  .introduction-list__inner .tab .tab-contents ul li:hover a {
+  .introduction-list__inner .tab-contents-wrap .tab-contents ul li:hover a {
     opacity: 1;
     color: white;
   }
+}
+@media screen and (max-width: 500px) and (max-width: 365px) {
+  .introduction-list__inner .tab-contents-wrap {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 24px 0 12px;
+  }
+  .introduction-list__inner .tab-contents-wrap .tab-contents {
+    display: none;
+    font-size: 14px;
+  }
+  .introduction-list__inner .tab-contents-wrap .tab-contents ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .introduction-list__inner .tab-contents-wrap .tab-contents ul li .category-filter {
+    width: 100%;
+  }
+  .introduction-list__inner .tab-contents-wrap .tab-contents ul li .prefecture-filter {
+    width: 100%;
+  }
+}
+@media (max-width: 500px) {
   .introduction-list__inner .introduction-thumbnail {
     max-width: 320px;
     width: 100%;
