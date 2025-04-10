@@ -19,6 +19,10 @@ function get_current_slug() {
     } elseif (is_category() || is_tag() || is_tax()) {
         $term = get_queried_object();
         return isset($term->slug) ? $term->slug : '';
+		} elseif (is_date()) {
+			// ✅ 年月アーカイブ（例: /2024/04/）のとき「letter」として処理させたい場合
+			return 'letter';
+					
     } elseif (is_404()) {
         return '404';
     }

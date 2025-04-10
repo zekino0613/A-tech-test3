@@ -195,6 +195,33 @@ function custom_yoast_breadcrumb_for_letter($links) {
 }
 add_filter('wpseo_breadcrumb_links', 'custom_yoast_breadcrumb_for_letter');
 
+// 月別アーカイブページのパンくずリストをカスタマイズ
+add_filter('wpseo_breadcrumb_links', function($links) {
+  if (is_date() && !is_singular()) {
+    // 年月を取得
+    $year = get_query_var('year');
+    $month = get_query_var('monthnum');
+
+    // 既存リンクから "年" や "月" のリンクを除去（末尾2つを削除）
+    array_splice($links, -2);
+
+    // カスタムリンク「こもれびだより」を追加
+    $links[] = [
+      'url'  => get_post_type_archive_link('letter'),
+      'text' => 'こもれびだより',
+    ];
+
+    // 年月を1つのリンクにまとめて追加
+    $links[] = [
+      'url'  => '',
+      'text' => "{$year}ねん{$month}がつ",
+    ];
+  }
+
+  return $links;
+}, 10, 1);
+
+
 
 // 404ページの際のパンくずリスト
 add_filter( 'wpseo_breadcrumb_links', function( $links ) {
@@ -318,45 +345,75 @@ add_action('init', 'register_custom_taxonomies',0);
 
 
 
-// function modify_archive_queries($query) {
-// 	if (is_admin() || !$query->is_main_query()) return;
+	function modify_archive_queries($query) {
+		if (is_admin() || !$query->is_main_query()) return;
 
-// 	// archive-introduction
-// 	if (is_post_type_archive('introduction')) {
-// 			$query->set('posts_per_page', 9);
-// 			$query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1);
-// 	}
+		// archive-introduction
+		if (is_post_type_archive('introduction')) {
+				$query->set('posts_per_page', 9);
+				$query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1);
+		}
 
-// 	// archive-letter
-// 	if (is_post_type_archive('letter')) {
-// 			$query->set('posts_per_page', 9);
-// 			$query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1);
-// 	}
+		// archive-letter
+		if (is_post_type_archive('letter')) {
+				$query->set('posts_per_page', 9);
+				$query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1);
+		}
 
-// 	// archive-info（必要であれば有効化）
-// 	if (is_post_type_archive('info')) {
-// 			$query->set('posts_per_page', 10);
-// 			$query->set('orderby', 'date');
-// 			$query->set('order', 'DESC');
-// 			$query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1);
-// 	}
-// }
-// add_action('pre_get_posts', 'modify_archive_queries');
+		// archive-info（必要であれば有効化）
+		if (is_post_type_archive('info')) {
+				$query->set('posts_per_page', 10);
+				$query->set('orderby', 'date');
+				$query->set('order', 'DESC');
+				$query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1);
+		}
+	}
+	add_action('pre_get_posts', 'modify_archive_queries');
 
-// // paged クエリ変数を有効にする
-// function add_custom_query_vars($vars) {
-// 	$vars[] = 'paged';
-// 	return $vars;
-// }
-// add_filter('query_vars', 'add_custom_query_vars');
 
-// // カスタム投稿タイプのページネーションURLを有効化
-// function custom_post_type_rewrite_fix() {
-// 	add_rewrite_rule('letter/page/([0-9]+)/?$', 'index.php?post_type=letter&paged=$matches[1]', 'top');
-// 	add_rewrite_rule('introduction/page/([0-9]+)/?$', 'index.php?post_type=introduction&paged=$matches[1]', 'top');
-// 	add_rewrite_rule('info/page/([0-9]+)/?$', 'index.php?post_type=info&paged=$matches[1]', 'top');
-// }
-// add_action('init', 'custom_post_type_rewrite_fix');
+	// カスタム投稿タイプのページネーションURLを有効化
+	function custom_post_type_rewrite_fix() {
+		add_rewrite_rule('letter/page/([0-9]+)/?$', 'index.php?post_type=letter&paged=$matches[1]', 'top');
+		add_rewrite_rule('introduction/page/([0-9]+)/?$', 'index.php?post_type=introduction&paged=$matches[1]', 'top');
+		add_rewrite_rule('info/page/([0-9]+)/?$', 'index.php?post_type=info&paged=$matches[1]', 'top');
+	}
+	add_action('init', 'custom_post_type_rewrite_fix');
+
+
+function convert_category_to_osirase( $query ) {
+  if (is_admin() || !$query->is_main_query()) return;
+
+  if (is_post_type_archive('info')) {
+    // ページ番号
+    $paged = get_query_var('paged') ? get_query_var('paged') : (isset($_GET['paged']) ? (int) $_GET['paged'] : 1);
+    $query->set('paged', $paged);
+
+    // タクソノミーフィルター
+    if (get_query_var('osirase')) {
+      $query->set('tax_query', [
+        [
+          'taxonomy' => 'osirase',
+          'field'    => 'slug',
+          'terms'    => get_query_var('osirase'),
+        ]
+      ]);
+    }
+  }
+}
+add_action('pre_get_posts', 'convert_category_to_osirase');
+
+
+
+
+function add_custom_query_vars($vars) {
+  $vars[] = 'paged';       // ←既にある
+  $vars[] = 'osirase';     // ←これが必要！
+  return $vars;
+}
+add_filter('query_vars', 'add_custom_query_vars');
+
+
+
 
 
 

@@ -318,32 +318,32 @@ jQuery(document).ready(function ($) {
 });
 
 
-//お知らせカテゴリータブ
+// //お知らせカテゴリータブ
 
-// // //お知らせカテゴリータブ
-jQuery(document).ready(function($) {
-	$(".filter-button").click(function(event) {
-			event.preventDefault(); // ページ遷移を防ぐ
+// // // //お知らせカテゴリータブ
+// jQuery(document).ready(function($) {
+// 	$(".filter-button").click(function(event) {
+// 			event.preventDefault(); // ページ遷移を防ぐ
 
-			let category = $(this).data("category");
-			console.log("選択されたカテゴリー:", category); // ✅ デバッグ用
+// 			let category = $(this).data("category");
+// 			console.log("選択されたカテゴリー:", category); // ✅ デバッグ用
 
-			// すべてのタブから active クラスを削除し、クリックされたタブに追加
-			$(".filter-button").removeClass("active");
-			$(this).addClass("active");
+// 			// すべてのタブから active クラスを削除し、クリックされたタブに追加
+// 			$(".filter-button").removeClass("active");
+// 			$(this).addClass("active");
 
-			// 記事をフィルタリング
-			$(".info-card").each(function() {
-					let articleCategory = $(this).data("category");
+// 			// 記事をフィルタリング
+// 			$(".info-card").each(function() {
+// 					let articleCategory = $(this).data("category");
 
-					if (category === "all" || articleCategory === category) {
-							$(this).show();  // 該当する記事を表示
-					} else {
-							$(this).hide();  // 該当しない記事を非表示
-					}
-			});
-	});
-});
+// 					if (category === "all" || articleCategory === category) {
+// 							$(this).show();  // 該当する記事を表示
+// 					} else {
+// 							$(this).hide();  // 該当しない記事を非表示
+// 					}
+// 			});
+// 	});
+// });
 
 
 

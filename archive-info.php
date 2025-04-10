@@ -13,12 +13,36 @@
     <section id="archive-info">
       <div class="archive-info__inner">
 				<?php
+				// $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+				$paged = max(1, get_query_var('paged')); // ← 修正
+				// fallback for GET param ?paged=2 if pretty permalink is not used
+				$paged = get_query_var('paged') ? get_query_var('paged') : (isset($_GET['paged']) ? (int) $_GET['paged'] : 1);
+
+				$filter_category_slug = get_query_var('osirase');
+				
+				$args = [
+					'post_type' => 'info',
+					'posts_per_page' => 10,
+					'paged' => $paged,
+				];
+				if ($filter_category_slug && term_exists($filter_category_slug, 'osirase')) {
+					$args['tax_query'] = [
+						[
+							'taxonomy' => 'osirase',
+							'field'    => 'slug',
+							'terms'    => $filter_category_slug,
+						]
+					];
+				}
+
+				
+				
 				// カテゴリーを取得
 				$categories = get_terms([
 						'taxonomy'   => 'osirase', // 'info' 用のカスタムタクソノミーがあれば変更
 						'hide_empty' => false,
 				]);
-
+				
 				// ✅ カスタム並び順を指定（この順番通りに表示）
 				$custom_order = [
 						'osirase'  => 1,
@@ -28,31 +52,34 @@
 
 				// 並び替え（存在しないカテゴリーは自動的に後ろへ）
 				usort($categories, function($a, $b) use ($custom_order) {
-						$pos_a = $custom_order[$a->slug] ?? 999;
+					$pos_a = $custom_order[$a->slug] ?? 999;
 						$pos_b = $custom_order[$b->slug] ?? 999;
 						return $pos_a <=> $pos_b; // ✅ PHP 7+ の比較演算子で確実にソート
-				});
-
-				// デバッグ用（カテゴリーの並びを確認）
-				// var_dump($categories);
+					});
+					
+					$query = new WP_Query($args);
 				?>
-
+				
 				<div class="filter-buttons fade-in">
-					<a href="#" class="filter-button active" data-category="all">すべて</a>
-						<?php foreach ($categories as $category): ?>
-							<a href="#" class="filter-button" data-category="<?php echo esc_attr($category->slug); ?>">
-								<?php echo esc_html($category->name); ?>
-							</a>
-						<?php endforeach; ?>
+					<a href="<?php echo esc_url(get_post_type_archive_link('info')); ?>"
+						class="filter-button<?php echo empty($filter_category_slug) ? ' active' : ''; ?>">すべて</a>
+
+					<?php foreach ($categories as $category): ?>
+						<a href="<?php echo esc_url(add_query_arg('osirase', $category->slug, get_post_type_archive_link('info'))); ?>"
+							class="filter-button<?php echo ($filter_category_slug === $category->slug) ? ' active' : ''; ?>">
+							<?php echo esc_html($category->name); ?>
+						</a>
+					<?php endforeach; ?>
 				</div>
 
 
+
 				<div class="info-list">
-					<?php if (have_posts()) : ?>
-						<?php while (have_posts()) : the_post(); ?>
+					<?php if ($query->have_posts()) : ?>
+						<?php while ($query->have_posts()) : $query->the_post(); ?>	
 						<?php
 							$categories = get_the_terms(get_the_ID(), 'osirase');
-							$category_slug = !empty($categories) && !is_wp_error($categories) ? $categories[0]->slug : "all";
+							$post_category_slug = !empty($categories) && !is_wp_error($categories) ? $categories[0]->slug : "all";
 
 							// ✅ カテゴリー別のアイコン画像・文字色・アイコン背景色を設定
 							$category_styles = [
@@ -62,12 +89,12 @@
 									'default' => ['icon' => 'default-icon.webp', 'color' => '#999999', 'icon_bg' => '#e0e0e0']
 							];
 
-							$icon = isset($category_styles[$category_slug]) ? $category_styles[$category_slug]['icon'] : $category_styles['default']['icon'];
-							$color = isset($category_styles[$category_slug]) ? $category_styles[$category_slug]['color'] : $category_styles['default']['color'];
-							$icon_bg = isset($category_styles[$category_slug]) ? $category_styles[$category_slug]['icon_bg'] : $category_styles['default']['icon_bg'];
+							$icon = isset($category_styles[$post_category_slug]) ? $category_styles[$post_category_slug]['icon'] : $category_styles['default']['icon'];
+							$color = isset($category_styles[$post_category_slug]) ? $category_styles[$post_category_slug]['color'] : $category_styles['default']['color'];
+							$icon_bg = isset($category_styles[$post_category_slug]) ? $category_styles[$post_category_slug]['icon_bg'] : $category_styles['default']['icon_bg'];
 						?>
 
-						<a href="<?php the_permalink(); ?>" class="info-card" data-category="<?php echo esc_attr($category_slug); ?>">
+						<a href="<?php the_permalink(); ?>" class="info-card" data-category="<?php echo esc_attr($post_category_slug); ?>">
 							<div class="info-card__inner fade-in">
 								<div class="info-card__inner--flex fade-in">
 									<div class="category-icon" style="background-color: <?php echo esc_attr($icon_bg); ?>;">
@@ -122,32 +149,29 @@
 					<?php endif; ?>
 					<?php wp_reset_postdata(); ?>
 
-					<!-- <div class="pagination fade-in">
-						<div class="pagination__inner fade-in">
-							<?php
-							global $wp_query; // ✅ メインクエリを参照
-
-							echo paginate_links([
-									'total'   => $wp_query->max_num_pages, // ✅ WP_Query の max_num_pages を正しく参照
-									'current' => max(1, get_query_var('paged', 1)), // ✅ 現在のページ番号を取得
-									'prev_text' => '<i class="fa-solid fa-chevron-left"></i>',
-									'next_text' => '<i class="fa-solid fa-chevron-right"></i>',
-									'format'    => 'page/%#%/', // ✅ ページ番号のフォーマット
-									'base'      => get_post_type_archive_link('info') . '%_%', // ✅ カスタム投稿タイプのアーカイブURL
-							]);
-							?>
-						</div>  
-					</div> -->
+					<!-- //ページネーション呼び出し（カテゴリ付き） -->
 					<?php
-						global $wp_query;
+						$base_url = get_post_type_archive_link('info'); // まずベースを取得（例: /info/）
+						// $base_url = add_query_arg('osirase', $filter_category_slug, get_post_type_archive_link('info'));
+						$base_url = trailingslashit($base_url); // ← ここも忘れずに
+						// 不要なクエリ（paged や category）がURLに含まれていたら削除
+						$base_url = remove_query_arg(['paged', 'category'], $base_url);
+						
+						// フィルタリングが有効なら、osirase を追加
+						if (!empty($filter_category_slug)) {
+							$base_url = add_query_arg('osirase', $filter_category_slug, $base_url);
+						}
+						
 						get_template_part('template-parts/pagination', null, [
-							'query'    => $wp_query,
-							'base_url' => get_post_type_archive_link('info'),
+							'query'    => $query,
+							'base_url' => $base_url,
+							'post_type'  => 'info', // ←追加！
 						]);
 					?>
 
+
 				</div>	
-		</sectin>			
+		</section>			
 
   
   </main>

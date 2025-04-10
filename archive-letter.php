@@ -44,20 +44,16 @@
 
 						foreach ($all_letters as $letter) {
 							$title = get_the_title($letter->ID);
-
 							// 同じタイトルがあれば除外（重複防止）
 							if (in_array($title, $used_titles, true)) {
 								continue;
 							}
-
 							$selected = ($selected_nursery === $title) ? 'selected' : '';
 							echo '<option value="' . esc_attr($title) . '" ' . $selected . '>' . esc_html($title) . '</option>';
-
 							$used_titles[] = $title;
 						}
 						?>
 					</select>
-
 				<button type="submit"><i class="fa fa-search search-icon"></i></button>
 			</form>
 
@@ -68,6 +64,13 @@
 				$selected_prefecture = isset($_GET['prefecture']) ? urldecode(sanitize_text_field($_GET['prefecture'])) : '';
 				$selected_nursery    = isset($_GET['nursery']) ? urldecode(sanitize_text_field($_GET['nursery'])) : '';
 				$selected_month      = isset($_GET['m']) ? sanitize_text_field($_GET['m']) : '';
+				
+				// 月別アーカイブURL (例: /2024/02/) に対応
+				$archive_year = get_query_var('year');
+				$archive_month = get_query_var('monthnum');
+				$is_monthly_archive = !empty($archive_year) && !empty($archive_month);
+				
+				
 				
 				$args = [
 					'post_type'      => 'letter',
@@ -93,6 +96,14 @@
 						'month' => $month,
 					];
 				}
+				
+				if ($is_monthly_archive) {
+					$args['date_query'][] = [
+						'year'  => (int) $archive_year,
+						'month' => (int) $archive_month,
+					];
+				}
+				
 				// ▼園をえらぶ（タイトル検索）
 				if (!empty($selected_nursery)) {
 					$args['s'] = $selected_nursery;
@@ -106,13 +117,14 @@
 
 			<div class="letter-container">
         <div class="letter-list ">
-					<?php if (have_posts()) : ?> 
-					<?php while (have_posts()) : the_post(); ?> 
+				
+					<?php if ($letter_query->have_posts()) : ?>
+          <?php while ($letter_query->have_posts()) : $letter_query->the_post(); ?>
 						<?php
 						$related_nursery_id = get_field('related_nursery'); // ACFリレーションで関連園を取得
 						$nursery_name = $related_nursery_id ? get_the_title($related_nursery_id) : '不明な園';
 						$prefecture = get_field('nursery_address', $related_nursery_id);
-					?>	
+						?>	
           <a href="<?php the_permalink(); ?>" class="letter-card fade-in">
 						<!-- サムネイル画像 -->
 						<?php
@@ -146,79 +158,28 @@
 			</div>
 
 			<?php
-				// ページネーションのベースURL（GETパラメータ保持）
-				$base_url = home_url('/letter/');
-				$params = [];
+      $base_url = get_post_type_archive_link('letter');
+		  $base_url = trailingslashit($base_url); // ← 忘れずに末尾スラッシュ追加
+      $params = [];
+      if (!empty($selected_prefecture)) $params['prefecture'] = $selected_prefecture;
+      if (!empty($selected_nursery)) $params['nursery'] = $selected_nursery;
+      if (!empty($selected_month)) $params['m'] = $selected_month;
+      if (!empty($params)) $base_url = add_query_arg($params, $base_url);
 
-				if (!empty($selected_prefecture)) {
-					$params['prefecture'] = $selected_prefecture;
-				}
-
-				if (!empty($selected_nursery)) {
-					$params['nursery'] = $selected_nursery;
-				}
-
-				if (!empty($selected_month)) {
-					$params['m'] = $selected_month;
-				}
-
-				if (!empty($params)) {
-					$base_url = add_query_arg($params, $base_url);
-				}
-
-				// ページネーション表示
-				get_template_part('template-parts/pagination', null, [
-					'query'    => $letter_query,
-					'base_url' => $base_url,
-				]);
-			?>
+      echo '<div class="pagination-area">';
+      get_template_part('template-parts/pagination', null, [
+        'query'    => $letter_query,
+        'base_url' => $base_url,
+				'post_type'  => 'letter', // ←追加！
+      ]);
+      echo '</div>';
+      ?>
 		</div>		
-								
-		<aside class="archive-sidebar fade-in">
-      <h3>アーカイブ</h3>
-      <ul class="archive-list">
-        <?php
-        global $wpdb;
-        $archives = $wpdb->get_results("
-            SELECT DISTINCT YEAR(post_date) as year, MONTH(post_date) as month, COUNT(ID) as post_count
-            FROM $wpdb->posts
-            WHERE post_type = 'letter' AND post_status = 'publish'
-            GROUP BY YEAR(post_date), MONTH(post_date)
-            ORDER BY post_date DESC
-        ");
+		
+		<?php get_template_part('template-parts/monthly');?>
 
-        $grouped_archives = [];
-        foreach ($archives as $archive) {
-            $year  = esc_html($archive->year);
-            $month = esc_html($archive->month);
-            $count = esc_html($archive->post_count);
 
-            // 年ごとにグループ化
-            if (!isset($grouped_archives[$year])) {
-                $grouped_archives[$year] = [];
-            }
-            $grouped_archives[$year][] = [
-                'month' => $month,
-                'count' => $count
-            ];
-        }
-
-        // 表示処理
-        foreach ($grouped_archives as $year => $months) {
-            echo '<li class="archive-year"><p>' . $year . 'ねん</p>';
-            echo '<ul class="archive-months">';
-            foreach ($months as $data) {
-							$month_link = get_month_link($year, $data['month']);
-							echo '<li><a href="' . $month_link . '">' . $data['month'] . 'がつ </a></li>';
-            }
-            echo '</ul>';
-            echo '</li>';
-        }
-        ?>
-      </ul>
-    </aside>
   </section>
-
 </main>
 
 
