@@ -54,12 +54,12 @@
         get_template_part('template-parts/title-icon', null, ['name' => 'welcome']);// title-icon をインクルード
       ?>
 
-      <p class="welcome__inner--text t-top">
+      <p class="welcome__inner--text t-top fade-in">
       「こもれび」とは <br>風に揺れる木の葉によって生み出される<br class="brsp">光と影の揺らめきを表すことばです。<br>
         それはその瞬間に一度だけ存在します。
       </p>
       
-      <p class="welcome__inner--text t-bottom">
+      <p class="welcome__inner--text t-bottom fade-in">
         桜のこもれびキッズランドは、<br> 子どもたち一人ひとりが<br class="brsp">独自の輝きを放つように、<br>
         大切な個性を伸ばす場所です。<br>
         温かく包み込むような雰囲気の中で、<br class="brsp">安心して成長できる環境を提供し、<br>
@@ -68,7 +68,7 @@
     </div><!-- /.welcome__inner -->   
   </section>
 
-  <section id="introduction" class= 'fade-in'>
+  <section id="introduction" class='fade-in'>
     <?php
       get_template_part('template-parts/title-icon', null, ['name' => 'introduction']);// title-icon をインクルード
     ?>
@@ -84,19 +84,19 @@
                 $slug = rawurlencode(sanitize_title($term->name)); // ✅ スラッグをエンコード
                 $archive_link = add_query_arg('prefecture', $slug, get_post_type_archive_link('introduction')); // ✅ クエリパラメータを適用
                 
-                echo '<li><a href="' . esc_url($archive_link) . '" class="prefecture-filter">' . esc_html($term->name) . '</a></li>';
+                echo '<li class="fade-in"><a href="' . esc_url($archive_link) . '" class="prefecture-filter">' . esc_html($term->name) . '</a></li>';
             }
         }
         ?>
     </ul>
 
-    <a href="<?php echo get_post_type_archive_link('introduction'); ?>" class="btn">
+    <a href="<?php echo get_post_type_archive_link('introduction'); ?>" class="btn fade-in">
       <p class="btn__text">一覧ページへ</p>
       <i class="fa-solid fa-angle-right"></i>
     </a>
   </section>
 
-  <section id="letter" class="pink-bk">
+  <section id="letter" class="pink-bk fade-in">
     <!-- title-icon -->  
     <?php
       get_template_part('template-parts/title-icon', null, ['name' => 'letter']);// title-icon をインクルード
@@ -113,7 +113,7 @@
     ?>
 
 
-  <div class="letter-list fade-in">
+  <div class="letter-list">
     <?php if ($query->have_posts()) : ?>
       <?php while ($query->have_posts()) : $query->the_post(); ?>
         <?php
@@ -122,7 +122,7 @@
         $prefecture = get_field('nursery_address', $related_nursery_id);
         ?>
                 
-          <a href="<?php the_permalink(); ?>" class="letter-card">
+          <a href="<?php the_permalink(); ?>" class="letter-card fade-in">
             <!-- サムネイル画像 -->
             <?php
               $thumbnail = get_field('article_image');

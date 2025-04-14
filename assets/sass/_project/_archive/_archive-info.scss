@@ -4,7 +4,7 @@
 
 #archive-info {
 	margin: -11px auto 0;
-	padding: 0 4%;
+	padding: 0 4% 123px;
 	.archive-info {
 		&__inner {	
 		.filter-buttons {
@@ -144,9 +144,9 @@
 				}
 				
 			}
-			.pagination {
-				margin: -5px auto 121px;
-			}
+			// .pagination {
+			// 	margin: -5px auto 121px;
+			// }
 			}
 		}	
 	}
@@ -157,14 +157,15 @@
 
 @include mixin.TAB1 {
 	#archive-info {
+		padding: 0 4% 80px;
 		margin: 0px auto 0;
 		.archive-info {
 			&__inner {	
 			.filter-buttons {
 				display: flex;
 				justify-content: flex-start;
-				gap: 5px;
-        padding: 3px 4% 0px;
+				gap: 8px;
+        padding: 0px;
         margin: 8px 0 34px;
 				.filter-button {
 					@include mixin.font-settings (
@@ -292,49 +293,7 @@
 					}
 					
 				}
-				.pagination {
-					margin: 32px auto 80px;
-					&__inner {
-						display: flex;
-						width: 150px;
-						margin: 0 auto;
-						a, span {
-							display: flex;
-							justify-content: center;
-							align-items: center;
-							margin: 0 auto;
-							width: 36px; /* ボタンの大きさ */
-							height: 36px;
-							border-radius: 8px; /* 丸い形 */
-							@include mixin.font-settings (
-								F-size14,
-								F-line-height16-8,
-								F-letter-spacing-10,
-								F-family-KosugiMaru,
-								normal,
-								F-color-pink);
-							text-decoration: none;
-							padding: 0 0 0 0;
-							background:map-get(mixin.$colors, "C-white"); /* 背景色 */
-							border: 1px solid map-get(mixin.$colors, "C-pink"); /* 枠線 */
-							transition: 0.3s ease;
-							i {
-								font-size: 11px;
-							}
-							&:hover {
-								opacity: 1;
-								transition: all 0.3s ease;
-								background: map-get(mixin.$colors, "C-pink");
-								color: map-get(mixin.$colors, "C-white");
-							}
-						}
-						.current {
-								background: map-get(mixin.$colors, "C-pink");
-								color: map-get(mixin.$colors, "C-white");
-								border: none;
-						}
-					}
-				}
+				
 			}
 		}
 	}

@@ -13,13 +13,9 @@
     <section id="archive-info">
       <div class="archive-info__inner">
 				<?php
-				// $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 				$paged = max(1, get_query_var('paged')); // ← 修正
-				// fallback for GET param ?paged=2 if pretty permalink is not used
 				$paged = get_query_var('paged') ? get_query_var('paged') : (isset($_GET['paged']) ? (int) $_GET['paged'] : 1);
-
-				$filter_category_slug = get_query_var('osirase');
-				
+				$filter_category_slug = get_query_var('osirase');				
 				$args = [
 					'post_type' => 'info',
 					'posts_per_page' => 10,
@@ -35,8 +31,6 @@
 					];
 				}
 
-				
-				
 				// カテゴリーを取得
 				$categories = get_terms([
 						'taxonomy'   => 'osirase', // 'info' 用のカスタムタクソノミーがあれば変更
@@ -94,11 +88,11 @@
 							$icon_bg = isset($category_styles[$post_category_slug]) ? $category_styles[$post_category_slug]['icon_bg'] : $category_styles['default']['icon_bg'];
 						?>
 
-						<a href="<?php the_permalink(); ?>" class="info-card" data-category="<?php echo esc_attr($post_category_slug); ?>">
-							<div class="info-card__inner fade-in">
-								<div class="info-card__inner--flex fade-in">
+						<a href="<?php the_permalink(); ?>" class="info-card fade-in" data-category="<?php echo esc_attr($post_category_slug); ?>">
+							<div class="info-card__inner">
+								<div class="info-card__inner--flex">
 									<div class="category-icon" style="background-color: <?php echo esc_attr($icon_bg); ?>;">
-										<div class="category-image fade-in" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/<?php echo esc_attr($icon); ?>');"></div>
+										<div class="category-image" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/<?php echo esc_attr($icon); ?>');"></div>
 										<?php
 											if (!empty($categories) && !is_wp_error($categories)) {
 												echo '<p class="category" style="color: ' . esc_attr($color) . ';">';
@@ -110,14 +104,14 @@
 										?>
 									</div><!-- / -->
 									<!-- 投稿日時 -->
-									<time class="post-date fade-in"><?php echo get_the_date('Y.m.d'); ?></time>
+									<time class="post-date"><?php echo get_the_date('Y.m.d'); ?></time>
 								</div>
 								
 								<div class="textarea">
 									<!-- 投稿日時 -->
-									<time class="textarea__post-date fade-in"><?php echo get_the_date('Y.m.d'); ?></time>
+									<time class="textarea__post-date"><?php echo get_the_date('Y.m.d'); ?></time>
 									<!-- 記事タイトル -->
-									<h1 class="textarea__info-title fade-in"><?php the_title(); ?></h1>
+									<h1 class="textarea__info-title"><?php the_title(); ?></h1>
 									<?php
 										// リピートフィールドを取得
 										$repeater_data = SCF::get('subheading_content'); // リピートフィールドのグループ名
@@ -129,7 +123,7 @@
 													$paragraph_content = isset($item['paragraph_content']) ? esc_html($item['paragraph_content']) : '段落内容未設定';
 													$excerpt = mb_substr($paragraph_content, 0, 40, 'UTF-8'). '...'; // ✅ 最初の40文字のみ出力
 													// 出力
-													echo '<p class="textarea__paragraph fade-in">' . nl2br($excerpt) . '</p>';
+													echo '<p class="textarea__paragraph">' . nl2br($excerpt) . '</p>';
 													
 													// 1回表示したらループを抜ける（2行目以降は出力しない）
 													break;

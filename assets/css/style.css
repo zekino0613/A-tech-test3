@@ -396,6 +396,65 @@ a .btn-pattern2 {
   display: block;
 }
 
+.pagination {
+  display: block; /* ✅ flex内に入らないようにblock指定 */
+  width: 100%; /* 横幅を最大に */
+  text-align: center; /* 中央揃え */
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+}
+.pagination__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 133px;
+  margin: 0 auto;
+}
+.pagination__inner a, .pagination__inner span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+  width: 36px; /* ボタンの大きさ */
+  height: 36px;
+  border-radius: 8px; /* 丸い形 */
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  font-family: "Kosugi Maru";
+  font-weight: normal;
+  color: #EF8F9C;
+  text-decoration: none;
+  padding: 0 0 0 0;
+  background: #FFFFFF; /* 背景色 */
+  border: 1px solid #EF8F9C; /* 枠線 */
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.pagination__inner a i, .pagination__inner span i {
+  font-size: 11px;
+}
+.pagination__inner a:hover, .pagination__inner span:hover {
+  opacity: 1;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background: #EF8F9C;
+  color: #FFFFFF;
+}
+.pagination__inner .current {
+  background: #EF8F9C;
+  color: #FFFFFF;
+  border: none;
+}
+
 @media (max-width: 900px) {
   body {
     width: 100%;
@@ -2234,14 +2293,14 @@ a .btn-pattern2 {
   #welcome {
     text-align: center;
     padding: 0 8.67%;
-    margin: -280px 0 0;
+    margin: -400px 0 0;
   }
 }
 @media (max-width: 500px) {
   #welcome {
     text-align: center;
     padding: 0 8.67%;
-    margin: 0;
+    margin: 140px 0 0;
   }
   #welcome .welcome__inner {
     width: 100%;
@@ -2919,7 +2978,6 @@ a .btn-pattern2 {
             appearance: none;
     position: relative;
     cursor: pointer;
-    pointer-events: none; /* アイコン部分がクリックされないようにする */
     background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-size: 21px;
@@ -4039,7 +4097,7 @@ a .btn-pattern2 {
 }
 #archive-info {
   margin: -11px auto 0;
-  padding: 0 4%;
+  padding: 0 4% 123px;
 }
 #archive-info .archive-info__inner .filter-buttons {
   display: -webkit-box;
@@ -4191,12 +4249,10 @@ a .btn-pattern2 {
   font-weight: normal;
   color: #333333;
 }
-#archive-info .archive-info__inner .info-list .pagination {
-  margin: -5px auto 121px;
-}
 
 @media (max-width: 900px) {
   #archive-info {
+    padding: 0 4% 80px;
     margin: 0px auto 0;
   }
   #archive-info .archive-info__inner .filter-buttons {
@@ -4206,8 +4262,8 @@ a .btn-pattern2 {
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
-    gap: 5px;
-    padding: 3px 4% 0px;
+    gap: 8px;
+    padding: 0px;
     margin: 8px 0 34px;
   }
   #archive-info .archive-info__inner .filter-buttons .filter-button {
@@ -4345,58 +4401,6 @@ a .btn-pattern2 {
     font-weight: normal;
     color: #333333;
   }
-  #archive-info .archive-info__inner .info-list .pagination {
-    margin: 32px auto 80px;
-  }
-  #archive-info .archive-info__inner .info-list .pagination__inner {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    width: 150px;
-    margin: 0 auto;
-  }
-  #archive-info .archive-info__inner .info-list .pagination__inner a, #archive-info .archive-info__inner .info-list .pagination__inner span {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    margin: 0 auto;
-    width: 36px; /* ボタンの大きさ */
-    height: 36px;
-    border-radius: 8px; /* 丸い形 */
-    font-size: 14px;
-    letter-spacing: 0.1em;
-    line-height: 1.2;
-    font-family: "Kosugi Maru";
-    font-weight: normal;
-    color: #EF8F9C;
-    text-decoration: none;
-    padding: 0 0 0 0;
-    background: #FFFFFF; /* 背景色 */
-    border: 1px solid #EF8F9C; /* 枠線 */
-    -webkit-transition: 0.3s ease;
-    transition: 0.3s ease;
-  }
-  #archive-info .archive-info__inner .info-list .pagination__inner a i, #archive-info .archive-info__inner .info-list .pagination__inner span i {
-    font-size: 11px;
-  }
-  #archive-info .archive-info__inner .info-list .pagination__inner a:hover, #archive-info .archive-info__inner .info-list .pagination__inner span:hover {
-    opacity: 1;
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    background: #EF8F9C;
-    color: #FFFFFF;
-  }
-  #archive-info .archive-info__inner .info-list .pagination__inner .current {
-    background: #EF8F9C;
-    color: #FFFFFF;
-    border: none;
-  }
 }
 .tab-list {
   width: 100%;
@@ -4450,7 +4454,7 @@ a .btn-pattern2 {
           justify-content: center;
   gap: 20px;
   border-radius: 40px;
-  padding: 0 3%;
+  padding: 0 3% 60px;
   margin: 0px auto -37px;
   position: relative;
   z-index: 1;
@@ -4586,65 +4590,6 @@ a .btn-pattern2 {
   background-color: #EDF4FF;
 }
 
-.pagination {
-  display: block; /* ✅ flex内に入らないようにblock指定 */
-  width: 100%; /* 横幅を最大に */
-  text-align: center; /* 中央揃え */
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 16px auto 58px;
-}
-.pagination__inner {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 201px;
-  margin: 16px auto 58px;
-}
-.pagination__inner a, .pagination__inner span {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 0 auto;
-  width: 36px; /* ボタンの大きさ */
-  height: 36px;
-  border-radius: 8px; /* 丸い形 */
-  font-size: 16px;
-  letter-spacing: 0.1em;
-  line-height: 1.2;
-  font-family: "Kosugi Maru";
-  font-weight: normal;
-  color: #EF8F9C;
-  text-decoration: none;
-  padding: 0 0 0 0;
-  background: #FFFFFF; /* 背景色 */
-  border: 1px solid #EF8F9C; /* 枠線 */
-  -webkit-transition: 0.3s ease;
-  transition: 0.3s ease;
-}
-.pagination__inner a i, .pagination__inner span i {
-  font-size: 11px;
-}
-.pagination__inner a:hover, .pagination__inner span:hover {
-  opacity: 1;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  background: #EF8F9C;
-  color: #FFFFFF;
-}
-.pagination__inner .current {
-  background: #EF8F9C;
-  color: #FFFFFF;
-  border: none;
-}
-
 @media (max-width: 1200px) {
   .introduction-list__inner {
     min-width: 0;
@@ -4700,7 +4645,7 @@ a .btn-pattern2 {
             justify-content: center;
     gap: 20px;
     border-radius: 30px;
-    padding: 0 4% -19px;
+    padding: 0 4% 48px;
     margin: -3px auto -42px;
     position: relative;
     z-index: 10;
@@ -4865,64 +4810,6 @@ a .btn-pattern2 {
   }
   .introduction-list__inner .shokibo-a-gata {
     background-color: #EDF4FF;
-  }
-  .pagination {
-    display: block; /* ✅ flex内に入らないようにblock指定 */
-    width: 100%; /* 横幅を最大に */
-    text-align: center; /* 中央揃え */
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    margin: 5px auto 48px;
-  }
-  .pagination .pagination__inner {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    width: 90px;
-    margin: 300px auto;
-  }
-  .pagination .pagination__inner a, .pagination .pagination__inner span {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    margin: 0 auto;
-    width: 24px; /* ボタンの大きさ */
-    height: 24px;
-    border-radius: 8px; /* 丸い形 */
-    font-size: 14px;
-    letter-spacing: 0.1em;
-    line-height: 1.2;
-    font-family: "Kosugi Maru";
-    font-weight: normal;
-    color: #EF8F9C;
-    text-decoration: none;
-    padding: 0 0 0 0;
-    background: #FFFFFF; /* 背景色 */
-    border: 1px solid #EF8F9C; /* 枠線 */
-    -webkit-transition: 0.3s ease;
-    transition: 0.3s ease;
-  }
-  .pagination .pagination__inner a i, .pagination .pagination__inner span i {
-    font-size: 11px;
-  }
-  .pagination .pagination__inner a:hover, .pagination .pagination__inner span:hover {
-    opacity: 1;
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    background: #EF8F9C;
-    color: #FFFFFF;
-  }
-  .pagination .pagination__inner .current {
-    background: #EF8F9C;
-    color: #FFFFFF;
-    border: none;
   }
 }
 #single-info {

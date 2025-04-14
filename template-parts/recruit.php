@@ -1,5 +1,5 @@
 <section id="recruit">
-    <div class="recruit__inner">
+    <div class="recruit__inner fade-in">
       <!-- title-icon -->
       <?php
         get_template_part('template-parts/title-icon', null, ['name' => 'recruit']);// title-icon をインクルード

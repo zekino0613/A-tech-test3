@@ -25,7 +25,7 @@
           <!-- 左側のカラム（PC時） -->
           <div class="site-map-list__column">
             <li class="site-map-list__ul--li"><a href="<?php echo home_url('/'); ?>">TOP<i class="fa-solid fa-angle-right"></i></a></li>
-            <li class="site-map-list__ul--li"><a href="<?php echo get_post_type_archive_link('about'); ?>">わたしたちのこと<i class="fa-solid fa-angle-right"></i></a></li>
+            <li class="site-map-list__ul--li"><a href="<?php echo home_url('about'); ?>">わたしたちのこと<i class="fa-solid fa-angle-right"></i></a></li>
             <li class="site-map-list__ul--li"><a href="<?php echo get_post_type_archive_link('introduction'); ?>">各園のご紹介<i class="fa-solid fa-angle-right"></i></a></li>
             <li class="site-map-list__ul--li"><a href="<?php echo get_post_type_archive_link('letter'); ?>">こもれびだより<i class="fa-solid fa-angle-right"></i></a></li>
             <li class="site-map-list__ul--li"><a href="<?php echo get_post_type_archive_link('info'); ?>">お知らせ<i class="fa-solid fa-angle-right"></i></a></li>

@@ -3,7 +3,7 @@ if (!isset($args['query']) || !($args['query'] instanceof WP_Query)) return;
 
 $query = $args['query'];
 $base_url = $args['base_url'] ?? get_pagenum_link(1);
-$post_type = $args['post_type'] ?? ''; // ← 追加！
+$post_type = $args['post_type'] ?? '';
 
 $current_page = max(1, get_query_var('paged'));
 
@@ -15,26 +15,22 @@ $pagination_args = [
   'type'      => 'plain',
 ];
 
-// info はパーマリンク形式（/letter/page/2/）
-if ($post_type === 'info') {
-  $pagination_args['format'] = 'page/%#%/';
-  $pagination_args['base'] = trailingslashit($base_url) . '%_%';
-  $pagination_args['add_args'] = [];
-}
-// letter はパーマリンク形式（/letter/page/2/）
-elseif ($post_type === 'letter') {
-  $pagination_args['format'] = 'page/%#%/';
-  $pagination_args['base'] = trailingslashit($base_url) . '%_%';
-  $pagination_args['add_args'] = [];
-}
-// introduction はパーマリンク形式（/introduction/page/2/）
-elseif ($post_type === 'introduction') {
-  $pagination_args['format'] = 'page/%#%/';
-  $pagination_args['base'] = trailingslashit($base_url) . '%_%';
-  $pagination_args['add_args'] = [];
-}
+// 各 post_type ごとのパーマリンク形式を適用
+$pagination_args['format'] = 'page/%#%/';
+$pagination_args['base'] = trailingslashit($base_url) . '%_%';
+$pagination_args['add_args'] = [];
+
+// ページネーション出力
+$pagination_links = paginate_links($pagination_args);
 
 echo '<div class="pagination fade-in"><div class="pagination__inner">';
-echo paginate_links($pagination_args);
+
+// 1ページ分しかない場合も「1」だけは出力
+if ($pagination_links) {
+  echo $pagination_links;
+} else {
+  echo '<span class="page-numbers current">1</span>';
+}
+
 echo '</div></div>';
 ?>

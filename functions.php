@@ -178,6 +178,64 @@ function custom_breadcrumb_labels($link_output, $link) {
     return $link_output;
 }
 
+  //archive-introduction	
+	add_filter('wpseo_breadcrumb_links', function($links) {
+		// 「各園のご紹介」が CPT のアーカイブページならこちらで分岐
+		if (is_post_type_archive('introduction') && (isset($_GET['category']) || isset($_GET['prefecture']))) {
+			$category_slug = isset($_GET['category']) ? sanitize_text_field($_GET['category']) : '';
+			$prefecture = isset($_GET['prefecture']) ? sanitize_text_field($_GET['prefecture']) : '';
+	
+			// TOPだけ残してリセット
+			$links = array_slice($links, 0, 1);
+	
+			// 各園のご紹介（このページ自身）
+			$links[] = [
+				'url' => get_post_type_archive_link('introduction'),
+				'text' => '各園のご紹介',
+			];
+	
+			// 都道府県
+			if ($prefecture) {
+				$links[] = [
+					'url' => '',
+					'text' => esc_html($prefecture),
+				];
+			}
+	
+			// カテゴリ（投稿カテゴリー）
+			if ($category_slug) {
+				$term = get_term_by('slug', $category_slug, 'category');
+				if ($term) {
+					$links[] = [
+						'url' => '',
+						'text' => esc_html($term->name),
+					];
+				}
+			}
+		}
+	
+		return $links;
+	});
+	
+	// archive-letter.php 固定パンくず用
+	add_filter('wpseo_breadcrumb_links', function($links) {
+		// 「こもれびだより（letter）」のアーカイブページでパンくずを固定する
+		if (is_post_type_archive('letter')) {
+			// TOP だけ残す
+			$links = array_slice($links, 0, 1);
+	
+			// 「こもれびだより」を追加
+			$links[] = [
+				'url'  => '',
+				'text' => 'こもれびだより',
+			];
+		}
+	
+		return $links;
+	});
+	
+	
+
 // single-letterのパンくずリスト
 function custom_yoast_breadcrumb_for_letter($links) {
 	if (is_singular('letter')) { // single-letter ページの時のみ変更
@@ -202,16 +260,16 @@ add_filter('wpseo_breadcrumb_links', function($links) {
     $year = get_query_var('year');
     $month = get_query_var('monthnum');
 
-    // 既存リンクから "年" や "月" のリンクを除去（末尾2つを削除）
-    array_splice($links, -2);
+    // TOP（最初のリンク）だけ残す
+    $links = array_slice($links, 0, 1);
 
-    // カスタムリンク「こもれびだより」を追加
+    // 「こもれびだより」のアーカイブページリンクを追加
     $links[] = [
       'url'  => get_post_type_archive_link('letter'),
       'text' => 'こもれびだより',
     ];
 
-    // 年月を1つのリンクにまとめて追加
+    // 年月を1つのテキストとして追加
     $links[] = [
       'url'  => '',
       'text' => "{$year}ねん{$month}がつ",
@@ -403,21 +461,14 @@ function convert_category_to_osirase( $query ) {
 add_action('pre_get_posts', 'convert_category_to_osirase');
 
 
-
-
 function add_custom_query_vars($vars) {
   $vars[] = 'paged';       // ←既にある
   $vars[] = 'osirase';     // ←これが必要！
+	$vars[] = 'prefecture';
+  $vars[] = 'category';
   return $vars;
 }
 add_filter('query_vars', 'add_custom_query_vars');
-
-
-
-
-
-
-
 
 
 

@@ -27,7 +27,7 @@
 						?>
 				</select>
 				
-				<label for="search-nursery"></label>
+				<!-- <label for="search-nursery"></label> -->
 					<select name="nursery" id="search-nursery">
 						<option value="">園をえらぶ</option>
 						<?php

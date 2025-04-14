@@ -36,12 +36,24 @@
 									// 小見出しと段落内容を取得
 									$subheading = isset($item['subheading']) ? esc_html($item['subheading']) : '小見出し未設定';
 									$paragraph_content = isset($item['paragraph_content']) ? nl2br(esc_html($item['paragraph_content'])) : '段落内容未設定';
+								
+									// 段落または小見出しのどちらかが存在する場合のみ出力
+									if (!empty($subheading) || !empty($paragraph_content)) {
+										echo '<div class="text-content__inner">';
 
-									// 出力
-									echo '<div class="text-content__inner ">';
-									echo '<h2 class="text-content__inner--subheading fade-in">' . $subheading . '</h2>';
-									echo '<p class="news-section__inner--paragraph fade-in">' . $paragraph_content . '</p>';
-									echo '</div>';
+										// 小見出しが空でない場合のみ h2 を出力
+										if (!empty($subheading)) {
+												echo '<h2 class="text-content__inner--subheading fade-in">' . $subheading . '</h2>';
+										}
+
+										// 段落内容が空でない場合のみ p を出力
+										if (!empty($paragraph_content)) {
+												echo '<p class="news-section__inner--paragraph fade-in">' . $paragraph_content . '</p>';
+										}
+
+										echo '</div>';
+								}
+							
 							}
 					} else {
 							echo '<p>コンテンツが設定されていません。</p>';
@@ -49,7 +61,7 @@
 					?>
 					
 					<a href="<?php echo home_url('/info/'); ?>" class="btn fade-in">
-						<p class="btn__text fade-in">こもれびだより一覧へ</p>
+						<p class="btn__text">こもれびだより一覧へ</p>
 						<i class="fa-solid fa-angle-right"></i>
 					</a>
 				</div>

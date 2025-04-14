@@ -163,6 +163,7 @@ a:focus-visible {
   z-index: 1;
 }
 
+
 //-------------------------------------------------------------------------------
 // 共通パーツ
 //-------------------------------------------------------------------------------
@@ -375,6 +376,56 @@ a .btn {
 // <a> タグに display: block を適用
 a .btn-pattern2 {
   display: block;
+}
+
+
+
+.pagination {
+	display: block; /* ✅ flex内に入らないようにblock指定 */
+	width: 100%; /* 横幅を最大に */
+	text-align: center; /* 中央揃え */
+	justify-content: center;
+	margin: 0 auto ;
+	&__inner {
+		display: flex;
+		width: 133px;
+		margin: 0 auto ;
+		a, span {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 0 auto;
+			width: 36px; /* ボタンの大きさ */
+			height: 36px;
+			border-radius: 8px; /* 丸い形 */
+			@include mixin.font-settings (
+				F-size16,
+				F-line-height19-2,
+				F-letter-spacing-10,
+				F-family-KosugiMaru,
+				normal,
+				F-color-pink);
+				text-decoration: none;
+				padding: 0 0 0 0;
+				background:map-get(mixin.$colors, "C-white"); /* 背景色 */
+				border: 1px solid map-get(mixin.$colors, "C-pink"); /* 枠線 */
+				transition: 0.3s ease;
+			i {
+				font-size: 11px;
+			}
+			&:hover {
+				opacity: 1;
+				transition: all 0.3s ease;
+				background: map-get(mixin.$colors, "C-pink");
+				color: map-get(mixin.$colors, "C-white");
+			}
+		}
+		.current {
+				background: map-get(mixin.$colors, "C-pink");
+				color: map-get(mixin.$colors, "C-white");
+				border: none;
+		}
+	}
 }
 
 
@@ -634,6 +685,54 @@ a .btn-pattern2 {
   .brpc {
     display: none;
   }
+	
+	// .pagination {
+	// 	display: block; /* ✅ flex内に入らないようにblock指定 */
+  //   width: 100%; /* 横幅を最大に */
+  //   text-align: center; /* 中央揃え */
+	// 	justify-content: center;
+	// 	margin: 5px auto 48px;
+	// 	.pagination__inner {
+	// 		display: flex;
+	// 		width: 90px;
+	// 		margin: 0 auto;
+	// 		a, span {
+	// 			display: flex;
+  //       justify-content: center;
+  //       align-items: center;
+	// 			margin: 0 auto;
+  //       width: 24px; /* ボタンの大きさ */
+  //       height: 24px;
+  //       border-radius: 8px; /* 丸い形 */
+	// 			@include mixin.font-settings (
+	// 				F-size14,
+	// 				F-line-height16-8,
+	// 				F-letter-spacing-10,
+	// 				F-family-KosugiMaru,
+	// 				normal,
+	// 				F-color-pink);
+  //       text-decoration: none;
+	// 			padding: 0 0 0 0;
+  //       background:map-get(mixin.$colors, "C-white"); /* 背景色 */
+  //       border: 1px solid map-get(mixin.$colors, "C-pink"); /* 枠線 */
+  //       transition: 0.3s ease;
+	// 			i {
+	// 				font-size: 11px;
+	// 			}
+  //       &:hover {
+	// 				opacity: 1;
+	// 				transition: all 0.3s ease;
+  //         background: map-get(mixin.$colors, "C-pink");
+  //         color: map-get(mixin.$colors, "C-white");
+  //       }
+  //     }
+  //     .current {
+  //       background: map-get(mixin.$colors, "C-pink");
+  //       color: map-get(mixin.$colors, "C-white");
+  //       border: none;
+  //     }
+	// 	}
+	// }
 
 
 

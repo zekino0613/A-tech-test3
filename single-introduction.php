@@ -374,19 +374,19 @@
                 $thumbnail = get_field('article_image');
                 if ($thumbnail):
                   ?>
-                <img class="letter-card__image fade-in"src="<?php echo esc_url(wp_get_attachment_image_url($thumbnail, 'full')); ?>" alt="<?php the_title(); ?>">
+                <img class="letter-card__image"src="<?php echo esc_url(wp_get_attachment_image_url($thumbnail, 'full')); ?>" alt="<?php the_title(); ?>">
               <?php endif; ?>
-              <div class="letter-card__textarea fade-in">
+              <div class="letter-card__textarea">
                 <!-- 記事タイトル -->
-                <h2 class="letter-card__textarea--title fade-in"><?php the_title(); ?>からのおたより</h2>
+                <h2 class="letter-card__textarea--title"><?php the_title(); ?>からのおたより</h2>
                 <!-- サムネイルタイトル -->
                 <?php if( get_field('article_title') ): ?>
-                  <h3 class="letter-card__textarea--letter-title fade-in"><?php the_field('article_title'); ?></h3>
+                  <h3 class="letter-card__textarea--letter-title"><?php the_field('article_title'); ?></h3>
                 <?php endif; ?>
                 <!-- 投稿日時 -->
               </div><!-- / -->   
               
-              <time class="letter-card__post-date fade-in" datetime="<?php echo get_the_date('Y-m-d'); ?>">
+              <time class="letter-card__post-date" datetime="<?php echo get_the_date('Y-m-d'); ?>">
                 <?php
                 $date = get_the_date('Y年n月j日'); // 例: 2024年4月1日
                 $date_hiragana = str_replace(['年', '月', '日'], ['ねん', 'がつ', 'にち'], $date);
@@ -400,7 +400,7 @@
         <?php endif; ?>
     </div>
 
-    <a href="<?php echo get_post_type_archive_link('letter'); ?>" class="btn intro-btn fe">
+    <a href="<?php echo get_post_type_archive_link('letter'); ?>" class="btn intro-btn fade-in">
       <p class="btn__text">もっと見る</p>
       <i class="fa-solid fa-angle-right"></i>
     </a>

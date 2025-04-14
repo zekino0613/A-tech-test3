@@ -126,196 +126,201 @@ jQuery(document).ready(function ($) {
 			$(".tab-contents").hide();
 			$(".tab-contents").eq(index).fadeIn();
 	});
-
-	// フィルタリング機能
-	function applyFilter(filterClass) {
-			console.log("フィルタリング実行: ", filterClass);
-
-			$(".introduction-thumbnail").each(function () {
-					if (filterClass === "all" || $(this).hasClass(filterClass)) {
-							$(this).fadeIn();
-					} else {
-							$(this).fadeOut();
-					}
-			});
-	}
-
-
-	// カテゴリーフィルタリング
-	$(".category-filter").click(function (event) {
-		event.preventDefault();
-		let filter = $(this).data("filter");
-		console.log("カテゴリー選択:", filter);
-
-		$(".category-filter").removeClass("is-btn-active");
-		$(this).addClass("is-btn-active");
-
-		applyFilter(filter);
-	});
-
-	// 都道府県フィルタリング
-	$(".prefecture-filter").click(function (event) {
-		event.preventDefault();
-		let filter = $(this).data("filter");
-		console.log("都道府県選択:", filter);
-
-			// アクティブ化（見た目）
-			$(".prefecture-filter").removeClass("is-btn-active");
-			$(this).addClass("is-btn-active");
-
-		// URLを更新してページ遷移（フィルタ処理は遷移後に発火）
-		let url = new URL(window.location);
-		url.searchParams.set("prefecture", filter);
-		window.location.href = url.toString();
-	});
-
-
-// ✅ ページロード時に都道府県フィルターを適用
-$(document).ready(function () {
-let url = new URL(window.location);
-let prefecture = url.searchParams.get("prefecture");
-
-if (prefecture) {
-		console.log("ページロード時の都道府県フィルター適用:", prefecture);
-
-		// ✅ フィルターを適用
-		$(".introduction-thumbnail").each(function () {
-				if ($(this).hasClass(prefecture)) {
-						$(this).fadeIn();
-				} else {
-						$(this).fadeOut();
-				}
-		});
-
-				// タブ切り替え
-		$(".tab-list__item").removeClass("is-btn-active");
-		$(".tab-list__item[data-tab='prefecture']").addClass("is-btn-active");
-		$(".tab-contents").hide();
-		$("#prefecture-tab").fadeIn();
-
-		// 該当都道府県ボタンをアクティブ化
-		$(".prefecture-filter").removeClass("is-btn-active");
-		$(`.prefecture-filter[data-filter="${prefecture}"]`).addClass("is-btn-active");
-	}
-	});
 });
 
+	// // フィルタリング機能
+	// function applyFilter(filterClass) {
+	// 		console.log("フィルタリング実行: ", filterClass);
+
+	// 		$(".introduction-thumbnail").each(function () {
+	// 				if (filterClass === "all" || $(this).hasClass(filterClass)) {
+	// 						$(this).fadeIn();
+	// 				} else {
+	// 						$(this).fadeOut();
+	// 				}
+	// 		});
+	// }
 
 
+// 	// カテゴリーフィルタリング
+// 	$(".category-filter").click(function (event) {
+// 		event.preventDefault();
+// 		let filter = $(this).data("filter");
+// 		console.log("カテゴリー選択:", filter);
 
+// 		$(".category-filter").removeClass("is-btn-active");
+// 		$(this).addClass("is-btn-active");
+
+// 		applyFilter(filter);
+// 	});
+
+// 	// 都道府県フィルタリング
+// 	$(".prefecture-filter").click(function (event) {
+// 		event.preventDefault();
+// 		let filter = $(this).data("filter");
+// 		console.log("都道府県選択:", filter);
+
+// 			// アクティブ化（見た目）
+// 			$(".prefecture-filter").removeClass("is-btn-active");
+// 			$(this).addClass("is-btn-active");
+
+// 		// URLを更新してページ遷移（フィルタ処理は遷移後に発火）
+// 		let url = new URL(window.location);
+// 		url.searchParams.set("prefecture", filter);
+// 		window.location.href = url.toString();
+// 	});
+// 選択中のカテゴリーをアクティブに反映
 
 
 jQuery(document).ready(function ($) {
-    // ✅ `archive-introduction.php` 以外では動作しないようにする
-    if (!$("body").hasClass("post-type-archive-introduction")) return;
+  const url = new URL(window.location.href);
+  const selectedPref = url.searchParams.get("prefecture");
+  const selectedCat = url.searchParams.get("category");
 
-    console.log("✅ `archive-introduction.php` のページネーション制御を適用");
+  if (selectedPref) {
+    $(".tab-list__item").removeClass("is-btn-active");
+    $(".tab-list__item[data-tab='prefecture']").addClass("is-btn-active");
+    $(".tab-contents").hide();
+    $("#prefecture-tab").fadeIn();
 
-    let postsPerPage = 9; // ✅ 1ページに9件表示
-    let currentPage = 1;
-    let currentFilter = "all";
-    let isPrefectureFilter = false;
-
-    function showPage(page) {
-        let filteredPosts = (currentFilter === "all") ? $(".introduction-thumbnail") : $(".introduction-thumbnail." + currentFilter);
-
-        $(".introduction-thumbnail").hide(); // すべての投稿を非表示
-        let start = (page - 1) * postsPerPage;
-        let end = start + postsPerPage;
-        filteredPosts.slice(start, end).fadeIn(); // ✅ 9件ずつ表示
-
-        let totalPages = Math.ceil(filteredPosts.length / postsPerPage);
-        if (totalPages <= 1 || isPrefectureFilter) {
-            $(".pagination-introduction").hide();
-        } else {
-            $(".pagination-introduction").html(createPagination(page, totalPages)).show();
-        }
-    }
-
-    function createPagination(current, totalPages) {
-        if (totalPages <= 1 || isPrefectureFilter) return "";
-
-        let paginationHtml = '<div class="pagination__inner">';
-        if (current > 1) {
-            paginationHtml += `<a href="#" class="pagination-prev" data-page="${current - 1}"><i class="fa-solid fa-chevron-left"></i></a>`;
-        }
-        for (let i = 1; i <= totalPages; i++) {
-            paginationHtml += `<a href="#" class="pagination-page ${i === current ? "is-active" : ""}" data-page="${i}">${i}</a>`;
-        }
-        if (current < totalPages) {
-            paginationHtml += `<a href="#" class="pagination-next" data-page="${current + 1}"><i class="fa-solid fa-chevron-right"></i></a>`;
-        }
-        paginationHtml += "</div>";
-
-        return paginationHtml;
-    }
-
-    // ✅ `archive-introduction.php` のページネーションクリックイベント
-    $(document).on("click", ".pagination-introduction a", function (event) {
-        event.preventDefault();
-        let page = $(this).data("page");
-        currentPage = page;
-        showPage(currentPage);
+    $(".prefecture-filter").each(function () {
+      if ($(this).attr("href").includes(selectedPref)) {
+        $(this).addClass("is-btn-active");
+      }
     });
+  }
 
-    function applyFilter(filterClass, isPrefecture = false) {
-        currentFilter = filterClass;
-        isPrefectureFilter = isPrefecture;
-        $(".introduction-thumbnail").hide();
-        let filteredPosts = (filterClass === "all") ? $(".introduction-thumbnail") : $(".introduction-thumbnail." + filterClass);
+  if (selectedCat) {
+    $(".tab-list__item").removeClass("is-btn-active");
+    $(".tab-list__item[data-tab='category']").addClass("is-btn-active");
+    $(".tab-contents").hide();
+    $("#category-tab").fadeIn();
 
-        currentPage = 1;
-        showPage(currentPage);
-
-        if (isPrefecture) {
-            $(".pagination-introduction").hide();
-        } else {
-            $(".pagination-introduction").show();
-        }
-    }
-
-    $(".category-filter").click(function (event) {
-        event.preventDefault();
-        let filter = $(this).data("filter");
-        applyFilter(filter, false);
+    $(".category-filter").each(function () {
+      if ($(this).attr("href").includes(selectedCat)) {
+        $(this).addClass("is-btn-active");
+      }
     });
-
-    $(".prefecture-filter").click(function (event) {
-        event.preventDefault();
-        let filter = $(this).data("filter");
-        applyFilter(filter, true);
-    });
-
-    $(".tab-list__item[data-tab='category']").click(function () {
-        applyFilter("all", false);
-        $(".pagination-introduction").show();
-    });
-
-    let urlParams = new URLSearchParams(window.location.search);
-    let savedPage = urlParams.get("page");
-    let savedFilter = urlParams.get("filter");
-
-    if (savedFilter) {
-        applyFilter(savedFilter, savedFilter.includes("prefecture"));
-    }
-
-    if (savedPage) {
-        currentPage = parseInt(savedPage);
-        showPage(currentPage);
-    } else {
-        showPage(1); // ✅ 初回表示時は1ページ目を表示
-    }
-
-    $(window).on("popstate", function () {
-        let urlParams = new URLSearchParams(window.location.search);
-        let savedPage = urlParams.get("page") || 1;
-        let savedFilter = urlParams.get("filter") || "all";
-
-        currentPage = parseInt(savedPage);
-        currentFilter = savedFilter;
-        showPage(currentPage);
-    });
+  }
 });
+
+
+
+
+
+
+
+// jQuery(document).ready(function ($) {
+//     // ✅ `archive-introduction.php` 以外では動作しないようにする
+//     if (!$("body").hasClass("post-type-archive-introduction")) return;
+
+//     console.log("✅ `archive-introduction.php` のページネーション制御を適用");
+
+//     let postsPerPage = 9; // ✅ 1ページに9件表示
+//     let currentPage = 1;
+//     let currentFilter = "all";
+//     let isPrefectureFilter = false;
+
+//     function showPage(page) {
+//         let filteredPosts = (currentFilter === "all") ? $(".introduction-thumbnail") : $(".introduction-thumbnail." + currentFilter);
+
+//         $(".introduction-thumbnail").hide(); // すべての投稿を非表示
+//         let start = (page - 1) * postsPerPage;
+//         let end = start + postsPerPage;
+//         filteredPosts.slice(start, end).fadeIn(); // ✅ 9件ずつ表示
+
+//         let totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+//         if (totalPages <= 1 || isPrefectureFilter) {
+//             $(".pagination-introduction").hide();
+//         } else {
+//             $(".pagination-introduction").html(createPagination(page, totalPages)).show();
+//         }
+//     }
+
+//     function createPagination(current, totalPages) {
+//         if (totalPages <= 1 || isPrefectureFilter) return "";
+
+//         let paginationHtml = '<div class="pagination__inner">';
+//         if (current > 1) {
+//             paginationHtml += `<a href="#" class="pagination-prev" data-page="${current - 1}"><i class="fa-solid fa-chevron-left"></i></a>`;
+//         }
+//         for (let i = 1; i <= totalPages; i++) {
+//             paginationHtml += `<a href="#" class="pagination-page ${i === current ? "is-active" : ""}" data-page="${i}">${i}</a>`;
+//         }
+//         if (current < totalPages) {
+//             paginationHtml += `<a href="#" class="pagination-next" data-page="${current + 1}"><i class="fa-solid fa-chevron-right"></i></a>`;
+//         }
+//         paginationHtml += "</div>";
+
+//         return paginationHtml;
+//     }
+
+//     // ✅ `archive-introduction.php` のページネーションクリックイベント
+//     $(document).on("click", ".pagination-introduction a", function (event) {
+//         event.preventDefault();
+//         let page = $(this).data("page");
+//         currentPage = page;
+//         showPage(currentPage);
+//     });
+
+//     function applyFilter(filterClass, isPrefecture = false) {
+//         currentFilter = filterClass;
+//         isPrefectureFilter = isPrefecture;
+//         $(".introduction-thumbnail").hide();
+//         let filteredPosts = (filterClass === "all") ? $(".introduction-thumbnail") : $(".introduction-thumbnail." + filterClass);
+
+//         currentPage = 1;
+//         showPage(currentPage);
+
+//         if (isPrefecture) {
+//             $(".pagination-introduction").hide();
+//         } else {
+//             $(".pagination-introduction").show();
+//         }
+//     }
+
+//     $(".category-filter").click(function (event) {
+//         event.preventDefault();
+//         let filter = $(this).data("filter");
+//         applyFilter(filter, false);
+//     });
+
+//     $(".prefecture-filter").click(function (event) {
+//         event.preventDefault();
+//         let filter = $(this).data("filter");
+//         applyFilter(filter, true);
+//     });
+
+//     $(".tab-list__item[data-tab='category']").click(function () {
+//         applyFilter("all", false);
+//         $(".pagination-introduction").show();
+//     });
+
+//     let urlParams = new URLSearchParams(window.location.search);
+//     let savedPage = urlParams.get("page");
+//     let savedFilter = urlParams.get("filter");
+
+//     if (savedFilter) {
+//         applyFilter(savedFilter, savedFilter.includes("prefecture"));
+//     }
+
+//     if (savedPage) {
+//         currentPage = parseInt(savedPage);
+//         showPage(currentPage);
+//     } else {
+//         showPage(1); // ✅ 初回表示時は1ページ目を表示
+//     }
+
+//     $(window).on("popstate", function () {
+//         let urlParams = new URLSearchParams(window.location.search);
+//         let savedPage = urlParams.get("page") || 1;
+//         let savedFilter = urlParams.get("filter") || "all";
+
+//         currentPage = parseInt(savedPage);
+//         currentFilter = savedFilter;
+//         showPage(currentPage);
+//     });
+// });
 
 
 // //お知らせカテゴリータブ
