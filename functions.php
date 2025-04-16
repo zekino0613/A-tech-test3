@@ -82,46 +82,24 @@ add_action('template_redirect', 'disable_all_yoast_head_output_on_manual_meta_pa
 // -------------------------------------------------------------------------------------
 
 // <お知らせ>
-// カスタム投稿タイプ info を登録
-  function create_info_post_type() {
-    register_post_type( 'info',
+// カスタム投稿タイプ news を登録
+  function create_news_post_type() {
+    register_post_type( 'news',
       array(
         'labels' => array(
-          'name' => __('info'),  // 管理画面のメニューなどで表示される投稿タイプの名前（複数形）
-          'singular_name' => __('info')  // 管理画面で表示される投稿タイプの名前（単数形）
+          'name' => __('news'),  // 管理画面のメニューなどで表示される投稿タイプの名前（複数形）
+          'singular_name' => __('news')  // 管理画面で表示される投稿タイプの名前（単数形）
         ),
         'public' => true, // 投稿タイプを公開するかどうか。trueにすると、管理画面に表示され、公開されます
         'has_archive' => true, // 投稿タイプにアーカイブページを持たせるかどうか。trueにすると、アーカイブページが生成されます
         'show_in_rest' => true,
-        'rewrite' => array('slug' => 'info'), // 投稿タイプのURLスラッグを指定します。例: yoursite.com/news/
+        'rewrite' => array('slug' => 'news'), // 投稿タイプのURLスラッグを指定します。例: yoursite.com/news/
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'), // この投稿タイプがサポートする機能を指定します
         'taxonomies'  => array('category'),  // カテゴリを有効にする
       )
     );
   }
-  add_action('init', 'create_info_post_type');
-
-
-  // <各園のご紹介>
-  // カスタム投稿タイプ introduction を登録 
-  function create_introduction_post_type() {
-    register_post_type( 'introduction',
-      array(
-        'labels' => array(
-          'name' => __('introduction'),
-          'singular_name' => __('introduction')
-        ),
-        'public' => true,
-        'has_archive' => true,
-        'show_in_rest' => true,
-        'rewrite' => array('slug' => 'introduction'),
-        'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
-        'taxonomies' => array('category'), // カテゴリーを有効化
-      )
-    );
-  }
-  add_action('init', 'create_introduction_post_type');
-
+  add_action('init', 'create_news_post_type');
 
   // <こもれびだより>
   // カスタム投稿タイプ letter を登録 

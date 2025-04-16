@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 
-
 // ==========================================================================
 // Foundation
 // ==========================================================================
@@ -19,29 +18,25 @@
 // ==========================================================================
 // TOPページ
 @use "../sass/_project/_top-page/_mainvisual";
-@use "../sass/_project/_top-page/_welcome";
-@use "../sass/_project/_top-page/_contact";
-@use "../sass/_project/_top-page/_recruit";
-@use "../sass/_project/_top-page/_introduction";
-@use "../sass/_project/_top-page/_letter";
+@use "../sass/_project/_top-page/_property";
+@use "../sass/_project/_top-page/_top-service";
+@use "../sass/_project/_top-page/_about";
+@use "../sass/_project/_top-page/_top-recruit";
+@use "../sass/_project/_top-page/_top-news";
 //下層ページ
+@use "../sass/_project/_lower/_page-service";
 @use "../sass/_project/_lower/_page-about";
-@use "../sass/_project/_lower/_page-site-map";
-@use "../sass/_project/_lower/_page-privacy-policy";
+@use "../sass/_project/_lower/_page-company";
+@use "../sass/_project/_lower/_page-column";
+@use "../sass/_project/_lower/_page-recruitment";
+@use "../sass/_project/_lower/_page-privacy";
 // アーカイブページ
-@use "../sass/_project/_archive/_archive-info";
-@use "../sass/_project/_archive/_archive-introduction";
-@use "../sass/_project/_archive/_archive-letter";
+@use "../sass/_project/_archive/_archive-news";
 
 // シングルページ
-@use "../sass/_project/_single/_single-info";
-@use "../sass/_project/_single/_single-introduction";
-@use "../sass/_project/_single/_single-letter";
+@use "../sass/_project/_single/_single-news";
 
 // コンタクトフォームページ
-//recruitページ
-@use "../sass/_project/_contact-form/page-recruit-form";
-@use "../sass/_project/_contact-form/page-recruit-form-confirm";
 //contactページ
 @use "../sass/_project/_contact-form/page-contact-form";
 @use "../sass/_project/_contact-form/page-contact-form-confirm";

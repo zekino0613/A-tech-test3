@@ -8,69 +8,40 @@
   <!-- <meta name="robots" content="noindex"> -->
 	<!-- 【TOPページのOGP設定】 -->
 	<?php if (is_front_page()): ?>
-		<title>桜のこもれびキッズランド｜日本全国の認証・認可保育園</title>
-		<meta name="description" content="桜のこもれびキッズランドは関東、関西など日本全国各地で保育園を運営しています。子供たちが楽しく学び、成長するための保育環境を提供しています。さまざまな情報やイベント情報をお届けします。">
-		<meta property="og:site_name" content="桜のこもれびキッズランド｜日本全国の認証・認可保育園">
-		<meta property="og:title" content="桜のこもれびキッズランド｜日本全国の認証・認可保育園">
-		<meta property="og:description" content="桜のこもれびキッズランドは関東、関西など日本全国各地で保育園を運営しています。子供たちが楽しく学び、成長するための保育環境を提供しています。さまざまな情報やイベント情報をお届けします。">
+		<title>株式会社ネクストリアルティ｜不動産の可能性を発見し、最適な選択を。</title>
+		<meta name="description" content="日本全国のご自宅用不動産の売買コンサルティングを行っている株式会社ネクストリアルティのホームページです。不動産を通じてお客様のより良いライフプランを実現するために、お客様へのヒアリングから販売会社の斡旋、アフターフォローまでお手伝いします。">
+		<meta property="og:site_name" content="株式会社ネクストリアルティ">
+		<meta property="og:title" content="株式会社ネクストリアルティ｜不動産の可能性を発見し、最適な選択を。">
+		<meta property="og:description" content="日本全国のご自宅用不動産の売買コンサルティングを行っている株式会社ネクストリアルティのホームページです。不動産を通じてお客様のより良いライフプランを実現するために、お客様へのヒアリングから販売会社の斡旋、アフターフォローまでお手伝いします。">
 		<meta property="og:type" content="website" />
-		<meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/no-image.webp">
+		<meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/ogp-image.webp">
 		<meta property="og:url" content="<?php echo home_url(); ?>">
   <?php endif; ?> 
   <!-- 【その他のページOGP設定】 -->
   <?php
-  // archiveページ: 各園のご紹介
+  // archiveページ: NEWSお知らせ
 	if  (is_post_type_archive('introduction')): ?>
-    <title>各園のご紹介｜桜のこもれびキッズランド｜日本全国の認証・認可保育園</title>
-    <meta name="description" content="桜のこもれびキッズランドは関東、関西など日本全国各地で保育園を運営しています。各地の桜のこもれびキッズランドの園内の様子や園長からのメッセージ、園の概要についてご紹介します。">
-    <meta property="og:site_name" content="桜のこもれびキッズランド｜日本全国の認証・認可保育園">
-    <meta property="og:title" content="各園のご紹介｜桜のこもれびキッズランド｜日本全国の認証・認可保育園">
-    <meta property="og:description" content="桜のこもれびキッズランドは関東、関西など日本全国各地で保育園を運営しています。各地の桜のこもれびキッズランドの園内の様子や園長からのメッセージ、園の概要についてご紹介します。">
+    <title>サービス内容｜株式会社ネクストリアルティ</title>
+    <meta name="description" content="ネクストリアルティのサービス内容ページです。不動産を通じてお客様のより良いライフプランを実現するために、お客様へのヒアリングから販売会社の斡旋、アフターフォローまでお手伝いしています。">
+    <meta property="og:site_name" content="株式会社ネクストリアルティ">
+    <meta property="og:title" content="サービス内容｜株式会社ネクストリアルティ">
+    <meta property="og:description" content="ネクストリアルティのサービス内容ページです。不動産を通じてお客様のより良いライフプランを実現するために、お客様へのヒアリングから販売会社の斡旋、アフターフォローまでお手伝いしています。">
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/no-image.webp">
-    <meta property="og:url" content="<?php echo get_post_type_archive_link('introduction'); ?>">
-  <?php
-  // archiveページ: こもれびだより
-  elseif (is_post_type_archive('letter')): ?>
-    <title>こもれびだより｜桜のこもれびキッズランド｜日本全国の認証・認可保育園</title>
-    <meta name="description" content="こもれびだよりでは、日本全国各地に展開する桜のこもれびキッズランド各園の日々の様子やお知らせ、最新情報、イベント情報についてお届けします。">
-    <meta property="og:site_name" content="桜のこもれびキッズランド｜日本全国の認証・認可保育園">
-    <meta property="og:title" content="こもれびだより｜桜のこもれびキッズランド｜日本全国の認証・認可保育園">
-    <meta property="og:description" content="こもれびだよりでは、日本全国各地に展開する桜のこもれびキッズランド各園の日々の様子やお知らせ、最新情報、イベント情報についてお届けします。">
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/no-image.webp">
-    <meta property="og:url" content="<?php echo get_post_type_archive_link('letter'); ?>">
-  <?php
-  // archiveページ: お知らせ
-  elseif (is_post_type_archive('info')): ?>
-    <title>お知らせ｜桜のこもれびキッズランド｜日本全国の認証・認可保育園</title>
-    <meta name="description" content="お知らせページでは、日本全国各地の桜のこもれびキッズランドの全体としてのお知らせや、運営団体の活動紹介、メディア情報についてお届けします。">
-    <meta property="og:site_name" content="桜のこもれびキッズランド｜日本全国の認証・認可保育園">
-    <meta property="og:title" content="お知らせ｜桜のこもれびキッズランド｜日本全国の認証・認可保育園">
-    <meta property="og:description" content="お知らせページでは、日本全国各地の桜のこもれびキッズランドの全体としてのお知らせや、運営団体の活動紹介、メディア情報についてお届けします。">
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/no-image.webp">
-    <meta property="og:url" content="<?php echo get_post_type_archive_link('info'); ?>">
+    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/ogp-image.webp">
+    <meta property="og:url" content="<?php echo get_post_type_archive_link('news'); ?>">
   <?php endif; ?> 
-
   <!--【フォント】-->
-  <!-- "Kosugi Maru" -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- "Puritan" -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Puritan:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	<!-- "Noto Sans JP" -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
-  <!-- "Yusei Magic" -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
-  <!-- "Jost" -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <!-- fontawesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
   <?php wp_head(); ?>
 </head>
+
 
 <body <?php body_class(); ?>>
 <div class="scroll-to-top" id="scrollToTop"><i class="fa-solid fa-chevron-up"></i></div>
@@ -135,7 +106,7 @@
             </li>
             <li class="h-nav__ul--li">
               <div class="line-border"></div>
-              <a href="<?php echo get_post_type_archive_link('info'); ?>">
+              <a href="<?php echo get_post_type_archive_link('news'); ?>">
                 <div class="header-icon">
                   <img
                     class="header-icon__img"
@@ -143,7 +114,7 @@
                     loading="lazy"
                     alt="infoアイコン">
                   <p class="header-icon__title">お知らせ</p>
-                  <span class="header-icon__english">info</span>
+                  <span class="header-icon__english">news</span>
                 </div><!-- /header-iconheader-icon -->
               </a>
             </li>
@@ -244,7 +215,7 @@
                     </a>
                   </li>
                   <li class="h-nav__ul--li">
-                    <a href="<?php echo get_post_type_archive_link('info'); ?>">
+                    <a href="<?php echo get_post_type_archive_link('news'); ?>">
                       <div class="header-icon">
                         <img
                           class="header-icon__img"
@@ -252,7 +223,7 @@
                           loading="lazy"
                           alt="infoアイコン">
                         <p class="header-icon__title">お知らせ</p>
-                        <span class="header-icon__english">info</span>
+                        <span class="header-icon__english">news</span>
                       </div><!-- /header-iconheader-icon -->
                     </a>
                   </li>

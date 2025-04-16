@@ -4,12 +4,6 @@
   ?>
 
 <main>
-  <!-- title-heading -->
-  <?php
-      get_template_part('template-parts/title-heading'); // title-heading をインクルード
-  ?>
-
-
 
 	<section class="contact-form-confirm-wrapper fade-in"> 
 		<?php echo apply_shortcodes('[contact-form-7 id="cef9339" title="ご予約・お問い合わせ_確認画面"]'); ?> 

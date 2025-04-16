@@ -25,12 +25,11 @@ $SP: 500px;
 
 // カラーパレットをSCSSのmapで定義
 $colors: (
-  "C-pink": #EF8F9C,
-  "C-light-pink": #FFEDF0,
-  "C-yellow": #FFF7B8,
-  "C-brown": #55000C,
-  "C-black": #333333,
-  "C-white": #FFFFFF
+  "C-dark-blue": #141853,
+	"C-gray": #DFE0E6,
+  "C-black": #000000,
+  "C-white": #FFFFFF,
+	"C-right-blue": #215F9D,
 );
 
 @function get-color($name) {
@@ -118,9 +117,8 @@ $letter-spacings: (
 
 // フォントファミリー（プレフィックス付き）
 $font-families: (
-  F-family-KosugiMaru: "Kosugi Maru",
-  F-family-YuseiMagic: "Yusei Magic",
-  F-family-Jost: "Jost",
+  F-family-Puritan: "Puritan",
+	F-family-Noto-Sans-JP: "Noto Sans JP",
 );
 
 $font-weights: (
@@ -133,11 +131,8 @@ $font-weights: (
 
 // フォントカラー（プレフィックス付き）
 $font-colors: (
-  F-color-brown: #55000C,
-  F-color-black: #333333,
-  F-color-pink: #EF8F9C,
-  F-color-lightpink: #FFEDF0,
-  F-color-yellow: #FFF7B8,
+  F-color-brown: #141853,
+  F-color-black: #000000,
   F-color-white:#FFFFFF,
 );
 
