@@ -1,4 +1,7 @@
 <?php
+//管理バー非表示
+add_filter('show_admin_bar', '__return_false');
+
 
 function theme_enqueue_assets(){
 // ファイル管理
@@ -40,8 +43,6 @@ function theme_enqueue_assets(){
     '1.0.0', // バージョン
     true // フッターで読み込む
   );
-
-
 
   // リセットCSSを読み込む
   wp_enqueue_style(
@@ -86,14 +87,16 @@ add_action('template_redirect', 'disable_all_yoast_head_output_on_manual_meta_pa
   function create_news_post_type() {
     register_post_type( 'news',
       array(
-        'labels' => array(
-          'name' => __('news'),  // 管理画面のメニューなどで表示される投稿タイプの名前（複数形）
-          'singular_name' => __('news')  // 管理画面で表示される投稿タイプの名前（単数形）
-        ),
+				'label' => 'お知らせ',
         'public' => true, // 投稿タイプを公開するかどうか。trueにすると、管理画面に表示され、公開されます
         'has_archive' => true, // 投稿タイプにアーカイブページを持たせるかどうか。trueにすると、アーカイブページが生成されます
         'show_in_rest' => true,
-        'rewrite' => array('slug' => 'news'), // 投稿タイプのURLスラッグを指定します。例: yoursite.com/news/
+				'rewrite' => [
+						'slug' => 'news',
+						'with_front' => false,
+						],
+
+        // 'rewrite' => array('slug' => 'news'), // 投稿タイプのURLスラッグを指定します。例: yoursite.com/news/
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'), // この投稿タイプがサポートする機能を指定します
         'taxonomies'  => array('category'),  // カテゴリを有効にする
       )
@@ -120,522 +123,285 @@ add_action('template_redirect', 'disable_all_yoast_head_output_on_manual_meta_pa
     );
   }
   add_action('init', 'create_letter_post_type');
-
-
-
-
-  // 【パンくずリスト】プラグイン名：yoast SEO  ----------------------------------
-
-  // パンくずリストの区切り記号が「>」
-  add_filter('wpseo_breadcrumb_separator', function () {
-    return '  <i class="fa-solid fa-angle-right"></i>'; // 区切り記号を「>」に変更
-});
-
-// パンくずリスト カタカナ表記
-add_filter('wpseo_breadcrumb_single_link', 'custom_breadcrumb_labels', 10, 2);
-function custom_breadcrumb_labels($link_output, $link) {
-    // ページタイトルをカタカナに置き換える
-    if (strpos($link_output, 'Home') !== false) {
-        $link_output = str_replace('Home', 'TOP', $link_output);
-    }
-    if (strpos($link_output, 'introduction') !== false) {
-      $link_output = str_replace('introduction', '各園のご紹介', $link_output);
-    }
-    if (strpos($link_output, 'letter') !== false) {
-      $link_output = str_replace('letter', 'こもれびだより', $link_output);
-    }
-		if (strpos($link_output, 'info') !== false) {
-      $link_output = str_replace('info', 'お知らせ', $link_output);
-    }
-    if (strpos($link_output, 'reserve') !== false) {
-      $link_output = str_replace('reserve', 'ご予約・お問い合わせ', $link_output);
-    }
-    if (strpos($link_output, '404') !== false) {
-      $link_output = str_replace('404', '404', $link_output);
-    }
-    return $link_output;
-}
-
-  //archive-introduction	
-	add_filter('wpseo_breadcrumb_links', function($links) {
-		// 「各園のご紹介」が CPT のアーカイブページならこちらで分岐
-		if (is_post_type_archive('introduction') && (isset($_GET['category']) || isset($_GET['prefecture']))) {
-			$category_slug = isset($_GET['category']) ? sanitize_text_field($_GET['category']) : '';
-			$prefecture = isset($_GET['prefecture']) ? sanitize_text_field($_GET['prefecture']) : '';
-	
-			// TOPだけ残してリセット
-			$links = array_slice($links, 0, 1);
-	
-			// 各園のご紹介（このページ自身）
-			$links[] = [
-				'url' => get_post_type_archive_link('introduction'),
-				'text' => '各園のご紹介',
-			];
-	
-			// 都道府県
-			if ($prefecture) {
-				$links[] = [
-					'url' => '',
-					'text' => esc_html($prefecture),
-				];
-			}
-	
-			// カテゴリ（投稿カテゴリー）
-			if ($category_slug) {
-				$term = get_term_by('slug', $category_slug, 'category');
-				if ($term) {
-					$links[] = [
-						'url' => '',
-						'text' => esc_html($term->name),
-					];
-				}
-			}
-		}
-	
-		return $links;
-	});
-	
-	// archive-letter.php 固定パンくず用
-	add_filter('wpseo_breadcrumb_links', function($links) {
-		// 「こもれびだより（letter）」のアーカイブページでパンくずを固定する
-		if (is_post_type_archive('letter')) {
-			// TOP だけ残す
-			$links = array_slice($links, 0, 1);
-	
-			// 「こもれびだより」を追加
-			$links[] = [
-				'url'  => '',
-				'text' => 'こもれびだより',
-			];
-		}
-	
-		return $links;
-	});
 	
 	
 
-// single-letterのパンくずリスト
-function custom_yoast_breadcrumb_for_letter($links) {
-	if (is_singular('letter')) { // single-letter ページの時のみ変更
-			$post_id = get_the_ID();
-			$custom_title = get_the_title($post_id); // 投稿のメインタイトル
-			$custom_field_title = get_field('article_title', $post_id); // ACFのカスタムフィールド（記事タイトル）
-
-			if ($custom_field_title) {
-					// 最後のパンくずのタイトルを「一番上のタイトル + 記事タイトル」に変更
-					$last_index = count($links) - 1;
-					$links[$last_index]['text'] = esc_html($custom_title . 'からのおたより'.'『' . $custom_field_title.'』' );
-			}
-	}
-	return $links;
-}
-add_filter('wpseo_breadcrumb_links', 'custom_yoast_breadcrumb_for_letter');
-
-// 月別アーカイブページのパンくずリストをカスタマイズ
-add_filter('wpseo_breadcrumb_links', function($links) {
-  if (is_date() && !is_singular()) {
-    // 年月を取得
-    $year = get_query_var('year');
-    $month = get_query_var('monthnum');
-
-    // TOP（最初のリンク）だけ残す
-    $links = array_slice($links, 0, 1);
-
-    // 「こもれびだより」のアーカイブページリンクを追加
-    $links[] = [
-      'url'  => get_post_type_archive_link('letter'),
-      'text' => 'こもれびだより',
-    ];
-
-    // 年月を1つのテキストとして追加
-    $links[] = [
-      'url'  => '',
-      'text' => "{$year}ねん{$month}がつ",
-    ];
-  }
-
-  return $links;
-}, 10, 1);
 
 
 
-// 404ページの際のパンくずリスト
-add_filter( 'wpseo_breadcrumb_links', function( $links ) {
-  if ( is_404() ) {
-      return array(
-          array(
-              'text' => 'TOP',
-              'url'  => home_url(),
-          ),
-          array(
-              'text' => '404',
-              'url'  => '',
-          )
-      );
-  }
-  return $links;
-});
+//   // 【パンくずリスト】プラグイン名：yoast SEO  ----------------------------------
+
+//   // パンくずリストの区切り記号が「>」
+//   add_filter('wpseo_breadcrumb_separator', function () {
+//     return '  <i class="fa-solid fa-angle-right"></i>'; // 区切り記号を「>」に変更
+// });
+
+// // パンくずリスト カタカナ表記
+// add_filter('wpseo_breadcrumb_single_link', 'custom_breadcrumb_labels', 10, 2);
+// function custom_breadcrumb_labels($link_output, $link) {
+//     // ページタイトルをカタカナに置き換える
+//     if (strpos($link_output, 'Home') !== false) {
+//         $link_output = str_replace('Home', 'TOP', $link_output);
+//     }
+//     if (strpos($link_output, 'introduction') !== false) {
+//       $link_output = str_replace('introduction', '各園のご紹介', $link_output);
+//     }
+//     if (strpos($link_output, 'letter') !== false) {
+//       $link_output = str_replace('letter', 'こもれびだより', $link_output);
+//     }
+// 		if (strpos($link_output, 'info') !== false) {
+//       $link_output = str_replace('info', 'お知らせ', $link_output);
+//     }
+//     if (strpos($link_output, 'reserve') !== false) {
+//       $link_output = str_replace('reserve', 'ご予約・お問い合わせ', $link_output);
+//     }
+//     if (strpos($link_output, '404') !== false) {
+//       $link_output = str_replace('404', '404', $link_output);
+//     }
+//     return $link_output;
+// }
+
+//   //archive-introduction	
+// 	add_filter('wpseo_breadcrumb_links', function($links) {
+// 		// 「各園のご紹介」が CPT のアーカイブページならこちらで分岐
+// 		if (is_post_type_archive('introduction') && (isset($_GET['category']) || isset($_GET['prefecture']))) {
+// 			$category_slug = isset($_GET['category']) ? sanitize_text_field($_GET['category']) : '';
+// 			$prefecture = isset($_GET['prefecture']) ? sanitize_text_field($_GET['prefecture']) : '';
+	
+// 			// TOPだけ残してリセット
+// 			$links = array_slice($links, 0, 1);
+	
+// 			// 各園のご紹介（このページ自身）
+// 			$links[] = [
+// 				'url' => get_post_type_archive_link('introduction'),
+// 				'text' => '各園のご紹介',
+// 			];
+	
+// 			// 都道府県
+// 			if ($prefecture) {
+// 				$links[] = [
+// 					'url' => '',
+// 					'text' => esc_html($prefecture),
+// 				];
+// 			}
+	
+// 			// カテゴリ（投稿カテゴリー）
+// 			if ($category_slug) {
+// 				$term = get_term_by('slug', $category_slug, 'category');
+// 				if ($term) {
+// 					$links[] = [
+// 						'url' => '',
+// 						'text' => esc_html($term->name),
+// 					];
+// 				}
+// 			}
+// 		}
+	
+// 		return $links;
+// 	});
+	
+// 	// archive-letter.php 固定パンくず用
+// 	add_filter('wpseo_breadcrumb_links', function($links) {
+// 		// 「こもれびだより（letter）」のアーカイブページでパンくずを固定する
+// 		if (is_post_type_archive('letter')) {
+// 			// TOP だけ残す
+// 			$links = array_slice($links, 0, 1);
+	
+// 			// 「こもれびだより」を追加
+// 			$links[] = [
+// 				'url'  => '',
+// 				'text' => 'こもれびだより',
+// 			];
+// 		}
+	
+// 		return $links;
+// 	});
+	
+	
+
+// // single-letterのパンくずリスト
+// function custom_yoast_breadcrumb_for_letter($links) {
+// 	if (is_singular('letter')) { // single-letter ページの時のみ変更
+// 			$post_id = get_the_ID();
+// 			$custom_title = get_the_title($post_id); // 投稿のメインタイトル
+// 			$custom_field_title = get_field('article_title', $post_id); // ACFのカスタムフィールド（記事タイトル）
+
+// 			if ($custom_field_title) {
+// 					// 最後のパンくずのタイトルを「一番上のタイトル + 記事タイトル」に変更
+// 					$last_index = count($links) - 1;
+// 					$links[$last_index]['text'] = esc_html($custom_title . 'からのおたより'.'『' . $custom_field_title.'』' );
+// 			}
+// 	}
+// 	return $links;
+// }
+// add_filter('wpseo_breadcrumb_links', 'custom_yoast_breadcrumb_for_letter');
+
+// // 月別アーカイブページのパンくずリストをカスタマイズ
+// add_filter('wpseo_breadcrumb_links', function($links) {
+//   if (is_date() && !is_singular()) {
+//     // 年月を取得
+//     $year = get_query_var('year');
+//     $month = get_query_var('monthnum');
+
+//     // TOP（最初のリンク）だけ残す
+//     $links = array_slice($links, 0, 1);
+
+//     // 「こもれびだより」のアーカイブページリンクを追加
+//     $links[] = [
+//       'url'  => get_post_type_archive_link('letter'),
+//       'text' => 'こもれびだより',
+//     ];
+
+//     // 年月を1つのテキストとして追加
+//     $links[] = [
+//       'url'  => '',
+//       'text' => "{$year}ねん{$month}がつ",
+//     ];
+//   }
+
+//   return $links;
+// }, 10, 1);
+
+
+
+// // 404ページの際のパンくずリスト
+// add_filter( 'wpseo_breadcrumb_links', function( $links ) {
+//   if ( is_404() ) {
+//       return array(
+//           array(
+//               'text' => 'TOP',
+//               'url'  => home_url(),
+//           ),
+//           array(
+//               'text' => '404',
+//               'url'  => '',
+//           )
+//       );
+//   }
+//   return $links;
+// });
 
 
 
 
 // archive＜一覧ページ＞
 // -------------------------------------------------------------------------------------
-  // <各園のご紹介>
-  // カスタム投稿タイプ introduction 
-  // 住所から都道府県を取得する関数
-  function get_prefecture_from_address($address) {
-      $prefectures = [
-          "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県",
-          "茨城県", "栃木県", "群馬県", "埼玉県", "千葉県", "東京都", "神奈川県",
-          "新潟県", "富山県", "石川県", "福井県", "山梨県", "長野県", "岐阜県",
-          "静岡県", "愛知県", "三重県", "滋賀県", "京都府", "大阪府", "兵庫県",
-          "奈良県", "和歌山県", "鳥取県", "島根県", "岡山県", "広島県", "山口県",
-          "徳島県", "香川県", "愛媛県", "高知県", "福岡県", "佐賀県", "長崎県",
-          "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"
-      ];
-  
-      foreach ($prefectures as $prefecture) {
-          if (strpos($address, $prefecture) !== false) {
-              return $prefecture;
-          }
-      }
-      return "不明"; // デフォルト値
-  }
-  
-  // 都道府県一覧を取得（重複削除）
-  function get_unique_prefectures() {
-      $args = [
-          'post_type'      => 'introduction', // 投稿タイプ
-          'posts_per_page' => -1, // すべての投稿を取得
-      ];
-      $query = new WP_Query($args);
-  
-      $prefectures = [];
-      if ($query->have_posts()) {
-          while ($query->have_posts()) {
-              $query->the_post();
-              $address = get_field('nursery_address'); // 住所取得
-              if ($address) {
-                  // 住所から都道府県を取得
-                  $prefecture = get_prefecture_from_address($address);
-                  if ($prefecture !== "不明") {
-                      $prefectures[] = $prefecture;
-                  }
-              }
-          }
-          wp_reset_postdata();
-      }
-  
-      // 重複削除＆ソート
-      $unique_prefectures = array_unique($prefectures);
-      sort($unique_prefectures);
-  
-      return $unique_prefectures;
-  }
-  
-  function register_custom_taxonomies() {
-    // 園の種類カテゴリー（既存の category タクソノミーを使用）
-    register_taxonomy(
-        'category',  // 既存のカテゴリー
-        'introduction', 
-        array(
-            'label'             => '園の種類カテゴリー',
-            'rewrite'           => array('slug' => 'category'),
-            'hierarchical'      => true, // 親子関係を持たせる
-            'show_admin_column' => true,
-            'show_ui'           => true,
-        )
-    );
+// ===============================
+// 年別アーカイブ（/news/2024/）に対応させるコード
+// ===============================
 
-    // 都道府県カテゴリー（新規作成）
-    register_taxonomy(
-      'prefecture',
-      'introduction', // カスタム投稿タイプ
-      array(
-          'label' => '都道府県',
-          'rewrite' => array('slug' => 'prefecture'), // スラッグを指定
-          'hierarchical' => true,
-          'public' => true,
-          'show_ui' => true,
-      )
+
+
+
+
+function modify_archive_queries($query) {
+	if (is_admin() || !$query->is_main_query()) return;
+
+	// archive-introduction
+	if (is_post_type_archive('introduction')) {
+			$query->set('posts_per_page', 9);
+			$query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1);
+	}
+
+	// archive-letter
+	if (is_post_type_archive('letter')) {
+			$query->set('posts_per_page', 9);
+			$query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1);
+	}
+
+	// archive-info（必要であれば有効化）
+	if (is_post_type_archive('news')) {
+			$query->set('posts_per_page', 5);
+			$query->set('orderby', 'date');
+			$query->set('order', 'DESC');
+			$query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1);
+	}
+}
+add_action('pre_get_posts', 'modify_archive_queries');
+
+// 年度アーカイブ用のリライトルール追加（/news/2024/, /news/2024/page/2/）
+add_action('init', function () {
+  add_rewrite_rule(
+    '^news/([0-9]{4})/page/([0-9]+)/?$',
+    'index.php?post_type=news&year=$matches[1]&paged=$matches[2]',
+    'top'
   );
+  add_rewrite_rule(
+    '^news/([0-9]{4})/?$',
+    'index.php?post_type=news&year=$matches[1]',
+    'top'
+  );
+});
 
-
-   // お知らせカテゴリー（新規作成）
-   register_taxonomy(
-    'osirase',
-    'info', // カスタム投稿タイプ
-    array(
-        'label' => 'お知らせ',
-        'rewrite' => array('slug' => 'osirase'), // スラッグを指定
-        'hierarchical' => true,
-        'public' => true,
-        'show_ui' => true,
-    )
-);
-}
-add_action('init', 'register_custom_taxonomies',0);
-
-
-
-
-
-	function modify_archive_queries($query) {
-		if (is_admin() || !$query->is_main_query()) return;
-
-		// archive-introduction
-		if (is_post_type_archive('introduction')) {
-				$query->set('posts_per_page', 9);
-				$query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1);
-		}
-
-		// archive-letter
-		if (is_post_type_archive('letter')) {
-				$query->set('posts_per_page', 9);
-				$query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1);
-		}
-
-		// archive-info（必要であれば有効化）
-		if (is_post_type_archive('info')) {
-				$query->set('posts_per_page', 10);
-				$query->set('orderby', 'date');
-				$query->set('order', 'DESC');
-				$query->set('paged', get_query_var('paged') ? get_query_var('paged') : 1);
-		}
-	}
-	add_action('pre_get_posts', 'modify_archive_queries');
-
-
-	// カスタム投稿タイプのページネーションURLを有効化
-	function custom_post_type_rewrite_fix() {
-		add_rewrite_rule('letter/page/([0-9]+)/?$', 'index.php?post_type=letter&paged=$matches[1]', 'top');
-		add_rewrite_rule('introduction/page/([0-9]+)/?$', 'index.php?post_type=introduction&paged=$matches[1]', 'top');
-		add_rewrite_rule('info/page/([0-9]+)/?$', 'index.php?post_type=info&paged=$matches[1]', 'top');
-	}
-	add_action('init', 'custom_post_type_rewrite_fix');
-
-
-function convert_category_to_osirase( $query ) {
-  if (is_admin() || !$query->is_main_query()) return;
-
-  if (is_post_type_archive('info')) {
-    // ページ番号
-    $paged = get_query_var('paged') ? get_query_var('paged') : (isset($_GET['paged']) ? (int) $_GET['paged'] : 1);
-    $query->set('paged', $paged);
-
-    // タクソノミーフィルター
-    if (get_query_var('osirase')) {
-      $query->set('tax_query', [
-        [
-          'taxonomy' => 'osirase',
-          'field'    => 'slug',
-          'terms'    => get_query_var('osirase'),
-        ]
-      ]);
-    }
-  }
-}
-add_action('pre_get_posts', 'convert_category_to_osirase');
-
-
-function add_custom_query_vars($vars) {
-  $vars[] = 'paged';       // ←既にある
-  $vars[] = 'osirase';     // ←これが必要！
-	$vars[] = 'prefecture';
-  $vars[] = 'category';
+// クエリ変数 year を許可
+add_filter('query_vars', function ($vars) {
+  $vars[] = 'year';
   return $vars;
-}
-add_filter('query_vars', 'add_custom_query_vars');
+});
 
-
-
-// archive-letter
-// single-introduction の住所から都道府県を取得
-function get_prefecture_by_nursery_name($nursery_name) {
-  if (empty($nursery_name)) return '';
-
-  // `single-introduction` で `the_title()` と一致する投稿を取得
-  $args = [
-      'post_type'      => 'introduction',
-      'posts_per_page' => 1,
-      'title'          => $nursery_name,
-  ];
-
-  $query = new WP_Query($args);
-
-  if ($query->have_posts()) {
-      $query->the_post();
-      $address = get_field('nursery_address'); // `nursery_address` から住所取得
-      wp_reset_postdata();
-
-      if ($address) {
-          return get_prefecture_from_address($address); // 住所から都道府県を取得
-      }
-  }
-
-  return ''; // 一致する投稿がない場合  
-}
-
-// archive-letter
-// introduction  「都道府県」カテゴリーが自動で設定
-add_action('save_post', 'debug_prefecture_assignment', 10, 3);
-
-function debug_prefecture_assignment($post_id, $post, $update) {
-    if (get_post_type($post_id) !== 'introduction') return;
-
-    $address = get_field('nursery_address', $post_id);
-    if (!$address) {
-        error_log("デバッグ: nursery_address が取得できません");
-        return;
+// メインクエリで年度フィルター適用（news用）
+add_action('pre_get_posts', function ($query) {
+  if (!is_admin() && $query->is_main_query() && is_post_type_archive('news')) {
+    $year = get_query_var('year');
+    if ($year) {
+      $query->set('year', (int)$year);
     }
+  }
+});
 
-    $prefecture = get_prefecture_from_address($address);
-    if (!$prefecture || $prefecture === "不明") {
-        error_log("デバッグ: 住所から都道府県が取得できません");
-        return;
+// 年度（4月〜翌年3月）ごとの投稿抽出
+add_filter('posts_where', function($where, $query) {
+  global $wpdb;
+
+  if (!is_admin() && $query->is_main_query() && is_post_type_archive('news')) {
+    $year = get_query_var('year');
+    if ($year) {
+      $next_year = $year + 1;
+      $where .= $wpdb->prepare(
+        " AND (
+            (YEAR($wpdb->posts.post_date) = %d AND MONTH($wpdb->posts.post_date) BETWEEN 4 AND 12)
+            OR
+            (YEAR($wpdb->posts.post_date) = %d AND MONTH($wpdb->posts.post_date) BETWEEN 1 AND 3)
+          )",
+        $year, $next_year
+      );
     }
-
-    $term = get_term_by('name', $prefecture, 'prefecture');
-
-    if (!$term) {
-        $term = wp_insert_term($prefecture, 'prefecture');
-        if (is_wp_error($term)) {
-            error_log("デバッグ: wp_insert_term() でエラー発生 - " . $term->get_error_message());
-            return;
-        }
-        $term_id = $term['term_id'];
-    } else {
-        $term_id = $term->term_id;
-    }
-
-    $result = wp_set_post_terms($post_id, [$term_id], 'prefecture', false);
-    if (is_wp_error($result)) {
-        error_log("デバッグ: wp_set_post_terms() でエラー発生 - " . $result->get_error_message());
-    } else {
-        error_log("デバッグ: 都道府県「{$prefecture}」を適用しました");
-    }
-}
-
-
-
-// archive-letter
-// single-introduction のタイトルを比較し、
-// 一致する single-introduction の住所から都道府県を取得し、
-// letter の投稿に 都道府県カテゴリーを自動で設定
-function set_letter_prefecture_category($post_id) {
-  if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
-  if (get_post_type($post_id) !== 'letter') return;
-
-  $letter_title = get_the_title($post_id);
-  if (!$letter_title) return;
-
-  // `single-introduction` の園名 (`the_title()`) と一致するものを取得
-  $matching_nursery = get_posts([
-      'post_type'      => 'introduction',
-      'title'          => $letter_title, // `letter` のタイトルと一致するもの
-      'posts_per_page' => 1
-  ]);
-
-  if (!empty($matching_nursery)) {
-      $nursery_post = $matching_nursery[0]; // 最初の一致した投稿
-      $address = get_field('nursery_address', $nursery_post->ID);
-      $prefecture = get_prefecture_from_address($address);
-      
-      if ($prefecture) {
-          $term = get_term_by('name', $prefecture, 'prefecture');
-          if (!$term) {
-              $term = wp_insert_term($prefecture, 'prefecture');
-              if (is_wp_error($term)) return;
-              $term_id = $term['term_id'];
-          } else {
-              $term_id = $term->term_id;
-          }
-          wp_set_post_terms($post_id, [$term_id], 'prefecture', false);
-      }
   }
-}
-add_action('save_post', 'set_letter_prefecture_category');
-
-
-// archive-letter
-// 園検索のフィルタリング機能
-function filter_by_nursery_title($where, $query) {
-	global $wpdb;
-
-	if (is_admin() || !$query->is_main_query()) {
-			return $where;
-	}
-
-	if (!empty($_GET['nursery'])) {
-			$nursery = esc_sql($_GET['nursery']);
-			$where .= " AND {$wpdb->posts}.post_title LIKE '%{$nursery}%'";
-	}
-
-	return $where;
-}
-add_filter('posts_where', 'filter_by_nursery_title', 10, 2);
+  return $where;
+}, 10, 2);
 
 
 
+// 【functions.php】
 
+// function custom_news_rewrite_rules() {
+//   // 年をクエリとして追加
+//   add_rewrite_tag('%year%', '([0-9]{4})');
 
-// archive-letter サイドバーのアーカイブ
-function filter_archive_by_date($query) {
-  if (!is_admin() && $query->is_main_query() && is_date()) {
-      $query->set('post_type', 'letter'); // `single-letter` の投稿タイプに限定
-  }
-}
-add_action('pre_get_posts', 'filter_archive_by_date');
+//   // ページネーション付き
+//   add_rewrite_rule('news/([0-9]{4})/page/([0-9]+)/?$', 'index.php?post_type=news&year=$1&paged=$2', 'top');
+//   // 年だけ
+//   add_rewrite_rule('news/([0-9]{4})/?$', 'index.php?post_type=news&year=$1', 'top');
+// }
+// add_action('init', 'custom_news_rewrite_rules');
 
+// // ③ query_var に year を追加（明示的に）
+// function allow_year_query_var($vars) {
+//   $vars[] = 'year';
+//   return $vars;
+// }
+// add_filter('query_vars', 'allow_year_query_var');
 
+// // ④ pre_get_postsで年フィルタ適用（このままでOK）
+// add_action('pre_get_posts', function($query) {
+//   if (!is_admin() && $query->is_main_query() && is_post_type_archive('news')) {
+//     $year = get_query_var('year');
+//     if ($year) {
+//       $query->set('year', (int)$year);
+//     }
+//   }
+// });
 
-// archive-introduction
-// 都道府県を関東圏優先でソートする関数
-function sort_prefectures_by_region($prefecture_terms) {
-  // 地理順に並べるための手動指定リスト
-  $custom_order = [
-		  '北海道', '青森県', '岩手県', '宮城県', '秋田県', '山形県', '福島県', // 東北
-		  '東京都', '神奈川県', '千葉県', '埼玉県', '茨城県', '栃木県', '群馬県', // 関東（最優先）
-      '新潟県', '富山県', '石川県', '福井県', '山梨県', '長野県', // 甲信越・北陸
-      '岐阜県', '静岡県', '愛知県', '三重県', // 東海
-      '滋賀県', '京都府', '大阪府', '兵庫県', '奈良県', '和歌山県', // 近畿
-      '鳥取県', '島根県', '岡山県', '広島県', '山口県', // 中国
-      '徳島県', '香川県', '愛媛県', '高知県', // 四国
-      '福岡県', '佐賀県', '長崎県', '熊本県', '大分県', '宮崎県', '鹿児島県', // 九州
-      '沖縄県' // 沖縄
-  ];
-
-  // 都道府県をカスタム順序に従って並び替え
-  usort($prefecture_terms, function($a, $b) use ($custom_order) {
-      $indexA = array_search($a->name, $custom_order);
-      $indexB = array_search($b->name, $custom_order);
-
-      // 都道府県がリストにない場合、最後に配置
-      if ($indexA === false) $indexA = count($custom_order);
-      if ($indexB === false) $indexB = count($custom_order);
-
-      return $indexA - $indexB;
-  });
-
-  return $prefecture_terms;
-}
-
-
-// sectionこもれびだより
-// 二か所でそれぞれ違うCSSを当てる
-function enqueue_custom_styles() {
-  // single-introduction.php 用の CSS
-  if (is_singular('introduction')) {
-    wp_enqueue_style('single-introduction-style', get_template_directory_uri() . '/css/single-introduction.css');
-  }
-
-  // front-page.php 用の CSS
-  if (is_front_page()) {
-    wp_enqueue_style('front-page-style', get_template_directory_uri() . '/css/front-page.css');
-  }
-}
-add_action('wp_enqueue_scripts', 'enqueue_custom_styles');
 
 
 

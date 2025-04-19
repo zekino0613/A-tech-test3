@@ -20,16 +20,19 @@
   <!-- 【その他のページOGP設定】 -->
   <?php
   // archiveページ: NEWSお知らせ
-	if  (is_post_type_archive('introduction')): ?>
-    <title>サービス内容｜株式会社ネクストリアルティ</title>
-    <meta name="description" content="ネクストリアルティのサービス内容ページです。不動産を通じてお客様のより良いライフプランを実現するために、お客様へのヒアリングから販売会社の斡旋、アフターフォローまでお手伝いしています。">
+	if  (is_post_type_archive('news')): ?>
+    <title>お知らせ｜株式会社ネクストリアルティ</title>
+    <meta name="description" content="ネクストリアルティのお知らせ一覧ページ。最新の不動産情報やサービスの更新、イベント情報をお届けします。不動産に関する最新ニュースはこちらをチェックしてください。">
     <meta property="og:site_name" content="株式会社ネクストリアルティ">
-    <meta property="og:title" content="サービス内容｜株式会社ネクストリアルティ">
-    <meta property="og:description" content="ネクストリアルティのサービス内容ページです。不動産を通じてお客様のより良いライフプランを実現するために、お客様へのヒアリングから販売会社の斡旋、アフターフォローまでお手伝いしています。">
+    <meta property="og:title" content="お知らせ一覧｜株式会社ネクストリアルティ">
+    <meta property="og:description" content="ネクストリアルティのお知らせ一覧ページ。最新の不動産情報やサービスの更新、イベント情報をお届けします。不動産に関する最新ニュースはこちらをチェックしてください。">
     <meta property="og:type" content="website" />
     <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/ogp-image.webp">
     <meta property="og:url" content="<?php echo get_post_type_archive_link('news'); ?>">
   <?php endif; ?> 
+	<!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
   <!--【フォント】-->
   <!-- "Puritan" -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
