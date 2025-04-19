@@ -75,7 +75,7 @@ get_template_part('template-parts/header'); // ヘッダー読み込み
 
     </div>
 
-    <?php get_template_part('template-parts/monthly'); ?>
+    <?php get_template_part('template-parts/years'); ?>
   </section>
 </main>
 
