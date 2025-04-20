@@ -106,23 +106,23 @@ add_action('template_redirect', 'disable_all_yoast_head_output_on_manual_meta_pa
 
   // <こもれびだより>
   // カスタム投稿タイプ letter を登録 
-  function create_letter_post_type() {
-    register_post_type( 'letter',
+  function create_voice_post_type() {
+    register_post_type( 'voice',
       array(
         'labels' => array(
-          'name' => __('letter'),
-          'singular_name' => __('letter')
+          'name' => __('お客様の声'),
+          'singular_name' => __('voice')
         ),
         'public' => true,
         'has_archive' => true,
         'show_in_rest' => true,
-        'rewrite' => array('slug' => 'letter'),
+        'rewrite' => array('slug' => 'voice'),
         'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
         'taxonomies' => array('category'), // カテゴリーを有効化
       )
     );
   }
-  add_action('init', 'create_letter_post_type');
+  add_action('init', 'create_voice_post_type');
 	
 	
 
@@ -286,14 +286,6 @@ add_action('template_redirect', 'disable_all_yoast_head_output_on_manual_meta_pa
 
 // archive＜一覧ページ＞
 // -------------------------------------------------------------------------------------
-// ===============================
-// 年別アーカイブ（/news/2024/）に対応させるコード
-// ===============================
-
-
-
-
-
 function modify_archive_queries($query) {
 	if (is_admin() || !$query->is_main_query()) return;
 
@@ -319,6 +311,10 @@ function modify_archive_queries($query) {
 }
 add_action('pre_get_posts', 'modify_archive_queries');
 
+
+
+//archive-news
+// ----------------------------------------------------------------------
 // 年度アーカイブ用のリライトルール追加（/news/2024/, /news/2024/page/2/）
 add_action('init', function () {
   add_rewrite_rule(
@@ -372,35 +368,6 @@ add_filter('posts_where', function($where, $query) {
 
 
 
-// 【functions.php】
-
-// function custom_news_rewrite_rules() {
-//   // 年をクエリとして追加
-//   add_rewrite_tag('%year%', '([0-9]{4})');
-
-//   // ページネーション付き
-//   add_rewrite_rule('news/([0-9]{4})/page/([0-9]+)/?$', 'index.php?post_type=news&year=$1&paged=$2', 'top');
-//   // 年だけ
-//   add_rewrite_rule('news/([0-9]{4})/?$', 'index.php?post_type=news&year=$1', 'top');
-// }
-// add_action('init', 'custom_news_rewrite_rules');
-
-// // ③ query_var に year を追加（明示的に）
-// function allow_year_query_var($vars) {
-//   $vars[] = 'year';
-//   return $vars;
-// }
-// add_filter('query_vars', 'allow_year_query_var');
-
-// // ④ pre_get_postsで年フィルタ適用（このままでOK）
-// add_action('pre_get_posts', function($query) {
-//   if (!is_admin() && $query->is_main_query() && is_post_type_archive('news')) {
-//     $year = get_query_var('year');
-//     if ($year) {
-//       $query->set('year', (int)$year);
-//     }
-//   }
-// });
 
 
 
@@ -426,7 +393,7 @@ function custom_wpcf7_validation($result, $tags) {
         return validate_recruit_form($result, $tags); // 採用フォーム
     }
 
-    if ($form_id == 16) {
+    if ($form_id == 6) {
         return validate_contact_form($result, $tags); // お問い合わせフォーム
     }
 
@@ -487,15 +454,23 @@ function validate_contact_form($result, $tags) {
 				
         $required = [
 					'your-name' => 'お名前',
+					'furigana' => 'ふりがな',
 					'email' => 'メールアドレス',
-					'hoikuen-name' => 'お問い合わせの保育園',
-					'inquiry-details' => 'お問い合わせ内容',
         ];
-
-        if (array_key_exists($name, $required) && empty($post)) {
-            $result->invalidate($name, "{$required[$name]}は必須です。");
-        }
-
+				
+				//// 下記二つは共存できません。
+				//// どちらかを選択して使用
+				//// ------------------------------------------------------------
+				//// 共通メッセージで必須チェック
+				if (array_key_exists($name, $required) && empty($post)) {
+					$result->invalidate($name, '必須項目を入力してください。');
+				}
+				////必須チェック$required内の項目名を出力
+        // if (array_key_exists($name, $required) && empty($post)) {
+        //     $result->invalidate($name, "{$required[$name]}は必須です");
+        // }
+				//// ------------------------------------------------------------
+				
        // ✅ メールアドレス形式チェック
 				if ($name === 'email' && !empty($post) && !filter_var($post, FILTER_VALIDATE_EMAIL)) {
 				$result->invalidate($name, 'メールアドレスの形式が正しくありません。');

@@ -17,7 +17,27 @@
 					$date = new DateTime(get_the_date('Y-m-d'));
 					echo '<time class="news-date">' . $date->format('Y/m/d D.') . '</time>';
 				?>
-				<?php get_field('textarea');?>				
+				<p class="textarea"><?php the_field('textarea'); ?></p>
+				
+				<div class="sns-share-buttons">
+					<!-- Xでシェア -->
+					<a href="https://twitter.com/share?url=<?php echo urlencode(get_permalink()); ?>&text=<?php echo urlencode(get_the_title()); ?>" target="_blank" rel="noopener noreferrer">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/Xrogo.webp" alt="Xでシェア">
+					</a>
+
+					<!-- Facebookでシェア -->
+					<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode(get_permalink()); ?>" target="_blank" rel="noopener noreferrer">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/icon-facebook.webp" alt="Facebookでシェア">
+					</a>
+
+					<!-- LINEでシェア -->
+					<a href="https://social-plugins.line.me/lineit/share?url=<?php echo urlencode(get_permalink()); ?>" target="_blank" rel="noopener noreferrer">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/icon-line.webp" alt="LINEでシェア">
+					</a>
+				</div>
+
+
+
 					<a href="<?php echo home_url('/info/'); ?>" class="btn fade-in">
 						<p class="btn__text">こもれびだより一覧へ</p>
 						<i class="fa-solid fa-angle-right"></i>

@@ -166,6 +166,22 @@ a:focus-visible {
 // 共通パーツ
 //-------------------------------------------------------------------------------
 
+.circle-loop {
+  width: 100px; /* サイズは任意 */
+  height: 100px;
+  position: relative;
+  animation: rotateCircle 10s linear infinite; /* 回転アニメーション */
+}
+
+@keyframes rotateCircle {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 // --h3
 .title-icon {
   display: block;

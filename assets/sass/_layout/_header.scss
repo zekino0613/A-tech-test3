@@ -3,169 +3,51 @@
 
 
 #header {
-  width: 100%;
-  height: 100%;
+	position: sticky;
+  top: 0;
+	height: 80px;
+  z-index: 1000;
+  background-color: map-get(mixin.$colors, "C-white");
+  box-shadow: 0px 3px 6px #00000029;
   .header {
     &__inner {
+			padding:0 32px;
       &--sp {
         display: none;
         
       }
       &--pc {
-        width: 100%;
-        height: 43vh;
-        background: url(../../assets/images/kidsland_image/design-parts/header-bg-pc.webp) no-repeat center top;
-        background-size: contain;
-        padding: 111px 5.56% 35.46px;
-        position: absolute;
-        z-index: 3;
-        .h-nav {
-          &__ul {
-            width: 99%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            gap: 1.03%;
-            &--logo-li {
-              min-width: 245px; // これで縮小を防ぐ
-              width: 280px;
-              position: relative;
-              .line-border {
-                position: absolute;
-                top: -8px;
-                left: -2px;
-                width: 1px;
-                height: 110px;
-                background: repeating-linear-gradient(to bottom,
-                    #55000C,
-                    #55000C 2px,
-                    transparent 4px,
-                    transparent 5px);
-                transform: translateX(-50%);
-                // 上の点（●）
-                &::before {
-                  content: "";
-                  position: absolute;
-                  top: -6px;
-                  left: 0.5px;
-                  width: 8px;
-                  height: 8px;
-                  background-color: #55000C;
-                  border-radius: 50%;
-                  transform: translateX(-50%);
-                }
-                // 下の点（●）
-                &::after {
-                  content: "";
-                  position: absolute;
-                  bottom: 0;
-                  left: 0.6px;
-                  width: 8px;
-                  height: 8px;
-                  background-color: #55000C;
-                  border-radius: 50%;
-                  transform: translateX(-50%);
-                }
-              }
-              
-              .h-logo-img {
-                width: 100%;
-                // width: 280px;
-                height: 100%;
-                margin: -2px 0px 0px 7px;
-              }
-            }
-          }
-          &__ul {  
-            &--li {
-              max-width: 150px;
-              width: 100%;
-              position: relative;
-              text-align: center;
-              padding: 0 0px 0 5px;
-              .line-border {
-                position: absolute;
-                top: -8px;
-                left: -2px;
-                width: 1px;
-                height: 110px;
-                background: repeating-linear-gradient(to bottom,
-                    #55000C,
-                    #55000C 2px,
-                    transparent 4px,
-                    transparent 5px);
-                transform: translateX(-50%);
-                // 上の点（●）
-                &::before {
-                  content: "";
-                  position: absolute;
-                  top: -6px;
-                  left: 0.5px;
-                  width: 8px;
-                  height: 8px;
-                  background-color: #55000C;
-                  border-radius: 50%;
-                  transform: translateX(-50%);
-                }
-                // 下の点（●）
-                &::after {
-                  content: "";
-                  position: absolute;
-                  bottom: 0;
-                  left: 0.6px;
-                  width: 8px;
-                  height: 8px;
-                  background-color: #55000C;
-                  border-radius: 50%;
-                  transform: translateX(-50%);
-                }
-              }
-              // 右側の線（最後のアイコン専用）
-              .line-border-last {
-                left: auto;
-                /* 左の点線とは異なる位置 */
-                right: -2px;
-                /* 右側に配置 */
-              }
-              a {
-                .header-icon {
-                  text-align: center;
-                  width: 150px;
-                  &__img {
-                    display: block;
-                    width: 48px;
-                    height: 48px;
-                    margin: -1px 54px 11px;
-                  }
-                  &__title {
-                    @include mixin.font-settings (
-                      F-size16,
-                      F-line-height19-2,
-                      F-letter-spacing-4,
-                      F-family-KosugiMaru,
-                      normal,
-                      F-color-brown);
-                    display: block;
-                    // margin: 13px -18px 2px -11px;
-										margin: 0 auto;
-                  }
-                  &__english {
-                    @include mixin.font-settings (F-size10,
-                      F-line-height12,
-                      F-letter-spacing-10,
-                      F-family-Jost,
-                      bold,
-                      F-color-brown);
-                    display: block;
-                    margin: 1px 0px 0px 5px;
-                  }
-                }
-              }
-            }  
-          }
-
-        }
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+        .logo {
+					padding:9px 0;
+					img {
+						width: 124px;
+						height: 62px;
+					}
+				}
+			
+				.main-nav {
+					ul {
+						display: flex;
+						gap: 24px;
+						list-style: none;
+			
+						li {
+							a {
+								color: #000;
+								font-size: 14px;
+								text-decoration: none;
+								padding: 8px 12px;
+			
+								&:hover {
+									color: #0066cc;
+								}
+							}
+						}
+					}
+				}
       }
     }
   }
@@ -455,7 +337,6 @@
 
 @include mixin.SP {
   #header {
-    height: 150px;
     .header {
       &__inner {
         &--pc {
@@ -463,366 +344,242 @@
         }
 
         &--sp {
-          display: block;
-          position: absolute;
-          width: 100%;
-          z-index: 3;
-          .h-bg {
-            width: 100%;
-            height: auto;
-            background: url(../../assets/images/kidsland_image/design-parts/header-bg-sp.webp) no-repeat center top;
-            background-size: contain;
-            padding: 13.13% 2%;
-            text-align: center;
-            &__logo {
-              width: 52vw;
-              height: 100%;
-              display: block;
-              margin: 0 auto;
-              transition: all 0.5s;
-              &:hover {
-                opacity: 0.7;
-                transition: all 0.5s;
-              }
-            }
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					padding: 16px 24px;
+					position: relative;
+					z-index: 999;
+          .logo {
+						max-width: 124px;
+						height: auto;
+					}
+					.hamburger {
+						width: 30px;
+						height: 22px;
+						cursor: pointer;
+						z-index: 1001;
+						
+						&__lines {
+							display: flex;
+							flex-direction: column;
+							gap: 5px;
+				
+							&--line {
+								width: 28px;
+								height: 3px;
+								background-color: #333;
+								transition: 0.3s ease;
+							}
+					}
 
-            .hamburger {
-              position: absolute;
-              top: 13px;
-              right: 12px;
-              width: 6%;
-              height: 6%;
-              min-width: 48px;
-              min-height: 48px;
-              margin: 0 auto;
-              padding: 12px 0 0;
-              border-radius: 50%;
-              transition: all 0.5s;
-              border:1px solid map-get(mixin.$colors, "C-brown");
-              cursor: pointer;
-              z-index: 1100;
-              &__menu {
-                @include mixin.font-settings (
-                  F-size10,
-                  F-line-height12,
-                  F-letter-spacing-0,
-                  F-family-Jost, 
-                  900, 
-                  F-color-brown);
-                  text-align: center;
-                  text-transform: none;
-                  margin: 2px 0 0;
-                  transition: opacity 0.5s ease, transform 0.5s ease;
-              } 
-              &__close {
-                opacity: 0; // フェードアウト
-                text-align: center;
-                text-transform: none;
-                transition: opacity 0.5s ease, transform 0.5s ease;
-                @include mixin.font-settings (
-                  F-size10,
-                  F-line-height12,
-                  F-letter-spacing-0,
-                  F-family-Jost, 
-                  900, 
-                  F-color-brown);
-              }
-              &__lines {
-                position: relative;
-                top: 1px;
-                left: -12px;
-                width: 25px;
-                height: 12px;
-                margin: 0 auto;
-                text-align: center;
-                // margin: 0 auto;
-                transition: all 0.5s ease;
-                &--line {
-                  position: absolute;
-                  width: 100%;
-                  height: 1px;
-                  background-color: map-get(mixin.$colors, "C-brown");
-                  transition: transform 0.5s ease, opacity 0.3s ease;
-                  &:nth-child(1) {
-                    // 上の線
-                    top: 0;
-                  }
-                  &:nth-child(2) {
-                    // 中央の線
-                    top: 50%;
-                    transform: translateY(-50%);
-                  }
-                  &:nth-child(3) {
-                    // 下の線
-                    bottom: 0;
-                  }
-                }
-            }
-
-              &.is-open {
-                width: 6%;
-                height: 6%;
-                border-radius: 50%; // 円形に変更
-                // background-color: #949E33; // 背景色を指定
-                justify-content: center; // アイコンを中央に配置    
-                align-items: center;
-                .hamburger {
-                  &__menu {
-                    transform: translateX(20px); // 右へスライドして消える
-                    opacity: 0; // フェードアウト
-                  }
-                  &__close {
-                    opacity: 1;
-                    text-align: center;
-                    text-transform: none;
-                    transition: opacity 0.5s ease, transform 0.5s ease;
-                    margin: -6px 0 0px;
-                  }
-                  &__lines {
-                    left: -4px;
-                    &--line {
-                      &:nth-child(1) {
-                        // 上の線が45度回転
-                        top: 122%;
-                        left: 62%;
-                        width: 32px;
-                        transform: rotate(24deg) translate(-50%, -50%);
-                      }
-                      &:nth-child(2) {
-                        // 中央の線が非表示
-                        opacity: 0;
-                      }
-                      &:nth-child(3) {
-                        // 下の線が-45度回転
-                        top: 22%;
-                        left: 63%;
-                        width: 32px;
-                        transform: rotate(-24deg) translate(-50%, -50%);
-                      }
-                    }
-                  }
-                }
-                &:hover {
-                  background-color: map-get(mixin.$colors, "C-brown"); // ホバー時の色
-                }
-                &:hover .hamburger__close {
-                  color: map-get(mixin.$colors, "C-white");
-                  
-                }
-                &:hover .hamburger__lines--line {
-                  background-color: map-get(mixin.$colors, "C-white"); // ホバー時の色
-                }
-              }
-              &:hover {
-                color: map-get(mixin.$colors, "C-white");
-                background-color: map-get(mixin.$colors, "C-brown"); // ホバー時の色
-              }
-              &:hover .hamburger__menu {
-                color: map-get(mixin.$colors, "C-white");
-              }
-              &:hover .hamburger__lines--line {
-                background-color: map-get(mixin.$colors, "C-white"); // ホバー時の色
-              }
-            }
-
-            // 全画面メニューのスタイル
-            .overlay-menu {
-              position: fixed;
-              top: 70px;
-              left: 0;
-              right: 0;
-              width: 92%;
-              height: 88vh;
-              background-color: rgba(map-get(mixin.$colors, "C-white"), 0.8);
-              backdrop-filter: blur(3px);
-              -webkit-backdrop-filter: blur(3px);
-              border-radius: 40px;
-              display: none;
-              align-items: left;
-              justify-content: left;
-              z-index: 1000;
-              padding: 150px 4%;
-              margin: 0 4%;
-							box-sizing: border-box;
-              .h-nav {
-                transition: opacity 0.5s ease, transform 0.5s ease;
-                &__ul {
-                  display: flex;
-                  flex-wrap: wrap;
-                  justify-content: center;
-                  align-items: center;
-                  min-width: 215px;
-                  width: 100%;
-                  gap: 15px;
-                  // min-height: 421px;
-									height: auto; // 高さ固定せず、内容に応じて
-                  &--li {
-                    width: 45%;
-                    height: 32%;
-                    border: 1px solid map-get(mixin.$colors, "C-brown");
-                    border-radius: 12px;
-                    padding: 4% 0 ;
-                    display: block;
-										box-sizing: border-box;
-                    a {
-                      display: flex; // ✅ ボックス全体がクリック範囲に
-                      align-items: center;
-                      justify-content: center;
-                      width: 100%;
-                      height: 100%;
-                      text-decoration: none;
-                      cursor: pointer;
-                      .header-icon {
-                        text-align: center;
-                        width: 150px;
-												box-sizing: border-box;
-                        &__img {
-                          display: block;
-                          width: 48px;
-                          height: 48px;
-                          margin: -1px 54px 11px;
-                        }
-                        &__title {
-                          @include mixin.font-settings (
-                            F-size16,
-                            F-line-height19-2,
-                            F-letter-spacing-4,
-                            F-family-KosugiMaru,
-                            normal,
-                            F-color-brown);
-                            width: 100%;
-                          display: block;
-                          margin: 0 auto 4px;
-                        }
-                        &__english {
-                          @include mixin.font-settings (F-size10,
-                            F-line-height12,
-                            F-letter-spacing-10,
-                            F-family-Jost,
-                            900,
-                            F-color-brown);
-                            width: 100%;
-                            display: block;
-                            // margin: 0 auto;
-                        }
-                      }
-                    }
-                    // ✅ ホバー時に浮き上がるアニメーション
-                    &:hover {
-                      transform: translateY(-5px); // 5px上に移動
-                      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); // 影を追加
-                      transition: opacity 0.5s ease, transform 0.5s ease;
-                    }
-                  }
-                }  
-              }
-
-              &.is-open {
-								display: flex; // 表示
-								transition: opacity 0.5s ease, transform 0.5s ease;
-              }
-            }
-						@media screen and (max-width: 375px) {
-							// 全画面メニューのスタイル
-							.overlay-menu {
-								position: fixed;
-								top: 70px;
-								left: 0;
-								right: 0;
-								width: 92%;
-								height: 88vh;
-								background-color: rgba(map-get(mixin.$colors, "C-white"), 0.8);
-								backdrop-filter: blur(3px);
-								-webkit-backdrop-filter: blur(3px);
-								border-radius: 40px;
-								display: none;
-								align-items: left;
-								justify-content: left;
-								z-index: 1000;
-								padding: 150px 4%;
-								margin: 0 4%;
-								box-sizing: border-box;
-								.h-nav {
-									transition: opacity 0.5s ease, transform 0.5s ease;
-									&__ul {
-										display: flex;
-										flex-wrap: wrap;
-										justify-content: center;
-										align-items: center;
-										min-width: 100%;
-										width: 100%;
-										gap: 15px;
-										// min-height: 421px;
-										height: auto; // 高さ固定せず、内容に応じて
-										&--li {
-											width: 100%;
-											height: 32%;
-											border: 1px solid map-get(mixin.$colors, "C-brown");
-											border-radius: 12px;
-											padding: 4% 0 ;
-											display: block;
-											box-sizing: border-box;
-											a {
-												display: flex; // ✅ ボックス全体がクリック範囲に
-												align-items: center;
-												justify-content: center;
-												width: 100%;
-												height: 100%;
-												text-decoration: none;
-												cursor: pointer;
-												.header-icon {
-													text-align: center;
-													width: 150px;
-													box-sizing: border-box;
-													&__img {
-														display: block;
-														width: 32px;
-														height: 32px;
-														margin: -1px 54px 2px;
-													}
-													&__title {
-														@include mixin.font-settings (
-															F-size14,
-															F-line-height19-2,
-															F-letter-spacing-4,
-															F-family-KosugiMaru,
-															normal,
-															F-color-brown);
-															width: 100%;
-														display: block;
-														margin: 0 auto 4px;
-													}
-													&__english {
-														@include mixin.font-settings (F-size10,
-															F-line-height12,
-															F-letter-spacing-10,
-															F-family-Jost,
-															900,
-															F-color-brown);
-															width: 100%;
-															display: block;
-															// margin: 0 auto;
-													}
-												}
-											}
-											// ✅ ホバー時に浮き上がるアニメーション
-											&:hover {
-												transform: translateY(-5px); // 5px上に移動
-												box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); // 影を追加
-												transition: opacity 0.5s ease, transform 0.5s ease;
-											}
+						&.is-open {
+							width: 6%;
+							height: 6%;
+							justify-content: center; // アイコンを中央に配置    
+							align-items: center;
+							.hamburger {
+								&__lines {
+									left: -4px;
+									&--line {
+										&:nth-child(1) {
+											// 上の線が45度回転
+											top: 122%;
+											left: 62%;
+											width: 32px;
+											transform: rotate(24deg) translate(-50%, -50%);
 										}
-									}  
-								}
-
-								&.is-open {
-									display: flex; // 表示
-									transition: opacity 0.5s ease, transform 0.5s ease;
+										&:nth-child(2) {
+											// 中央の線が非表示
+											opacity: 0;
+										}
+										&:nth-child(3) {
+											// 下の線が-45度回転
+											top: 22%;
+											left: 63%;
+											width: 32px;
+											transform: rotate(-24deg) translate(-50%, -50%);
+										}
+									}
 								}
 							}
+							&:hover {
+								background-color: map-get(mixin.$colors, "C-brown"); // ホバー時の色
+							}
+							&:hover .hamburger__close {
+								color: map-get(mixin.$colors, "C-white");
+								
+							}
+							&:hover .hamburger__lines--line {
+								background-color: map-get(mixin.$colors, "C-white"); // ホバー時の色
+							}
 						}
+						&:hover {
+							color: map-get(mixin.$colors, "C-white");
+							background-color: map-get(mixin.$colors, "C-brown"); // ホバー時の色
+						}
+						&:hover .hamburger__menu {
+							color: map-get(mixin.$colors, "C-white");
+						}
+						&:hover .hamburger__lines--line {
+							background-color: map-get(mixin.$colors, "C-white"); // ホバー時の色
+						}
+					}
+
+					// 全画面メニューのスタイル
+					.overlay-menu {
+						position: fixed;
+						top: 70px;
+						left: 0;
+						right: 0;
+						width: 100%;
+						height: 100vh;
+						background-color: map-get(mixin.$colors, "C-blue");
+						display: none;
+						align-items: left;
+						justify-content: left;
+						z-index: 1000;
+						padding: 150px 4%;
+						margin: 0 4%;
+						box-sizing: border-box;
+						.main-nav {
+							transition: opacity 0.5s ease, transform 0.5s ease;
+							ul {
+								width: 100%;
+								height: auto; // 高さ固定せず、内容に応じて
+								li {
+									width: 45%;
+									height: 32%;
+									border: 1px solid map-get(mixin.$colors, "C-brown");
+									border-radius: 12px;
+									padding: 4% 0 ;
+									display: block;
+									box-sizing: border-box;
+									a {
+										display: flex; // ✅ ボックス全体がクリック範囲に
+										align-items: center;
+										justify-content: center;
+										width: 100%;
+										height: 100%;
+										text-decoration: none;
+										cursor: pointer;
+									}
+									// ✅ ホバー時に浮き上がるアニメーション
+									&:hover {
+										transform: translateY(-5px); // 5px上に移動
+										box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); // 影を追加
+										transition: opacity 0.5s ease, transform 0.5s ease;
+									}
+								}
+							}  
+						}
+
+						&.is-open {
+							display: flex; // 表示
+							transition: opacity 0.5s ease, transform 0.5s ease;
+						}
+					
+					@media screen and (max-width: 375px) {
+						// 全画面メニューのスタイル
+						.overlay-menu {
+							position: fixed;
+							top: 70px;
+							left: 0;
+							right: 0;
+							width: 92%;
+							height: 88vh;
+							background-color: rgba(map-get(mixin.$colors, "C-white"), 0.8);
+							backdrop-filter: blur(3px);
+							-webkit-backdrop-filter: blur(3px);
+							border-radius: 40px;
+							display: none;
+							align-items: left;
+							justify-content: left;
+							z-index: 1000;
+							padding: 150px 4%;
+							margin: 0 4%;
+							box-sizing: border-box;
+							.h-nav {
+								transition: opacity 0.5s ease, transform 0.5s ease;
+								&__ul {
+									display: flex;
+									flex-wrap: wrap;
+									justify-content: center;
+									align-items: center;
+									min-width: 100%;
+									width: 100%;
+									gap: 15px;
+									// min-height: 421px;
+									height: auto; // 高さ固定せず、内容に応じて
+									&--li {
+										width: 100%;
+										height: 32%;
+										border: 1px solid map-get(mixin.$colors, "C-brown");
+										border-radius: 12px;
+										padding: 4% 0 ;
+										display: block;
+										box-sizing: border-box;
+										a {
+											display: flex; // ✅ ボックス全体がクリック範囲に
+											align-items: center;
+											justify-content: center;
+											width: 100%;
+											height: 100%;
+											text-decoration: none;
+											cursor: pointer;
+											.header-icon {
+												text-align: center;
+												width: 150px;
+												box-sizing: border-box;
+												&__img {
+													display: block;
+													width: 32px;
+													height: 32px;
+													margin: -1px 54px 2px;
+												}
+												&__title {
+													@include mixin.font-settings (
+														F-size14,
+														F-line-height19-2,
+														F-letter-spacing-4,
+														F-family-KosugiMaru,
+														normal,
+														F-color-brown);
+														width: 100%;
+													display: block;
+													margin: 0 auto 4px;
+												}
+												&__english {
+													@include mixin.font-settings (F-size10,
+														F-line-height12,
+														F-letter-spacing-10,
+														F-family-Jost,
+														900,
+														F-color-brown);
+														width: 100%;
+														display: block;
+														// margin: 0 auto;
+												}
+											}
+										}
+										// ✅ ホバー時に浮き上がるアニメーション
+										&:hover {
+											transform: translateY(-5px); // 5px上に移動
+											box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); // 影を追加
+											transition: opacity 0.5s ease, transform 0.5s ease;
+										}
+									}
+								}  
+							}
+
+							&.is-open {
+								display: flex; // 表示
+								transition: opacity 0.5s ease, transform 0.5s ease;
+							}
+						}
+					}
 				}	
-      }
+			}
     }
   }
 }

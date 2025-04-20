@@ -63,7 +63,7 @@
 										text-align: center;
 										padding: 4px 0;
 										margin: 0 0 0 12px;
-										background-color: map-get(mixin.$colors, "C-pink");
+										background-color: map-get(mixin.$colors, "C-blue");
 										@include mixin.font-settings
 										( F-size12
 										, F-line-height12
@@ -92,6 +92,24 @@
 								}
 								.input-content {
 									width: 468px;
+									.inquiry-checkbox {
+										display: flex;
+										flex-direction: column;
+										gap: 10px;
+										.wpcf7-list-item {
+											margin: 6px 0px 0px -1px;
+											width: fit-content;
+											transition: .3s;
+											@include mixin.font-settings
+											( F-size16
+											, F-line-height16
+											, F-letter-spacing-10
+											, F-family-KosugiMaru
+											, 400
+											, F-color-black);
+											
+										}
+									}
 								}
 								.input-content.address {
 									margin: 0px 0 -9px;

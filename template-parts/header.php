@@ -49,215 +49,72 @@
 <body <?php body_class(); ?>>
 <div class="scroll-to-top" id="scrollToTop"><i class="fa-solid fa-chevron-up"></i></div>
 
-
-  <header id="header" class="<?php echo esc_attr($header_class); ?>">
+	<header id="header" class="<?php echo esc_attr($header_class); ?>">
     <div class="header__inner">
       <div class="header__inner--pc">
-        <nav class="h-nav">
-          <ul class="h-nav__ul">
-            <li class="h-nav__ul--li">
-              <div class="line-border"></div>
-              <a href="<?php echo home_url('/about/'); ?>">
-                <div class="header-icon">
-                  <img
-                    class="header-icon__img"
-                    src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/sakura-icon.webp"
-                    loading="lazy"
-                    alt="aboutアイコン">
-                  <p class="header-icon__title">わたしたちのこと</p>
-                  <span class="header-icon__english">about</span>
-                </div><!-- /header-iconheader-icon -->
-              </a>
-            </li>
-            <li class="h-nav__ul--li">
-              <div class="line-border"></div>
-              <a href="<?php echo get_post_type_archive_link('introduction'); ?>">
-                <div class="header-icon">
-                  <img
-                    class="header-icon__img"
-                    src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/tree-icon.webp"
-                    loading="lazy"
-                    alt="introductionアイコン">
-                  <p class="header-icon__title">各園のご紹介</p>
-                  <span class="header-icon__english">introduction</span>
-                </div><!-- /header-iconheader-icon -->
-              </a>
-            </li>
-            <li class="h-nav__ul--li">
-              <div class="line-border"></div>
-              <a href="<?php echo get_post_type_archive_link('letter'); ?>">
-                <div class="header-icon">
-                  <img
-                    class="header-icon__img"
-                    src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/tayori-icon.webp"
-                    loading="lazy"
-                    alt="letterアイコン">
-                  <p class="header-icon__title">こもれびだより</p>
-                  <span class="header-icon__english">letter</span>
-                </div><!-- /header-iconheader-icon -->
-              </a>
-            </li>
-            <li class="h-nav__ul--logo-li">
-              <div class="line-border"></div>
-              <a href="<?php echo home_url('/'); ?>#">
-                <img
-                  class="h-logo-img"
-                  src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/sakura-logo.webp"
-                  loading="lazy"
-                  alt="ヘッダーロゴ">
-              </a>
-            </li>
-            <li class="h-nav__ul--li">
-              <div class="line-border"></div>
-              <a href="<?php echo get_post_type_archive_link('news'); ?>">
-                <div class="header-icon">
-                  <img
-                    class="header-icon__img"
-                    src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/bell-oshirase-icon.webp"
-                    loading="lazy"
-                    alt="infoアイコン">
-                  <p class="header-icon__title">お知らせ</p>
-                  <span class="header-icon__english">news</span>
-                </div><!-- /header-iconheader-icon -->
-              </a>
-            </li>
-            <li class="h-nav__ul--li">
-              <div class="line-border"></div>
-              <a href="<?php echo home_url('/recruit-form/'); ?>">
-                <div class="header-icon">
-                  <img
-                    class="header-icon__img"
-                    src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/pen-icon.webp"
-                    loading="lazy"
-                    alt="recruitアイコン">
-                  <p class="header-icon__title">採用情報</p>
-                  <span class="header-icon__english">recruit</span>
-                </div><!-- /header-iconheader-icon -->
-              </a>
-            </li>
-            <li class="h-nav__ul--li">
-              <div class="line-border"></div>
-              <a href="<?php echo home_url('/contact-form/'); ?>">
-                <div class="header-icon">
-                  <img
-                    class="header-icon__img"
-                    src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/letter-icon.webp"
-                    loading="lazy"
-                    alt="contactアイコン">
-                  <p class="header-icon__title">お問い合わせ</p>
-                  <span class="header-icon__english">contact</span>
-                </div><!-- /header-iconheader-icon -->
-              </a>
-              <div class="line-border line-border-last"></div> <!-- 追加（右側の点線） -->
-            </li>
-          </ul>  
-        </nav>
-      </div> <!--< /.header__inner--pc >  -->
+        <div class="logo">
+					<a href="<?php echo home_url('/'); ?>#">
+						<img class="card__image"
+								src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/logo.webp"
+								width="124" 
+								height="62"
+								loading="lazy"
+								alt="ヘッダーロゴ">
+					</a>			
+        </div>
+				<nav class="main-nav">
+					<ul>
+						<li><a href="<?php echo home_url('/'); ?>#">TOP</a></li>
+						<li><a href="<?php echo home_url('/service/'); ?>">サービス内容</a></li>
+						<li><a href="<?php echo home_url('/about/'); ?>">事業概要</a></li>
+						<li><a href="<?php echo home_url('/company/'); ?>">会社概要</a></li>
+						<li><a href="<?php echo home_url('/column/'); ?>">家を買う理由</a></li>
+						<li><a href="<?php echo home_url('/recruitment/'); ?>">採用情報</a></li>
+						<li><a href="<?php echo get_post_type_archive_link('news'); ?>">お知らせ</a></li>
+						<li class="contact"><a href="<?php echo home_url('/contact-form/'); ?>">お問い合わせ</a></li>
+					</ul>
+				</nav>
+				
+			</div>
+
+
+        
 
         <div class="header__inner--sp">
-          <div class="h-bg">
-            <a href="<?php echo home_url('/'); ?>#">
-              <img
-                class="h-bg__logo"
-                src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/sakura-logo.webp"
-                loading="lazy"
-                alt="ヘッダーロゴ">
-            </a>
+					<div class="logo">
+						<a href="<?php echo home_url('/'); ?>#">
+							<img class="card__image"
+									src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/logo.webp"
+									width="124" 
+									height="62"
+									loading="lazy"
+									alt="ヘッダーロゴ">
+						</a>			
+					</div>
 
             <div class="hamburger">
               <div class="hamburger__lines">
-              <span class="hamburger__lines--line"></span>
-              <span class="hamburger__lines--line"></span>
+								<span class="hamburger__lines--line"></span>
+								<span class="hamburger__lines--line"></span>
                 <span class="hamburger__lines--line"></span>
               </div>
-              <p class="hamburger__menu">menu</p>
-              <p class="hamburger__close">closed</p>
             </div>
 
             <!--  オーバーレイメニュー   -->
             <div id="overlay-menu" class="overlay-menu">
-              <nav class="h-nav">
-                <ul class="h-nav__ul">
-                  <li class="h-nav__ul--li">
-                  <a href="<?php echo home_url('/about/'); ?>">
-                      <div class="header-icon">
-                        <img
-                          class="header-icon__img"
-                          src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/sakura-icon.webp"
-                          loading="lazy"
-                          alt="aboutアイコン">
-                        <p class="header-icon__title">わたしたちのこと</p>
-                        <span class="header-icon__english">about</span>
-                      </div><!-- /header-iconheader-icon -->
-                    </a>
-                  </li>
-                  <li class="h-nav__ul--li">
-                    <a href="<?php echo get_post_type_archive_link('introduction'); ?>">
-                      <div class="header-icon">
-                        <img
-                          class="header-icon__img"
-                          src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/tree-icon.webp"
-                          loading="lazy"
-                          alt="introductionアイコン">
-                        <p class="header-icon__title">各園のご紹介</p>
-                        <span class="header-icon__english">introduction</span>
-                      </div><!-- /header-iconheader-icon -->
-                    </a>
-                  </li>
-                  <li class="h-nav__ul--li">
-                    <a href="<?php echo get_post_type_archive_link('letter'); ?>">
-                      <div class="header-icon">
-                        <img
-                          class="header-icon__img"
-                          src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/tayori-icon.webp"
-                          loading="lazy"
-                          alt="letterアイコン">
-                        <p class="header-icon__title">こもれびだより</p>
-                        <span class="header-icon__english">letter</span>
-                      </div><!-- /header-iconheader-icon -->
-                    </a>
-                  </li>
-                  <li class="h-nav__ul--li">
-                    <a href="<?php echo get_post_type_archive_link('news'); ?>">
-                      <div class="header-icon">
-                        <img
-                          class="header-icon__img"
-                          src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/bell-oshirase-icon.webp"
-                          loading="lazy"
-                          alt="infoアイコン">
-                        <p class="header-icon__title">お知らせ</p>
-                        <span class="header-icon__english">news</span>
-                      </div><!-- /header-iconheader-icon -->
-                    </a>
-                  </li>
-                  <li class="h-nav__ul--li">
-                    <a href="<?php echo home_url('/recruit-form/'); ?>">
-                      <div class="header-icon">
-                        <img
-                          class="header-icon__img"
-                          src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/pen-icon.webp"
-                          loading="lazy"
-                          alt="recruitアイコン">
-                        <p class="header-icon__title">採用情報</p>
-                        <span class="header-icon__english">recruit</span>
-                      </div><!-- /header-iconheader-icon -->
-                    </a>
-                  </li>
-                  <li class="h-nav__ul--li">
-                    <a href="<?php echo home_url('/contact-form/'); ?>">
-                      <div class="header-icon">
-                        <img
-                          class="header-icon__img"
-                          src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/letter-icon.webp"
-                          loading="lazy"
-                          alt="contactアイコン">
-                        <p class="header-icon__title">お問い合わせ</p>
-                        <span class="header-icon__english">contact</span>
-                      </div><!-- /header-iconheader-icon -->
-                    </a>
-                  </li>
-                </ul>  
-              </nav>
+							<nav class="main-nav">
+								<ul>
+									<li><a href="<?php echo home_url('/'); ?>#">TOP</a></li>
+									<li><a href="<?php echo home_url('/service/'); ?>">サービス内容</a></li>
+									<li><a href="<?php echo home_url('/about/'); ?>">事業概要</a></li>
+									<li><a href="<?php echo home_url('/company/'); ?>">会社概要</a></li>
+									<li><a href="<?php echo home_url('/column/'); ?>">家を買う理由</a></li>
+									<li><a href="<?php echo home_url('/recruitment/'); ?>">採用情報</a></li>
+									<li><a href="<?php echo get_post_type_archive_link('news'); ?>">お知らせ</a></li>
+									<li><a href="<?php echo home_url('/privacy/'); ?>">プライバシーポリシー</a></li>
+									<li class="contact"><a href="<?php echo home_url('/contact-form/'); ?>">お問い合わせ</a></li>
+								</ul>
+							</nav>
             </div>
 
         </div>

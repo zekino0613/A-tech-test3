@@ -104,7 +104,18 @@ jQuery(function($) {
 	});
 });
 
+// archive-news
+jQuery(function ($) {
+	$('.service-tab').on('click', function () {
+		var tabID = $(this).data('tab');
 
+		$('.service-tab').removeClass('is-active');
+		$(this).addClass('is-active');
+
+		$('.service-desc').removeClass('is-show').fadeOut(200);
+		$('#' + tabID).fadeIn(300).addClass('is-show');
+	});
+});
 
 
 
@@ -484,7 +495,7 @@ jQuery(document).ready(function ($) {
 // ラジオボタンで「その他」選択の時にだけテキストエリアが入力できるようにする
 jQuery(document).ready(function ($) {
   function toggleOtherTextarea() {
-      let selectedValue = $(".inquiry-radio input:checked").val();
+      let selectedValue = $(".inquiry-checkbox input:checked").val();
 
       if (selectedValue === "その他") {
           $(".other-textarea").prop("disabled", false).focus();
@@ -497,7 +508,7 @@ jQuery(document).ready(function ($) {
   toggleOtherTextarea();
 
   // ラジオボタンの変更を監視
-  $(".inquiry-radio input").change(function () {
+  $(".inquiry-checkbox input").change(function () {
       toggleOtherTextarea();
   });
 });
@@ -513,27 +524,27 @@ jQuery(document).ready(function ($) {
 
 //採用情報フォーム確認画面
 // ラジオボタンで「その他」選択の時にだけテキストエリアが出力されるようにする
-jQuery(document).ready(function ($) {
-  function toggleOtherTextarea() {
-      let selectedValue = $(".confirm-radio").text().trim();
-      let otherLabel = $(".confirm-other-text");
-      let otherTextarea = $(".confirm-other-textarea");
+// jQuery(document).ready(function ($) {
+//   function toggleOtherTextarea() {
+//       let selectedValue = $(".confirm-radio").text().trim();
+//       let otherLabel = $(".confirm-other-text");
+//       let otherTextarea = $(".confirm-other-textarea");
 
-      console.log("選択中のラジオボタン:", selectedValue);
-      console.log("その他入力値:", otherTextarea.text().trim());
+//       console.log("選択中のラジオボタン:", selectedValue);
+//       console.log("その他入力値:", otherTextarea.text().trim());
 
-      if (selectedValue === "その他" && otherTextarea.text().trim() !== "") {
-          otherLabel.removeClass("hidden");
-          otherTextarea.removeClass("hidden");
-      } else {
-          otherLabel.addClass("hidden");
-          otherTextarea.addClass("hidden");
-      }
-  }
+//       if (selectedValue === "その他" && otherTextarea.text().trim() !== "") {
+//           otherLabel.removeClass("hidden");
+//           otherTextarea.removeClass("hidden");
+//       } else {
+//           otherLabel.addClass("hidden");
+//           otherTextarea.addClass("hidden");
+//       }
+//   }
 
-  // 初期状態で実行
-  toggleOtherTextarea();
-});
+//   // 初期状態で実行
+//   toggleOtherTextarea();
+// });
 
 
 document.addEventListener("DOMContentLoaded", function() {

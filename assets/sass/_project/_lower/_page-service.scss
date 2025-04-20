@@ -4,3 +4,68 @@
 .service {
 	background-color: rgb(164, 5, 200);
 }
+
+.service-section {
+  .service-tab-list {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+
+    .service-tab {
+      position: relative;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+      transition: border 0.3s ease;
+      min-width: 160px;
+      background: #fff;
+      flex-shrink: 0;
+      cursor: pointer;
+
+      &.is-active {
+        border-color: #333;
+
+        .arrow {
+          display: block;
+        }
+      }
+
+      .arrow {
+        display: none;
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 10px solid #333;
+        margin: 10px auto 0;
+        transition: opacity 0.3s ease;
+      }
+    }
+
+    // SP時のみ横スクロール
+    @media screen and (max-width: 500px) {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+
+      .service-tab {
+        flex: 0 0 calc(50% - 8px); // 2つ分表示
+      }
+    }
+  }
+
+  .service-contents {
+    margin-top: 20px;
+
+    .service-desc {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+
+      &.is-show {
+        display: block;
+        opacity: 1;
+      }
+    }
+  }
+}
