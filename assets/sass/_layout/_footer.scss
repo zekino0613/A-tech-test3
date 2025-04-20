@@ -2,54 +2,224 @@
 @use "../_foundation/base"as base;
 
 #footer {
-  background: linear-gradient(to bottom, #FFFEF3, #FFF7B8);
   .footer {
     &__inner {
-      margin: 0 auto;
-      padding: 48px 0 12px;
-      // background-color: aqua;
-      .f-logo-img  {
-        display: block;
-        margin: 0 auto;
-        width: 240px;
-        height: 70.86px;
-      }
-
-      .f-nav {
-        &__ul {
-          display: flex;
-          justify-content: center;
-          flex-wrap: wrap;
-          margin: 48px auto;
-          width: 70%;
-          padding: 0 0 0 0;
-          column-gap: 58px;
-          row-gap: 26px;
-          &--li a {
-            @include mixin.font-settings (
-              F-size16,
-              F-line-height19-2,
-              F-letter-spacing-10,
-              F-family-KosugiMaru,
-              400,
-              F-color-brown);
-              &:hover {
-                color: map-get(mixin.$colors, "C-pink");
-              }
-          }
-        }  
-      }
-
-      .f-text {
-        text-align: center;
-        @include mixin.font-settings (
-          F-size14,
-          F-line-height16-8,
-          F-letter-spacing-10,
-          F-family-KosugiMaru,
-          400,
-          F-color-black);
-      }
+			text-transform: capitalize;
+			.footer-top {
+				background-color: map-get(mixin.$colors, "C-blue");
+				padding: 40px 0;
+				&__content {
+					max-width: 960px;
+					width: 100%;
+					margin:  0 auto;
+					&--title {
+						@include mixin.font-settings (
+						F-size64,
+						F-line-height95,
+						F-letter-spacing-0,
+						F-family-Puritan,
+						normal,
+						F-color-white);
+					}
+					&--text {
+						@include mixin.font-settings (
+						F-size16,
+						F-line-height32,
+						F-letter-spacing-0-8,
+						F-family-Noto-Sans-JP,
+						normal,
+						F-color-white);
+					}
+					&--flex {
+						display: flex;
+						justify-content: center;
+						margin: 40px 0 0;
+            gap: 40px;
+						.footer-button-wrap {
+							width: 460px;
+							height: 138px;
+							position: relative;
+							.footer-button-bg {
+								position: absolute;
+								top: -1px;
+								left: -1px;
+								width: 460px;
+								height: 138px;
+								clip-path: polygon(0 0, 92% 0, 99.7% 100%, 0% 100%);
+								background-color: map-get(mixin.$colors, "C-white");
+								z-index: 0;
+							}
+							.footer-button {
+								width: 458px;
+								height: 136px;
+								display: flex;
+								flex-direction: column;
+								align-items: flex-start;
+								justify-content: center;
+								position: relative;
+								padding:0 42px;
+								z-index: 1;
+								clip-path: polygon(0 0, 92% 0, 99.7% 100%, 0% 100%);
+								transition: background 0.4s ease, border 0.4s ease;
+							}
+							
+							
+							.entry-bg {
+								background-color: map-get(mixin.$colors, "C-white");
+							}
+							.entry {
+								background: linear-gradient(90deg , map-get(mixin.$colors, "C-blue") 0%
+																									, map-get(mixin.$colors, "C-right-blue") 100%);
+								&__en {
+									@include mixin.font-settings (
+										F-size45,
+										F-line-height45,
+										F-letter-spacing-0,
+										F-family-Puritan,
+										normal,
+										F-color-white);
+										transition: color 0.4s ease;
+								}
+								&__ja {
+									@include mixin.font-settings (
+									F-size15,
+									F-line-height16,
+									F-letter-spacing-0-75,
+									F-family-Noto-Sans-JP,
+									normal,
+									F-color-white);
+									transition: color 0.4s ease;
+								}
+								&__arrow {
+									position: relative;
+									position: absolute;
+									background-color: white; // 横線
+									width: 38px;
+									height: 0.8px;
+									top: 71px;
+									right: 44px;
+									transition: background-color 0.4s ease;
+									&::before,
+									&::after {
+										content: "";
+										position: absolute;
+										width: 14px;
+										height: 1px;
+										background-color: white;
+										right: 0;
+									}
+									&::before {
+										top: 0px;
+										transform: rotate(45deg);
+										transform-origin: right center;
+									}
+									&::after {
+										top: 0px;
+										transform: rotate(-45deg);
+										transform-origin: right center;
+									}
+								}
+								&:hover {
+									opacity: 1;
+									border: 1px solid map-get(mixin.$colors, "C-blue");
+									background: linear-gradient(124deg, #215F9D -11%, #FFFFFF 48%);
+									transition: background 0.4s ease, border 0.4s ease;
+									.entry__en,
+									.entry__ja {
+										color: map-get(mixin.$colors, "C-blue"); // ホバー時の文字色
+										transition: color 0.4s ease;
+									}						
+									.entry__arrow {
+										transition: background-color 0.4s ease;
+										background-color: map-get(mixin.$colors, "C-blue"); // 横線
+										&::before,
+										&::after {
+											background-color: map-get(mixin.$colors, "C-blue"); // 矢印の両線
+										}
+									}
+								}												
+							}
+							.contact-bg {
+								background-color: map-get(mixin.$colors, "C-white");
+							}
+							.contact { 
+								background-color: map-get(mixin.$colors, "C-gray");
+								color: map-get(mixin.$colors, "C-blue"); // ホバー時の文字色
+								transition: color 0.4s ease;
+								&__en {
+									@include mixin.font-settings (
+										F-size45,
+										F-line-height45,
+										F-letter-spacing-0,
+										F-family-Puritan,
+										normal,
+										F-color-blue);
+										transition: color 0.4s ease;
+								}
+								&__ja {
+									@include mixin.font-settings (
+									F-size15,
+									F-line-height16,
+									F-letter-spacing-0-75,
+									F-family-Noto-Sans-JP,
+									normal,
+									F-color-blue);
+									transition: color 0.4s ease;
+								}
+								&__arrow {
+									position: relative;
+									position: absolute;
+									background-color: map-get(mixin.$colors, "C-blue"); // 横線
+									width: 38px;
+									height: 0.8px;
+									top: 71px;
+									right: 44px;
+									transition: background-color 0.4s ease;
+									&::before,
+									&::after {
+										content: "";
+										position: absolute;
+										width: 14px;
+										height: 1px;
+										background-color: map-get(mixin.$colors, "C-blue");
+										right: 0;
+									}
+									&::before {
+										top: 0px;
+										transform: rotate(45deg);
+										transform-origin: right center;
+									}
+									&::after {
+										top: 0px;
+										transform: rotate(-45deg);
+										transform-origin: right center;
+									}
+								}
+								&:hover {
+									opacity: 1;
+									border: 1px solid map-get(mixin.$colors, "C-blue");
+									background: linear-gradient(124deg, #215F9D -11%, #FFFFFF 48%);
+									transition: background 0.4s ease, border 0.4s ease;
+									.footer-button__en,
+									.footer-button__ja {
+										color: map-get(mixin.$colors, "C-blue"); // ホバー時の文字色
+										transition: color 0.4s ease;
+									}						
+									.footer-button__arrow {
+										transition: background-color 0.4s ease;
+										background-color: map-get(mixin.$colors, "C-blue"); // 横線
+										&::before,
+										&::after {
+											background-color: map-get(mixin.$colors, "C-blue"); // 矢印の両線
+										}
+									}
+								}												
+							}
+						}
+					
+					}
+				}
+			}
     }
   }
   
@@ -61,58 +231,5 @@
 
 
 @include mixin.SP {
-  #footer {
-    background: linear-gradient(to bottom, #FFFEF3, #FFF7B8);
-    .footer {
-      &__inner {
-        margin: 0 auto;
-        padding: 48px 0 12px;
-        // background-color: aqua;
-        .f-logo-img {
-          display: block;
-          margin: 0 auto;
-          width: 200px;
-          height: 59.05px;
-        }
-        .f-nav {
-          &__ul {
-            display: grid;
-            grid-template-columns: repeat(2, 0.5fr);
-            grid-gap: 23.3px 19px;
-            justify-content: center;
-            align-items: center;
-            margin: 48px 10px;
-            padding: 0 0 0 3.97%;
-            width: 92%;
-            justify-items: start;
-            &--li {
-              text-align: center; // テキストを中央揃え
-              a {
-              @include mixin.font-settings (
-                F-size14,
-                F-line-height16-8,
-                F-letter-spacing-10,
-                F-family-KosugiMaru,
-                400,
-                F-color-brown);
-                width: 100%; // 幅を均等にする
-              }  
-            }
-          }  
-        }
   
-        .f-text {
-          text-align: center;
-          @include mixin.font-settings (
-            F-size12,
-            F-line-height14-4,
-            F-letter-spacing-10,
-            F-family-KosugiMaru,
-            400,
-            F-color-black);
-        }
-      }
-    }
-    
-  }
 }  

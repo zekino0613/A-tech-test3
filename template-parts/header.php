@@ -47,8 +47,6 @@
 
 
 <body <?php body_class(); ?>>
-<div class="scroll-to-top" id="scrollToTop"><i class="fa-solid fa-chevron-up"></i></div>
-
 	<header id="header" class="<?php echo esc_attr($header_class); ?>">
     <div class="header__inner">
       <div class="header__inner--pc">
@@ -74,50 +72,47 @@
 						<li class="contact"><a href="<?php echo home_url('/contact-form/'); ?>">お問い合わせ</a></li>
 					</ul>
 				</nav>
-				
 			</div>
 
 
         
 
-        <div class="header__inner--sp">
-					<div class="logo">
-						<a href="<?php echo home_url('/'); ?>#">
-							<img class="card__image"
-									src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/logo.webp"
-									width="124" 
-									height="62"
-									loading="lazy"
-									alt="ヘッダーロゴ">
-						</a>			
+			<div class="header__inner--sp">
+				<div class="logo">
+					<a href="<?php echo home_url('/'); ?>#">
+						<img class="card__image"
+								src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/logo.webp"
+								width="124" 
+								height="62"
+								loading="lazy"
+								alt="ヘッダーロゴ">
+					</a>			
+				</div>
+
+				<div class="hamburger">
+					<div class="hamburger__lines">
+						<span class="hamburger__lines--line"></span>
+						<span class="hamburger__lines--line"></span>
+						<span class="hamburger__lines--line"></span>
 					</div>
+				</div>
 
-            <div class="hamburger">
-              <div class="hamburger__lines">
-								<span class="hamburger__lines--line"></span>
-								<span class="hamburger__lines--line"></span>
-                <span class="hamburger__lines--line"></span>
-              </div>
-            </div>
-
-            <!--  オーバーレイメニュー   -->
-            <div id="overlay-menu" class="overlay-menu">
-							<nav class="main-nav">
-								<ul>
-									<li><a href="<?php echo home_url('/'); ?>#">TOP</a></li>
-									<li><a href="<?php echo home_url('/service/'); ?>">サービス内容</a></li>
-									<li><a href="<?php echo home_url('/about/'); ?>">事業概要</a></li>
-									<li><a href="<?php echo home_url('/company/'); ?>">会社概要</a></li>
-									<li><a href="<?php echo home_url('/column/'); ?>">家を買う理由</a></li>
-									<li><a href="<?php echo home_url('/recruitment/'); ?>">採用情報</a></li>
-									<li><a href="<?php echo get_post_type_archive_link('news'); ?>">お知らせ</a></li>
-									<li><a href="<?php echo home_url('/privacy/'); ?>">プライバシーポリシー</a></li>
-									<li class="contact"><a href="<?php echo home_url('/contact-form/'); ?>">お問い合わせ</a></li>
-								</ul>
-							</nav>
-            </div>
-
-        </div>
-      </div>
-    </div>
+				<!--  オーバーレイメニュー   -->
+				<div id="overlay-menu" class="overlay-menu">
+					<nav class="main-nav">
+						<ul>
+							<li><a href="<?php echo home_url('/'); ?>#">TOP</a></li>
+							<li><a href="<?php echo home_url('/service/'); ?>">サービス内容</a></li>
+							<li><a href="<?php echo home_url('/about/'); ?>">事業概要</a></li>
+							<li><a href="<?php echo home_url('/company/'); ?>">会社概要</a></li>
+							<li><a href="<?php echo home_url('/column/'); ?>">家を買う理由</a></li>
+							<li><a href="<?php echo home_url('/recruitment/'); ?>">採用情報</a></li>
+							<li><a href="<?php echo get_post_type_archive_link('news'); ?>">お知らせ</a></li>
+							<li><a href="<?php echo home_url('/privacy/'); ?>">プライバシーポリシー</a></li>
+							<li class="contact"><a href="<?php echo home_url('/contact-form/'); ?>">お問い合わせ</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
   </header>

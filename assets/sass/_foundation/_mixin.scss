@@ -51,6 +51,7 @@ $font-sizes: (
 	F-size10-8: 10.8px,
   F-size12: 12px,
   F-size14: 14px,
+	F-size15: 15px,
   F-size16: 16px,
   F-size17: 17px,
   F-size18: 18px,
@@ -63,8 +64,10 @@ $font-sizes: (
   F-size33: 33px,
   F-size36: 36px,
   F-size40: 40px,
+	F-size45: 45px,
   F-size48: 48px,
   F-size60: 60px,
+	F-size64: 64px,
   F-size72: 72px,
   F-size80: 80px,
   F-size84: 84px,
@@ -97,34 +100,60 @@ $line-heights: (
   F-line-height36: 36,
 	F-line-height38-4: 38.4,
   F-line-height44: 44,
+	F-line-height45: 45,
+	F-line-height46: 46,
   F-line-height48: 48,
   F-line-height54: 54,
   F-line-height60: 60,
   F-line-height80: 80,
+	F-line-height89: 89,
+	F-line-height95: 95,
 	F-line-height100: 100,
   F-line-height106: 106,
+	F-line-height130: 130,
 	F-line-height150: 150,
   F-line-height168: 168);
 
-// 文字の間隔（letter-spacing）
+// ------デザインツールによって単位表記が違うので切り替える---------------
+//// pxの場合文字の間隔（letter-spacing）
 $letter-spacings: (
-  F-letter-spacing-0: 0%,
-  F-letter-spacing-4: 4%,
-  F-letter-spacing-10: 10%,
-  F-letter-spacing-20: 20%,
-
+  F-letter-spacing-0: 0px,
+  F-letter-spacing-0-48: 0.48px,
+  F-letter-spacing-0-56: 0.56px,
+  F-letter-spacing-0-7: 0.7px,
+	F-letter-spacing-0-75: 0.75px,
+	F-letter-spacing-0-8: 0.8px,
+  F-letter-spacing-1-2: 1.2px,
+  F-letter-spacing-1-4: 1.4px,
+  F-letter-spacing-1-6: 1.6px,
+  F-letter-spacing-1-8: 1.8px,
+  F-letter-spacing-2: 2px,
+  F-letter-spacing-2-4: 2.4px,
+  F-letter-spacing-3-36: 3.36px,
+  F-letter-spacing-4-8: 4.8px,
+  F-letter-spacing-5-6: 5.6px,
 );
+
+//// ％の場合文字の間隔（letter-spacing）
+// $letter-spacings: (
+//   F-letter-spacing-0: 0%,
+//   F-letter-spacing-4: 4%,
+//   F-letter-spacing-10: 10%,
+//   F-letter-spacing-20: 20%,
+// );
+// ------------------------------------------------------------------------
 
 // フォントファミリー（プレフィックス付き）
 $font-families: (
-  F-family-Puritan: "Puritan",
+  F-family-Puritan: "Puritan",//Gill Sansの代替え
 	F-family-Noto-Sans-JP: "Noto Sans JP",
 );
 
 $font-weights: (
   normal: normal,
+	medium: 500,
   bold: bold,
-  300: 300,
+	300: 300,
   400: 400,
   900: 900,
   );
@@ -152,29 +181,27 @@ $font-colors: (
     $font-size-value: strip-unit($size-value); // ✅ `px` を削除して数値に変換
     font-size: $size-value;
   }
-  // // ✅ Letter-Spacing の計算（フォントサイズがある場合のみ）
-  // @if $letter-spacing !=null and $font-size-value !=null {
-  //   $spacing-value: if(map-has-key($letter-spacings, $letter-spacing), map-get($letter-spacings, $letter-spacing), $letter-spacing);
-  //   $spacing-value-unitless: strip-unit($spacing-value); // ✅ `px` を削除
-  //   letter-spacing: #{($spacing-value-unitless / $font-size-value )}em;
-  // }
-// ✅ Letter-Spacing の計算（フォントサイズがある場合のみ）
-@if $letter-spacing != null and $font-size-value != null {
-  // 1. letter-spacing の値を取得（マップにない場合はデフォルト値10%を使用）
-  $spacing-value: if(map-has-key($letter-spacings, $letter-spacing), map-get($letter-spacings, $letter-spacing), 10%);
-
-  // 2. `strip-unit()` を適用し、数値のみ取得（%を除去）
-  $spacing-value-unitless: if(type-of($spacing-value) == "number", strip-unit($spacing-value), 10); 
-
-  // 3. % を em に変換（0%の場合は `0em` にする）
-  $converted-spacing: if($spacing-value-unitless == 0, 0em, ($spacing-value-unitless / 100) * 1em);
-
-  // 4. `letter-spacing` を `em` で出力
-  letter-spacing: $converted-spacing;
-}
-
-
-
+	
+	// ------デザインツールによって単位表記が違うので切り替える----------------------------------------------
+  ////✅ ➀【＜デザイン表記が％場合＞Letter-Spacing の計算】（フォントサイズがある場合のみ）
+  @if $letter-spacing !=null and $font-size-value !=null {
+    $spacing-value: if(map-has-key($letter-spacings, $letter-spacing), map-get($letter-spacings, $letter-spacing), $letter-spacing);
+    $spacing-value-unitless: strip-unit($spacing-value); // ✅ `px` を削除
+    letter-spacing: #{($spacing-value-unitless / $font-size-value )}em;
+  }
+	
+	////✅ ➁【＜デザイン表記が％場合＞Letter-Spacing の計算】（フォントサイズがある場合のみ）
+	// @if $letter-spacing != null and $font-size-value != null {
+	// 	// 1. letter-spacing の値を取得（マップにない場合はデフォルト値10%を使用）
+	// 	$spacing-value: if(map-has-key($letter-spacings, $letter-spacing), map-get($letter-spacings, $letter-spacing), 10%);
+	// 	// 2. `strip-unit()` を適用し、数値のみ取得（%を除去）
+	// 	$spacing-value-unitless: if(type-of($spacing-value) == "number", strip-unit($spacing-value), 10); 
+	// 	// 3. % を em に変換（0%の場合は `0em` にする）
+	// 	$converted-spacing: if($spacing-value-unitless == 0, 0em, ($spacing-value-unitless / 100) * 1em);
+	// 	// 4. `letter-spacing` を `em` で出力
+	// 	letter-spacing: $converted-spacing;
+	// }
+// ---------------------------------------------------------------------------------------------------
 
     // ✅ Line-Height の計算（フォントサイズがある場合のみ）
   @if $line !=null and $font-size-value !=null {

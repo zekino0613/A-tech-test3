@@ -28,51 +28,6 @@ body {
   width: 100%;
   height: 100%;
 }
-body .scroll-to-top {
-  position: fixed;
-  bottom: 31px;
-  right: 32px;
-  height: 72px; /* ボタンの幅 */
-  width: 72px; /* ボタンの高さ */
-  background-color: #FFFFFF;
-  border-radius: 50%; /* 円形にする */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 36px; /* 矢印の大きさ */
-  font-weight: bold; /* 矢印を太字に */
-  /* 矢印の色 */
-  cursor: pointer;
-  opacity: 0; /* 初期状態で非表示 */
-  visibility: hidden;
-  -webkit-transform: scale(0.8);
-          transform: scale(0.8); /* 初期状態で縮小 */
-  -webkit-transition: opacity 1s ease, visibility 0.3s ease, -webkit-transform 0.3s ease;
-  transition: opacity 1s ease, visibility 0.3s ease, -webkit-transform 0.3s ease;
-  transition: opacity 1s ease, transform 0.3s ease, visibility 0.3s ease;
-  transition: opacity 1s ease, transform 0.3s ease, visibility 0.3s ease, -webkit-transform 0.3s ease; /* 表示のトランジション */
-  z-index: 999;
-}
-body .scroll-to-top.show {
-  opacity: 1; /* 表示状態 */
-  visibility: visible; /* 表示状態 */
-  -webkit-transform: scale(1);
-          transform: scale(1); /* 通常サイズ */
-  -webkit-transition: 1s;
-  transition: 1s;
-}
-body .scroll-to-top:hover {
-  -webkit-transition: 1s;
-  transition: 1s;
-  color: #FFFFFF;
-  /* ホバー時の色 */
-}
 
 *,
 *::before,
@@ -131,25 +86,6 @@ a:focus-visible {
   display: block;
 }
 
-.fade-in {
-  opacity: 0;
-  -webkit-transform: translateY(100px);
-          transform: translateY(100px);
-  -webkit-transition: opacity 1s ease-out, -webkit-transform 1s ease-out;
-  transition: opacity 1s ease-out, -webkit-transform 1s ease-out;
-  transition: opacity 1s ease-out, transform 1s ease-out;
-  transition: opacity 1s ease-out, transform 1s ease-out, -webkit-transform 1s ease-out;
-  visibility: hidden;
-  /* 初期状態では要素を隠します。 */
-}
-.fade-in.visible {
-  opacity: 1;
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
-  visibility: visible;
-  /* ビューポート内に入ったときに要素を表示します。 */
-}
-
 .fadein {
   opacity: 0;
   -webkit-transform: translate(0, 200px);
@@ -203,160 +139,181 @@ a:focus-visible {
             transform: rotate(360deg);
   }
 }
-.title-icon {
-  display: block;
-  width: 345px;
-  margin: 0 auto;
-  text-align: center;
-}
-.title-icon__bg {
-  width: 108px;
-  height: 108px;
-  border-radius: 50%;
+.section-title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 0 auto 8px;
 }
-.title-icon__bg--img {
-  width: 72px;
-  height: 72px;
+.section-title__eng {
+  text-transform: capitalize;
+  font-size: 64px;
+  letter-spacing: 0em;
+  line-height: 1.484375;
+  font-family: "Puritan";
+  font-weight: normal;
+  color: #141853;
 }
-.title-icon__title {
-  font-size: 24px;
-  letter-spacing: 0.1em;
-  line-height: 1.5;
+.section-title__ja {
+  margin-left: 26px;
+  font-size: 16px;
+  letter-spacing: 0em;
+  line-height: 5.9375;
+  font-family: "Noto Sans JP";
   font-weight: 400;
-  width: 100%;
-  display: block;
-  margin: 0 auto 8px;
-}
-.title-icon__english {
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  line-height: 1;
-  font-weight: 900;
-  width: 100%;
-  display: block;
+  color: #141853;
 }
 
-.btn {
-  width: 240px;
+.slanted-svg-button {
+  display: inline-block;
+  width: 263px;
+  height: 59px;
+  cursor: pointer;
+  margin: 0 21px 42px 94px;
+}
+.slanted-svg-button a {
+  opacity: 1;
+}
+.slanted-svg-button svg {
+  width: 100%;
+  height: 100%;
+}
+.slanted-svg-button .button-shadow {
+  fill: #141853;
+  -webkit-transition: fill 0.3s;
+  transition: fill 0.3s;
+}
+.slanted-svg-button .button-shape {
+  fill: #FFFFFF;
+  stroke: #141853;
+  stroke-width: 1;
+  -webkit-transition: fill 0.3s, stroke 0.3s;
+  transition: fill 0.3s, stroke 0.3s;
+}
+.slanted-svg-button .button-text {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  line-height: 1.7142857143;
+  font-family: "Puritan";
+  font-weight: 400;
+  color: #141853;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+.slanted-svg-button .button-text .arrow {
+  margin-left: 8px;
+}
+.slanted-svg-button:hover .button-shadow {
+  fill: #FFFFFF;
+  stroke: #141853;
+}
+.slanted-svg-button:hover .button-shape {
+  fill: #141853;
+  stroke: #FFFFFF;
+}
+.slanted-svg-button:hover .button-text {
+  color: #FFFFFF;
+}
+
+.gradient-entry-button {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  max-width: 317px;
+  width: 100%;
   height: 60px;
-  border-radius: 30px;
-  border: 2px solid;
+  background: -webkit-gradient(linear, left top, right top, from(#141853), to(#215F9D));
+  background: linear-gradient(90deg, #141853 0%, #215F9D 100%);
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  line-height: 2;
+  font-family: "Noto Sans JP";
+  font-weight: bold;
+  color: #FFFFFF;
+  border: 1px solid #DFE0E6;
+  -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1607843137);
+          box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1607843137);
+}
+.gradient-entry-button:hover {
+  color: #141853;
+  border: 1px solid #141853;
+  background: linear-gradient(124deg, #215F9D -11%, #FFFFFF 48%);
+}
+
+.number-list {
+  counter-reset: item;
+  list-style: disc;
+  padding: 0;
+  margin: 0 auto;
+  width: 60%;
+}
+.number-list__item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #FFFFFF;
-  -webkit-transition: ease, -webkit-transform 1s ease;
-  transition: ease, -webkit-transform 1s ease;
-  transition: ease, transform 1s ease;
-  transition: ease, transform 1s ease, -webkit-transform 1s ease;
+}
+.number-list__item .image {
+  width: 140px;
+  height: 140px;
+  margin-right: 100px;
+}
+.number-list__item .textarea {
   position: relative;
-  -webkit-transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
-  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+  margin: 20px auto;
 }
-.btn__text {
-  font-size: 18px;
-  letter-spacing: 0.1em;
+.number-list__item .textarea__title {
+  border-bottom: 2px solid #141853;
+  padding: 12.5px 0 7.5px 60px;
+  font-size: 20px;
+  letter-spacing: 0em;
   line-height: 1;
-  font-weight: 400;
-  margin: 0 0 0 0;
+  font-family: "Noto Sans JP";
+  font-weight: 500;
+  color: #141853;
 }
-.btn i {
+.number-list__item .textarea__text {
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  line-height: 2;
+  font-family: "Noto Sans JP";
+  font-weight: normal;
+  color: #000000;
+}
+.number-list__item .textarea::before {
+  counter-increment: item;
+  content: counter(item, decimal-leading-zero);
   position: absolute;
-  top: 17px;
-  right: 22.1px;
-  font-size: 22px;
-  -webkit-transition: -webkit-transform 0.3s ease-in-out;
-  transition: -webkit-transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-}
-
-.btn:hover {
+  text-align: center;
+  width: 49px;
+  height: 49px;
+  left: 0;
+  top: -7.5px;
+  background-color: #141853;
+  font-size: 24px;
+  letter-spacing: 0em;
+  line-height: 2;
+  font-family: "Noto Sans JP";
+  font-weight: normal;
   color: #FFFFFF;
-  border-color: #FFFFFF;
-  opacity: 1;
-  -webkit-transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
-  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
-}
-.btn:hover .btn__text {
-  color: #FFFFFF;
-}
-
-a .btn {
-  display: block;
-}
-
-.btn-pattern2 {
-  max-width: 300px;
-  width: 100%;
-  margin: 127px auto 80px;
-  border-radius: 30px;
-  border: 2px solid;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #FFFFFF;
-  -webkit-transition: ease, -webkit-transform 1s ease;
-  transition: ease, -webkit-transform 1s ease;
-  transition: ease, transform 1s ease;
-  transition: ease, transform 1s ease, -webkit-transform 1s ease;
-  position: relative;
-  -webkit-transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
-  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
-}
-.btn-pattern2__text {
-  font-size: 18px;
-  letter-spacing: 0.1em;
-  line-height: 1;
-  font-weight: 400;
-  margin: 0 0 0 0;
-}
-.btn-pattern2 i {
-  position: absolute;
-  top: 17px;
-  right: 22.1px;
-  font-size: 22px;
-  -webkit-transition: -webkit-transform 0.3s ease-in-out;
-  transition: -webkit-transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-}
-
-.btn-pattern2:hover {
-  color: #FFFFFF;
-  border-color: #FFFFFF;
-  opacity: 1;
-  -webkit-transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
-  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
-}
-.btn-pattern2:hover .btn-pattern2__text {
-  color: #FFFFFF;
-}
-
-a .btn-pattern2 {
-  display: block;
 }
 
 .pagination {
@@ -390,7 +347,7 @@ a .btn-pattern2 {
   height: 36px;
   border-radius: 8px; /* 丸い形 */
   font-size: 16px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/16em;
   line-height: 1.2;
   font-weight: normal;
   text-decoration: none;
@@ -421,230 +378,8 @@ a .btn-pattern2 {
   .brpc {
     display: none;
   }
-  .title-icon {
-    width: 100%;
-    margin: 0 auto;
-  }
-  .title-icon__bg {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    margin: 0 auto 8px;
-  }
-  .title-icon__bg--img {
-    width: 53px;
-    height: 53px;
-  }
-  .title-icon__title {
-    font-size: 20px;
-    letter-spacing: 0.1em;
-    line-height: 1.5;
-    font-weight: 400;
-    width: 100%;
-    display: block;
-    margin: 0 auto 9px;
-  }
-  .title-icon__english {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    line-height: 1;
-    font-weight: 900;
-    width: 100%;
-    display: block;
-  }
-  .pink-bk {
-    width: 100%;
-    height: 100%;
-    background: url("../../assets/images/kidsland_image/bg/top-letters__bg-sp.webp") no-repeat center top;
-    background-size: cover;
-    padding: 160px 4% 120px;
-    position: relative;
-  }
-  .pink-bk .title-icon__bg {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-  }
-  .pink-bk .title-icon__title {
-    position: absolute;
-    top: 60px;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-  }
-  .pink-bk .title-icon__english {
-    position: absolute;
-    top: 90px;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-  }
-  .btn {
-    max-width: 200px;
-    width: 100%;
-    height: 50px;
-    border-radius: 30px;
-    border: 2px solid;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    background-color: #FFFFFF;
-    -webkit-transition: ease, -webkit-transform 1s ease;
-    transition: ease, -webkit-transform 1s ease;
-    transition: ease, transform 1s ease;
-    transition: ease, transform 1s ease, -webkit-transform 1s ease;
-    position: relative;
-    -webkit-transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
-    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
-  }
-  .btn__text {
-    font-size: 16px;
-    letter-spacing: 0.1em;
-    line-height: 1;
-    font-weight: 400;
-  }
-  .btn i {
-    position: absolute;
-    top: 15px;
-    right: 13.1px;
-    font-size: 16px;
-    -webkit-transition: -webkit-transform 0.3s ease-in-out;
-    transition: -webkit-transform 0.3s ease-in-out;
-    transition: transform 0.3s ease-in-out;
-    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-  }
-  .btn:hover {
-    color: #FFFFFF;
-    border-color: #FFFFFF;
-    opacity: 1;
-    -webkit-transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
-    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
-  }
-  .btn:hover .btn__text {
-    color: #FFFFFF;
-  }
-  a .btn {
-    display: block;
-  }
 }
-.btn-pattern2 {
-  max-width: 300px;
-  width: 100%;
-  height: 60px;
-  margin: 127px auto 80px;
-  border-radius: 30px;
-  border: 2px solid;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #FFFFFF;
-  -webkit-transition: ease, -webkit-transform 1s ease;
-  transition: ease, -webkit-transform 1s ease;
-  transition: ease, transform 1s ease;
-  transition: ease, transform 1s ease, -webkit-transform 1s ease;
-  position: relative;
-}
-.btn-pattern2__text {
-  font-size: 18px;
-  letter-spacing: 0.1em;
-  line-height: 1;
-  font-weight: 400;
-}
-.btn-pattern2 i {
-  position: absolute;
-  top: 16px;
-  right: 22.1px;
-  font-size: 22px;
-  -webkit-transition: -webkit-transform 0.3s ease-in-out;
-  transition: -webkit-transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-}
-
-.btn-pattern2:hover {
-  color: #FFFFFF;
-  border-color: #FFFFFF;
-  opacity: 1;
-  -webkit-transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
-  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border-color 0.5s ease-in-out;
-}
-.btn-pattern2:hover .btn-pattern2__text {
-  color: #FFFFFF;
-}
-
-a .btn-pattern2 {
-  display: block;
-}
-
 @media (max-width: 500px) {
-  body .scroll-to-top {
-    position: fixed;
-    bottom: 18px;
-    right: 16px;
-    height: 48px; /* ボタンの幅 */
-    width: 48px; /* ボタンの高さ */
-    background-color: #FFFFFF;
-    border-radius: 50%; /* 円形にする */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    font-size: 20px; /* 矢印の大きさ */
-    font-weight: bold; /* 矢印を太字に */
-    /* 矢印の色 */
-    cursor: pointer;
-    opacity: 0; /* 初期状態で非表示 */
-    visibility: hidden;
-    -webkit-transform: scale(0.8);
-            transform: scale(0.8); /* 初期状態で縮小 */
-    -webkit-transition: opacity 1s ease, visibility 0.3s ease, -webkit-transform 0.3s ease;
-    transition: opacity 1s ease, visibility 0.3s ease, -webkit-transform 0.3s ease;
-    transition: opacity 1s ease, transform 0.3s ease, visibility 0.3s ease;
-    transition: opacity 1s ease, transform 0.3s ease, visibility 0.3s ease, -webkit-transform 0.3s ease; /* 表示のトランジション */
-    z-index: 999;
-  }
-  body .scroll-to-top.show {
-    opacity: 1; /* 表示状態 */
-    visibility: visible; /* 表示状態 */
-    -webkit-transform: scale(1);
-            transform: scale(1); /* 通常サイズ */
-    -webkit-transition: 1s;
-    transition: 1s;
-  }
-  body .scroll-to-top:hover {
-    -webkit-transition: 1s;
-    transition: 1s;
-    color: #FFFFFF;
-    /* ホバー時の色 */
-  }
   .brsp {
     display: block;
   }
@@ -658,7 +393,7 @@ a .btn-pattern2 {
 }
 #error-404 p {
   font-size: 20px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/20em;
   line-height: 1.5;
   font-weight: 400;
   color: #000000;
@@ -677,7 +412,7 @@ a .btn-pattern2 {
   }
   #error-404 p {
     font-size: 17px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/17em;
     line-height: 1.5;
     font-weight: 400;
     color: #000000;
@@ -990,7 +725,7 @@ a .btn-pattern2 {
   }
   #header .header__inner--sp .h-bg .overlay-menu .h-nav__ul--li a .header-icon__title {
     font-size: 16px;
-    letter-spacing: 0.04em;
+    letter-spacing: F-letter-spacing-4/16em;
     line-height: 1.2;
     font-weight: normal;
     width: 100%;
@@ -999,7 +734,7 @@ a .btn-pattern2 {
   }
   #header .header__inner--sp .h-bg .overlay-menu .h-nav__ul--li a .header-icon__english {
     font-size: 10px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/10em;
     line-height: 1.2;
     font-weight: 900;
     width: 100%;
@@ -1278,7 +1013,7 @@ a .btn-pattern2 {
   }
   #header .header__inner--sp .overlay-menu .overlay-menu .h-nav__ul--li a .header-icon__title {
     font-size: 14px;
-    letter-spacing: 0.04em;
+    letter-spacing: F-letter-spacing-4/14em;
     line-height: 1.3714285714;
     font-weight: normal;
     width: 100%;
@@ -1287,7 +1022,7 @@ a .btn-pattern2 {
   }
   #header .header__inner--sp .overlay-menu .overlay-menu .h-nav__ul--li a .header-icon__english {
     font-size: 10px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/10em;
     line-height: 1.2;
     font-weight: 900;
     width: 100%;
@@ -1313,101 +1048,249 @@ a .btn-pattern2 {
     transition: opacity 0.5s ease, transform 0.5s ease, -webkit-transform 0.5s ease;
   }
 }
-#footer {
-  background: -webkit-gradient(linear, left top, left bottom, from(#FFFEF3), to(#FFF7B8));
-  background: linear-gradient(to bottom, #FFFEF3, #FFF7B8);
-}
 #footer .footer__inner {
-  margin: 0 auto;
-  padding: 48px 0 12px;
+  text-transform: capitalize;
 }
-#footer .footer__inner .f-logo-img {
-  display: block;
-  margin: 0 auto;
-  width: 240px;
-  height: 70.86px;
+#footer .footer__inner .footer-top {
+  background-color: #141853;
+  padding: 40px 0;
 }
-#footer .footer__inner .f-nav__ul {
+#footer .footer__inner .footer-top__content {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}
+#footer .footer__inner .footer-top__content--title {
+  font-size: 64px;
+  letter-spacing: 0em;
+  line-height: 1.484375;
+  font-family: "Puritan";
+  font-weight: normal;
+  color: #FFFFFF;
+}
+#footer .footer__inner .footer-top__content--text {
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  line-height: 2;
+  font-family: "Noto Sans JP";
+  font-weight: normal;
+  color: #FFFFFF;
+}
+#footer .footer__inner .footer-top__content--flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin: 48px auto;
-  width: 70%;
-  padding: 0 0 0 0;
-  -webkit-column-gap: 58px;
-     -moz-column-gap: 58px;
-          column-gap: 58px;
-  row-gap: 26px;
+  margin: 40px 0 0;
+  gap: 40px;
 }
-#footer .footer__inner .f-nav__ul--li a {
-  font-size: 16px;
-  letter-spacing: 0.1em;
-  line-height: 1.2;
-  font-weight: 400;
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap {
+  width: 460px;
+  height: 138px;
+  position: relative;
 }
-#footer .footer__inner .f-text {
-  text-align: center;
-  font-size: 14px;
-  letter-spacing: 0.1em;
-  line-height: 1.2;
-  font-weight: 400;
-  color: #000000;
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .footer-button-bg {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 460px;
+  height: 138px;
+  -webkit-clip-path: polygon(0 0, 92% 0, 99.7% 100%, 0% 100%);
+          clip-path: polygon(0 0, 92% 0, 99.7% 100%, 0% 100%);
+  background-color: #FFFFFF;
+  z-index: 0;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .footer-button {
+  width: 458px;
+  height: 136px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  padding: 0 42px;
+  z-index: 1;
+  -webkit-clip-path: polygon(0 0, 92% 0, 99.7% 100%, 0% 100%);
+          clip-path: polygon(0 0, 92% 0, 99.7% 100%, 0% 100%);
+  -webkit-transition: background 0.4s ease, border 0.4s ease;
+  transition: background 0.4s ease, border 0.4s ease;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .entry-bg {
+  background-color: #FFFFFF;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .entry {
+  background: -webkit-gradient(linear, left top, right top, from(#141853), to(#215F9D));
+  background: linear-gradient(90deg, #141853 0%, #215F9D 100%);
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .entry__en {
+  font-size: 45px;
+  letter-spacing: 0em;
+  line-height: 1;
+  font-family: "Puritan";
+  font-weight: normal;
+  color: #FFFFFF;
+  -webkit-transition: color 0.4s ease;
+  transition: color 0.4s ease;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .entry__ja {
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  line-height: 1.0666666667;
+  font-family: "Noto Sans JP";
+  font-weight: normal;
+  color: #FFFFFF;
+  -webkit-transition: color 0.4s ease;
+  transition: color 0.4s ease;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .entry__arrow {
+  position: relative;
+  position: absolute;
+  background-color: white;
+  width: 38px;
+  height: 0.8px;
+  top: 71px;
+  right: 44px;
+  -webkit-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .entry__arrow::before, #footer .footer__inner .footer-top__content--flex .footer-button-wrap .entry__arrow::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 1px;
+  background-color: white;
+  right: 0;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .entry__arrow::before {
+  top: 0px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transform-origin: right center;
+          transform-origin: right center;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .entry__arrow::after {
+  top: 0px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transform-origin: right center;
+          transform-origin: right center;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .entry:hover {
+  opacity: 1;
+  border: 1px solid #141853;
+  background: linear-gradient(124deg, #215F9D -11%, #FFFFFF 48%);
+  -webkit-transition: background 0.4s ease, border 0.4s ease;
+  transition: background 0.4s ease, border 0.4s ease;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .entry:hover .entry__en,
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .entry:hover .entry__ja {
+  color: #141853;
+  -webkit-transition: color 0.4s ease;
+  transition: color 0.4s ease;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .entry:hover .entry__arrow {
+  -webkit-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+  background-color: #141853;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .entry:hover .entry__arrow::before, #footer .footer__inner .footer-top__content--flex .footer-button-wrap .entry:hover .entry__arrow::after {
+  background-color: #141853;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .contact-bg {
+  background-color: #FFFFFF;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .contact {
+  background-color: #DFE0E6;
+  color: #141853;
+  -webkit-transition: color 0.4s ease;
+  transition: color 0.4s ease;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .contact__en {
+  font-size: 45px;
+  letter-spacing: 0em;
+  line-height: 1;
+  font-family: "Puritan";
+  font-weight: normal;
+  color: #141853;
+  -webkit-transition: color 0.4s ease;
+  transition: color 0.4s ease;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .contact__ja {
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  line-height: 1.0666666667;
+  font-family: "Noto Sans JP";
+  font-weight: normal;
+  color: #141853;
+  -webkit-transition: color 0.4s ease;
+  transition: color 0.4s ease;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .contact__arrow {
+  position: relative;
+  position: absolute;
+  background-color: #141853;
+  width: 38px;
+  height: 0.8px;
+  top: 71px;
+  right: 44px;
+  -webkit-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .contact__arrow::before, #footer .footer__inner .footer-top__content--flex .footer-button-wrap .contact__arrow::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 1px;
+  background-color: #141853;
+  right: 0;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .contact__arrow::before {
+  top: 0px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transform-origin: right center;
+          transform-origin: right center;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .contact__arrow::after {
+  top: 0px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transform-origin: right center;
+          transform-origin: right center;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .contact:hover {
+  opacity: 1;
+  border: 1px solid #141853;
+  background: linear-gradient(124deg, #215F9D -11%, #FFFFFF 48%);
+  -webkit-transition: background 0.4s ease, border 0.4s ease;
+  transition: background 0.4s ease, border 0.4s ease;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .contact:hover .footer-button__en,
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .contact:hover .footer-button__ja {
+  color: #141853;
+  -webkit-transition: color 0.4s ease;
+  transition: color 0.4s ease;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .contact:hover .footer-button__arrow {
+  -webkit-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+  background-color: #141853;
+}
+#footer .footer__inner .footer-top__content--flex .footer-button-wrap .contact:hover .footer-button__arrow::before, #footer .footer__inner .footer-top__content--flex .footer-button-wrap .contact:hover .footer-button__arrow::after {
+  background-color: #141853;
 }
 
-@media (max-width: 500px) {
-  #footer {
-    background: -webkit-gradient(linear, left top, left bottom, from(#FFFEF3), to(#FFF7B8));
-    background: linear-gradient(to bottom, #FFFEF3, #FFF7B8);
-  }
-  #footer .footer__inner {
-    margin: 0 auto;
-    padding: 48px 0 12px;
-  }
-  #footer .footer__inner .f-logo-img {
-    display: block;
-    margin: 0 auto;
-    width: 200px;
-    height: 59.05px;
-  }
-  #footer .footer__inner .f-nav__ul {
-    display: grid;
-    grid-template-columns: repeat(2, 0.5fr);
-    grid-gap: 23.3px 19px;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    margin: 48px 10px;
-    padding: 0 0 0 3.97%;
-    width: 92%;
-    justify-items: start;
-  }
-  #footer .footer__inner .f-nav__ul--li {
-    text-align: center;
-  }
-  #footer .footer__inner .f-nav__ul--li a {
-    font-size: 14px;
-    letter-spacing: 0.1em;
-    line-height: 1.2;
-    font-weight: 400;
-    width: 100%;
-  }
-  #footer .footer__inner .f-text {
-    text-align: center;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    line-height: 1.2;
-    font-weight: 400;
-    color: #000000;
-  }
-}
 #sub-mainvisual {
   width: 100%;
   height: 100%;
@@ -1439,7 +1322,7 @@ a .btn-pattern2 {
 }
 #sub-mainvisual .sub-mainvisual__inner--page-title .title-wrapper h1 {
   font-size: 32px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/32em;
   line-height: 1;
   font-weight: 400;
   display: block;
@@ -1447,7 +1330,7 @@ a .btn-pattern2 {
 }
 #sub-mainvisual .sub-mainvisual__inner--page-title .title-wrapper p {
   font-size: 10px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/10em;
   line-height: 1;
   font-weight: 900;
 }
@@ -1463,13 +1346,13 @@ a .btn-pattern2 {
           align-items: center;
   gap: 15px;
   font-size: 14px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/14em;
   line-height: 1;
   font-weight: 400;
 }
 #sub-mainvisual .sub-mainvisual__inner--breadcrumbs {
   font-size: 16px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/16em;
   line-height: 1.5;
   font-weight: normal;
   padding: 0 0 0 0;
@@ -1532,7 +1415,7 @@ a .btn-pattern2 {
   }
   #sub-mainvisual .sub-mainvisual__inner--page-title .title-wrapper h1 {
     font-size: 28px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/28em;
     line-height: 1.25;
     font-weight: 400;
     display: block;
@@ -1576,7 +1459,7 @@ a .btn-pattern2 {
   }
   #sub-mainvisual .sub-mainvisual__inner--page-title .title-wrapper h1 {
     font-size: 20px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/20em;
     line-height: 1.5;
     font-weight: 400;
     display: block;
@@ -1584,13 +1467,13 @@ a .btn-pattern2 {
   }
   #sub-mainvisual .sub-mainvisual__inner--page-title .title-wrapper p {
     font-size: 10px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/10em;
     line-height: 1;
     font-weight: 900;
   }
   #sub-mainvisual .sub-mainvisual__inner--breadcrumbs {
     font-size: 14px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/14em;
     line-height: 1.5;
     font-weight: normal;
     padding: 0 0 0 0;
@@ -1767,7 +1650,7 @@ a .btn-pattern2 {
 }
 #archive-info .archive-info__inner .filter-buttons .filter-button {
   font-size: 16px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/16em;
   line-height: 1.2;
   font-weight: normal;
   border-radius: 8px;
@@ -1856,7 +1739,7 @@ a .btn-pattern2 {
 #archive-info .archive-info__inner .info-list .info-card__inner--flex .post-date {
   display: none;
   font-size: 16px;
-  letter-spacing: 0.04em;
+  letter-spacing: F-letter-spacing-4/16em;
   line-height: 1.5;
   font-weight: normal;
   color: #000000;
@@ -1870,7 +1753,7 @@ a .btn-pattern2 {
 }
 #archive-info .archive-info__inner .info-list .info-card__inner .textarea__post-date {
   font-size: 16px;
-  letter-spacing: 0.04em;
+  letter-spacing: F-letter-spacing-4/16em;
   line-height: 1.5;
   font-weight: normal;
   color: #000000;
@@ -1880,7 +1763,7 @@ a .btn-pattern2 {
 }
 #archive-info .archive-info__inner .info-list .info-card__inner .textarea__info-title {
   font-size: 20px;
-  letter-spacing: 0.04em;
+  letter-spacing: F-letter-spacing-4/20em;
   line-height: 1.5;
   font-weight: normal;
   margin: 0 0 12px;
@@ -1911,7 +1794,7 @@ a .btn-pattern2 {
   }
   #archive-info .archive-info__inner .filter-buttons .filter-button {
     font-size: 16px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/16em;
     line-height: 1.2;
     font-weight: normal;
     border-radius: 8px;
@@ -2000,7 +1883,7 @@ a .btn-pattern2 {
   #archive-info .archive-info__inner .info-list .info-card__inner--flex .post-date {
     display: block;
     font-size: 14px;
-    letter-spacing: 0.04em;
+    letter-spacing: F-letter-spacing-4/14em;
     line-height: 1.5;
     font-weight: normal;
     color: #000000;
@@ -2013,7 +1896,7 @@ a .btn-pattern2 {
   #archive-info .archive-info__inner .info-list .info-card__inner .textarea__post-date {
     display: none;
     font-size: 14px;
-    letter-spacing: 0.04em;
+    letter-spacing: F-letter-spacing-4/14em;
     line-height: 1.5;
     font-weight: normal;
     color: #000000;
@@ -2021,14 +1904,14 @@ a .btn-pattern2 {
   }
   #archive-info .archive-info__inner .info-list .info-card__inner .textarea__info-title {
     font-size: 18px;
-    letter-spacing: 0.04em;
+    letter-spacing: F-letter-spacing-4/18em;
     line-height: 1.5;
     font-weight: normal;
     margin: 0 0 12px;
   }
   #archive-info .archive-info__inner .info-list .info-card__inner .textarea__paragraph {
     font-size: 14px;
-    letter-spacing: 0.04em;
+    letter-spacing: F-letter-spacing-4/14em;
     line-height: 1.5;
     font-weight: normal;
     color: #000000;
@@ -2048,7 +1931,7 @@ a .btn-pattern2 {
 }
 #single-info .info-post__post-date {
   font-size: 14px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/14em;
   line-height: 1.2;
   font-weight: normal;
   color: #000000;
@@ -2057,7 +1940,7 @@ a .btn-pattern2 {
   border-bottom: 2px solid #000000;
   padding: 11px 0;
   font-size: 32px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/32em;
   line-height: 1.2;
   font-weight: normal;
   color: #000000;
@@ -2072,7 +1955,7 @@ a .btn-pattern2 {
 }
 #single-info .info-post .text-content__inner {
   font-size: 16px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/16em;
   line-height: 2;
   font-weight: normal;
   color: #000000;
@@ -2116,14 +1999,14 @@ a .btn-pattern2 {
   }
   #single-info .info-post__post-date {
     font-size: 12px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-family-KosugiMaru/12em;
     line-height: F-line-height14-4 F-letter-spacing-10/12;
   }
   #single-info .info-post__title {
     border-bottom: 2px solid #000000;
     padding: 10px 0;
     font-size: 20px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/20em;
     line-height: 1.2;
     font-weight: normal;
     color: #000000;
@@ -2138,7 +2021,7 @@ a .btn-pattern2 {
   }
   #single-info .info-post .text-content__inner {
     font-size: 16px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/16em;
     line-height: 2;
     font-weight: normal;
     color: #000000;
@@ -2184,7 +2067,7 @@ a .btn-pattern2 {
 #contact-form-section .contact-form-section__inner--textarea {
   line-height: 1.4;
   font-size: 16px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-family-KosugiMaru/16em;
   line-height: F-letter-spacing-10/16;
 }
 #contact-form-section .contact-form-section__inner--textarea p {
@@ -2229,7 +2112,7 @@ a .btn-pattern2 {
 }
 #contact-form-section .contact-form-section__inner .contact-form-wrapper .wpcf7 .wpcf7-form .form-list .label-content label {
   font-size: 16px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/16em;
   line-height: 1.5;
   font-weight: 400;
 }
@@ -2242,7 +2125,7 @@ a .btn-pattern2 {
   margin: 0 0 0 12px;
   background-color: #141853;
   font-size: 12px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/12em;
   line-height: 1;
   font-weight: 400;
   color: #FFFFFF;
@@ -2256,7 +2139,7 @@ a .btn-pattern2 {
   margin: 0 0 0 12px;
   background-color: #000000;
   font-size: 12px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/12em;
   line-height: 1;
   font-weight: 400;
   color: #FFFFFF;
@@ -2282,7 +2165,7 @@ a .btn-pattern2 {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   font-size: 16px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/16em;
   line-height: 1;
   font-weight: 400;
   color: #000000;
@@ -2304,7 +2187,7 @@ a .btn-pattern2 {
 }
 #contact-form-section .contact-form-section__inner .contact-form-wrapper .wpcf7 .wpcf7-form .form-list .input-content.address .input-address label {
   font-size: 16px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/16em;
   line-height: 1;
   font-weight: 400;
   color: #000000;
@@ -2390,7 +2273,7 @@ a .btn-pattern2 {
           flex: 1;
   word-break: break-word;
   font-size: 16px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/16em;
   line-height: 1.5;
   font-weight: 400;
   color: #000000;
@@ -2404,7 +2287,7 @@ a .btn-pattern2 {
   padding: 4px 0;
   margin: 0 0 0 4px;
   font-size: 12px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/12em;
   line-height: 1;
   font-weight: 400;
   color: #FFFFFF;
@@ -2460,7 +2343,7 @@ a .btn-pattern2 {
   margin: 30px auto;
   text-align: center;
   font-size: 18px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/18em;
   line-height: 1;
   font-weight: 400;
 }
@@ -2510,7 +2393,7 @@ a .btn-pattern2 {
   #contact-form-section .contact-form-section__inner--textarea {
     line-height: 1.5;
     font-size: 14px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-family-KosugiMaru/14em;
     line-height: F-letter-spacing-10/14;
   }
   #contact-form-section .contact-form-section__inner--textarea p {
@@ -2561,7 +2444,7 @@ a .btn-pattern2 {
   }
   #contact-form-section .contact-form-section__inner .contact-form-wrapper .wpcf7 .wpcf7-form .form-list .label-content label {
     font-size: 16px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/16em;
     line-height: 1.5;
     font-weight: 400;
   }
@@ -2573,7 +2456,7 @@ a .btn-pattern2 {
     padding: 4px 0;
     margin: 0 0 0 12px;
     font-size: 12px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/12em;
     line-height: 1;
     font-weight: 400;
     color: #FFFFFF;
@@ -2587,7 +2470,7 @@ a .btn-pattern2 {
     margin: 0 0 0 12px;
     background-color: #000000;
     font-size: 12px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/12em;
     line-height: 1;
     font-weight: 400;
     color: #FFFFFF;
@@ -2618,7 +2501,7 @@ a .btn-pattern2 {
   }
   #contact-form-section .contact-form-section__inner .contact-form-wrapper .wpcf7 .wpcf7-form .form-list .input-content.address .input-address .wpcf7-form-control-wrap label {
     font-size: 16px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/16em;
     line-height: 1;
     font-weight: 400;
     color: #000000;
@@ -2706,7 +2589,7 @@ a .btn-pattern2 {
             flex: 1;
     word-break: break-word;
     font-size: 16px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/16em;
     line-height: 1.5;
     font-weight: 400;
     color: #000000;
@@ -2720,7 +2603,7 @@ a .btn-pattern2 {
     padding: 4px 0;
     margin: 0 0 12px 32px;
     font-size: 12px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/12em;
     line-height: 1;
     font-weight: 400;
     color: #FFFFFF;
@@ -2767,7 +2650,7 @@ a .btn-pattern2 {
     margin: 30px auto;
     text-align: center;
     font-size: 18px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/18em;
     line-height: 1;
     font-weight: 400;
   }
@@ -2839,7 +2722,7 @@ a .btn-pattern2 {
 }
 .contact-form-confirm-wrapper .wpcf7 .wpcf7-form .form-list .label-content label {
   font-size: 16px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/16em;
   line-height: 1.5;
   font-weight: 400;
 }
@@ -2851,7 +2734,7 @@ a .btn-pattern2 {
   padding: 4px 0;
   margin: 0 0 0 12px;
   font-size: 12px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/12em;
   line-height: 1;
   font-weight: 400;
   color: #FFFFFF;
@@ -2865,7 +2748,7 @@ a .btn-pattern2 {
   margin: 0 0 0 12px;
   background-color: #000000;
   font-size: 12px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/12em;
   line-height: 1;
   font-weight: 400;
   color: #FFFFFF;
@@ -2892,7 +2775,7 @@ a .btn-pattern2 {
 .contact-form-confirm-wrapper .wpcf7 .wpcf7-form .form-list .input-content.address .input-address label {
   width: 107px;
   font-size: 16px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/16em;
   line-height: 1;
   font-weight: 400;
   color: #000000;
@@ -2953,7 +2836,7 @@ a .btn-pattern2 {
   margin: 40px auto;
   text-align: center;
   font-size: 18px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/18em;
   line-height: 1;
   font-weight: 400;
 }
@@ -3032,7 +2915,7 @@ a .btn-pattern2 {
   }
   .contact-form-confirm-wrapper .wpcf7 .wpcf7-form .form-list .label-content label {
     font-size: 16px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/16em;
     line-height: 1.5;
     font-weight: 400;
   }
@@ -3044,7 +2927,7 @@ a .btn-pattern2 {
     padding: 4px 0;
     margin: 0 0 0 12px;
     font-size: 12px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/12em;
     line-height: 1;
     font-weight: 400;
     color: #FFFFFF;
@@ -3058,7 +2941,7 @@ a .btn-pattern2 {
     margin: 0 0 0 12px;
     background-color: #000000;
     font-size: 12px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/12em;
     line-height: 1;
     font-weight: 400;
     color: #FFFFFF;
@@ -3089,7 +2972,7 @@ a .btn-pattern2 {
   .contact-form-confirm-wrapper .wpcf7 .wpcf7-form .form-list .input-content.address .input-address label {
     width: 107px;
     font-size: 16px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/16em;
     line-height: 1;
     font-weight: 400;
     color: #000000;
@@ -3153,7 +3036,7 @@ a .btn-pattern2 {
     margin: 40px auto;
     text-align: center;
     font-size: 18px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/18em;
     line-height: 1;
     font-weight: 400;
   }
@@ -3197,7 +3080,7 @@ a .btn-pattern2 {
 }
 #thanks .p1 {
   font-size: 20px;
-  letter-spacing: 0.1em;
+  letter-spacing: F-letter-spacing-10/20em;
   line-height: 1;
   font-weight: normal;
   color: #000000;
@@ -3212,7 +3095,7 @@ a .btn-pattern2 {
   }
   #thanks .p1 {
     font-size: 16px;
-    letter-spacing: 0.1em;
+    letter-spacing: F-letter-spacing-10/16em;
     line-height: 1.5;
     font-weight: normal;
     color: #000000;

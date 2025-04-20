@@ -8,49 +8,69 @@
     get_template_part('template-parts/footer'); // footer.php をインクルード
 ?>  
 
-<!-- title-heading -->
-<?php
-    get_template_part('template-parts/title-heading'); // title-heading をインクルード
-?>
 
-<!-- title-icon -->
-<?php
-  get_template_part('template-parts/title-icon', null, ['name' => 'recruit']);// title-icon をインクルード
-?>
 
 
 <!-- セクション --------------------------------->
-<!--section/ recruit -->
-<?php
-    get_template_part('template-parts/recruit'); // recruit をインクルード
-?>
-
-<!--section/ contact -->
-<?php
-    get_template_part('template-parts/contact'); // recruit をインクルード
-?>
 
 
 
 
 <!-- 共通パーツ確認 --------------------------------->
-<!-- .btn  -->
-<a href="<?php echo home_url('/contact-form/'); ?>" class="btn">
-  <p class="btn__text">エントリー</p>
-  <i class="fa-solid fa-angle-right"></i>
+
+<!-- 【サークルループ】 -->
+<div class="circle-loop">
+	<img class="card__image"
+						src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/text-circle.webp"
+						width="205" 
+						height="205"
+						loading="lazy"
+						alt="サークル">
+</div>
+
+
+<!--【h3セクションタイトル】 -->
+<div class="section-title">
+	<h3 class="section-title__eng">service</h3>
+	<span class="section-title__ja">サービス内容</span>
+</div>
+
+<!--【ボタン】 テンプレートパーツ （slanted-svg-button.php）  -->
+<?php
+get_template_part('template-parts/slanted-svg-button', null, [
+  'label' => 'View more',
+  'url'   => home_url('/about/')
+]);
+?>
+
+
+<!-- 【ボタン】グラデーション -->
+<a href="#entry" class="gradient-entry-button">
+  エントリーする
 </a>
 
 
-<!-- .btn-pattern2  -->
-<a href="<?php echo home_url('/'); ?>" class="btn-pattern2">
-      <p class="btn-pattern2__text">TOPにもどる</p>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
+
+<!-- 【ナンバーリスト】 -->
+<ol class="number-list">
+  <li class="number-list__item">
+		<img class="image"
+								src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/logo.webp"
+								width="140" 
+								height="140"
+								loading="lazy"
+								alt="image">
+		<div class="textarea">
+			<h4 class="textarea__title">応募</h4>
+			<p class="textarea__text">
+				こちらまで履歴書と職務経歴書をお送りください。 info@next-realty.com
+			</p>
+		</div>	
+  </li>
+</ol>
 
 
-    <h2 class="section-title">基本理念</h2>
-    <h3 class="section-title-sub">（１）個人情報の収集、利用及び提供について</h3>
-    <h4>＜スタッフの個人情報＞</h4>
-    <ul class="privacy-list">
-      <li class="privacy-list__li">お客様に対する育児支援コンサルティング（認可保育所事業、小規模保育所事業、認証保育所事業、自治体保育室事業等）提供のため</li>
-    </ul>
+
+
+
+

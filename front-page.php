@@ -4,16 +4,13 @@
   ?>
   <!-- ---------------------------------------------------------------------->
 
-<main>
-	
-<div class="circle-loop">
-	<img class="card__image"
-						src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/text-circle.webp"
-						width="205" 
-						height="205"
-						loading="lazy"
-						alt="サークル">
-</div>
+	<main>
+		
+
+
+
+
+
 	<section id="mainvisual">mainvisual</section>
 	<section id="property">property</section>
 	<section id="service">service</section>

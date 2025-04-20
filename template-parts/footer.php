@@ -1,61 +1,37 @@
 <footer id="footer"> 
-  <div class="footer__inner fade-in">
-    <a class="f-logo-img" href="<?php echo home_url('/'); ?>#">
-      <img 
-        src="<?php echo get_template_directory_uri(); ?>/assets/images/kidsland_image/design-parts/sakura-logo.webp"
-        loading="lazy"
-        alt="フッダーロゴ">
-    </a>
-
-    <nav class="f-nav">
-      <ul class= "f-nav__ul">
-        <li class="f-nav__ul--li">
-        <a href="<?php echo home_url('/about/'); ?>">
-            私たちのこと
-          </a>
-        </li>
-        <li class="f-nav__ul--li">
-          <a href="<?php echo get_post_type_archive_link('introduction'); ?>">
-            各園のご紹介
-          </a>
-        </li>
-        <li class="f-nav__ul--li">
-          <a href="<?php echo get_post_type_archive_link('letter'); ?>">
-            こもれびだより
-          </a>
-        </li>
-        <li class="f-nav__ul--li">
-          <a href="<?php echo home_url('/recruit-form/'); ?>">
-            採用情報
-          </a>
-        </li>
-        <li class="f-nav__ul--li">
-          <a href="<?php echo get_post_type_archive_link('info'); ?>">
-            お知らせ
-          </a>
-        </li>
-        <li class="f-nav__ul--li">
-          <a href="<?php echo home_url('/contact-form/'); ?>">
-          お問い合わせ
-        </a>
-        </li>
-        <li class="f-nav__ul--li">
-          <a href="<?php echo home_url('/site-map/'); ?>">
-            サイトマップ
-          </a>
-        </li>
-        <li class="f-nav__ul--li">
-          <a href="<?php echo home_url('/privacy-policy/'); ?>">
-            プライバシーポリシー
-          </a>
-        </li>
-      </ul>  
-    </nav>
-
-    <p class="f-text">
-      &copy;桜のこもれびキッズランド All Rights Reserved.
-    </p>
+  <div class="footer__inner">
+		<div class="footer-top">
+		<div class="footer-top__content">
+			<h3 class="footer-top__content--title">contact us</h3>
+			<p class="footer-top__content--text">
+				サービスについてのご相談・ご質問など<br>
+				お気軽にお問い合わせください。
+			</p>
+			
+			<div class="footer-top__content--flex">
+				<div class="footer-button-wrap">
+					<div class="footer-button-bg entry-bg"></div>
+					<a class="entry footer-button" href="<?php echo home_url('/recruitment/'); ?>">
+						<p class="entry__en">entry</p>
+						<p class="entry__ja">採用についてはこちらから</p>
+						<span class="entry__arrow"></span>
+					</a>
+				</div>
+				<div class="footer-button-wrap">
+					<div class="footer-button-bg contact-bg"></div>
+					<a class="contact footer-button" href="<?php echo home_url('/contact-form/'); ?>">
+						<p class= "contact__en">contact</p>
+						<p class= "contact__ja">お問い合わせ</p>
+						<span class="contact__arrow"></span>
+					</a>
+				</div>	
+			</div>
+			
+		</div>
+		
+		<div class="footer-bottom"></div>
   </div><!-- /.footer__inner -->
+	<p>©株式会社ネクストリアルティ All rights reserved.</p>
 </footer> 
 
 

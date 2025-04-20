@@ -31,41 +31,7 @@ body {
   scroll-margin-top: 250px;
   width: 100%;
   height: 100%; // 高さが必要な場合
-  // text-transform: capitalize; //全ての文字を大文字に変換
-  .scroll-to-top {
-    position: fixed;
-    bottom: 31px;
-    right: 32px;
-    height: 72px;/* ボタンの幅 */
-    width: 72px;/* ボタンの高さ */
-    background-color: map-get(mixin.$colors, "C-white");
-    border-radius: 50%;/* 円形にする */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 36px;/* 矢印の大きさ */
-    font-weight: bold;/* 矢印を太字に */
-    color: map-get(mixin.$colors, "C-brown");/* 矢印の色 */
-    cursor: pointer;
-    opacity: 0;/* 初期状態で非表示 */
-    visibility: hidden;
-    transform: scale(0.8);/* 初期状態で縮小 */
-    transition: opacity 1s ease, transform 0.3s ease, visibility 0.3s ease;/* 表示のトランジション */
-    z-index: 999;
-    &.show {
-      opacity: 1;/* 表示状態 */
-      visibility: visible;/* 表示状態 */
-      transform: scale(1);/* 通常サイズ */
-      transition: 1s;
-    }
-    &:hover {
-      transition: 1s;
-      background-color: map-get(mixin.$colors, "C-brown");
-      color: map-get(mixin.$colors, "C-white");
-      /* ホバー時の色 */
-    }
-
-  }
+  
 }
 
 *,
@@ -83,7 +49,7 @@ main {
 
 img {
   max-width: 100%;
-  height: auto; //レイアウトシフ対策
+  height: auto; //レイアウトシフト対策
 }
 
 li {
@@ -123,19 +89,19 @@ a:focus-visible {
 }
 
 //スクロール中に下からフェードイン
-.fade-in {
-  opacity: 0;
-  transform: translateY(100px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-  visibility: hidden;
-  /* 初期状態では要素を隠します。 */
-  &.visible {
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
-    /* ビューポート内に入ったときに要素を表示します。 */
-  }
-}
+// .fade-in {
+//   opacity: 0;
+//   transform: translateY(100px);
+//   transition: opacity 1s ease-out, transform 1s ease-out;
+//   visibility: hidden;
+//   /* 初期状態では要素を隠します。 */
+//   &.visible {
+//     opacity: 1;
+//     transform: translateY(0);
+//     visibility: visible;
+//     /* ビューポート内に入ったときに要素を表示します。 */
+//   }
+// }
 
 //mainvisualのテキスト。ロード後にフェードイン
 .fadein {
@@ -165,14 +131,13 @@ a:focus-visible {
 //-------------------------------------------------------------------------------
 // 共通パーツ
 //-------------------------------------------------------------------------------
-
+// 【サークルループ】
 .circle-loop {
   width: 100px; /* サイズは任意 */
   height: 100px;
   position: relative;
   animation: rotateCircle 10s linear infinite; /* 回転アニメーション */
 }
-
 @keyframes rotateCircle {
   from {
     transform: rotate(0deg);
@@ -182,167 +147,183 @@ a:focus-visible {
   }
 }
 
-// --h3
-.title-icon {
-  display: block;
-  width: 345px;
-  margin: 0 auto;
-  text-align: center;
-  &__bg {
-    width: 108px;
-    height: 108px;
-    border-radius: 50%;
-    background-color: map-get(mixin.$colors, "C-yellow");
+//【h3セクションタイトル】
+.section-title {
+	display: flex;
+	align-items: center;
+	// justify-content: center;
+	&__eng {
+		text-transform: capitalize;
+		@include mixin.font-settings (
+      F-size64,
+      F-line-height95,
+      F-letter-spacing-0,
+      F-family-Puritan,
+      normal,
+      F-color-blue);
+	}
+	&__ja {
+		margin-left: 26px;
+		@include mixin.font-settings (
+      F-size16,
+      F-line-height95,
+      F-letter-spacing-0,
+      F-family-Noto-Sans-JP,
+      400,
+      F-color-blue);
+	}
+}
+
+
+//【ボタン】 テンプレートパーツ （slanted-svg-button.php） 
+$main-color: map-get(mixin.$colors, "C-blue");
+$white: map-get(mixin.$colors, "C-white");
+$transition: 0.3s;
+
+.slanted-svg-button {
+  display: inline-block;
+	width: 263px;
+	height: 59px;
+  cursor: pointer;
+  margin: 0 21px 42px 94px;
+	a {
+		opacity: 1;
+	}
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+  .button-shadow {
+    fill: $main-color;
+    transition: fill $transition;
+  }
+  .button-shape {
+    fill: $white;
+    stroke: $main-color;
+    stroke-width: 1;
+    transition: fill $transition, stroke $transition;
+  }
+  .button-text {
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin: 0 auto 8px;
-    &--img {
-      width: 72px;
-      height: 72px;
+    justify-content: center;
+		@include mixin.font-settings (
+      F-size14,
+      F-line-height24,
+      F-letter-spacing-0-7,
+      F-family-Puritan,
+      400,
+      F-color-blue);
+    transition: color $transition;
+    .arrow {
+      margin-left: 8px;
     }
   }
-
-  &__title {
-    @include mixin.font-settings (
-      F-size24,
-      F-line-height36,
-      F-letter-spacing-10,
-      F-family-KosugiMaru,
-      400,
-      F-color-brown);
-      width: 100%;
-    display: block;
-    margin: 0 auto 8px;
-  }
-  &__english {
-    @include mixin.font-settings (
-      F-size10,
-      F-line-height10,
-      F-letter-spacing-20,
-      F-family-Jost,
-      900,
-      F-color-brown);
-      width: 100%;
-    display: block;
-    // margin: 0 auto 4px;
+  &:hover {
+    .button-shadow {
+      fill: $white;
+			stroke: $main-color;
+    }
+    .button-shape {
+      fill: $main-color;
+      stroke: $white;
+    }
+    .button-text {
+      color: $white;
+    }
   }
 }
 
-
-
-
-//btn
-.btn {
-  width: 240px;
-  height: 60px;
-  border-radius: 30px;
-  color: map-get(mixin.$colors, "C-brown");
-  border: 2px solid map-get(mixin.$colors, "C-brown");
-  display: flex;
-  justify-content: center;
+// 【ボタン】グラデーション
+.gradient-entry-button {
+  display: inline-flex;
   align-items: center;
-  background-color: map-get(mixin.$colors, "C-white");
-  transition:  ease, transform 1s ease;
-  position: relative;
-  // **すべてのプロパティにスムーズな変化を適用**
-    transition:
-    background-color 0.5s ease-in-out,
-    color 0.5s ease-in-out,
-    border-color 0.5s ease-in-out;
-  &__text {
-    @include mixin.font-settings
-  ( F-size18
-  , F-line-height18
-  , F-letter-spacing-10
-  , F-family-KosugiMaru
-  , 400
-  , F-color-brown);
-  margin: 0 0 0 0;
-  }
-  i {
-    position: absolute;
-    top: 17px;
-    right: 22.1px;
-    font-size: 22px;
-    transition: transform 0.3s ease-in-out;
-  }
-}
-.btn:hover {
-  color: map-get(mixin.$colors, "C-white");
-  background-color: map-get(mixin.$colors, "C-brown");
-  border-color: map-get(mixin.$colors, "C-white");
-  opacity: 1;
-  transition:
-    background-color 0.5s ease-in-out,
-    color 0.5s ease-in-out,
-    border-color 0.5s ease-in-out;
-  .btn__text {
-    color: map-get(mixin.$colors, "C-white");
-  }
-}
-// <a> タグに display: block を適用
-a .btn {
-  display: block;
-}
-
-//btnの追加要素
-.btn-pattern2 {
-  max-width: 300px;
+  justify-content: center;
+	max-width:317px ;
   width: 100%;
-  margin: 127px auto 80px;
-  border-radius: 30px;
-  color: map-get(mixin.$colors, "C-brown");
-  border: 2px solid map-get(mixin.$colors, "C-brown");
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: map-get(mixin.$colors, "C-white");
-  transition:  ease, transform 1s ease;
-  position: relative;
-  // **すべてのプロパティにスムーズな変化を適用**
-  transition:
-  background-color 0.5s ease-in-out,
-  color 0.5s ease-in-out,
-  border-color 0.5s ease-in-out;
-  &__text {
-    @include mixin.font-settings
-  ( F-size18
-  , F-line-height18
-  , F-letter-spacing-10
-  , F-family-KosugiMaru
-  , 400
-  , F-color-brown);
-  margin: 0 0 0 0;
-  }
-  i {
-    position: absolute;
-    top: 17px;
-    right: 22.1px;
-    font-size: 22px;
-    transition: transform 0.3s ease-in-out;
+  height: 60px;
+  background: linear-gradient(90deg , map-get(mixin.$colors, "C-blue") 0%
+																		, map-get(mixin.$colors, "C-right-blue") 100%);
+	@include mixin.font-settings (
+      F-size16,
+      F-line-height32,
+      F-letter-spacing-0-8,
+      F-family-Noto-Sans-JP,
+      bold,
+      F-color-white);
+  border: 1px solid map-get(mixin.$colors, "C-gray");
+  box-shadow: 0px 3px 6px #00000029;
+  &:hover {
+		color: map-get(mixin.$colors, "C-blue");
+		border: 1px solid map-get(mixin.$colors, "C-blue");
+		background: linear-gradient(124deg, #215F9D -11%, #FFFFFF 48%);
   }
 }
-.btn-pattern2:hover {
-  color: map-get(mixin.$colors, "C-white");
-  background-color: map-get(mixin.$colors, "C-brown");
-  border-color: map-get(mixin.$colors, "C-white");
-  opacity: 1;
-  transition:
-    background-color 0.5s ease-in-out,
-    color 0.5s ease-in-out,
-    border-color 0.5s ease-in-out;
-    .btn-pattern2__text {
-    color: map-get(mixin.$colors, "C-white");
-  }
-}
-// <a> タグに display: block を適用
-a .btn-pattern2 {
-  display: block;
+
+//【ナンバーリスト】
+.number-list {
+  counter-reset: item;
+  list-style: disc;
+  padding: 0;
+  margin: 0 auto;
+	width: 60%;
+	&__item {
+		display: flex;
+		.image {
+			width: 140px;
+			height: 140px;
+			margin-right: 100px;
+		}
+		.textarea {
+			position: relative;
+			margin: 20px auto;
+			&__title {
+				border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
+				padding: 12.5px 0 7.5px 60px;
+				@include mixin.font-settings (
+				F-size20,
+				F-line-height20,
+				F-letter-spacing-0,
+				F-family-Noto-Sans-JP,
+				medium,
+				F-color-blue);
+			}	
+			&__text {
+				@include mixin.font-settings (
+				F-size16,
+				F-line-height32,
+				F-letter-spacing-0-8,
+				F-family-Noto-Sans-JP,
+				normal,
+				F-color-black);
+			}
+			&::before {
+				counter-increment: item;
+				content: counter(item, decimal-leading-zero); // 01, 02, 03
+				position: absolute;
+				text-align: center;
+				width: 49px;
+				height: 49px;
+				left: -0;
+				top: -7.5px;
+				background-color: map-get(mixin.$colors, "C-blue");
+				@include mixin.font-settings(
+					F-size24,
+					F-line-height48,
+					F-letter-spacing-0,
+					F-family-Noto-Sans-JP,
+					normal,
+					F-color-white
+				);
+			}
+		}
+	}
 }
 
 
-
+// 【ページネーション】
 .pagination {
 	display: block; /* ✅ flex内に入らないようにblock指定 */
 	width: 100%; /* 横幅を最大に */
@@ -392,14 +373,6 @@ a .btn-pattern2 {
 }
 
 
-
-
-
-//-------------------------------------------------------------------------------
-// wordpressテンプレートパーツ
-//-------------------------------------------------------------------------------
-
-
 @include mixin.TAB1 {
   .brsp {
     display: block;
@@ -409,290 +382,23 @@ a .btn-pattern2 {
   .brpc {
     display: none;
   }
-
-  //-------------------------------------------------------------------------------
-// 共通パーツ
-//-------------------------------------------------------------------------------
-// --h3
-.title-icon {
-  width: 100%;
-  margin: 0 auto;
-  &__bg {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: map-get(mixin.$colors, "C-yellow");
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto 8px;
-    &--img {
-      width: 53px;
-      height: 53px;
-    }
-  }
-
-  &__title {
-    @include mixin.font-settings (
-      F-size20,
-      F-line-height30,
-      F-letter-spacing-10,
-      F-family-KosugiMaru,
-      400,
-      F-color-brown);
-      width: 100%;
-    display: block;
-    margin: 0 auto 9px;
-  }
-  &__english {
-    @include mixin.font-settings (
-      F-size10,
-      F-line-height10,
-      F-letter-spacing-20,
-      F-family-Jost,
-      900,
-      F-color-brown);
-      width: 100%;
-    display: block;
-    // margin: 0 auto 4px;
-  }
 }
-
-// ピンク背景画像と点線の背景
-.pink-bk {
-  width: 100%;
-  height: 100%; // 高さが必要な場合
-  background: url('../../assets/images/kidsland_image/bg/top-letters__bg-sp.webp') no-repeat center top;
-  background-size: cover;
-  padding: 160px 4% 120px;
-  position: relative;
-  .title-icon {
-    &__bg {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    &__title {
-      position: absolute;
-      top: 60px;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    &__english {
-      position: absolute;
-      top: 90px;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-}
-
-
-//btn
-  .btn {
-    max-width: 200px;
-    width: 100%;
-    height: 50px;
-    border-radius: 30px;
-    color: map-get(mixin.$colors, "C-brown");
-    border: 2px solid map-get(mixin.$colors, "C-brown");
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: map-get(mixin.$colors, "C-white");
-    transition:  ease, transform 1s ease;
-    position: relative;
-    // **すべてのプロパティにスムーズな変化を適用**
-    transition:
-      background-color 0.5s ease-in-out,
-      color 0.5s ease-in-out,
-      border-color 0.5s ease-in-out;
-    &__text {
-      @include mixin.font-settings
-    ( F-size16
-    , F-line-height16
-    , F-letter-spacing-10
-    , F-family-KosugiMaru
-    , 400
-    , F-color-brown);
-    }
-    i {
-      position: absolute;
-      top: 15px;
-      right: 13.1px;
-      font-size: 16px;
-      transition: transform 0.3s ease-in-out;
-    }
-  }
-  .btn:hover {
-    color: map-get(mixin.$colors, "C-white");
-    background-color: map-get(mixin.$colors, "C-brown");
-    border-color: map-get(mixin.$colors, "C-white");
-    opacity: 1;
-    transition:
-      background-color 0.5s ease-in-out,
-      color 0.5s ease-in-out,
-      border-color 0.5s ease-in-out;
-    .btn__text {
-      color: map-get(mixin.$colors, "C-white");
-    }
-  }
-  // <a> タグに display: block を適用
-  a .btn {
-    display: block;
-  }
-}
-
-
-//btnの追加要素
-.btn-pattern2 {
-  max-width: 300px;
-  width: 100%;
-  height: 60px;
-  margin: 127px auto 80px;
-  border-radius: 30px;
-  color: map-get(mixin.$colors, "C-brown");
-  border: 2px solid map-get(mixin.$colors, "C-brown");
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: map-get(mixin.$colors, "C-white");
-  transition:  ease, transform 1s ease;
-  position: relative;
-  &__text {
-    @include mixin.font-settings
-  ( F-size18
-  , F-line-height18
-  , F-letter-spacing-10
-  , F-family-KosugiMaru
-  , 400
-  , F-color-brown);
-  }
-  i {
-    position: absolute;
-    top: 16px;
-    right: 22.1px;
-    font-size: 22px;
-    transition: transform 0.3s ease-in-out;
-  }
-}
-.btn-pattern2:hover {
-  color: map-get(mixin.$colors, "C-white");
-  background-color: map-get(mixin.$colors, "C-brown");
-  border-color: map-get(mixin.$colors, "C-white");
-  opacity: 1;
-  transition:
-    background-color 0.5s ease-in-out,
-    color 0.5s ease-in-out,
-    border-color 0.5s ease-in-out;
-    .btn-pattern2__text {
-    color: map-get(mixin.$colors, "C-white");
-  }
-}
-// <a> タグに display: block を適用
-a .btn-pattern2 {
-  display: block;
-}
-
 
 @include mixin.SP {
-  body {
-    .scroll-to-top {
-      position: fixed;
-      bottom: 18px;
-      right: 16px;
-      height: 48px;/* ボタンの幅 */
-      width: 48px;/* ボタンの高さ */
-      background-color: map-get(mixin.$colors, "C-white");
-      border-radius: 50%;/* 円形にする */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 20px;/* 矢印の大きさ */
-      font-weight: bold;/* 矢印を太字に */
-      color: map-get(mixin.$colors, "C-brown");/* 矢印の色 */
-      cursor: pointer;
-      opacity: 0;/* 初期状態で非表示 */
-      visibility: hidden;
-      transform: scale(0.8);/* 初期状態で縮小 */
-      transition: opacity 1s ease, transform 0.3s ease, visibility 0.3s ease;/* 表示のトランジション */
-      z-index: 999;
-      &.show {
-        opacity: 1;/* 表示状態 */
-        visibility: visible;/* 表示状態 */
-        transform: scale(1);/* 通常サイズ */
-        transition: 1s;
-      }
-      &:hover {
-        transition: 1s;
-        background-color: map-get(mixin.$colors, "C-brown");
-        color: map-get(mixin.$colors, "C-white");
-        /* ホバー時の色 */
-      }
-
-    }
-  }
-
-
-  .brsp {
-    display: block;
-  }
-
-  //PC版改行
-  .brpc {
-    display: none;
+	
+	.brsp {
+		display: block;
   }
 	
-	// .pagination {
-	// 	display: block; /* ✅ flex内に入らないようにblock指定 */
-  //   width: 100%; /* 横幅を最大に */
-  //   text-align: center; /* 中央揃え */
-	// 	justify-content: center;
-	// 	margin: 5px auto 48px;
-	// 	.pagination__inner {
-	// 		display: flex;
-	// 		width: 90px;
-	// 		margin: 0 auto;
-	// 		a, span {
-	// 			display: flex;
-  //       justify-content: center;
-  //       align-items: center;
-	// 			margin: 0 auto;
-  //       width: 24px; /* ボタンの大きさ */
-  //       height: 24px;
-  //       border-radius: 8px; /* 丸い形 */
-	// 			@include mixin.font-settings (
-	// 				F-size14,
-	// 				F-line-height16-8,
-	// 				F-letter-spacing-10,
-	// 				F-family-KosugiMaru,
-	// 				normal,
-	// 				F-color-pink);
-  //       text-decoration: none;
-	// 			padding: 0 0 0 0;
-  //       background:map-get(mixin.$colors, "C-white"); /* 背景色 */
-  //       border: 1px solid map-get(mixin.$colors, "C-pink"); /* 枠線 */
-  //       transition: 0.3s ease;
-	// 			i {
-	// 				font-size: 11px;
-	// 			}
-  //       &:hover {
-	// 				opacity: 1;
-	// 				transition: all 0.3s ease;
-  //         background: map-get(mixin.$colors, "C-pink");
-  //         color: map-get(mixin.$colors, "C-white");
-  //       }
-  //     }
-  //     .current {
-  //       background: map-get(mixin.$colors, "C-pink");
-  //       color: map-get(mixin.$colors, "C-white");
-  //       border: none;
-  //     }
-	// 	}
-	// }
-
-
-
+  //PC版改行
+  .brpc {
+		display: none;
+  }
+	
+	//-------------------------------------------------------------------------------
+	// 共通パーツ
+	//-------------------------------------------------------------------------------
+	
+	
 
 }
