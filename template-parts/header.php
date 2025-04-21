@@ -50,26 +50,25 @@
 	<header id="header" class="<?php echo esc_attr($header_class); ?>">
     <div class="header__inner">
       <div class="header__inner--pc">
-        <div class="logo">
-					<a href="<?php echo home_url('/'); ?>#">
-						<img class="card__image"
-								src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/logo.webp"
-								width="124" 
-								height="62"
-								loading="lazy"
-								alt="ヘッダーロゴ">
-					</a>			
-        </div>
-				<nav class="main-nav">
+        <a class="header-logo" href="<?php echo home_url('/'); ?>#">
+					<img class="header-logo__image"
+							src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/logo.webp"
+							width="124" 
+							height="62"
+							loading="lazy"
+							alt="ヘッダーPCロゴ">
+				</a>
+							
+				<nav class="header-nav">
 					<ul>
-						<li><a href="<?php echo home_url('/'); ?>#">TOP</a></li>
-						<li><a href="<?php echo home_url('/service/'); ?>">サービス内容</a></li>
-						<li><a href="<?php echo home_url('/about/'); ?>">事業概要</a></li>
-						<li><a href="<?php echo home_url('/company/'); ?>">会社概要</a></li>
-						<li><a href="<?php echo home_url('/column/'); ?>">家を買う理由</a></li>
-						<li><a href="<?php echo home_url('/recruitment/'); ?>">採用情報</a></li>
-						<li><a href="<?php echo get_post_type_archive_link('news'); ?>">お知らせ</a></li>
-						<li class="contact"><a href="<?php echo home_url('/contact-form/'); ?>">お問い合わせ</a></li>
+						<li><a class="li-a" href="<?php echo home_url('/'); ?>#">TOP</a></li>
+						<li><a class="li-a" href="<?php echo home_url('/service/'); ?>">サービス内容</a></li>
+						<li><a class="li-a" href="<?php echo home_url('/about/'); ?>">事業概要</a></li>
+						<li><a class="li-a" href="<?php echo home_url('/company/'); ?>">会社概要</a></li>
+						<li><a class="li-a" href="<?php echo home_url('/column/'); ?>">家を買う理由</a></li>
+						<li><a class="li-a" href="<?php echo home_url('/recruitment/'); ?>">採用情報</a></li>
+						<li><a class="li-a" href="<?php echo get_post_type_archive_link('news'); ?>">お知らせ</a></li>
+						<li><a class="contact-a" href="<?php echo home_url('/contact-form/'); ?>">お問い合わせ</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -78,16 +77,14 @@
         
 
 			<div class="header__inner--sp">
-				<div class="logo">
-					<a href="<?php echo home_url('/'); ?>#">
-						<img class="card__image"
-								src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/logo.webp"
-								width="124" 
-								height="62"
-								loading="lazy"
-								alt="ヘッダーロゴ">
-					</a>			
-				</div>
+				<a class="header-logo" href="<?php echo home_url('/'); ?>#">
+					<img class="header-logo__image"
+							src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/logo.webp"
+							width="102" 
+							height="37"
+							loading="lazy"
+							alt="ヘッダーSPロゴ">
+				</a>			
 
 				<div class="hamburger">
 					<div class="hamburger__lines">

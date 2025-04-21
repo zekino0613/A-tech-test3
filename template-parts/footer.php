@@ -30,37 +30,40 @@
 			</div>
 		</div>
 		
-		<div class="footer-bottom">
-			<div class="footer-bottom__flex">
-				<div class="footer-bottom__flex--logo">
-					<a href="<?php echo home_url('/'); ?>#">
-						<img class="logo-image"
-								src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/logo2.webp"
-								width="78" 
-								height="82"
-								loading="lazy"
-								alt="ヘッダーロゴ">
-					</a>			
+		<div class="footer-bottom-wrapper">
+			<div class="footer-bottom">
+				<div class="footer-bottom__inner">
+					<div class="footer-bottom__inner--flex">
+						<a class="footer-logo" href="<?php echo home_url('/'); ?>#">
+							<img class="footer-logo__image"
+									src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/logo2.webp"
+									width="78" 
+									height="82"
+									loading="lazy"
+									alt="ヘッダーロゴ">
+						</a>			
+						
+						<nav class="footer-nav">
+							<ul>
+								<li><a href="<?php echo home_url('/'); ?>#">TOP</a></li>
+								<li><a href="<?php echo home_url('/service/'); ?>">当社の特徴</a></li>
+								<li><a href="<?php echo home_url('/about/'); ?>">事業概要</a></li>
+								<li><a href="<?php echo home_url('/company/'); ?>">会社概要</a></li>
+								<li><a href="<?php echo home_url('/column/'); ?>">家を買う理由</a></li>
+								<li><a href="<?php echo home_url('/recruitment/'); ?>">採用情報</a></li>
+								<li><a href="<?php echo home_url('/privacy/'); ?>">プライバシーポリシー</a></li>
+							</ul>
+						</nav>
+					</div>	
+					
+					<address class="footer-bottom__address">
+						<p class="footer-bottom__address--company">株式会社　ネクストリアルティ</p>
+						<p class="footer-bottom__address--detail">〒123-4567</p>
+						<p class="footer-bottom__address--detail">東京都八王子市上野町365-9</p>
+					</address>
+					
 				</div>
-				<nav class="footer-bottom__flex--nav">
-					<ul>
-						<li><a href="<?php echo home_url('/'); ?>#">TOP</a></li>
-						<li><a href="<?php echo home_url('/service/'); ?>">当社の特徴</a></li>
-						<li><a href="<?php echo home_url('/about/'); ?>">事業概要</a></li>
-						<li><a href="<?php echo home_url('/company/'); ?>">会社概要</a></li>
-						<li><a href="<?php echo home_url('/column/'); ?>">家を買う理由</a></li>
-						<li><a href="<?php echo home_url('/recruitment/'); ?>">採用情報</a></li>
-						<li><a href="<?php echo home_url('/privacy/'); ?>">プライバシーポリシー</a></li>
-					</ul>
-				</nav>
 			</div>	
-			
-			<address class="footer-bottom__address">
-				<p class="footer-bottom__address--company">株式会社　ネクストリアルティ</p>
-				<p class="footer-bottom__address--detail">〒123-4567</p>
-				<p class="footer-bottom__address--detail">東京都八王子市上野町365-9</p>
-			</address>
-			
 		</div>
   </div><!-- /.footer__inner -->
 	<p class="fooer-end"> &copy;株式会社ネクストリアルティ All rights reserved.</p>
