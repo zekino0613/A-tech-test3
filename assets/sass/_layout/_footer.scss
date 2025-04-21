@@ -3,11 +3,13 @@
 
 #footer {
   .footer {
+		
     &__inner {
 			text-transform: capitalize;
 			.footer-top {
 				background-color: map-get(mixin.$colors, "C-blue");
-				padding: 40px 0;
+				padding: 40px 6.4%;
+				position: relative;
 				&__content {
 					max-width: 960px;
 					width: 100%;
@@ -18,7 +20,7 @@
 						F-line-height95,
 						F-letter-spacing-0,
 						F-family-Puritan,
-						normal,
+						300,
 						F-color-white);
 					}
 					&--text {
@@ -27,8 +29,17 @@
 						F-line-height32,
 						F-letter-spacing-0-8,
 						F-family-Noto-Sans-JP,
-						normal,
+						300,
 						F-color-white);
+					}
+					&--bg {
+						position: absolute;
+						width: 100%;
+						height: 100%; // 高さが必要な場合
+						background: url('../../assets/images/a-tech3_image/section-contact.webp') no-repeat center right;
+						background-size: contain;
+						bottom: 0;
+						right: 0;
 					}
 					&--flex {
 						display: flex;
@@ -36,21 +47,24 @@
 						margin: 40px 0 0;
             gap: 40px;
 						.footer-button-wrap {
-							width: 460px;
+							max-width: 460px;
+							width: 100%;
 							height: 138px;
 							position: relative;
 							.footer-button-bg {
 								position: absolute;
 								top: -1px;
 								left: -1px;
-								width: 460px;
+								max-width: 460px;
+								width: 100%;
 								height: 138px;
 								clip-path: polygon(0 0, 92% 0, 99.7% 100%, 0% 100%);
 								background-color: map-get(mixin.$colors, "C-white");
 								z-index: 0;
 							}
 							.footer-button {
-								width: 458px;
+								max-width: 458px;
+								width: 100%;
 								height: 136px;
 								display: flex;
 								flex-direction: column;
@@ -60,7 +74,7 @@
 								padding:0 42px;
 								z-index: 1;
 								clip-path: polygon(0 0, 92% 0, 99.7% 100%, 0% 100%);
-								transition: background 0.4s ease, border 0.4s ease;
+								// transition: background 0.4s ease, border 0.4s ease;
 							}
 							
 							
@@ -145,7 +159,7 @@
 							.contact { 
 								background-color: map-get(mixin.$colors, "C-gray");
 								color: map-get(mixin.$colors, "C-blue"); // ホバー時の文字色
-								transition: color 0.4s ease;
+								transition: background 0.4s ease, border 0.4s ease, color 0.4s ease;
 								&__en {
 									@include mixin.font-settings (
 										F-size45,
@@ -199,13 +213,12 @@
 									opacity: 1;
 									border: 1px solid map-get(mixin.$colors, "C-blue");
 									background: linear-gradient(124deg, #215F9D -11%, #FFFFFF 48%);
-									transition: background 0.4s ease, border 0.4s ease;
-									.footer-button__en,
-									.footer-button__ja {
+									.contact__en,
+									.contact__ja {
 										color: map-get(mixin.$colors, "C-blue"); // ホバー時の文字色
 										transition: color 0.4s ease;
 									}						
-									.footer-button__arrow {
+									.contact__arrow {
 										transition: background-color 0.4s ease;
 										background-color: map-get(mixin.$colors, "C-blue"); // 横線
 										&::before,
@@ -216,13 +229,131 @@
 								}												
 							}
 						}
-					
 					}
 				}
 			}
+			
+			.footer-bottom {
+				max-width: 960px;
+				width: 100%;
+				margin:  0 auto;
+				padding: 0 6.4% 75px;
+				background-color: map-get(mixin.$colors, "C-white");
+				&__flex {
+					width: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					margin: 32px 0 35px;
+					padding: 0 25px 20px 3px;
+					border-bottom: 1.5px solid map-get(mixin.$colors, "C-blue");
+					&--logo a{
+						.logo-image {
+							width: 78px;
+							height: 82px;
+						}
+						transition: all 1s ease;
+						&:hover {
+							opacity: 1;
+							width: 82px;
+							height: 87px;
+							text-align: center;
+							background-color: #001a4d;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							transition: all 0.5s ease;
+						}
+					}
+					&--nav {
+						ul {
+							width: 100%;
+							display: flex;
+							flex-wrap: wrap;
+							justify-content: space-around;
+							li {
+								margin-left: 30px;
+								a {
+									position: relative;
+									display: inline-block;
+									text-decoration: none;
+									opacity: 1;
+									z-index: 0; // 必ず z-index のベースを設定
+									@include mixin.font-settings (
+										F-size18,
+										F-line-height24,
+										F-letter-spacing-0,
+										F-family-Noto-Sans-JP,
+										400,
+										F-color-blue);
+										&:hover {
+											color: #FFFFFF;
+											font-weight: 400;
+										}
+										&::after {
+											content: '';
+											position: absolute;
+											top: 1px;
+											left: -4px;
+											width: 114%;
+											height: 100%; // ✅ 必須
+											background: linear-gradient(90deg, #001a4d 0%, #005a9c 100%);
+											clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
+											opacity: 0;
+											transition: opacity 0.4s ease;
+											z-index: -1; // 背景にまわす
+										}
+										&:hover::after {
+											opacity: 1;
+											z-index: -1;
+										}
+								}
+							}
+						}
+					}
+				}
+				
+				&__address {
+					&--company {
+						margin-bottom:5px; 
+						@include mixin.font-settings (
+						F-size16,
+						F-line-height24,
+						F-letter-spacing-0-8,
+						F-family-Noto-Sans-JP,
+						400,
+						F-color-blue);
+					}
+					&--detail {
+						@include mixin.font-settings (
+							F-size14,
+							F-line-height20,
+							F-letter-spacing-0-7,
+							F-family-Noto-Sans-JP,
+							400,
+							F-color-blue);
+					}
+				
+				}
+					
+			}
+			
+			
     }
   }
-  
+	.fooer-end {
+		text-align: center;
+		height: 27.33px;
+		background-color: map-get(mixin.$colors, "C-blue");
+		padding: 4.66px 0 5.66px;
+		@include mixin.font-settings (
+		F-size14,
+		F-line-height19,
+		F-letter-spacing-0,
+		F-family-Noto-Sans-JP,
+		regular,
+		F-color-white);
+	}
 }
 
 
@@ -230,6 +361,372 @@
 
 
 
-@include mixin.SP {
-  
+@include mixin.TAB1 {
+  #footer {
+		.footer {
+			&__inner {
+				text-transform: capitalize;
+				.footer-top {
+					background-color: map-get(mixin.$colors, "C-blue");
+					padding: 40px 4.6%;
+					position: relative;
+					&__content {
+						max-width: 960px;
+						width: 100%;
+						margin:  0 auto;
+						&--title {
+							@include mixin.font-settings (
+							F-size48,
+							F-line-height95,
+							F-letter-spacing-0,
+							F-family-Puritan,
+							300,
+							F-color-white);
+						}
+						&--text {
+							@include mixin.font-settings (
+							F-size16,
+							F-line-height32,
+							F-letter-spacing-0-8,
+							F-family-Noto-Sans-JP,
+							300,
+							F-color-white);
+						}
+						&--bg {
+							position: absolute;
+							width: 73%;
+							height: 50%; // 高さが必要な場合
+							background: url('../../assets/images/a-tech3_image/section-contact.webp') no-repeat bottom right;
+							background-size: contain;
+							bottom: 0;
+							right: 0;
+						}
+						&--flex {
+							display: flex;
+							justify-content: center;
+							flex-direction: column;
+							margin: 27px 0 0;
+							gap: 18px;
+							.footer-button-wrap {
+								max-width: 327px;
+								width: 100%;
+								height: 100px;
+								position: relative;
+								.footer-button-bg {
+									position: absolute;
+									top: -1px;
+									left: -1px;
+									max-width: 332px;
+									width: 100%;
+									height: 100px;
+									clip-path: polygon(0 0, 92% 0, 99.7% 100%, 0% 100%);
+									background-color: map-get(mixin.$colors, "C-white");
+									z-index: 0;
+								}
+								.footer-button {
+									max-width: 324px;
+									width: 100%;
+									height: 98px;
+									display: flex;
+									flex-direction: column;
+									align-items: flex-start;
+									justify-content: center;
+									position: relative;
+									padding:0 42px;
+									z-index: 1;
+									clip-path: polygon(0 0, 92% 0, 99.7% 100%, 0% 100%);
+									transition: background 0.4s ease, border 0.4s ease;
+								}
+								
+								
+								.entry-bg {
+									background-color: map-get(mixin.$colors, "C-white");
+								}
+								.entry {
+									background: linear-gradient(90deg , map-get(mixin.$colors, "C-blue") 0%
+																										, map-get(mixin.$colors, "C-right-blue") 100%);
+									&__en {
+										@include mixin.font-settings (
+											F-size32,
+											F-line-height32,
+											F-letter-spacing-0,
+											F-family-Puritan,
+											normal,
+											F-color-white);
+											transition: color 0.4s ease;
+									}
+									&__ja {
+										@include mixin.font-settings (
+										F-size14,
+										F-line-height20,
+										F-letter-spacing-0-7,
+										F-family-Noto-Sans-JP,
+										normal,
+										F-color-white);
+										transition: color 0.4s ease;
+									}
+									&__arrow {
+										position: relative;
+										position: absolute;
+										background-color: white; // 横線
+										width: 32px;
+										height: 0.8px;
+										top: 51px;
+										right: 44px;						
+										transition: background-color 0.4s ease;
+										&::before,
+										&::after {
+											content: "";
+											position: absolute;
+											width: 12px;
+											height: 1px;
+											background-color: white;
+											right: 0;
+										}
+										&::before {
+											top: 0px;
+											transform: rotate(45deg);
+											transform-origin: right center;
+										}
+										&::after {
+											top: 0px;
+											transform: rotate(-45deg);
+											transform-origin: right center;
+										}
+									}
+									&:hover {
+										opacity: 1;
+										border: 1px solid map-get(mixin.$colors, "C-blue");
+										background: linear-gradient(124deg, #215F9D -11%, #FFFFFF 48%);
+										transition: background 0.4s ease, border 0.4s ease;
+										.entry__en,
+										.entry__ja {
+											color: map-get(mixin.$colors, "C-blue"); // ホバー時の文字色
+											transition: color 0.4s ease;
+										}						
+										.entry__arrow {
+											transition: background-color 0.4s ease;
+											background-color: map-get(mixin.$colors, "C-blue"); // 横線
+											&::before,
+											&::after {
+												background-color: map-get(mixin.$colors, "C-blue"); // 矢印の両線
+											}
+										}
+									}												
+								}
+								.contact-bg {
+									background-color: map-get(mixin.$colors, "C-white");
+								}
+								.contact { 
+									background-color: map-get(mixin.$colors, "C-gray");
+									color: map-get(mixin.$colors, "C-blue"); // ホバー時の文字色
+									transition: color 0.4s ease;
+									&__en {
+										@include mixin.font-settings (
+											F-size32,
+											F-line-height32,
+											F-letter-spacing-0,
+											F-family-Puritan,
+											normal,
+											F-color-blue);
+											transition: color 0.4s ease;
+									}
+									&__ja {
+										@include mixin.font-settings (
+										F-size14,
+										F-line-height20,
+										F-letter-spacing-0-7,
+										F-family-Noto-Sans-JP,
+										normal,
+										F-color-blue);
+										transition: color 0.4s ease;
+									}
+									&__arrow {
+										position: relative;
+										position: absolute;
+										background-color: map-get(mixin.$colors, "C-blue"); // 横線
+										width: 32px;
+										height: 0.8px;
+										top: 51px;
+										right: 44px;						
+										transition: background-color 0.4s ease;
+										&::before,
+										&::after {
+											content: "";
+											position: absolute;
+											width: 12px;
+											height: 1px;
+											background-color:map-get(mixin.$colors, "C-blue");
+											right: 0;
+										}
+										&::before,
+										&::after {
+											content: "";
+											position: absolute;
+											width: 14px;
+											height: 1px;
+											background-color: map-get(mixin.$colors, "C-blue");
+											right: 0;
+										}
+										&::before {
+											top: 0px;
+											transform: rotate(45deg);
+											transform-origin: right center;
+										}
+										&::after {
+											top: 0px;
+											transform: rotate(-45deg);
+											transform-origin: right center;
+										}
+									}
+									&:hover {
+										opacity: 1;
+										border: 1px solid map-get(mixin.$colors, "C-blue");
+										background: linear-gradient(124deg, #215F9D -11%, #FFFFFF 48%);
+										transition: background 0.4s ease, border 0.4s ease;
+										.footer-button__en,
+										.footer-button__ja {
+											color: map-get(mixin.$colors, "C-blue"); // ホバー時の文字色
+											transition: color 0.4s ease;
+										}						
+										.footer-button__arrow {
+											transition: background-color 0.4s ease;
+											background-color: map-get(mixin.$colors, "C-blue"); // 横線
+											&::before,
+											&::after {
+												background-color: map-get(mixin.$colors, "C-blue"); // 矢印の両線
+											}
+										}
+									}												
+								}
+							}
+						}
+					}
+				}
+				
+				.footer-bottom {
+					max-width: 960px;
+					width: 100%;
+					margin:  0 auto;
+					padding: 22px 4.6%;
+					background-color: map-get(mixin.$colors, "C-white");
+					&__flex {
+						width: 100%;
+						display: flex;
+						align-items: center;
+						justify-content: space-around;
+						margin: 0px 0 14px;
+						padding:0;
+						border-bottom: 1.5px solid map-get(mixin.$colors, "C-blue");
+						&--logo a{
+							.logo-image {
+								width: 78px;
+								height: 82px;
+							}
+							transition: all 1s ease;
+							&:hover {
+								opacity: 1;
+								width: 82px;
+								height: 87px;
+								text-align: center;
+								background-color: #001a4d;
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								transition: all 0.5s ease;
+							}
+						}
+						&--nav {
+							ul {
+								width: 100%;
+								display: flex;
+								justify-content: space-around;
+								flex-direction: column;
+								li {
+									margin: 0 0 21px 0;
+									a {
+										position: relative;
+										display: inline-block;
+										text-decoration: none;
+										opacity: 1;
+										z-index: 0; // 必ず z-index のベースを設定
+										@include mixin.font-settings (
+											F-size18,
+											F-line-height24,
+											F-letter-spacing-0,
+											F-family-Noto-Sans-JP,
+											400,
+											F-color-blue);
+											&:hover {
+												color: #FFFFFF;
+												font-weight: 400;
+											}
+											&::after {
+												content: '';
+												position: absolute;
+												top: 1px;
+												left: -4px;
+												width: 114%;
+												height: 100%; // ✅ 必須
+												background: linear-gradient(90deg, #001a4d 0%, #005a9c 100%);
+												clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
+												opacity: 0;
+												transition: all 0.5s ease;
+												z-index: -1; // 背景にまわす
+											}
+											&:hover::after {
+												opacity: 1;
+												z-index: -1;
+											}
+									}
+								}
+							}
+						}
+					}
+					
+					&__address {
+						&--company {
+							margin-bottom:5px; 
+							@include mixin.font-settings (
+							F-size16,
+							F-line-height24,
+							F-letter-spacing-0-8,
+							F-family-Noto-Sans-JP,
+							400,
+							F-color-blue);
+						}
+						&--detail {
+							@include mixin.font-settings (
+								F-size14,
+								F-line-height20,
+								F-letter-spacing-0-7,
+								F-family-Noto-Sans-JP,
+								400,
+								F-color-blue);
+						}
+					
+					}
+						
+				}
+				
+				
+			}
+		}
+		.fooer-end {
+			text-align: center;
+			height: 27.33px;
+			background-color: map-get(mixin.$colors, "C-blue");
+			padding: 4.66px 0 5.66px;
+			@include mixin.font-settings (
+			F-size14,
+			F-line-height19,
+			F-letter-spacing-0,
+			F-family-Noto-Sans-JP,
+			regular,
+			F-color-white);
+		}
+	}
+	
+	
+	
 }  

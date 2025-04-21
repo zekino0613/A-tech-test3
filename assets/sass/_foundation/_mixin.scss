@@ -84,6 +84,7 @@ $line-heights: (
 	F-line-height16-2: 16.2,
   F-line-height16-8: 16.8,
   F-line-height18: 18,
+	F-line-height19: 19,
   F-line-height19-2: 19.2,
   F-line-height20: 20,
   F-line-height21: 21,
@@ -152,10 +153,11 @@ $font-families: (
 $font-weights: (
   normal: normal,
 	medium: 500,
-  bold: bold,
+	400: 400,
 	300: 300,
-  400: 400,
-  900: 900,
+	demiLight: 200,
+	regular: 100,
+  bold: bold,
   );
 
 // フォントカラー（プレフィックス付き）
