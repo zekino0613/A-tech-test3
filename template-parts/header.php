@@ -98,15 +98,15 @@
 				<div id="overlay-menu" class="overlay-menu">
 					<nav class="main-nav">
 						<ul>
-							<li><a href="<?php echo home_url('/'); ?>#">TOP</a></li>
-							<li><a href="<?php echo home_url('/service/'); ?>">サービス内容</a></li>
-							<li><a href="<?php echo home_url('/about/'); ?>">事業概要</a></li>
-							<li><a href="<?php echo home_url('/company/'); ?>">会社概要</a></li>
-							<li><a href="<?php echo home_url('/column/'); ?>">家を買う理由</a></li>
-							<li><a href="<?php echo home_url('/recruitment/'); ?>">採用情報</a></li>
-							<li><a href="<?php echo get_post_type_archive_link('news'); ?>">お知らせ</a></li>
-							<li><a href="<?php echo home_url('/privacy/'); ?>">プライバシーポリシー</a></li>
-							<li class="contact"><a href="<?php echo home_url('/contact-form/'); ?>">お問い合わせ</a></li>
+							<li><a class="li-a" href="<?php echo home_url('/'); ?>#">TOP</a></li>
+							<li><a class="li-a" href="<?php echo home_url('/service/'); ?>">サービス内容</a></li>
+							<li><a class="li-a" href="<?php echo home_url('/about/'); ?>">事業概要</a></li>
+							<li><a class="li-a" href="<?php echo home_url('/company/'); ?>">会社概要</a></li>
+							<li><a class="li-a"href="<?php echo home_url('/column/'); ?>">家を買う理由</a></li>
+							<li><a class="li-a" href="<?php echo home_url('/recruitment/'); ?>">採用情報</a></li>
+							<li><a class="li-a" href="<?php echo get_post_type_archive_link('news'); ?>">お知らせ</a></li>
+							<li><a class="li-a" href="<?php echo home_url('/privacy/'); ?>">プライバシーポリシー</a></li>
+							<li><a class="contact-a" href="<?php echo home_url('/contact-form/'); ?>">お問い合わせ</a></li>
 						</ul>
 					</nav>
 				</div>
