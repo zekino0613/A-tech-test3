@@ -1896,8 +1896,20 @@ a:focus-visible {
   }
 }
 #mainvisual {
-  margin-top: 100px;
-  background-color: rgb(25, 213, 28);
+  width: 100%;
+  height: 95.4vh;
+  margin: 0 auto;
+}
+#mainvisual .mainvisual {
+  position: absolute;
+}
+#mainvisual .mainvisual__fv {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("../../assets/images/a-tech3_image/fv-bg01-pc.png") no-repeat center center;
+  background-size: cover;
+  z-index: 1;
 }
 
 #property {

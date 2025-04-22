@@ -2,6 +2,21 @@
 @use "../../_foundation/_base"as base;
 
 #mainvisual {
-	margin-top: 100px;
-	background-color: rgb(25, 213, 28);
+	width: 100%;
+  height: 95.4vh;
+  // padding:0 4%;
+  margin: 0 auto ;
+	.mainvisual {
+		position: absolute;	
+		&__fv {
+			position: absolute;
+			width: 100%;
+			height: 100%; // 高さが必要な場合
+			background: url('../../assets/images/a-tech3_image/fv-bg01-pc.png') no-repeat center center;
+			background-size: cover;
+			z-index: 1;
+
+		}
+	}
+	
 }  
