@@ -3,20 +3,339 @@
 
 #mainvisual {
 	width: 100%;
-  height: 95.4vh;
-  // padding:0 4%;
+  height: 641px;
+	position: relative;	
+	overflow: hidden;
   margin: 0 auto ;
+	.h1-content-sp {
+		display: none;
+	}
+	.circle-loop-sp {
+		display: none;	
+	}
 	.mainvisual {
-		position: absolute;	
+		&__triangle-white {
+			position: absolute;
+			bottom: -1px;
+			right: 0;
+			z-index: 2;
+			width: 170px;
+			height: 381px;
+			clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+			background-color: map-get(mixin.$colors, "C-white");
+		}
 		&__fv {
 			position: absolute;
 			width: 100%;
-			height: 100%; // 高さが必要な場合
-			background: url('../../assets/images/a-tech3_image/fv-bg01-pc.png') no-repeat center center;
+			height: 641px; // 高さが必要な場合
+			background: url('../../assets/images/a-tech3_image/fv-bg01-pc.png') no-repeat ;
 			background-size: cover;
 			z-index: 1;
+			transform-origin: center top; // ← 上端固定
+			bottom: 0;
+			animation: animationZoom1 5s ease-in-out forwards;//ズームイン
+			
+		}
+		@keyframes animationZoom1 {//ズームイン
+			0% {
+				transform: scale(1); // ← 最初を小さく
+			}
+			100% {
+				transform: scale(1.1); // ← 最終はピッタリ
+			}
+		}
+		
+	}
+}
 
+
+
+
+
+.fv-triangle-bg {
+	position: absolute;
+	width: 611.5px;
+	height: 1103px;
+	background: url('../../assets/images/a-tech3_image/グループ 152.webp') no-repeat center center;
+	background-size: contain;
+	z-index: 5;
+	top: 78px;
+	left: 0;
+	.h1-content-pc {
+		position: absolute;
+    top: 212px;
+    left: 108px;
+		z-index: 6;
+		&__title {
+			@include mixin.font-settings (
+			F-size100,
+			F-line-height100,
+			F-letter-spacing-0,
+			F-family-Puritan,
+			500,
+			F-color-blue);
+		}
+		&__text {
+			@include mixin.font-settings (
+			F-size20,
+			F-line-height28,
+			F-letter-spacing-1-0,
+			F-family-Noto-Sans-JP,
+			500,
+			F-color-blue);
+		}
+	}
+}
+
+//サークルループPC
+.circle-loop-pc {
+	position: absolute;
+	top: 618px;
+	right: 75px;
+	width: 205px;
+	height: 205px;
+	background-image: url('../../assets/images/a-tech3_image/text-circle.webp');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	border-radius: 50%; // 円形
+	aspect-ratio: 1 / 1; // 円形比率
+	display: block;
+	z-index: 10;
+	animation: rotateCircle 15s linear infinite; /* 回転アニメーション */
+	@keyframes rotateCircle {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+}
+
+
+
+@include mixin.TAB2 {
+	#mainvisual {
+		width: 100%;
+		height: 641px;
+		position: relative;	
+		overflow: hidden;
+		margin: 0 auto ;
+		.mainvisual {
+			&__triangle-white {
+				display: none;
+				position: absolute;
+				bottom: -1px;
+				right: 0;
+				z-index: 2;
+				width: 170px;
+				height: 381px;
+				clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+				background-color: map-get(mixin.$colors, "C-white");
+			}
+			&__fv {
+				position: absolute;
+				width: 100%;
+				height: 641px; // 高さが必要な場合
+				background: url('../../assets/images/a-tech3_image/fv-bg01-pc.png') no-repeat ;
+				background-size: cover;
+				z-index: 1;
+				transform-origin: center top; // ← 上端固定
+				bottom: 0;
+				animation: animationZoom1 5s ease-in-out forwards;//ズームイン
+				
+			}
+			@keyframes animationZoom1 {//ズームイン
+				0% {
+					transform: scale(1); // ← 最初を小さく
+				}
+				100% {
+					transform: scale(1.1); // ← 最終はピッタリ
+				}
+			}
+		}
+		
+	}
+	
+	.fv-triangle-bg {
+		// display: none;
+		position: absolute;
+		// width: 611.5px;
+		// height: 1103px;
+		width: 100vw;
+		aspect-ratio: 611.5/1103;
+		background: url('../../assets/images/a-tech3_image/グループ 152.webp') no-repeat ;
+		background-size: contain;
+		z-index: 1;
+		top: -31px;
+		right: 0;
+		.h1-content {
+			position: absolute;
+			top: 212px;
+			left: 108px;
+			&__title {
+				@include mixin.font-settings (
+				F-size100,
+				F-line-height100,
+				F-letter-spacing-0,
+				F-family-Puritan,
+				500,
+				F-color-blue);
+			}
+			&__text {
+				@include mixin.font-settings (
+				F-size20,
+				F-line-height28,
+				F-letter-spacing-1-0,
+				F-family-Noto-Sans-JP,
+				500,
+				F-color-blue);
+			}
 		}
 	}
 	
-}  
+	//サークルループPC
+	.circle-loop-pc {
+		position: absolute;
+		top: 620px;
+		right: 10px;
+		width: 170px;
+		height: 170px;
+		background-image: url('../../assets/images/a-tech3_image/text-circle.webp');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		border-radius: 50%; // 円形
+		aspect-ratio: 1 / 1; // 円形比率
+		display: block;
+		z-index: 10;
+		animation: rotateCircle 15s linear infinite; /* 回転アニメーション */
+		@keyframes rotateCircle {
+			from {
+				transform: rotate(0deg);
+			}
+			to {
+				transform: rotate(360deg);
+			}
+		}
+	}
+}	
+
+
+
+
+@include mixin.TAB1 {
+	#mainvisual {
+		width: 100%;
+		height: 565px;
+		position: relative;	
+		overflow: hidden;
+		margin: 0 auto ;
+		.h1-content-sp {
+			display: block;
+			position: absolute;
+			// position: relative;
+			width: fit-content;
+			text-align: left;
+			top: 55.6%;
+			padding: 0 3.47% 0 6.4%;
+			&__title {
+				@include mixin.font-settings (
+				F-size64,
+				F-line-height72,
+				F-letter-spacing-0,
+				F-family-Puritan,
+				500,
+				F-color-blue);
+				font-size: clamp(10px, 17.06vw, 64px);
+				position: relative;
+				z-index: 5; // ← テキストは上に
+			}
+			&__text {
+				@include mixin.font-settings (
+				F-size16,
+				F-line-height24,
+				F-letter-spacing-0-8,
+				F-family-Noto-Sans-JP,
+				600,
+				F-color-blue);
+				font-size: clamp(10px, 4.27vw, 16px);
+				position: relative;
+				z-index: 5; // ← テキストは上に
+			}
+		}
+		.circle-loop-sp {
+			position: absolute;
+			top: 214px;
+			right: 3px;
+			width: 148px;
+			height: 148px;
+			background-image: url('../../assets/images/a-tech3_image/text-circle.webp');
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+			border-radius: 50%; // 円形
+			aspect-ratio: 1 / 1; // 円形比率
+			display: block;
+			z-index: 4;
+			animation: rotateCircle 15s linear infinite; /* 回転アニメーション */
+			@keyframes rotateCircle {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
+		}
+		.mainvisual {
+			&__triangle-white {
+				display: none;
+			}
+			&__fv {
+				position: absolute;
+				width: 100%;
+				height: 345px; // 高さが必要な場合
+				background: url('../../assets/images/a-tech3_image/fv-bg01-sp.png') center center  no-repeat ;
+				background-size: cover;
+				z-index: 2;
+				transform-origin: center top; // ← 上端固定
+				top: 0;
+				animation: animationZoom1 5s ease-in-out forwards;//ズームイン
+			}
+			@keyframes animationZoom1 {//ズームイン
+				0% {
+					transform: scale(1); // ← 最初を小さく
+				}
+				100% {
+					transform: scale(1.1); // ← 最終はピッタリ
+				}
+			}
+			
+			&__sp-bg {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				z-index: 3;
+				width: 100%;
+				height: 360px;
+				clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);
+				background-color: map-get(mixin.$colors, "C-white");
+				margin: 0 auto;
+			}
+		}
+	}
+	
+	.fv-triangle-bg {
+		display: none;
+	}
+	
+	
+	.circle-loop-pc {
+		display: none;	
+	}
+
+	
+}	
+

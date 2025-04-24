@@ -71,6 +71,7 @@ $font-sizes: (
   F-size72: 72px,
   F-size80: 80px,
   F-size84: 84px,
+	F-size100: 100px,
   F-size120: 120px);
 
 // 行送り（line-height）
@@ -106,6 +107,7 @@ $line-heights: (
   F-line-height48: 48,
   F-line-height54: 54,
   F-line-height60: 60,
+	F-line-height72: 72,
   F-line-height80: 80,
 	F-line-height89: 89,
 	F-line-height95: 95,
@@ -124,6 +126,7 @@ $letter-spacings: (
   F-letter-spacing-0-7: 0.7px,
 	F-letter-spacing-0-75: 0.75px,
 	F-letter-spacing-0-8: 0.8px,
+	F-letter-spacing-1-0: 1.0px,
   F-letter-spacing-1-2: 1.2px,
   F-letter-spacing-1-4: 1.4px,
   F-letter-spacing-1-6: 1.6px,
@@ -151,12 +154,13 @@ $font-families: (
 );
 
 $font-weights: (
-  normal: normal,
-	medium: 500,
+	600: 600,
+	500: 500,
 	400: 400,
 	300: 300,
 	demiLight: 200,
 	regular: 100,
+  normal: normal,
   bold: bold,
   );
 

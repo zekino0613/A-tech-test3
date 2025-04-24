@@ -132,20 +132,20 @@ a:focus-visible {
 // 共通パーツ
 //-------------------------------------------------------------------------------
 // 【サークルループ】
-.circle-loop {
-  width: 100px; /* サイズは任意 */
-  height: 100px;
-  position: relative;
-  animation: rotateCircle 10s linear infinite; /* 回転アニメーション */
-}
-@keyframes rotateCircle {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+// .circle-loop {
+//   width: 100px; /* サイズは任意 */
+//   height: 100px;
+//   position: relative;
+//   animation: rotateCircle 10s linear infinite; /* 回転アニメーション */
+// }
+// @keyframes rotateCircle {
+//   from {
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
 
 //【h3セクションタイトル】
 .section-title {
@@ -159,7 +159,7 @@ a:focus-visible {
       F-line-height95,
       F-letter-spacing-0,
       F-family-Puritan,
-      normal,
+      300,
       F-color-blue);
 	}
 	&__ja {
@@ -169,7 +169,7 @@ a:focus-visible {
       F-line-height95,
       F-letter-spacing-0,
       F-family-Noto-Sans-JP,
-      400,
+      500,
       F-color-blue);
 	}
 }
@@ -181,17 +181,21 @@ $white: map-get(mixin.$colors, "C-white");
 $transition: 0.3s;
 
 .slanted-svg-button {
-  display: inline-block;
-	width: 263px;
-	height: 59px;
-  cursor: pointer;
-  margin: 0 21px 42px 94px;
+	display: block;
+  width: 100%;
+	max-width: 272px;
+	cursor: pointer;
+	overflow: hidden; // ✅ 追加！
 	a {
 		opacity: 1;
+		display: block;
+    width: 132%;
+    height: 113%;
 	}
   svg {
-    width: 100%;
+    width: 80%;
     height: 100%;
+    display: block;
   }
   .button-shadow {
     fill: $main-color;
@@ -204,22 +208,25 @@ $transition: 0.3s;
     transition: fill $transition, stroke $transition;
   }
   .button-text {
-    width: 100%;
-    height: 100%;
+		width: 218px;
+    height: 49px;
     display: flex;
+    gap: 7px;
     align-items: center;
     justify-content: center;
 		@include mixin.font-settings (
-      F-size14,
-      F-line-height24,
-      F-letter-spacing-0-7,
-      F-family-Puritan,
-      400,
-      F-color-blue);
+		F-size14,
+		F-line-height24,
+		F-letter-spacing-0-7,
+		F-family-Puritan,
+		400,
+		F-color-blue);
+		font-size: 11px;
     transition: color $transition;
     .arrow {
-      margin-left: 8px;
-    }
+			font-size: 17px;
+			margin: 2px 14px 0 7px;
+		}
   }
   &:hover {
     .button-shadow {
@@ -395,10 +402,40 @@ $transition: 0.3s;
 		display: none;
   }
 	
-	//-------------------------------------------------------------------------------
-	// 共通パーツ
-	//-------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
+// 共通パーツ
+//-------------------------------------------------------------------------------
 	
 	
-
+	//【h3セクションタイトル】
+	.section-title {
+		display: flex;
+		align-items: center;
+		align-items: baseline;
+		// justify-content: center;
+		&__eng {
+			text-transform: capitalize;
+			@include mixin.font-settings (
+				F-size48,
+				F-line-height95,
+				F-letter-spacing-0,
+				F-family-Puritan,
+				300,
+				F-color-blue);
+		}
+		&__ja {
+			margin-left: 16px;
+			@include mixin.font-settings (
+				F-size16,
+				F-line-height16,
+				F-letter-spacing-0,
+				F-family-Noto-Sans-JP,
+				500,
+				F-color-blue);
+		}
+	}
+	
+	
+	
+	
 }

@@ -39,6 +39,7 @@
 <?php
 get_template_part('template-parts/slanted-svg-button', null, [
   'label' => 'View more',
+	'width' => '400px', // ✅ ここで幅を指定
   'url'   => home_url('/about/')
 ]);
 ?>

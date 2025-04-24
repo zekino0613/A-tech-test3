@@ -2,5 +2,223 @@
 @use "../../_foundation/_base"as base;
 
 #service {
-  background-color: rgb(169, 210, 5);
+  background-color: #F6F7F7;
+	// height: auto;
+	height: 910px;
+	padding: 118px 4.6% 0;
+	position: relative;
+	.service-bg-pc {
+		width: 822px;
+		height: 910px;
+		clip-path: polygon(53% 0, 100% 0, 100% 100%, 5% 100%);
+		background-color: map-get(mixin.$colors, "C-gray");
+		position: absolute;
+		z-index: 0;
+		bottom: 0;
+		right: 0;
+	}
+	.service {
+		&__inner {
+			max-width: 960px;
+			width: 100%;
+			margin: 0 auto;
+			.section-title {
+				position: relative;
+				z-index: 1;
+			}
+			.service-textarea {
+				position: relative;
+				z-index: 1;
+				&__subtitle {
+					margin: 10px  0 0;
+				@include mixin.font-settings (
+				F-size32,
+				F-line-height46,
+				F-letter-spacing-1-6,
+				F-family-Noto-Sans-JP,
+				500,
+				F-color-black);
+				}
+				&__text {
+					margin: 37px 0 64px;
+				@include mixin.font-settings (
+				F-size16,
+				F-line-height32,
+				F-letter-spacing-0-8,
+				F-family-Noto-Sans-JP,
+				500,
+				F-color-black);
+				}
+			}
+			
+			.service-list {
+				display: flex;
+				justify-content: center;
+				// flex-wrap: wrap;
+				gap: 27px;
+				position: relative;
+				z-index: 1;
+				li {
+					// width: 220px;
+					width: 58.67%;
+					height: 61.33%;
+					aspect-ratio: 220 / 230;
+					display: flex;
+					padding: 2%;	
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					// border: 1px solid black;
+					box-shadow: 0px 1px 6px #00000029;
+					background-color: map-get(mixin.$colors, "C-white");
+				
+					.service-text {
+						padding: 1.74vw 0 0px 0;
+						@include mixin.font-settings (
+						F-size18,
+						F-line-height32,
+						F-letter-spacing-0,
+						F-family-Noto-Sans-JP,
+						500,
+						F-color-blue);
+						font-size: clamp(12px, 1.5vw, 18px);
+					}
+				}
+			}
+			.slanted-svg-button {
+				margin: 39px auto 0;
+				position: relative;
+				z-index: 1;
+			}
+		}
+	}
 }
+
+
+@include mixin.TAB1 {
+	#service {
+		background-color: #F6F7F7;
+		// height: auto;
+		height: auto;
+		padding: 20px 4.6% 55.5px;
+		position: relative;
+		.service-bg-pc {
+			display: none;
+			width: 822px;
+			height: 910px;
+			clip-path: polygon(53% 0, 100% 0, 100% 100%, 5% 100%);
+			background-color: map-get(mixin.$colors, "C-gray");
+			position: absolute;
+			z-index: 0;
+			bottom: 0;
+			right: 0;
+		}
+		.service-bg-sp {
+			width: 375px;
+			height: 860px;
+			clip-path: polygon(100% 0%, 4% 100%, 100% 100%);
+			background-color: map-get(mixin.$colors, "C-gray");
+			position: absolute;
+			z-index: 1;
+			bottom: 0;
+			right: 0;
+			
+		}
+		.service {
+			&__inner {
+				max-width: 960px;
+				width: 100%;
+				margin: 0 auto;
+				.section-title {
+					position: relative;
+					z-index: 1;
+				}
+				.service-textarea {
+					position: relative;
+					z-index: 1;
+					&__subtitle {
+					margin: 0;
+					@include mixin.font-settings (
+					F-size24,
+					F-line-height35,
+					F-letter-spacing-1-0,
+					F-family-Noto-Sans-JP,
+					400,
+					F-color-black);
+					}
+					&__text {
+						margin: 23px 0 47px;
+					@include mixin.font-settings (
+					F-size16,
+					F-line-height28-8,
+					F-letter-spacing-0-8,
+					F-family-Noto-Sans-JP,
+					400,
+					F-color-black);
+					}
+				}
+				
+				.service-list {
+					display: flex;
+					justify-content: center;
+					flex-wrap: wrap;
+					row-gap: 16px;
+					column-gap: 17px;
+					position: relative;
+					z-index: 1;
+					li {
+						width: 155px;
+						height: 162px;
+						aspect-ratio: 155 / 162;
+						display: flex;
+						padding: 2%;	
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
+						// border: 1px solid black;
+						box-shadow: 0px 1px 6px #00000029;
+						background-color: map-get(mixin.$colors, "C-white");
+						.service-list__1 {
+							width: 106px;
+							height: 75px;
+						}
+						.service-list__2 {
+							width: 80px;
+							height: 75px;
+						}
+						.service-list__3 {
+							width: 97px;
+							height: 79px;
+						}
+						.service-list__4 {
+							width: 76px;
+							height: 79px;
+						}
+						.service-text {
+							padding: 1.74vw 0 0px 0;
+							@include mixin.font-settings (
+							F-size14,
+							F-line-height32,
+							F-letter-spacing-0,
+							F-family-Noto-Sans-JP,
+							500,
+							F-color-blue);
+							font-size: clamp(10px, 3.73vw, 14px);
+						}
+					}
+					@media screen and (max-width: 375px) {
+						li {
+							width: 100%;
+							height: 150px;
+						}
+					}
+				}
+				.slanted-svg-button {
+					margin: 39px auto 0;
+					position: relative;
+					z-index: 1;
+				}
+			}
+		}
+	}
+}	

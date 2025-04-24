@@ -2,5 +2,205 @@
 @use "../../_foundation/_base"as base;
 
 #property {
-	background-color: rgb(222, 7, 7);
+	position: relative;
+	width: 100%;
+	height: 460px; // 高さが必要な場合
+	.property {
+		&__triangle-blue {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 2;
+		width: 428px;
+		height: 460px;
+		clip-path: polygon(60% 0, 100% 0, 100% 100%, 10% 100%);
+		background-color: map-get(mixin.$colors, "C-blue");
+		}
+		
+		&__content {
+			padding: 0  4.6%;
+			margin: 0 auto;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: url('../../assets/images/a-tech3_image/fv-bg02-pc.webp') no-repeat center center;
+			background-size: cover;
+			z-index: 1;
+			&--textarea {
+				// font-size: clamp(34.34vw, 44.34vw, 54.34vw);
+				text-align: center;
+				margin: 101px auto;
+				.property-title-main {
+					text-transform: capitalize;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					@include mixin.font-settings (
+						F-size64,
+						F-line-height95,
+						F-letter-spacing-0,
+						F-family-Puritan,
+						400,
+						F-color-blue);	
+						font-size: clamp(32px, 4.44vw, 72px);
+						.batu {
+							position: relative;
+							top: 1px;
+							left: 0;
+							width: 28.4px;
+							height: 28.4px;
+							margin: 0 21px 0 11px;
+							&::before,
+							&::after {
+								content: '';
+								position: absolute;
+								width: 40px;
+								height: 2px;
+								background-color: map-get(mixin.$colors, "C-blue");
+								left: 0; // 「×」の位置
+								top: 50%;
+								transform-origin: center;
+							}
+							&::before {
+								transform: translateY(-50%) rotate(45deg);
+							}
+					
+							&::after {
+								transform: translateY(-50%) rotate(-45deg);
+							}
+						}
+				}
+				.property-title-sub {
+					text-transform: capitalize;
+					@include mixin.font-settings (
+						F-size32,
+						F-line-height54,
+						F-letter-spacing-1-6,
+						F-family-Noto-Sans-JP,
+						400,
+						F-color-black);	
+						font-size: clamp(20px, 2.22vw, 40px);
+				}
+				.property-title-text {
+					text-transform: capitalize;
+					@include mixin.font-settings (
+						F-size16,
+						F-line-height32,
+						F-letter-spacing-0-8,
+						F-family-Noto-Sans-JP,
+						500,
+						F-color-black);	
+						font-size: clamp(14px, 1.11vw, 20px);
+				}
+			}
+			
+		}
+	}
+	
 }
+
+
+@include mixin.TAB2 {
+	#property {
+		position: relative;
+		width: 100%;
+		height: 400px; // 高さが必要な場合
+		.property {
+			&__triangle-blue {
+				display: none;
+			}
+		}
+	}
+}	
+
+
+@include mixin.TAB1 {
+	#property {
+		position: relative;
+		width: 100%;
+		height: 400px; // 高さが必要な場合
+		.property {
+			&__content {
+				position: absolute;
+				padding: 47px 0 0;
+				width: 100%;
+				height: 100%; // 高さが必要な場合
+				background: url('../../assets/images/a-tech3_image/fv-bg02-sp.webp') no-repeat center center;
+				background-size: cover;
+				z-index: 1;
+				&--textarea {
+					width: 100%;
+					text-align: center;
+					margin:0;
+					padding: 0 4.6%;
+					.property-title-main {
+						text-transform: capitalize;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						@include mixin.font-settings (
+							F-size36,
+							F-line-height95,
+							F-letter-spacing-0,
+							F-family-Puritan,
+							400,
+							F-color-blue);	
+							font-size: clamp(24px, 9.6vw, 36px);
+							.batu {
+								position: relative;
+								top: 1px;
+								left: 0;
+								width: 16px;
+								height: 16px;
+								margin: 0 17px 0 18px;
+								&::before,
+								&::after {
+									content: '';
+									position: absolute;
+									width: 16px;
+									height: 2px;
+									background-color: map-get(mixin.$colors, "C-blue");
+									left: -8px; // 「×」の位置
+									top: 50%;
+									transform-origin: center;
+								}
+								&::before {
+									transform: translateY(-50%) rotate(45deg);
+								}
+						
+								&::after {
+									transform: translateY(-50%) rotate(-45deg);
+								}
+							}
+					}
+					.property-title-sub {
+						margin: 0 0 36px ;
+						@include mixin.font-settings (
+							F-size24,
+							F-line-height36,
+							F-letter-spacing-0-8,
+							F-family-Noto-Sans-JP,
+							400,
+							F-color-black);	
+							font-size: clamp(16px, 6.4vw, 24px);
+					}
+					.property-title-text {
+						text-align: left;
+						margin: 0 0 56px;
+						@include mixin.font-settings (
+							F-size16,
+							F-line-height28-8,
+							F-letter-spacing-0-8,
+							F-family-Noto-Sans-JP,
+							500,
+							F-color-black);	
+							font-size: clamp(10px, 4.27vw, 16px);
+					}
+				}
+				
+			}
+		}
+		
+	}
+	
+}	
