@@ -142,9 +142,7 @@
 	.fv-triangle-bg {
 		// display: none;
 		position: absolute;
-		// width: 611.5px;
-		// height: 1103px;
-		width: 100vw;
+		width: 97vw;
 		aspect-ratio: 611.5/1103;
 		background: url('../../assets/images/a-tech3_image/グループ 152.webp') no-repeat ;
 		background-size: contain;
@@ -179,7 +177,7 @@
 	//サークルループPC
 	.circle-loop-pc {
 		top: 620px;
-		right: 10px;
+		right: 70px;
 	
 	}
 }	

@@ -179,7 +179,7 @@ a:focus-visible {
       F-line-height95,
       F-letter-spacing-0,
       F-family-Noto-Sans-JP,
-      200,
+      400,
       F-color-blue);
 	}
 }
@@ -192,8 +192,9 @@ $transition: 0.3s;
 
 .slanted-svg-button {
 	display: block;
+	// max-width: 272px;
   width: 100%;
-	max-width: 272px;
+	max-width: clamp(180px, 79vw, 272px);
 	cursor: pointer;
 	overflow: hidden; // ✅ 追加！
 	a {
@@ -252,6 +253,7 @@ $transition: 0.3s;
     }
   }
 }
+
 
 // 【ボタン】グラデーション
 .gradient-entry-button {
@@ -464,7 +466,7 @@ $transition: 0.3s;
 				F-line-height16,
 				F-letter-spacing-0,
 				F-family-Noto-Sans-JP,
-				200,
+				400,
 				F-color-blue);
 		}
 	}

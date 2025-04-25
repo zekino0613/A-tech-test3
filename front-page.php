@@ -44,7 +44,7 @@
 			</div>
 		</div>
 		
-		<!-- property -->
+		<!-- Property -->
 		<section id="property">
 			<div class="property__triangle-blue"></div>
 			
@@ -65,7 +65,7 @@
 			</div>	
 		</section>
 		
-		<!-- service -->
+		<!-- Service -->
 		<section id="service">
 			<div class="service-bg-pc"></div>
 			<div class="service-bg-sp"></div>
@@ -136,6 +136,7 @@
 					</li>
 				</ul>
 				
+				<!-- slanted-svg-button.php -->
 				<?php
 					get_template_part('template-parts/slanted-svg-button', null, [
 						'label' => 'View more',
@@ -146,6 +147,7 @@
 			</div>
 		</section>
 		
+		<!-- About -->
 		<section id="about">
 			
 			<div class="about-bg-pc"></div>
@@ -175,6 +177,7 @@
 					</div>	
 				</div>
 				
+				<!-- slanted-svg-button.php -->
 				<?php
 					get_template_part('template-parts/slanted-svg-button', null, [
 						'label' => 'View more',
@@ -185,9 +188,142 @@
 			</div>	
 		</section>
 		
+		<!-- Recruit -->
+		<section id="recruit">
+			<div class="recruit-bg"></div>
+			<div class="recruit__inner-pc">
+				<div class="recruit-textcontent">
+					<!--【h3セクションタイトル】 -->
+					<div class="section-title">
+						<h3 class="section-title__eng">recruit</h3>
+						<span class="section-title__ja">採用情報</span>
+					</div>
+					
+					<h4 class="recruit-textcontent__subtitle">
+						お客様の幸せな未来を<br> 
+						共に考える。
+					</h4>
+					
+					<p class="recruit-textcontent__text">
+						株式会社ネクストリアルティでは、<br>
+						コンサルティング営業職・投資用不動産営業職を募集しています。<br>
+						お客様の老後の問題、住宅に対して解決案を提案していく営業活動です。
+					</p>
+					
+					<!-- slanted-svg-button.php -->
+					<?php
+						get_template_part('template-parts/slanted-svg-button', null, [
+							'label' => '募集要項を見る',
+							'width' => '336px',
+							'url'   => home_url('/recruit/')
+						]);
+					?>
+				</div>
+				
+				<div class="recruit-imagecontent">
+					<img class= "recruit-imagecontent__image" 
+					src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/top-recruit-pc.webp	"
+					width="480" 
+					height="406"
+					loading="lazy"
+					alt="採用情報画像">		
+					
+					<div class="recruit-imagecontent__bg"></div> 
+				
+				</div>
+			</div>	
+			
+			<div class="recruit__inner-sp">
+				<div class="recruit-textcontent">
+					<!--【h3セクションタイトル】 -->
+					<div class="section-title">
+						<h3 class="section-title__eng">recruit</h3>
+						<span class="section-title__ja">採用情報</span>
+					</div>
+					
+					<h4 class="recruit-textcontent__subtitle">
+						お客様の幸せな未来を<br> 
+						共に考える。
+					</h4>
+					
+					<p class="recruit-textcontent__text">
+						株式会社ネクストリアルティでは、
+						コンサルティング営業職・投資用不動産営業職を募集しています。<br>
+						お客様の老後の問題、住宅に対して解決案を提案していく営業活動です。
+					</p>
+				</div>
+				
+				
+				<div class="recruit-imagecontent">
+					<div class="recruit-imagecontent__bg"></div> 
+				</div>
+				
+				<!-- slanted-svg-button.php -->
+				<?php
+					get_template_part('template-parts/slanted-svg-button', null, [
+						'label' => 'Entry（エントリー）',
+						'width' => '336px',
+						'url'   => home_url('/recruit/')
+					]);
+				?>
+				
+			</div>		
+		</section>
 		
-		<section id="recruit">recruit</section>
-		<section id="news">news</section>
+		<section id="news">
+			<div class="news__inner">
+				<!--【h3セクションタイトル】 -->
+				<div class="section-title">
+					<h3 class="section-title__eng">news</h3>
+					<span class="section-title__ja">お知らせ</span>
+				</div>
+					
+				<?php
+				$paged = max(1, get_query_var('paged'));
+				$year  = get_query_var('year');
+				$archive_year = get_query_var('year');
+				$args = [
+					'post_type'      => 'news',
+					'posts_per_page' => 3,
+					'paged'          => $paged,
+					'orderby'        => 'date',
+					'order'          => 'DESC',
+				];
+				$news_query = new WP_Query($args);
+        ?>
+
+				<div class="news-list">
+					<?php if ($news_query->have_posts()) : ?>
+						<?php while ($news_query->have_posts()) : $news_query->the_post(); ?>
+							<a href="<?php the_permalink(); ?>" class="news-card">
+								<div class="news-card__inner">
+									<div class="textarea">
+										<?php
+										$date = new DateTime(get_the_date('Y-m-d'));
+										echo '<time class="textarea__news-date">' . $date->format('Y/m/d D.') . '</time>';
+										?>
+										<h1 class="textarea__news-title"><?php the_title(); ?></h1>
+										
+									</div>
+								</div>
+							</a>
+						<?php endwhile; ?>
+					<?php else : ?>
+						<p>投稿が見つかりませんでした。</p>
+					<?php endif; ?>
+					<?php wp_reset_postdata(); ?>
+        </div>
+				
+				<!-- slanted-svg-button.php -->
+				<?php
+					get_template_part('template-parts/slanted-svg-button', null, [
+						'label' => 'View more',
+						'width' => '336px',
+						'url'   => get_post_type_archive_link('news')
+					]);
+				?>
+			</div>
+		</section>
   <!-- ---footer読み込み ----------------------------------------------->
   <?php
     get_template_part('template-parts/footer'); // footer.php をインクルード

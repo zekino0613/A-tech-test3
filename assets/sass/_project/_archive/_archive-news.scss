@@ -7,42 +7,7 @@
 	padding: 0 4% 123px;
 	.archive-info {
 		&__inner {	
-		.filter-buttons {
-			display: flex;
-			justify-content: center;
-			flex-wrap: wrap;
-			gap: 6px;
-			margin: 0 0 64px;
-			.filter-button {
-				@include mixin.font-settings (
-					F-size16,
-					F-line-height19-2,
-					F-letter-spacing-10,
-					F-family-KosugiMaru,
-					normal,
-					F-color-pink);
-					border-radius: 8px;
-					padding: 8.5px 16px;
-					text-align: center;
-					background-color: map-get(mixin.$colors, "C-white");
-					border: 1px solid map-get(mixin.$colors, "C-pink");
-					cursor: pointer;
-					transition: all 0.3s ease;
-					// border: 2px solid transparent;
-					cursor: pointer;
-					transition: all 0.3s ease;
-				&:hover {
-					color:map-get(mixin.$colors, "C-white");
-					background-color: map-get(mixin.$colors, "C-pink");
-				}
-			
-				&.active {
-					color:map-get(mixin.$colors, "C-white");
-					background-color: map-get(mixin.$colors, "C-pink");
-				}
-			}
-		}
-		
+
 		.info-list {
 			// 投稿リストのデザイン
 			.info-card {

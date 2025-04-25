@@ -2,5 +2,264 @@
 @use "../../_foundation/_base" as base;
 
 #recruit {
-	background-color: rgb(219, 128, 9);
+	position: relative;
+	width: 100%;
+	height: 641px; // 高さが必要な場合
+	background: url('../../assets/images/a-tech3_image/top-recruit-bg-pc.webp') no-repeat ;
+	background-size: cover;
+	z-index: 1;
+	bottom: 0;
+	padding: 74px 2.78% 70px 16.68%;
+	.recruit-bg {
+    width: 197px;
+    height: 407px;
+		position: absolute;
+		z-index: 0;
+		top: 0;
+		left: 0;
+		background-color: #A8AEC3;
+		clip-path: polygon(100% 0%, 0 0, 0 100%);
+	}
+	.recruit {
+		&__inner-sp {
+			display: none;
+		}
+		&__inner-pc {
+			max-width: 1160px;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			.recruit-textcontent {
+				width: 50%;
+				&__subtitle {
+					@include mixin.font-settings (
+						F-size32,
+						F-line-height46,
+						F-letter-spacing-1-6,
+						F-family-Noto-Sans-JP,
+						400,
+						F-color-black);
+						font-size: clamp(20px, 2.2vw, 32px);
+				}
+				&__text {
+					margin: 37px 0 48px;
+					@include mixin.font-settings (
+						F-size16,
+						F-line-height32,
+						F-letter-spacing-0-8,
+						F-family-Noto-Sans-JP,
+						500,
+						F-color-black);
+						font-size: clamp(14px, 1.2vw, 16px);
+				}
+			}
+			
+			.recruit-imagecontent {
+				width: 50%;
+				height: 100%;
+				position: relative;
+				top: 0px;
+				right: -18px;
+				&__image {
+					width: 90.9%;
+					aspect-ratio: 556 / 510;
+					position: absolute;
+					z-index: 2;	
+				}	
+				&__bg {
+					width: 90.9%;
+					aspect-ratio: 556 / 510;
+					background-color: map-get(mixin.$colors, "C-blue");
+					-webkit-clip-path: polygon(27% -5%, 100% 0%, 80% 100%, 2% 100%);
+					clip-path: polygon(27% 0.7%, 100% 0.6%, 78.8% 102%, 2.8% 100.2%);
+					position: relative;
+					top: 21px;
+					right: -17px;
+					z-index: 1;	
+				}
+			}
+		}
+	}
 }
+
+@include mixin.TAB1 {
+	#recruit {
+		position: relative;
+		width: 100%;
+		height: 100%; // 高さが必要な場合
+		background: url('../../assets/images/a-tech3_image/top-recruit-bg-sp.webp') no-repeat ;
+		background-size: cover;
+		background-position: center; // ✅ 上寄りに表示
+		z-index: 1;
+		bottom: 0;
+		padding: 17px 4.6% 50px;
+		overflow: hidden;
+		.recruit-bg {
+			display: none;
+		}
+		.recruit {
+			&__inner-pc {
+				display: none;
+			}
+			&__inner-sp {
+				display: block;
+				.recruit-textcontent {
+					&__subtitle {
+						@include mixin.font-settings (
+							F-size24,
+							F-line-height35,
+							F-letter-spacing-1-2,
+							F-family-Noto-Sans-JP,
+							400,
+							F-color-black);
+							font-size: clamp(16px, 6.4vw, 24px);
+					}
+					&__text {
+						margin: 10px 0 49px;
+						@include mixin.font-settings (
+							F-size16,
+							F-line-height32,
+							F-letter-spacing-0-8,
+							F-family-Noto-Sans-JP,
+							500,
+							F-color-black);
+							font-size: clamp(14px, 4.27vw, 16px);
+					}
+				}
+				
+				.recruit-imagecontent {
+					max-width: 430px;
+					width: 100%;
+					height: 250px;
+					position: relative;
+					top: 12px;
+					right: 16px;
+					margin: 0 auto; // PC時：右寄せ
+				
+					// ✅ 擬似要素で画像を重ねる
+					&::before {
+						content: "";
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						background-image: url('../images/a-tech3_image/top-recruit.webp');
+						background-size: cover;
+						background-position: top;
+						background-repeat: no-repeat;
+						z-index: 2; // ✅ 上に表示
+					}
+					
+					&__bg {
+						width: 100%;
+						height: 100%;
+						background-color: map-get(mixin.$colors, "C-blue");
+						position: absolute;
+						top: 11px;
+            left: 37px;
+						z-index: 1;
+						-webkit-clip-path: polygon(19% -3.3%, 100% -36.4%, 78.8% 102%, 2.8% 100.2%);
+						clip-path: polygon(19% -3.3%, 100% -36.4%, 78.8% 114%, 0.8% 100.2%);
+					}
+				}
+				
+				.slanted-svg-button {
+					margin: 50px auto 0;
+				}
+			}
+		}
+	}
+}	
+
+
+
+@include mixin.SP {
+	#recruit {
+		position: relative;
+		width: 100%;
+		height: 100%; // 高さが必要な場合
+		background: url('../../assets/images/a-tech3_image/top-recruit-bg-sp.webp') no-repeat ;
+		background-size: cover;
+		background-position:  top; // ✅ 上寄りに表示
+		z-index: 1;
+		bottom: 0;
+		padding: 17px 4.6% 50px;
+		overflow: hidden;
+		.recruit-bg {
+			display: none;
+		}
+		.recruit {
+			&__inner-pc {
+				display: none;
+			}
+			&__inner-sp {
+				display: block;
+				.recruit-textcontent {
+					&__subtitle {
+						@include mixin.font-settings (
+							F-size24,
+							F-line-height35,
+							F-letter-spacing-1-2,
+							F-family-Noto-Sans-JP,
+							400,
+							F-color-black);
+							font-size: clamp(16px, 6.4vw, 24px);
+					}
+					&__text {
+						margin: 10px 0 49px;
+						@include mixin.font-settings (
+							F-size16,
+							F-line-height32,
+							F-letter-spacing-0-8,
+							F-family-Noto-Sans-JP,
+							500,
+							F-color-black);
+							font-size: clamp(14px, 4.27vw, 16px);
+					}
+				}
+				
+				.recruit-imagecontent {
+					max-width: 240px;
+					width: 100%;
+					height: 146px;
+					position: relative;
+					top: 12px;
+					right: -21px;	
+					margin: 0 0 0 auto; // PC時：右寄せ
+				
+					// ✅ 擬似要素で画像を重ねる
+					&::before {
+						content: "";
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						background-image: url('../images/a-tech3_image/top-recruit.webp');
+						background-size: cover;
+						background-position: center top;
+						background-repeat: no-repeat;
+						z-index: 2; // ✅ 上に表示
+					}
+					
+					&__bg {
+						width: 100%;
+						height: 100%;
+						background-color: map-get(mixin.$colors, "C-blue");
+						position: absolute;
+						top: 6px;
+						left: 21px;
+						z-index: 1;
+						-webkit-clip-path: polygon(19% -3.3%, 100% -36.4%, 78.8% 102%, 2.8% 100.2%);
+						clip-path: polygon(19% -3.3%, 100% -36.4%, 78.8% 114%, 0.8% 100.2%);
+					}
+				}
+				
+				.slanted-svg-button {
+					margin: 50px auto 0;
+				}
+			}
+		}
+	}
+}	

@@ -2,5 +2,130 @@
 @use "../../_foundation/base" as base;
 
 #news {
-	background-color: rgb(70, 16, 186);
+	padding: 100px 4.6%;
+	.news__inner {
+		max-width: 960px;
+		width: 100%;
+		margin: 0 auto;
+		.news-list {
+			// 投稿リストのデザイン
+			.news-card {
+				display: block;
+				transition: transform 0.3s ease, box-shadow 0.3s ease;
+				text-decoration: none;
+				max-width: 960px;
+				width: 100%;
+				padding: 0;
+				margin: 0 auto;
+				&:hover {
+					transform: translateY(-5px);
+				}
+				&__inner{
+					display: flex;
+					padding: 0 0 20px 0;
+					margin: 0px auto 34px;
+					align-items: flex-start;
+					border-bottom:1.5px solid map-get(mixin.$colors, "C-black");	
+					.textarea {
+						width: 100%;
+						padding: 0;
+						&__news-date {
+							@include mixin.font-settings (
+								F-size14,
+								F-line-height27,
+								F-letter-spacing-1-12,
+								F-family-Noto-Sans-JP,
+								bold,
+								F-color-blue);
+								padding: 0;
+								margin: 0px 0 5px;
+								display: block;
+						}
+						&__news-title {
+							@include mixin.font-settings (
+								F-size16,
+								F-line-height32,
+								F-letter-spacing-0-8,
+								F-family-Noto-Sans-JP,
+								500,
+								F-color-black);
+								margin: 0 ;
+						}
+					}
+				}
+				
+			}
+		}
+		.slanted-svg-button {
+			margin: 0 0 0 auto;
+		}
+	}
 }  
+
+
+
+
+
+@include mixin.SP {
+	#news {
+		padding: 47px 4.6% 54px;
+		.news__inner {
+			max-width: 960px;
+			width: 100%;
+			margin: 0 auto;
+			.news-list {
+				// 投稿リストのデザイン
+				.news-card {
+					display: block;
+					transition: transform 0.3s ease, box-shadow 0.3s ease;
+					text-decoration: none;
+					max-width: 960px;
+					width: 100%;
+					padding: 0;
+					margin: 0 auto;
+					&:hover {
+						transform: translateY(-5px);
+					}
+					&__inner{
+						display: flex;
+						padding: 0 0 20px 0;
+						margin: 0px auto 34px;
+						align-items: flex-start;
+						border-bottom:1.5px solid map-get(mixin.$colors, "C-black");	
+						.textarea {
+							width: 100%;
+							padding: 0;
+							&__news-date {
+								@include mixin.font-settings (
+									F-size14,
+									F-line-height27,
+									F-letter-spacing-1-12,
+									F-family-Noto-Sans-JP,
+									bold,
+									F-color-blue);
+									padding: 0;
+									margin: 0px 0 5px;
+									display: block;
+							}
+							&__news-title {
+								@include mixin.font-settings (
+									F-size16,
+									F-line-height32,
+									F-letter-spacing-0-8,
+									F-family-Noto-Sans-JP,
+									500,
+									F-color-black);
+									margin: 0 ;
+							}
+						}
+					}
+					
+				}
+			}
+			.slanted-svg-button {
+				margin: 0 auto;
+			}
+		}
+	}  
+	
+}	
