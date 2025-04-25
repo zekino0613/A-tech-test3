@@ -131,22 +131,32 @@ a:focus-visible {
 //-------------------------------------------------------------------------------
 // 共通パーツ
 //-------------------------------------------------------------------------------
-// 【サークルループ】
-// .circle-loop {
-//   width: 100px; /* サイズは任意 */
-//   height: 100px;
-//   position: relative;
-//   animation: rotateCircle 10s linear infinite; /* 回転アニメーション */
-// }
-// @keyframes rotateCircle {
-//   from {
-//     transform: rotate(0deg);
-//   }
-//   to {
-//     transform: rotate(360deg);
-//   }
-// }
-
+// 【サークルループPC】
+	.circle-loop-pc {
+		position: absolute;
+		top: 618px;
+		right: 75px;
+		width: 205px;
+		height: 205px;
+		background-image: url('../../assets/images/a-tech3_image/text-circle.webp');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		border-radius: 50%; // 円形
+		aspect-ratio: 1 / 1; // 円形比率
+		display: block;
+		z-index: 10;
+		animation: rotateCircle 15s linear infinite; /* 回転アニメーション */
+		@keyframes rotateCircle {
+			from {
+				transform: rotate(0deg);
+			}
+			to {
+				transform: rotate(360deg);
+			}
+		}
+	}
+	
 //【h3セクションタイトル】
 .section-title {
 	display: flex;
@@ -169,7 +179,7 @@ a:focus-visible {
       F-line-height95,
       F-letter-spacing-0,
       F-family-Noto-Sans-JP,
-      500,
+      200,
       F-color-blue);
 	}
 }
@@ -405,7 +415,31 @@ $transition: 0.3s;
 //-------------------------------------------------------------------------------
 // 共通パーツ
 //-------------------------------------------------------------------------------
-	
+// 【サークルループSP】
+.circle-loop-sp {
+	position: absolute;
+	display: block;
+	top: 214px;
+	right: 3px;
+	width: 148px;
+	height: 148px;
+	background-image: url('../../assets/images/a-tech3_image/text-circle.webp');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	border-radius: 50%; // 円形
+	aspect-ratio: 1 / 1; // 円形比率
+	z-index: 4;
+	animation: rotateCircle 15s linear infinite; /* 回転アニメーション */
+	@keyframes rotateCircle {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+}
 	
 	//【h3セクションタイトル】
 	.section-title {
@@ -430,7 +464,7 @@ $transition: 0.3s;
 				F-line-height16,
 				F-letter-spacing-0,
 				F-family-Noto-Sans-JP,
-				500,
+				200,
 				F-color-blue);
 		}
 	}

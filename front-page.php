@@ -143,13 +143,49 @@
 						'url'   => home_url('/servise/')
 					]);
 				?>
-				
-				
-				
 			</div>
 		</section>
 		
-		<section id="about">about</section>
+		<section id="about">
+			
+			<div class="about-bg-pc"></div>
+			<div class="about-bg-sp"></div>
+			
+			<div class="about__inner">
+				<!--【h3セクションタイトル】 -->
+				<div class="section-title">
+					<h3 class="section-title__eng">about</h3>
+					<span class="section-title__ja">事業紹介</span>
+				</div>
+
+				<!-- サークルループPC -->	
+				<div class="circle-loop-pc"></div>
+				
+				<div class="about-content">
+					<div class="about-content__management">
+						<p class="about-content__management--text">
+							アセットマネジメント事業
+						</p>
+					</div>
+					
+					<div class="about-content__consulting">
+						<p class="about-content__consulting--text">
+							不動産コンサルティング事業
+						</p>
+					</div>	
+				</div>
+				
+				<?php
+					get_template_part('template-parts/slanted-svg-button', null, [
+						'label' => 'View more',
+						'width' => '336px',
+						'url'   => home_url('/about/')
+					]);
+				?>
+			</div>	
+		</section>
+		
+		
 		<section id="recruit">recruit</section>
 		<section id="news">news</section>
   <!-- ---footer読み込み ----------------------------------------------->

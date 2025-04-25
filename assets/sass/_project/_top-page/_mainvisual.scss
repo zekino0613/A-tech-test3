@@ -89,28 +89,9 @@
 
 //サークルループPC
 .circle-loop-pc {
-	position: absolute;
 	top: 618px;
 	right: 75px;
-	width: 205px;
-	height: 205px;
-	background-image: url('../../assets/images/a-tech3_image/text-circle.webp');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-	border-radius: 50%; // 円形
-	aspect-ratio: 1 / 1; // 円形比率
-	display: block;
-	z-index: 10;
-	animation: rotateCircle 15s linear infinite; /* 回転アニメーション */
-	@keyframes rotateCircle {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
-	}
+	
 }
 
 
@@ -197,28 +178,9 @@
 	
 	//サークルループPC
 	.circle-loop-pc {
-		position: absolute;
 		top: 620px;
 		right: 10px;
-		width: 170px;
-		height: 170px;
-		background-image: url('../../assets/images/a-tech3_image/text-circle.webp');
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center;
-		border-radius: 50%; // 円形
-		aspect-ratio: 1 / 1; // 円形比率
-		display: block;
-		z-index: 10;
-		animation: rotateCircle 15s linear infinite; /* 回転アニメーション */
-		@keyframes rotateCircle {
-			from {
-				transform: rotate(0deg);
-			}
-			to {
-				transform: rotate(360deg);
-			}
-		}
+	
 	}
 }	
 
@@ -266,28 +228,9 @@
 			}
 		}
 		.circle-loop-sp {
-			position: absolute;
+			display: block;
 			top: 214px;
 			right: 3px;
-			width: 148px;
-			height: 148px;
-			background-image: url('../../assets/images/a-tech3_image/text-circle.webp');
-			background-repeat: no-repeat;
-			background-size: cover;
-			background-position: center;
-			border-radius: 50%; // 円形
-			aspect-ratio: 1 / 1; // 円形比率
-			display: block;
-			z-index: 4;
-			animation: rotateCircle 15s linear infinite; /* 回転アニメーション */
-			@keyframes rotateCircle {
-				from {
-					transform: rotate(0deg);
-				}
-				to {
-					transform: rotate(360deg);
-				}
-			}
 		}
 		.mainvisual {
 			&__triangle-white {
