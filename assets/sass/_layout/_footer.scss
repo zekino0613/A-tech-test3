@@ -7,12 +7,13 @@
 			text-transform: capitalize;
 			.footer-top {
 				background-color: map-get(mixin.$colors, "C-blue");
-				padding: 40px 6.4%;
+				padding: 31px 6.4% 46px;
 				position: relative;
 				&__content {
 					max-width: 960px;
 					width: 100%;
 					margin:  0 auto;
+					padding: 0 0px 0 7px;
 					&--title {
 						@include mixin.font-settings (
 						F-size64,
@@ -21,6 +22,7 @@
 						F-family-Puritan,
 						300,
 						F-color-white);
+						margin: 0px 0px 13px 11px;
 					}
 					&--text {
 						@include mixin.font-settings (
@@ -34,7 +36,7 @@
 					&--bg {
 						position: absolute;
 						width: 100%;
-						height: 100%; // 高さが必要な場合
+						height: 97%; // 高さが必要な場合
 						background: url('../../assets/images/a-tech3_image/section-contact.webp') no-repeat center right;
 						background-size: contain;
 						bottom: 0;
@@ -43,7 +45,7 @@
 					&--flex {
 						display: flex;
 						justify-content: center;
-						margin: 40px 0 0;
+						margin: 33px 0 -6px;
             gap: 40px;
 						.footer-button-wrap {
 							max-width: 460px;
@@ -53,17 +55,17 @@
 							.footer-button-bg {
 								position: absolute;
 								top: -1px;
-								left: -1px;
-								max-width: 460px;
-								width: 100%;
+								left: 1px;
+								max-width: 477px;
+								width: 109%;
 								height: 138px;
-								clip-path: polygon(0 0, 92% 0, 99.7% 100%, 0% 100%);
+								clip-path: polygon(0 0, 92% 0, 96.7% 100%, 0% 100%);
 								background-color: map-get(mixin.$colors, "C-white");
 								z-index: 0;
 							}
 							.footer-button {
-								max-width: 458px;
-								width: 100%;
+								max-width: 462px;
+								width: 124.2%;
 								height: 136px;
 								display: flex;
 								flex-direction: column;
@@ -72,7 +74,7 @@
 								position: relative;
 								padding:0 42px;
 								z-index: 1;
-								clip-path: polygon(0 0, 92% 0, 99.7% 100%, 0% 100%);
+								clip-path: polygon(0 0, 94.7% 0, 99.7% 100%, 0% 100%);
 								// transition: background 0.4s ease, border 0.4s ease;
 							}
 							
@@ -92,6 +94,7 @@
 										normal,
 										F-color-white);
 										transition: color 0.4s ease;
+										margin: -6px 0 0px;
 								}
 								&__ja {
 									@include mixin.font-settings (
@@ -102,6 +105,7 @@
 									normal,
 									F-color-white);
 									transition: color 0.4s ease;
+									margin: 9px 0 0;
 								}
 								&__arrow {
 									position: relative;
@@ -109,8 +113,8 @@
 									background-color: white; // 横線
 									width: 38px;
 									height: 0.8px;
-									top: 71px;
-									right: 44px;
+									top: 64px;
+									right: 61px;
 									transition: background-color 0.4s ease;
 									&::before,
 									&::after {
@@ -168,16 +172,18 @@
 										normal,
 										F-color-blue);
 										transition: color 0.4s ease;
+										margin: 0px 0px 7px 24px;
 								}
 								&__ja {
 									@include mixin.font-settings (
-									F-size15,
+									F-size16,
 									F-line-height16,
 									F-letter-spacing-0-75,
 									F-family-Noto-Sans-JP,
 									normal,
 									F-color-blue);
 									transition: color 0.4s ease;
+									margin: 0 0 0 17px;
 								}
 								&__arrow {
 									position: relative;
@@ -185,8 +191,8 @@
 									background-color: map-get(mixin.$colors, "C-blue"); // 横線
 									width: 38px;
 									height: 0.8px;
-									top: 71px;
-									right: 44px;
+									top: 66px;
+									right: 38px;
 									transition: background-color 0.4s ease;
 									&::before,
 									&::after {
@@ -246,8 +252,8 @@
 							display: flex;
 							align-items: center;
 							justify-content: space-between;
-							margin: 32px 0 35px;
-							padding: 0 25px 20px 3px;
+							margin: 34px 0 37px 5px;
+							padding: 0 25px 29px 3px;
 							border-bottom: 1.5px solid map-get(mixin.$colors, "C-blue");
 							.footer-logo {
 								&__image {
@@ -273,8 +279,9 @@
 									display: flex;
 									flex-wrap: wrap;
 									justify-content: space-around;
+									margin: 0px 55px 0 -17px;
 									li {
-										margin-left: 30px;
+										margin: -9px -4px 0 24px;
 										a {
 											position: relative;
 											display: inline-block;
@@ -319,7 +326,7 @@
 					
 					&__address {
 						&--company {
-							margin-bottom:5px; 
+							margin: 0px 0 4.2px 4px;
 							@include mixin.font-settings (
 							F-size16,
 							F-line-height24,
@@ -336,6 +343,7 @@
 								F-family-Noto-Sans-JP,
 								400,
 								F-color-blue);
+								margin: 0 0 0 4px;
 						}
 					
 					}	
@@ -347,9 +355,9 @@
 		text-align: center;
 		height: 27.33px;
 		background-color: map-get(mixin.$colors, "C-blue");
-		padding: 4.66px 0 5.66px;
+		padding: 3.66px 0 3.66px 41px;
 		@include mixin.font-settings (
-		F-size14,
+		F-size12,
 		F-line-height19,
 		F-letter-spacing-0,
 		F-family-Noto-Sans-JP,

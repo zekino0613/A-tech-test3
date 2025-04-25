@@ -43,16 +43,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-  //ロード後に要素フェードイン
-// ーーーーーーーーーーーーー
-  jQuery(document).ready(function ($) {
-    $(document).ready(function () {
-      $('.fadein').each(function () {
-        $(this).addClass('scrollin');
-      });
+	$(function ($) {
+    $(window).on('scroll', function () {
+      if ($(this).scrollTop() > 10) {
+        $('.scroll-indicator').addClass('hide');
+      } else {
+        $('.scroll-indicator').removeClass('hide');
+      }
     });
   });
 
+
+
+
+  //ロード後に要素フェードイン
+// ーーーーーーーーーーーーー
+$(function () {
+	$(window).on('scroll', function () {
+		if ($(this).scrollTop() > 10) {
+			$('.scroll-indicator').addClass('hide');
+		} else {
+			$('.scroll-indicator').removeClass('hide');
+		}
+	});
+});
 
 //   スクロール中にフェードイン
 // ーーーーーーーーーーーーー

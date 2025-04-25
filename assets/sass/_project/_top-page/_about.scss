@@ -3,32 +3,33 @@
 
 #about {
 	position: relative;
-	padding:115px 4.6% 126px;
+	padding:108px 4.6% 111px;
 	line-height: auto;
 	overflow: hidden;
 	.circle-loop-pc {
 		display: block;
-		top: 424px;
-    right: 884px;
+    top: 408px;
+    right: 877px;
 	}
 	.about-bg-pc {
-		width: 657px;
-		height: 884px;
+		width: 655px;
+    height: 849px;
 		position: absolute;
 		z-index: 0;
 		top: 0;
 		left: 0;
 		background-color: map-get(mixin.$colors, "C-blue");
-		clip-path: polygon(0 0, 100% 0, 30% 100%, 0% 100%);
+		clip-path: polygon(0 0, 100% 0, 35% 100%, 0% 100%);
 	}
 	.about {
 		&__inner {
-			max-width: 960px;
+			max-width: 973px;
 			width: 100%;
 			position: relative;
 			z-index: 1;
 			margin: 0 auto;
 			.section-title {
+				margin: 0px 0 0px 17px;
 				&__eng {
 					color: map-get(mixin.$colors, "C-white");
 					-webkit-text-stroke: 0.4px map-get(mixin.$colors, "C-blue");
@@ -36,6 +37,7 @@
 
 				}
 				&__ja {
+					margin: 2px 0px 0 21px;
 					color: map-get(mixin.$colors, "C-white");
 					text-shadow: 2px -1px 0 #141856, -1px 6px 10px rgba(0, 0, 0, 0);
 				}
@@ -44,8 +46,8 @@
 			.about-content {
 				display: flex;
 				justify-content: center;
-				gap: 34px;
-				margin: 32px 0 48px;
+				gap: 21px;
+				margin: 18px 0 48px;		
 				&__management {
 					aspect-ratio: 463 / 393;
 					width: 100%;
@@ -79,8 +81,10 @@
 					display: flex;
 					align-items: center;
 					justify-content: center;
+					margin: 0 -13px 0 13px;
 					&--text {
 						text-align: center;
+						margin: 0 ;
 						padding: 0 1em;
 						@include mixin.font-settings (
 						F-size24,
@@ -95,7 +99,7 @@
 			}	
 			
 			.slanted-svg-button {
-				margin: 0 auto;
+				margin: -1px 359px 0px auto;;
 			}
 		}
 	}

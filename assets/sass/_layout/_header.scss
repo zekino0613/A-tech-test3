@@ -36,7 +36,7 @@
 						justify-content: flex-start;
 						align-items: center;
 						li {
-							margin-left: 3.0rem;
+							margin-left: 52px;
 							.li-a {
 								opacity: 1;
 								z-index: 0; // 必ず z-index のベースを設定
@@ -79,6 +79,14 @@
 								position: relative;
 								justify-content: center;
 								align-items: center;
+								@include mixin.font-settings (
+								F-size14,
+								F-line-height19,
+								F-letter-spacing-0,
+								F-family-Noto-Sans-JP,
+								300,
+								F-color-black);
+								letter-spacing: -1px;
 								box-shadow: 2px 2px 6px #00000029;
 								border-radius: 5px;		
 								background-color: map-get(mixin.$colors, "C-right-blue");

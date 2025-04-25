@@ -7,6 +7,37 @@
 	position: relative;	
 	overflow: hidden;
   margin: 0 auto ;
+	.scroll-indicator {
+		position: fixed;
+		bottom: 40px;
+		left: 50%;
+		width: 200px;
+		transform: translateX(-50%);
+		text-align: center;
+		font-family: 'Noto Sans JP', sans-serif;
+		font-size: 14px;
+		color: white;
+		opacity: 1;
+		transition: opacity 0.6s ease;
+		z-index: 1000;
+		pointer-events: none;
+		.scroll-arrow {
+			margin-top: 5px;
+			width: 24px;
+			height: 24px;
+			border-bottom: 2px solid rgb(152, 6, 6);
+			border-left: 2px solid rgb(167, 12, 12);
+			transform: rotate(45deg);
+		}
+	}
+	/* フェードアウト用 */
+	.scroll-indicator.hide {
+		opacity: 0;
+	}
+	
+	
+	
+
 	.h1-content-sp {
 		display: none;
 	}
@@ -19,8 +50,8 @@
 			bottom: -1px;
 			right: 0;
 			z-index: 2;
-			width: 170px;
-			height: 381px;
+			width: 156px;
+			height: 349px;
 			clip-path: polygon(100% 0, 0% 100%, 100% 100%);
 			background-color: map-get(mixin.$colors, "C-white");
 		}
@@ -45,6 +76,7 @@
 			}
 		}
 		
+		
 	}
 }
 
@@ -63,7 +95,7 @@
 	left: 0;
 	.h1-content-pc {
 		position: absolute;
-    top: 212px;
+    top: 205px;
     left: 108px;
 		z-index: 6;
 		&__title {
@@ -76,6 +108,7 @@
 			F-color-blue);
 		}
 		&__text {
+			margin: 11px 2px 0;
 			@include mixin.font-settings (
 			F-size20,
 			F-line-height28,
@@ -89,9 +122,8 @@
 
 //サークルループPC
 .circle-loop-pc {
-	top: 618px;
-	right: 75px;
-	
+	top: 606px;
+	right: 54px;
 }
 
 

@@ -5,12 +5,12 @@
   background-color: #F6F7F7;
 	// height: auto;
 	height: 910px;
-	padding: 118px 4.6% 0;
+	padding: 113px 4.6% 0;
 	position: relative;
 	.service-bg-pc {
-		width: 822px;
-		height: 910px;
-		clip-path: polygon(53% 0, 100% 0, 100% 100%, 5% 100%);
+    width: 772px;
+    height: 910px;
+		clip-path: polygon(53% 0, 100% 0, 100% 100%, 0% 100%);
 		background-color: map-get(mixin.$colors, "C-gray");
 		position: absolute;
 		z-index: 0;
@@ -19,28 +19,30 @@
 	}
 	.service {
 		&__inner {
-			max-width: 960px;
-			width: 100%;
 			margin: 0 auto;
+			max-width: 948px;
+			width: 100%;
 			.section-title {
 				position: relative;
 				z-index: 1;
 			}
 			.service-textarea {
+				max-width: 948px;
+				width: 100%;
 				position: relative;
 				z-index: 1;
 				&__subtitle {
-					margin: 10px  0 0;
-				@include mixin.font-settings (
-				F-size32,
-				F-line-height46,
-				F-letter-spacing-1-6,
-				F-family-Noto-Sans-JP,
-				400,
-				F-color-black);
+					margin: 16px 0 0px;
+					@include mixin.font-settings (
+					F-size32,
+					F-line-height46,
+					F-letter-spacing-1-6,
+					F-family-Noto-Sans-JP,
+					400,
+					F-color-black);
 				}
 				&__text {
-				margin: 37px 0 64px;
+				margin: 29px 0 56px 2px;
 				@include mixin.font-settings (
 				F-size16,
 				F-line-height32,
@@ -54,7 +56,8 @@
 			.service-list {
 				display: flex;
 				justify-content: center;
-				// flex-wrap: wrap;
+				max-width: 962px;
+				width: 102%;
 				gap: 27px;
 				position: relative;
 				z-index: 1;
@@ -64,7 +67,7 @@
 					height: 61.33%;
 					aspect-ratio: 220 / 230;
 					display: flex;
-					padding: 2%;	
+					padding: 3.6% 2% 2.6% 2%;	
 					flex-direction: column;
 					justify-content: center;
 					align-items: center;
@@ -73,7 +76,7 @@
 					background-color: map-get(mixin.$colors, "C-white");
 				
 					.service-text {
-						padding: 1.74vw 0 0px 0;
+						padding: 18.4px 0 1.5px 0;
 						@include mixin.font-settings (
 						F-size18,
 						F-line-height32,

@@ -173,7 +173,7 @@ a:focus-visible {
       F-color-blue);
 	}
 	&__ja {
-		margin-left: 26px;
+    margin: 2px 0px 0 24px;
 		@include mixin.font-settings (
       F-size16,
       F-line-height95,
@@ -225,6 +225,7 @@ $transition: 0.3s;
     gap: 7px;
     align-items: center;
     justify-content: center;
+		padding: 8px 31px 0 0px;
 		@include mixin.font-settings (
 		F-size14,
 		F-line-height24,
@@ -234,9 +235,12 @@ $transition: 0.3s;
 		F-color-blue);
 		font-size: 11px;
     transition: color $transition;
+		position: relative;
     .arrow {
+			position: absolute;
+			top: 15px;
+			right: 47px;
 			font-size: 17px;
-			margin: 2px 14px 0 7px;
 		}
   }
   &:hover {

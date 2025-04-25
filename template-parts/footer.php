@@ -58,7 +58,7 @@
 					
 					<address class="footer-bottom__address">
 						<p class="footer-bottom__address--company">株式会社　ネクストリアルティ</p>
-						<p class="footer-bottom__address--detail">〒123-4567</p>
+						<p class="footer-bottom__address--detail">123-4567</p>
 						<p class="footer-bottom__address--detail">東京都八王子市上野町365-9</p>
 					</address>
 					

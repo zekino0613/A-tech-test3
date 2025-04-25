@@ -2,13 +2,24 @@
 @use "../../_foundation/base" as base;
 
 #news {
-	padding: 100px 4.6%;
+	padding: 107px 4.6% 115px;
 	.news__inner {
 		max-width: 960px;
 		width: 100%;
 		margin: 0 auto;
+		//【h3セクションタイトル】
+		.section-title {
+			display: flex;
+			align-items: center;
+			margin: 3px 0 16px 20px;
+			}
+			&__ja {
+				margin: 8px 0px 0 8px;
+			}
+		}
 		.news-list {
 			// 投稿リストのデザイン
+			margin: 0 0 0px 5px;
 			.news-card {
 				display: block;
 				transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -22,8 +33,8 @@
 				}
 				&__inner{
 					display: flex;
-					padding: 0 0 20px 0;
-					margin: 0px auto 34px;
+					padding: 0px 0 12px 0;
+					margin: 0px auto 33px;
 					align-items: flex-start;
 					border-bottom:1.5px solid map-get(mixin.$colors, "C-black");	
 					.textarea {
@@ -60,7 +71,7 @@
 			margin: 0 0 0 auto;
 		}
 	}
-}  
+
 
 
 

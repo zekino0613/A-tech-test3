@@ -12,6 +12,12 @@
 			
 			<div class="mainvisual__triangle-white"></div>
 			
+			<!-- スクロールしたらフェードアウトアイコン -->
+			<div class="scroll-indicator">
+				<p>Scroll</p>
+				<div class="scroll-arrow"></div>
+			</div>>
+			
 			
 			<!-- SPコンテンツ -->
 			<div class="mainvisual__sp-bg"></div>
@@ -49,10 +55,13 @@
 			<div class="property__triangle-blue"></div>
 			
 			<div class="property__content">
+				<div class="property-title-main">
+					<h2 class="property-title-main__left">Strategies</h2>
+					<span class="batu"></span>
+					<h2 class="property-title-main__right">Property</h2>
+				</div>
+				
 				<div class="property__content--textarea">
-					<h2 class="property-title-main">
-						strategiess <span class="batu"></span><span>property</span>
-					</h2>
 					<h3 class="property-title-sub">
 						『不動産』にも『戦略』を。
 					</h3>
