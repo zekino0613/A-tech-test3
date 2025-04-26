@@ -51,6 +51,7 @@
 								<li><a href="<?php echo home_url('/company/'); ?>">会社概要</a></li>
 								<li><a href="<?php echo home_url('/column/'); ?>">家を買う理由</a></li>
 								<li><a href="<?php echo home_url('/recruitment/'); ?>">採用情報</a></li>
+								<li class="li-news"><a href="<?php echo get_post_type_archive_link('news'); ?>">お知らせ</a></li>
 								<li><a href="<?php echo home_url('/privacy/'); ?>">プライバシーポリシー</a></li>
 							</ul>
 						</nav>

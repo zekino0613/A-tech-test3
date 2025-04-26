@@ -19,7 +19,7 @@
 				align-items: center;
 				justify-content: space-between;
 				width: 100%;
-				padding:0 32px;
+				padding: 0 3.26% 0 2.22%;
         .header-logo {
 					padding:9px 0;
 					&__image {
@@ -130,7 +130,7 @@
 
 @include mixin.TAB2 {
   #header {
-		padding: 0 24px 0 16px;
+		padding: 0px 18px 0px 14px;
 		height: 60px;
 		width: 100%;
     .header {
@@ -144,23 +144,24 @@
 					align-items: center;
 					justify-content: space-between;
 					position: relative;
-					padding: 11px 0 12px;
+					padding: 4px 0 0px;
 					z-index: 999;
           .header-logo {
+						width: 100%;
 						&__image {
-							max-width: 104px;
-							height: 37px;
+							max-width: 94px;
+							height: 51px;
 						}
 					}
 					.hamburger {
-						width: 24px;
-						height: 19px;
+						width: 34px;
+						height: 26px;
 						cursor: pointer;
 						z-index: 1001;
 						&__lines {
 							display: flex;
 							flex-direction: column;
-							gap: 7px;
+							gap: 8px;
 							&--line {
 								width: 24px;
 								height: 2.1px;
@@ -172,15 +173,21 @@
 
 						&.is-open {
 							.hamburger {
+								width: 34px;
+								height: 21px;
 								&__lines {
 									left: -4px;
+									width: 33px;
+									height: 31px;
+									position: relative;
 									&--line {
 										&:nth-child(1) {
 											// 上の線が45度回転
-											top: 0;
-											left: 0;
-											width: 24px;
-											transform: rotate(45deg) translate(50%, -50%);
+											top: 5px;
+											left: -9px;
+											width: 30px;
+											position: absolute;
+											transform: rotate(40deg) translate(50%, -50%);
 										}
 										&:nth-child(2) {
 											// 中央の線が非表示
@@ -188,10 +195,11 @@
 										}
 										&:nth-child(3) {
 											// 下の線が-45度回転
-											top: 0;
-											left: 0;
-											width: 24px;
-											transform: rotate(-45deg) translate(55%, -50%);
+											top: 24px;
+											left: -9px;
+											width: 30px;
+											position: absolute;
+											transform: rotate(-40deg) translate(50%, -50%);
 										}
 									}
 								}
@@ -220,13 +228,14 @@
 							display: flex;
 							flex-direction: column;
 							justify-content: center;
+							margin: -45px 0 0;
 							transition: opacity 0.5s ease, transform 0.5s ease;	
 						ul {
 								width: 100%;
 								li {
 									display: block;
 									box-sizing: border-box;
-									padding-bottom: 21px;
+									padding-bottom: 21.4px;
 									.li-a {
 										display: flex; // ✅ ボックス全体がクリック範囲に
 										align-items: center;
@@ -245,6 +254,7 @@
 											F-family-Noto-Sans-JP,
 											300,
 											F-color-white);
+											letter-spacing: -0.1em;
 											&:hover {
 												color: map-get(mixin.$colors, "C-blue");
 												font-weight: 400;
@@ -267,6 +277,8 @@
 												z-index: -1;
 											}
 										}
+									
+										
 										
 										.contact-a{
 											width: 191px;	
@@ -301,7 +313,9 @@
 												}
 											}
 										}
-								
+								}
+								li:nth-child(8) {
+									padding-bottom: 30px;
 								}
 							}  
 						}

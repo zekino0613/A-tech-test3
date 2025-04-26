@@ -2,7 +2,7 @@
 @use "../../_foundation/base" as base;
 
 #news {
-	padding: 107px 4.6% 115px;
+	padding: 107px 4.6% 112px;
 	.news__inner {
 		max-width: 960px;
 		width: 100%;
@@ -11,15 +11,17 @@
 		.section-title {
 			display: flex;
 			align-items: center;
-			margin: 3px 0 16px 20px;
-			}
+			margin: 7px 0 9.7px 9px;
 			&__ja {
-				margin: 8px 0px 0 8px;
+				margin: 4px 0px 0 12px; 
+				letter-spacing: -0.1em;
 			}
 		}
+			
+	}
 		.news-list {
 			// 投稿リストのデザイン
-			margin: 0 0 0px 5px;
+			margin: 0 ;
 			.news-card {
 				display: block;
 				transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -49,7 +51,7 @@
 								bold,
 								F-color-blue);
 								padding: 0;
-								margin: 0px 0 5px;
+								margin: 0px 0 7px;
 								display: block;
 						}
 						&__news-title {
@@ -68,7 +70,7 @@
 			}
 		}
 		.slanted-svg-button {
-			margin: 0 0 0 auto;
+			margin: 3px 4px 0px auto;
 		}
 	}
 
@@ -79,11 +81,21 @@
 
 @include mixin.SP {
 	#news {
-		padding: 47px 4.6% 54px;
+		padding: 11px 5.2% 36px;
 		.news__inner {
 			max-width: 960px;
 			width: 100%;
 			margin: 0 auto;
+			//【h3セクションタイトル】
+			.section-title {
+				display: flex;
+				align-items: baseline;
+					margin: 19px 0 19px 6px;
+				&__ja {
+					margin-left: 18px;;
+				}
+			}
+				
 			.news-list {
 				// 投稿リストのデザイン
 				.news-card {
@@ -99,13 +111,14 @@
 					}
 					&__inner{
 						display: flex;
-						padding: 0 0 20px 0;
-						margin: 0px auto 34px;
+						padding: 0px 0 22px 0;
+						margin: 4px auto 34px;
 						align-items: flex-start;
 						border-bottom:1.5px solid map-get(mixin.$colors, "C-black");	
 						.textarea {
 							width: 100%;
 							padding: 0;
+							margin: -7px 0 23px;
 							&__news-date {
 								@include mixin.font-settings (
 									F-size14,
@@ -115,7 +128,7 @@
 									bold,
 									F-color-blue);
 									padding: 0;
-									margin: 0px 0 5px;
+									margin: 0px 0 8px;
 									display: block;
 							}
 							&__news-title {
@@ -134,7 +147,14 @@
 				}
 			}
 			.slanted-svg-button {
-				margin: 0 auto;
+				margin: -7px auto 6px;
+				.button-text {
+					padding: 0px 37px 0 0px;
+				}
+				.arrows {
+					top: 10px;
+					right: 71px;			
+				}
 			}
 		}
 	}  

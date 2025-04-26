@@ -8,8 +8,8 @@
 	overflow: hidden;
 	.circle-loop-pc {
 		display: block;
-    top: 408px;
-    right: 877px;
+		top: 407px;
+    right: 887px;
 	}
 	.about-bg-pc {
 		width: 655px;
@@ -29,7 +29,7 @@
 			z-index: 1;
 			margin: 0 auto;
 			.section-title {
-				margin: 0px 0 0px 17px;
+				margin: 0px 0 0px 10px;
 				&__eng {
 					color: map-get(mixin.$colors, "C-white");
 					-webkit-text-stroke: 0.4px map-get(mixin.$colors, "C-blue");
@@ -46,7 +46,7 @@
 			.about-content {
 				display: flex;
 				justify-content: center;
-				gap: 21px;
+				gap: 32px;
 				margin: 18px 0 48px;		
 				&__management {
 					aspect-ratio: 463 / 393;
@@ -81,7 +81,7 @@
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					margin: 0 -13px 0 13px;
+					margin: 0 ;
 					&--text {
 						text-align: center;
 						margin: 0 ;
@@ -98,8 +98,11 @@
 				}
 			}	
 			
+			// .slanted-svg-button {
+			// 	margin: -3px 366px 0px auto;
+			// }
 			.slanted-svg-button {
-				margin: -1px 359px 0px auto;;
+				margin:  0px auto;
 			}
 		}
 	}
@@ -112,7 +115,7 @@
 @include mixin.SP {
 	#about {
 		position: relative;
-		padding:20px 4.6% 30px;
+		padding:31px 6.4% 39px;
 		line-height: auto;
 		overflow: hidden;
 		.circle-loop-pc {
@@ -141,15 +144,16 @@
 				z-index: 1;
 				margin: 0 auto;
 				.section-title {
+					margin: -2px 0 9px 3px;
 					&__eng {
 						color: map-get(mixin.$colors, "C-white");
 						-webkit-text-stroke: 0.4px map-get(mixin.$colors, "C-blue");
 						text-shadow: 4px -2px 0 #141856, -1px 6px 10px rgba(0, 0, 0, 0);
-	
 					}
 					&__ja {
 						color: map-get(mixin.$colors, "C-white");
 						text-shadow: 2px -1px 0 #141856, -1px 6px 10px rgba(0, 0, 0, 0);
+						margin: 0px 0px 0 12px;
 					}
 				}
 				
@@ -158,7 +162,7 @@
 					justify-content: center;
 					flex-direction: column;
 					gap: 31px;
-					margin: 0px 0 32px;
+					margin: 0;
 					&__management {
 						aspect-ratio: 463 / 393;
 						width: 100%;
@@ -192,6 +196,7 @@
 						display: flex;
 						align-items: center;
 						justify-content: center;
+						margin: 0;
 						&--text {
 							text-align: center;
 							padding: 0 1em;
@@ -208,7 +213,7 @@
 				}	
 				
 				.slanted-svg-button {
-					margin: 0 auto;
+					margin: 32px  auto;
 				}
 			}
 		}

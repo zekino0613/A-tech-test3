@@ -11,9 +11,9 @@
 		top: 0;
 		right: 0;
 		z-index: 2;
-		width: 391px;
-    height: 462px;
-		clip-path: polygon(60% 0%, 100% 0, 100% 100%, 7% 100%);
+    width: 406px;
+    height: 461px;
+		clip-path: polygon(58% 0%, 100% 0, 100% 100%, 7% 100%);
 		background-color: map-get(mixin.$colors, "C-blue");
 		}
 		
@@ -26,10 +26,13 @@
 			background: url('../../assets/images/a-tech3_image/fv-bg02-pc.webp') no-repeat center center;
 			background-size: cover;
 			z-index: 1;
-			.property-title-main {
+			.property-title {
 				text-transform: capitalize;
 				position: relative;
-				margin: 100px 0px 0 0px;
+				margin: 100px auto 0px;
+				// text-align: center;
+				max-width: fit-content;
+				width: 100%;
 				@include mixin.font-settings (
 					F-size64,
 					F-line-height54,
@@ -38,45 +41,45 @@
 					400,
 					F-color-blue);	
 					font-size: clamp(32px, 4.44vw, 64px);
-					&__left {
-						position: absolute;
+					&__main {
+						position: relative;
 						top: 15px;
-						left: 378px;
-					}
-					&__right {
-						position: absolute;
-						top: 14px;
-						right: 370px;
-					}
-					.batu {
-						position: absolute;
-						top: 29px;
-						left: 644px;
-						width: 28.4px;
-						height: 28.4px;
-						&::before,
-						&::after {
-							content: '';
+						left: -8px;
+						.space {
+							display: inline-block;
+							width: 0.8em;
+						}
+						.batu {
 							position: absolute;
-							width: 40px;
-							height: 2px;
-							background-color: map-get(mixin.$colors, "C-blue");
-							left: 0; // 「×」の位置
-							top: 50%;
-							transform-origin: center;
-						}
-						&::before {
-							transform: translateY(-50%) rotate(45deg);
-						}
-				
-						&::after {
-							transform: translateY(-50%) rotate(-45deg);
+							top: 23%;
+							left: 50%;
+							width: 7%;
+							height: 63%;
+							&::before,
+							&::after {
+								content: '';
+								position: absolute;
+								width: 100%;
+								height: 2px;
+								background-color: map-get(mixin.$colors, "C-blue");
+								left: 0; // 「×」の位置
+								top: 50%;
+								transform-origin: center;
+							}
+							&::before {
+								transform: translateY(-50%) rotate(45deg);
+							}
+					
+							&::after {
+								transform: translateY(-50%) rotate(-45deg);
+							}
 						}
 					}
+				
 			}
 			&--textarea {
 				text-align: center;
-				margin: 198px 0 0;
+				margin: 43px 14px 0 0;
 				.property-title-sub {
 					text-transform: capitalize;
 					margin: 0px -19px 16px 0px;
@@ -138,24 +141,28 @@
 				background: url('../../assets/images/a-tech3_image/fv-bg02-sp.webp') no-repeat center center;
 				background-size: cover;
 				z-index: 1;
-				&--textarea {
+				.property-title {
+					text-transform: capitalize;
+					position: relative;
+					margin: -7px auto 41px;
+					max-width: fit-content;
 					width: 100%;
-					text-align: center;
-					margin:0;
-					padding: 0 4.6%;
-					.property-title-main {
-						text-transform: capitalize;
-						display: flex;
-						justify-content: center;
-						align-items: center;
-						@include mixin.font-settings (
-							F-size36,
-							F-line-height95,
-							F-letter-spacing-0,
-							F-family-Puritan,
-							400,
-							F-color-blue);	
-							font-size: clamp(24px, 9.6vw, 36px);
+					font-size: clamp(24px, 9.6vw, 36px);
+					@include mixin.font-settings (
+						F-size36,
+						F-line-height36,
+						F-letter-spacing-0,
+						F-family-Puritan,
+						400,
+						F-color-blue);	
+					&__main {
+						position: relative;
+						top: 14px;
+						left: 0;
+							.space {
+								display: inline-block;
+								width: 0.1em;
+							}
 							.batu {
 								position: relative;
 								top: 1px;
@@ -177,14 +184,19 @@
 								&::before {
 									transform: translateY(-50%) rotate(45deg);
 								}
-						
 								&::after {
 									transform: translateY(-50%) rotate(-45deg);
 								}
 							}
 					}
+				}
+				&--textarea {
+					width: 100%;
+					text-align: center;
+					margin:0;
+					padding: 0 6.7%;
 					.property-title-sub {
-						margin: 0 0 36px ;
+						margin: 0 0 23px	 ;
 						@include mixin.font-settings (
 							F-size24,
 							F-line-height36,

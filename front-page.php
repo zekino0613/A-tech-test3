@@ -13,11 +13,10 @@
 			<div class="mainvisual__triangle-white"></div>
 			
 			<!-- スクロールしたらフェードアウトアイコン -->
-			<div class="scroll-indicator">
-				<p>Scroll</p>
-				<div class="scroll-arrow"></div>
-			</div>>
-			
+			<div class="scroll-content">
+				<p class="scroll">Scroll</p>
+      </div>
+
 			
 			<!-- SPコンテンツ -->
 			<div class="mainvisual__sp-bg"></div>
@@ -55,10 +54,8 @@
 			<div class="property__triangle-blue"></div>
 			
 			<div class="property__content">
-				<div class="property-title-main">
-					<h2 class="property-title-main__left">Strategies</h2>
-					<span class="batu"></span>
-					<h2 class="property-title-main__right">Property</h2>
+				<div class="property-title">
+					<h2 class="property-title__main">Strategies<span class="batu"></span><span class="space"></span>Property</h2>
 				</div>
 				
 				<div class="property__content--textarea">
@@ -263,8 +260,15 @@
 				</div>
 				
 				
-				<div class="recruit-imagecontent">
-					<div class="recruit-imagecontent__bg"></div> 
+				<div class="recruit-image-box">
+					<img class= "recruit-image" 
+						src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/top-recruit.webp"
+						width="255" 
+						height="146"
+						loading="lazy"
+						alt="採用情報画像">
+						
+					<div class="recruit-image-box__bg"></div>	
 				</div>
 				
 				<!-- slanted-svg-button.php -->

@@ -43,17 +43,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-	$(function ($) {
-    $(window).on('scroll', function () {
-      if ($(this).scrollTop() > 10) {
-        $('.scroll-indicator').addClass('hide');
-      } else {
-        $('.scroll-indicator').removeClass('hide');
-      }
-    });
-  });
 
 
+//FV mainvisual scrollアイコン
+jQuery(function($) {
+	function toggleInfoPost() {
+			let mainvisual = $('#mainvisual'); // ファーストビューの要素を取得
+			let infoPost = $('.scroll-content');
+
+			if (mainvisual.length) {
+					let fvOffset = mainvisual.offset().top;
+					let fvHeight = mainvisual.outerHeight();
+					let scrollTop = $(window).scrollTop();
+
+					if (scrollTop > fvOffset + fvHeight) {
+							infoPost.fadeOut(); // FVが見えなくなったら非表示
+					} else {
+							infoPost.fadeIn(); // FVが見えている間は表示
+					}
+			}
+	}
+
+	// 初回実行
+	toggleInfoPost();
+
+	// スクロール時に実行
+	$(window).on('scroll', function() {
+			toggleInfoPost();
+	});
+});
 
 
   //ロード後に要素フェードイン
