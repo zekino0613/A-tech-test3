@@ -8,12 +8,12 @@ html {
   margin: 0;
   padding: 0;
   // overflow-x: hidden;
-  .no-scroll {
-    overflow: hidden;
-    /* スクロールを無効化 */
-    position: fixed;
-    /* 固定位置 */
-  }
+  // .no-scroll {
+  //   overflow: hidden;
+  //   /* スクロールを無効化 */
+  //   position: fixed;
+  //   /* 固定位置 */
+  // }
 }
 
 *,
@@ -131,31 +131,104 @@ a:focus-visible {
 //-------------------------------------------------------------------------------
 // 共通パーツ
 //-------------------------------------------------------------------------------
+// 1. 共通化したいスタイルを mixin にまとめる
+@mixin circle-loop-style {
+  position: absolute;
+  top: 618px;
+  right: 75px;
+  width: 205px;
+  height: 205px;
+  background-image: url('../../assets/images/a-tech3_image/text-circle.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  display: block;
+  z-index: 10;
+  animation: rotateCircle 15s linear infinite;
+	@keyframes rotateCircle {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
 // 【サークルループPC】
-	.circle-loop-pc {
-		position: absolute;
-		top: 618px;
-		right: 75px;
-		width: 205px;
-		height: 205px;
-		background-image: url('../../assets/images/a-tech3_image/text-circle.webp');
-		background-repeat: no-repeat;
-		background-size: cover;
-		background-position: center;
-		border-radius: 50%; // 円形
-		aspect-ratio: 1 / 1; // 円形比率
-		display: block;
-		z-index: 10;
-		animation: rotateCircle 15s linear infinite; /* 回転アニメーション */
-		@keyframes rotateCircle {
-			from {
-				transform: rotate(0deg);
-			}
-			to {
-				transform: rotate(360deg);
-			}
-		}
-	}
+.circle-loop-pc {
+  @include circle-loop-style;
+}
+
+// 3. 他のクラスでも継承して使用
+.circle-loop-sp {
+  @include circle-loop-style;
+  top: 480px;
+  right: 20px;
+}
+
+.other-circle-loop {
+	@include circle-loop-style;
+	top: 338px;
+  right: 141px;
+	
+}
+
+
+// // 【サークルループPC】
+// 	.circle-loop-pc {
+// 		position: absolute;
+// 		top: 618px;
+// 		right: 75px;
+// 		width: 205px;
+// 		height: 205px;
+// 		background-image: url('../../assets/images/a-tech3_image/text-circle.webp');
+// 		background-repeat: no-repeat;
+// 		background-size: cover;
+// 		background-position: center;
+// 		border-radius: 50%; // 円形
+// 		aspect-ratio: 1 / 1; // 円形比率
+// 		display: block;
+// 		z-index: 10;
+// 		animation: rotateCircle 15s linear infinite; /* 回転アニメーション */
+// 		@keyframes rotateCircle {
+// 			from {
+// 				transform: rotate(0deg);
+// 			}
+// 			to {
+// 				transform: rotate(360deg);
+// 			}
+// 		}
+// 	}
+	
+// 【other-mainvisualサークルループ】
+		// .other-circle-loop {
+		// 	position: absolute;
+		// 	top: 218px;
+		// 	right: 75px;
+		// 	width: 205px;
+		// 	height: 205px;
+		// 	background-image: url('../../assets/images/a-tech3_image/text-circle.webp');
+		// 	background-repeat: no-repeat;
+		// 	background-size: cover;
+		// 	background-position: center;
+		// 	border-radius: 50%; // 円形
+		// 	aspect-ratio: 1 / 1; // 円形比率
+		// 	display: block;
+		// 	z-index: 10;
+		// 	background-color: black;
+		// 	animation: rotateCircle 15s linear infinite; /* 回転アニメーション */
+		// 	@keyframes rotateCircle {
+		// 		from {
+		// 			transform: rotate(0deg);
+		// 		}
+		// 		to {
+		// 			transform: rotate(360deg);
+		// 		}
+		// 	}
+		// }
 	
 //【h3セクションタイトル】
 .section-title {
@@ -405,6 +478,10 @@ $transition: 0.3s;
   .brpc {
     display: none;
   }
+	
+	.other-circle-loop {
+		display: none;
+	}
 }
 
 @include mixin.SP {

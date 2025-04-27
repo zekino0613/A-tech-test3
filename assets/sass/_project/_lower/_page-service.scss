@@ -1,71 +1,620 @@
 @use "../../_foundation/_mixin"as mixin;
 @use "../../_foundation/_base"as base;
 
-.service {
-	background-color: rgb(164, 5, 200);
+// 共通コンテナ
+.container {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;	
+
 }
 
-.service-section {
-  .service-tab-list {
-    display: flex;
-    gap: 16px;
-    padding: 16px 0;
 
-    .service-tab {
-      position: relative;
-      border: 2px solid transparent;
-      border-radius: 8px;
-      padding: 16px;
-      text-align: center;
-      transition: border 0.3s ease;
-      min-width: 160px;
-      background: #fff;
-      flex-shrink: 0;
-      cursor: pointer;
 
-      &.is-active {
-        border-color: #333;
+#page-service {
+	// padding: 0 4.6%;
+	.page-service {
+		&__inner {
+			.title-content {
+				padding: 33px 4.6% 0;
+				&__inner {
+					// .section-title {
+						
+					// }
+					&--contenttext {
+						margin:12px 0 37px;	
+						@include mixin.font-settings (
+							F-size16,
+							F-line-height32,
+							F-letter-spacing-0-8,
+							F-family-Noto-Sans-JP,
+							400,
+							F-color-black);
+					}
+				}
+			}
+			.tab-content {
+				padding: 24px 4.6%;
+				height: auto;
+				background-color: map-get(mixin.$colors, "C-gray");
+				// padding: 24px 4.6%;
+				&__inner {
+					.service-list-wrap {
+						.service-list {
+							display: flex;
+							gap: 27px;
+							&__tab {
+								position: relative;
+								width: 58.67%;
+								height: 61.33%;
+								aspect-ratio: 220 / 230;
+								display: flex;
+								padding: 8.7% 2% 8% 2%;	
+								flex-direction: column;
+								justify-content: center;
+								align-items: center;
+								box-shadow: 0px 1px 6px #00000029;
+								background-color: map-get(mixin.$colors, "C-white");
+								&--text {
+									padding:0;
+									margin: 14px 0 0;
+									@include mixin.font-settings (
+									F-size18,
+									F-line-height32,
+									F-letter-spacing-0,
+									F-family-Noto-Sans-JP,
+									500,
+									F-color-blue);
+									font-size: clamp(12px, 1.5vw, 18px);
+									position: relative;
+								}
+								&.is-active {
+									border: 2px solid map-get(mixin.$colors, "C-blue");
+									.arrow {
+										display: block;
+									}
+								}
+								.arrow {
+									display: none;
+									width: 0;
+									height: 0;
+									border-left: 11px solid transparent;
+									border-right: 11px solid transparent;
+									border-top: 8px solid map-get(mixin.$colors, "C-blue");
+									// margin: 0 auto ;
+									transition: opacity 0.3s ease;
+									position: absolute;
+									top: 88%;
+									right: 46%;
+								}
+							}
+						}
+					}
+					
+				
+					.service-textarea {
+						position: relative;
+						min-height: 104px; // タブ内の最も高い高さに合わせておく
+						transition: min-height 1s ease;
+						margin: 16px 0 0 ;
+						padding: 14px 23px 16px;
+						background-color: map-get(mixin.$colors, "C-white");
+						&__desc {
+							opacity: 0;
+							visibility: hidden;
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							pointer-events: none;
+							transition: opacity 0.5s ease, visibility 1s ease; // ← 時間を長く
+							@include mixin.font-settings (
+								F-size16,
+								F-line-height32,
+								F-letter-spacing-0-8,
+								F-family-Noto-Sans-JP,
+								400,
+								F-color-black);
+							&.is-show {
+								opacity: 1;
+								visibility: visible;
+								position: static;
+								pointer-events: auto;
+							}
+						}
+					}
+				}
+			}
+		}	
+	}
+}	
 
-        .arrow {
-          display: block;
-        }
-      }
 
-      .arrow {
-        display: none;
-        width: 0;
-        height: 0;
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-top: 10px solid #333;
-        margin: 10px auto 0;
-        transition: opacity 0.3s ease;
-      }
-    }
-
-    // SP時のみ横スクロール
-    @media screen and (max-width: 500px) {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-
-      .service-tab {
-        flex: 0 0 calc(50% - 8px); // 2つ分表示
-      }
-    }
-  }
-
-  .service-contents {
-    margin-top: 20px;
-
-    .service-desc {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-
-      &.is-show {
-        display: block;
-        opacity: 1;
-      }
-    }
-  }
+#voice {
+	padding: 79px 4.6% 55px;
+	.voice {
+		&__inner {	
+			.section-title {
+				h3 {
+					line-height: 48px;
+				}
+				span {
+					margin: 2px 0px 0 11px;
+				}
+			}
+			.voice-list {
+				padding: 17px 0 0;
+				.voice-item {
+					display: flex;
+					width: 100%;
+					margin: 0px 0 33px;
+					&__image {
+						width: 170px;
+						height: 140px;
+						background-color: map-get(mixin.$colors, "C-gray");
+						border-radius: 50%;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						img {
+							width: 95px;
+							height: 96px;
+							aspect-ratio: 140/140;
+						}
+					}
+					&__content {
+						width: 100%;
+						padding: 4px 0 0 44px;
+						&--gender {
+							padding: 0 0 8.5px;
+							border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
+							@include mixin.font-settings (
+							F-size18,
+							F-line-height20,
+							F-letter-spacing-0,
+							F-family-Noto-Sans-JP,
+							500,
+							F-color-blue);
+						}
+						&--comment {
+							@include mixin.font-settings (
+							F-size16,
+							F-line-height32,
+							F-letter-spacing-0-8,
+							F-family-Noto-Sans-JP,
+							400,
+							F-color-black);
+						}
+					}
+				}
+			}
+			.slanted-svg-button {
+				margin: 20px auto 60px 301px;
+				// margin: 20px auto 60px;
+			}
+		}
+	}
 }
+		
+  
+@include mixin.TAB1 {
+	#page-service {
+		// padding: 0 4.6%;
+		.page-service {
+			&__inner {
+				.title-content {
+					// padding: 24px 4.6%;
+					&__inner {
+					// .section-title {
+						
+					// }
+						&__text {
+							margin:20px 0 43px;
+							@include mixin.font-settings (
+								F-size16,
+								F-line-height32,
+								F-letter-spacing-0-8,
+								F-family-Noto-Sans-JP,
+								400,
+								F-color-black);
+						}
+					}
+				}
+				.tab-content {
+					height: auto;
+					background-color: map-get(mixin.$colors, "C-gray");
+					// padding: 24px 4.6%;
+					&__inner {
+						.service-list-wrap {
+							.service-list {
+								display: flex;
+								gap: 15px;
+								margin: 0 0 15px;
+								&__tab {
+									position: relative;
+									width: 58.67%;
+									height: 61.33%;
+									aspect-ratio: 220 / 230;
+									display: flex;
+									padding: 3.6% 2% 2.6% 2%;	
+									flex-direction: column;
+									justify-content: center;
+									align-items: center;
+									box-shadow: 0px 1px 6px #00000029;
+									background-color: map-get(mixin.$colors, "C-white");
+									&--image1 {
+										width: 106px;
+										height: 75px;
+									}
+									&--image2 {
+										width: 80px;
+										height: 75px;
+									}
+									&--image3 {
+										width: 97px;
+										height: 79px;
+									}
+									&--image4 {
+										width: 76px;
+										height: 79px;
+									}
+									&--text {
+										padding: 1.28% 0 0 0;
+										@include mixin.font-settings (
+										F-size18,
+										F-line-height32,
+										F-letter-spacing-0,
+										F-family-Noto-Sans-JP,
+										500,
+										F-color-blue);
+										font-size: clamp(12px, 1.5vw, 18px);
+										position: relative;
+									}
+									&.is-active {
+										border: 2px solid map-get(mixin.$colors, "C-blue");
+										.arrow {
+											display: block;
+										}
+									}
+									.arrow {
+										display: none;
+										width: 0;
+										height: 0;
+										border-left: 11px solid transparent;
+										border-right: 11px solid transparent;
+										border-top: 8px solid map-get(mixin.$colors, "C-blue");
+										// margin: 0 auto ;
+										transition: opacity 0.3s ease;
+										position: absolute;
+										top: 91%;
+										right: 45%;
+									}
+								}
+							}
+							// SP時のみ横スクロール
+							@media screen and (max-width: 650px) {
+								overflow-x: auto;
+								-webkit-overflow-scrolling: touch;
+								padding-top: 13px;
+								margin: 0 0 10px;
+								&::-webkit-scrollbar {// ← スクロールバーの高さ
+									height: 8px;
+								}
+								&::-webkit-scrollbar-thumb {// ← スクロールバーのポイント
+									background: #ccc;
+									border-radius: 3px;
+								}
+								&::-webkit-scrollbar-track {// ← スクロールバーの枠
+									background: #f0f0f0;
+									border-radius: 3px;
+								}
+								.service-list {
+									&__tab {
+										flex: 0 0 calc(50% - 8px); // 2つ分表示
+										position: relative;
+										img {
+											width: 70%;
+											height: 70%; 
+										}
+										&--text {	
+											@include mixin.font-settings (
+											F-size18,
+											F-line-height32,
+											F-letter-spacing-0,
+											F-family-Noto-Sans-JP,
+											500,
+											F-color-blue);
+											font-size: clamp(12px, 3vw, 20px);
+											position: relative;
+										}
+									}
+								}
+							}
+						}
+
+						.service-textarea {
+							position: relative;
+							min-height: 104px; // タブ内の最も高い高さに合わせておく
+							transition: min-height 1s ease;
+							margin: 16px 0 0 ;
+							padding: 24px 23px 32px;
+							background-color: map-get(mixin.$colors, "C-white");
+							&__desc {
+								opacity: 0;
+								visibility: hidden;
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 100%;
+								pointer-events: none;
+								transition: opacity 0.5s ease, visibility 1s ease; // ← 時間を長く
+								@include mixin.font-settings (
+									F-size16,
+									F-line-height32,
+									F-letter-spacing-0-8,
+									F-family-Noto-Sans-JP,
+									400,
+									F-color-black);
+								&.is-show {
+									opacity: 1;
+									visibility: visible;
+									position: static;
+									pointer-events: auto;
+								}
+							}
+						}
+					}
+				}
+			}	
+		}
+	}
+}	
+
+#voice {
+	padding: 79px 4.6% 55px;
+	.voice {
+		&__inner {	
+			.slanted-svg-button {
+				margin: 20px auto 60px;
+			}
+		}
+	}
+}
+
+
+
+
+
+@include mixin.SP {
+	#page-service {
+		// padding: 0 4.6%;
+		.page-service {
+			&__inner {
+				.title-content {
+					padding: 31px 6.4% 0;
+					&__inner {
+						.section-title {
+							flex-direction: column;
+							h3 {
+								line-height: 48px;
+							}
+							span {
+								margin: 0;
+								padding: 0;
+							}
+						}
+						&--contenttext {
+							margin: 21px 0 50px;
+							@include mixin.font-settings (
+								F-size16,
+								F-line-height32,
+								F-letter-spacing-0-8,
+								F-family-Noto-Sans-JP,
+								400,
+								F-color-black);
+								line-height: 1.8;
+						}
+					}
+				}
+				
+				.tab-content {
+					height: auto;
+					background-color: map-get(mixin.$colors, "C-gray");
+					padding: 13px 6.7% 24px;
+					&__inner {
+						.service-list-wrap {
+							overflow-x: auto;
+							-webkit-overflow-scrolling: touch;
+							padding-top: 13px;
+							&::-webkit-scrollbar {// ← スクロールバーの高さ
+								height: 8px;
+							}
+							&::-webkit-scrollbar-thumb {// ← スクロールバーのポイント
+								background: #ccc;
+								border-radius: 3px;
+							}
+							&::-webkit-scrollbar-track {// ← スクロールバーの枠
+								background: #f0f0f0;
+								border-radius: 3px;
+							}
+							.service-list {
+								display: flex;
+								gap: 17px;
+								margin: 0 0 10px;
+								.service-list__tab {
+								flex: 0 0 calc(50% - 8px); // 2つ分表示
+								gap: 0px;
+								&__tab {
+									position: relative;
+									width: 41.33%;
+									height: 43.2%;
+									aspect-ratio: 220 / 230;
+									display: flex;
+									padding: 3.6% 2% 2.6% 2%;	
+									flex-direction: column;
+									justify-content: center;
+									align-items: center;
+									box-shadow: 0px 1px 6px #00000029;
+									background-color: map-get(mixin.$colors, "C-white");
+									}
+									&--image1 {
+										width: 106px;
+										height: 75px;
+									}
+									&--image2 {
+										width: 80px;
+										height: 75px;
+									}
+									&--image3 {
+										width: 97px;
+										height: 79px;
+									}
+									&--image4 {
+										width: 76px;
+										height: 79px;
+									}
+									&--text {
+										padding: 0;
+										@include mixin.font-settings (
+										F-size18,
+										F-line-height32,
+										F-letter-spacing-0,
+										F-family-Noto-Sans-JP,
+										500,
+										F-color-blue);
+										font-size: clamp(10px, 3.73vw, 14px);
+										position: relative;
+									}
+									&.is-active {
+										border: 2px solid map-get(mixin.$colors, "C-blue");
+										.arrow {
+											display: block;
+										}
+									}
+									.arrow {
+										display: none;
+										width: 0;
+										height: 0;
+										border-left: 9px solid transparent;
+										border-right: 9px solid transparent;
+										border-top: 6px solid map-get(mixin.$colors, "C-blue");
+										// margin: 0 auto ;
+										transition: opacity 0.3s ease;
+										position: absolute;
+										top: 89%;
+										right: 45%;
+									}
+								}
+							}
+						}
+						
+						.service-textarea {
+							position: relative;
+							min-height: 104px; // タブ内の最も高い高さに合わせておく
+							transition: min-height 1s ease;
+							margin: 16px 0 0 ;
+							padding:7px 16px 19px;
+							background-color: map-get(mixin.$colors, "C-white");
+							&__desc {
+								opacity: 0;
+								visibility: hidden;
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 100%;
+								pointer-events: none;
+								transition: opacity 0.5s ease, visibility 1s ease; // ← 時間を長く
+								@include mixin.font-settings (
+									F-size16,
+									F-line-height28-8,
+									F-letter-spacing-0-8,
+									F-family-Noto-Sans-JP,
+									400,
+									F-color-black);
+								&.is-show {
+									opacity: 1;
+									visibility: visible;
+									position: static;
+									pointer-events: auto;
+								}
+							}
+						}
+					}
+				}
+			}	
+		}
+	}
+	
+	
+	#voice {
+		padding: 53px 6.7% 0px;
+		.voice {
+			&__inner {
+				.section-title {
+					flex-direction: column;
+					h3 {
+						line-height: 48px;
+					}
+					span {
+						margin: 4px 0 0 0;
+						padding: 0;
+					}
+				}
+				.voice-list {
+					padding: 3px 0px 0px;
+					.voice-item {
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						width: 100%;
+						margin: 0 0 48px;
+						gap: 18px;
+						&__image {
+							width: 140px;
+							height: 140px;
+							background-color: map-get(mixin.$colors, "C-gray");
+							border-radius: 50%;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							margin: 18px 11px 0px 0px;
+							img {
+								width: 95px;
+								height: 96px;
+								aspect-ratio: 140/140;
+							}
+						}
+						&__content {
+							width: 100%;
+							padding: 0 ;
+							&--gender {
+								padding: 0 0 8.5px;
+								border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
+								@include mixin.font-settings (
+								F-size18,
+								F-line-height20,
+								F-letter-spacing-0,
+								F-family-Noto-Sans-JP,
+								500,
+								F-color-blue);
+							}
+							&--comment {
+								@include mixin.font-settings (
+								F-size16,
+								F-line-height32,
+								F-letter-spacing-0-8,
+								F-family-Noto-Sans-JP,
+								400,
+								F-color-black);
+							}
+						}
+					}
+				}
+				.slanted-svg-button {
+					margin: 56px auto;
+				}
+			}
+		}
+	}
+	
+}	

@@ -1052,7 +1052,7 @@
 										flex-direction: column;
 										margin: 0;
 										li {
-											margin: 0 0 21px 0;
+											margin: 0 0 9px 0;
 											a {
 												position: relative;
 												display: inline-block;
@@ -1115,6 +1115,7 @@
 								F-color-blue);
 							}
 							&--detail {
+								margin: 1px 0 0 3px;
 								@include mixin.font-settings (
 									F-size14,
 									F-line-height20,
@@ -1128,19 +1129,19 @@
 					
 				}
 			}
-			.fooer-end {
-				text-align: center;
-				height: 27.33px;
-				background-color: map-get(mixin.$colors, "C-blue");
-				padding: 2.66px 0 0px ;
-				@include mixin.font-settings (
-				F-size12,
-				F-line-height19,
-				F-letter-spacing-0,
-				F-family-Noto-Sans-JP,
-				regular,
-				F-color-white);
-			}
+		}
+		.fooer-end {
+			text-align: center;
+			height: 27.33px;
+			background-color: map-get(mixin.$colors, "C-blue");
+			padding: 0.66px 0 3.66px 0px;
+			@include mixin.font-settings (
+			F-size12,
+			F-line-height19,
+			F-letter-spacing-0,
+			F-family-Noto-Sans-JP,
+			regular,
+			F-color-white);
 		}
 	}
 } 

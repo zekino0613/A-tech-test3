@@ -1,6 +1,11 @@
-<section class="voice-section">
-  <div class="container">
-    <h2 class="section-title">Voice <span>お客様の声</span></h2>
+<section id="voice">
+  <div class="voice__inner container">
+		<!--【h3セクションタイトル】 -->
+		<div class="section-title">
+			<h3 class="section-title__eng">voice</h3>
+			<span class="section-title__ja">お客様の声</span>		
+		</div>
+		
     <div class="voice-list">
       <?php
       $args = array(
@@ -21,20 +26,34 @@
 					<?php if ($icon): 
 						$image_url = wp_get_attachment_image_url($icon, 'full');
 					?>
-						<img class="card__image"
+					<div class="voice-item__image">
+						<img
 								src="<?php echo esc_url($image_url); ?>"
 								width="140"
 								height="140"
 								loading="lazy"
 								alt="<?php echo esc_attr($age . $gender); ?>">
+					</div>			
 					<?php endif; ?>
 				
-          <div class="voice-content">
-            <h3><?php echo esc_html($age . $gender); ?></h3>
-            <p><?php echo nl2br(esc_html($comment)); ?></p>
+          <div class="voice-item__content">
+            <h3 class="voice-item__content--gender">
+							<?php echo esc_html($age . $gender); ?>
+						</h3>
+            <p class="voice-item__content--comment">
+							<?php echo nl2br(esc_html($comment)); ?>
+						</p>
           </div>
         </div>
       <?php endwhile; wp_reset_postdata(); endif; ?>
     </div>
+		<!-- slanted-svg-button.php -->
+		<?php
+					get_template_part('template-parts/slanted-svg-button', null, [
+						'label' => 'TOPページへ戻る',
+						'width' => '336px',
+						'url'   => home_url('/')
+					]);
+				?>
   </div>
 </section>
