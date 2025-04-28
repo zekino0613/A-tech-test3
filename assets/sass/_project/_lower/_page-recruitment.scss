@@ -1,6 +1,592 @@
 @use "../../_foundation/_mixin"as mixin;
 @use "../../_foundation/_base"as base;
 
-.recruitment {
-	background-color: rgb(209, 10, 3);
+#recruitment-body {
+	position: relative;
+	margin: 0 auto -43px;
+	.triangle-contents {
+		margin: 124px 0 0;
+		height: 2152px;
+		.right1 {
+			top: 87px;
+			left: 0;
+			transform: scaleX(-1);
+		}
+		.left1 {
+			bottom: -143px;
+			left: auto;         // ✅ これを明示
+			right: 0;           // ✅ 右寄せが効くようになる
+			transform: scaleX(1);
+		}
+	}
+	
+	
+	.main-content {
+		width: 100%;	
+		position: absolute; // ★重ねる準備
+		z-index: 5;         // ★背景より上に表示される
+		top: -100px;
+		padding: 0 6.6%;
+		&__inner {
+			max-width: 960px;	
+			width: 100%;	
+			position: relative;
+			top: 10px;
+			margin: 0 auto;
+			#page-recruitment {
+				.page-recruitment {
+					&__inner {
+						.section-title {
+							align-items: baseline;
+						}
+						
+						.section-text {
+							@include mixin.font-settings(
+							F-size16,
+							F-line-height32,
+							F-letter-spacing-0-8,
+							F-family-Noto-Sans-JP,
+							500,
+							F-color-black
+							);
+						}
+						
+						.work {
+							width: 100%;
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+							.work-detail {
+								width: 44%;
+								&__textarea {
+									&--label {
+										@include mixin.font-settings(
+										F-size24,
+										F-line-height28,
+										F-letter-spacing-0,
+										F-family-Noto-Sans-JP,
+										500,
+										F-color-blue
+										);
+									}
+									
+									&--list {
+										li {
+											position: relative;
+											padding-left: 20px;
+											@include mixin.font-settings(
+											F-size16,
+											F-line-height32,
+											F-letter-spacing-0-8,
+											F-family-Noto-Sans-JP,
+											400,
+											F-color-black
+											);
+											&::before {
+												content: '';
+												position: absolute;
+												left: 3px;
+												top: 17px;
+												width: 8px;
+												height: 8px;
+												background-color: #0a1a4f;
+												transform: rotate(45deg); // ダイヤ型にする
+											}
+										}
+									}
+									
+									&--text {
+										@include mixin.font-settings(
+										F-size16,
+										F-line-height32,
+										F-letter-spacing-0-8,
+										F-family-Noto-Sans-JP,
+										400,
+										F-color-black
+										);
+									}
+								}
+							}
+							
+							.work-image {
+								width: 50%;
+								img {
+									max-width: 480px;
+									width: 100%;
+									height: auto;
+									aspect-ratio:480/406;
+								}
+							}
+						}
+						
+						// 募集要項リスト
+						.recruitment-list {
+							&__title {
+								text-align: center;
+								@include mixin.font-settings(
+									F-size24,
+									F-line-height28,
+									F-letter-spacing-0,
+									F-family-Noto-Sans-JP,
+									500,
+									F-color-blue
+								);
+							}
+							
+							.recruit-info-warpper {
+								padding: 0 6.4%;
+								.recruit-info {
+									max-width: 772px;
+									width: 100%;
+									margin: 0 auto;
+									&__block {
+										width: 100%;
+										padding: 25px 33.5px 9.5px;
+										display: flex;
+										align-items: baseline;
+										border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
+										// flex-direction: column;
+										dt {
+											width: 21.76%;
+											@include mixin.font-settings(
+												F-size16,
+												F-line-height16,
+												F-letter-spacing-0,
+												F-family-Noto-Sans-JP,
+												500,
+												F-color-blue
+											);
+										}
+										.dd-content {
+											dd {
+												// margin: 0 0 3px;
+												@include mixin.font-settings(
+													F-size16,
+													F-line-height28,
+													F-letter-spacing-0,
+													F-family-Noto-Sans-JP,
+													400,
+													F-color-blue
+												);
+											}
+										}
+									
+									}
+								}
+							}
+						}
+						
+						//【ナンバーリスト】
+						.number-list {
+							counter-reset: item;
+							list-style: disc;
+							padding: 0;
+							margin: 0 auto;
+							width: 100%;
+							&__title {
+								text-align: center;
+								@include mixin.font-settings (
+									F-size24,
+									F-line-height24,
+									F-letter-spacing-0,
+									F-family-Noto-Sans-JP,
+									500,
+									F-color-blue);
+							}
+							&__item {
+								display: flex;
+								align-items: center;
+								gap: 9.79%;
+								width: 100%;
+								margin: 0 0 32px;
+								&--image {
+									max-width: 140px;
+									width: 100%;
+									height: auto;
+									aspect-ratio: 140/140;
+									border-radius: 50%;
+									display: flex;
+									justify-content: center;
+									align-items: center;
+									background-color: map-get(mixin.$colors, "C-gray");
+									.img1 {
+										width: 50px;
+										height: 119px;
+										margin: 20px 0 0px;
+									}
+									.img2 {
+										width: 103px;
+										height: 59px;
+									}
+									.img3 {
+										width: 101px;
+										height: 82px;
+									}
+								}
+								
+								.textarea {
+									position: relative;
+									width: 100%;
+									margin: 0;
+									&__title {
+										border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
+										padding: 12.5px 0 7.5px 60px;
+										@include mixin.font-settings (
+										F-size20,
+										F-line-height20,
+										F-letter-spacing-0,
+										F-family-Noto-Sans-JP,
+										500,
+										F-color-blue);
+									}	
+									&__text {
+										@include mixin.font-settings (
+										F-size16,
+										F-line-height32,
+										F-letter-spacing-0-8,
+										F-family-Noto-Sans-JP,
+										500,
+										F-color-black);
+									}
+									&::before {
+										counter-increment: item;
+										content: counter(item, decimal-leading-zero); // 01, 02, 03
+										position: absolute;
+										text-align: center;
+										width: 49px;
+										height: 49px;
+										left: -0;
+										top: -7.5px;
+										background-color: map-get(mixin.$colors, "C-blue");
+										@include mixin.font-settings(
+											F-size24,
+											F-line-height48,
+											F-letter-spacing-0,
+											F-family-Noto-Sans-JP,
+											normal,
+											F-color-white
+										);
+									}
+								}
+							}
+						}
+						
+						.gradient-entry-button-wrapper {
+							display: flex;
+							justify-content: center;
+						}
+						
+					}
+				}
+			}
+		}
+	}
 }
+
+
+
+// SP
+@media screen and (max-width: 850px) {
+	#recruitment-body {
+		position: relative;
+		margin: 0 auto -43px;
+		.triangle-contents {
+			display: none;
+			margin: 124px 0 0;
+			height: 2000px;
+			.right1 {
+				top: 87px;
+				left: 0;
+				transform: scaleX(-1);
+			}
+			.left1 {
+				bottom: -143px;
+				left: auto;         // ✅ これを明示
+				right: 0;           // ✅ 右寄せが効くようになる
+				transform: scaleX(1);
+			}
+		}
+		
+		
+		.main-content {
+			width: 100%;	
+			position: relative; // ★SP時はabsoluteからrelativeに切りかえる
+			z-index: 5;         // ★背景より上に表示される
+			top: 25px;
+			padding: 0 6.6% 128px;
+			&__inner {
+				max-width: 960px;	
+				width: 100%;	
+				position: relative;
+				top: 10px;
+				margin: 0 auto;
+				#page-recruitment {
+					.page-recruitment {
+						&__inner {
+							.section-title {
+								flex-direction: column;
+								h3 {
+									line-height: 10px;
+								}
+								span {
+									line-height: 10px;
+									margin: 25px 0 0;
+									padding: 0;
+								}
+							}
+							
+							.section-text {
+								margin: 19px 0 21px;
+								@include mixin.font-settings(
+								F-size16,
+								F-line-height32,
+								F-letter-spacing-0-8,
+								F-family-Noto-Sans-JP,
+								500,
+								F-color-black
+								);
+							}
+							
+							.work {
+								width: 100%;
+								display: flex;
+								flex-direction: column-reverse;
+								justify-content: space-between;
+								align-items: center;
+								.work-detail {
+									width: 100%;
+									&__textarea {
+										&--label {
+											margin: 30px 0 17px;
+											@include mixin.font-settings(
+											F-size20,
+											F-line-height28,
+											F-letter-spacing-0,
+											F-family-Noto-Sans-JP,
+											500,
+											F-color-blue
+											);
+										}
+										
+										&--list {
+											li {
+												position: relative;
+												padding-left: 20px;
+												@include mixin.font-settings(
+												F-size16,
+												F-line-height32,
+												F-letter-spacing-0-8,
+												F-family-Noto-Sans-JP,
+												500,
+												F-color-black
+												);
+												&::before {
+													content: '';
+													position: absolute;
+													left: 3px;
+													top: 17px;
+													width: 8px;
+													height: 8px;
+													background-color: #0a1a4f;
+													transform: rotate(45deg); // ダイヤ型にする
+												}
+											}
+										}
+										
+										&--text {
+											@include mixin.font-settings(
+											F-size16,
+											F-line-height32,
+											F-letter-spacing-0-8,
+											F-family-Noto-Sans-JP,
+											400,
+											F-color-black
+											);
+										}
+									}
+								}
+								
+								.work-image {
+									width: 100%;
+									img {
+										max-width: 480px;
+										width: 100%;
+										height: auto;
+										aspect-ratio:480/406;
+									}
+								}
+							}
+							
+							// 募集要項リスト
+							.recruitment-list {
+								margin: 56px 0 10px;
+								&__title {
+									text-align: center;
+									@include mixin.font-settings(
+										F-size24,
+										F-line-height28,
+										F-letter-spacing-0,
+										F-family-Noto-Sans-JP,
+										500,
+										F-color-blue
+									);
+								}
+								
+								.recruit-info-warpper {
+									padding: 0 ;
+									.recruit-info {
+										max-width: 772px;
+										width: 100%;
+										margin: 0 auto;
+										&__block {
+											width: 100%;
+											padding: 0;
+											display: flex;
+											flex-direction: column;
+											align-items: baseline;
+											border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
+											// flex-direction: column;
+											dt {
+												width: 100%;
+												margin: 18.5px 0 14.5px;
+												@include mixin.font-settings(
+													F-size16,
+													F-line-height16,
+													F-letter-spacing-0,
+													F-family-Noto-Sans-JP,
+													500,
+													F-color-blue
+												);
+											}
+											.dd-content {
+												dd {
+													// margin: 0 0 3px;
+													@include mixin.font-settings(
+														F-size16,
+														F-line-height28,
+														F-letter-spacing-0,
+														F-family-Noto-Sans-JP,
+														400,
+														F-color-blue
+													);
+												}
+											}
+										
+										}
+									}
+								}
+							}
+							
+							//【ナンバーリスト】
+							.number-list {
+								counter-reset: item;
+								list-style: disc;
+								padding: 0;
+								margin: 0 auto;
+								width: 100%;
+								&__title {
+									text-align: center;
+									margin: 48px 0 32px;
+									@include mixin.font-settings (
+										F-size24,
+										F-line-height24,
+										F-letter-spacing-0,
+										F-family-Noto-Sans-JP,
+										500,
+										F-color-blue);
+								}
+								&__item {
+									display: flex;
+									align-items: center;
+									flex-direction: column;
+									gap: 16px;
+									width: 100%;
+									margin: 0 0 32px;
+									&--image {
+										max-width: 140px;
+										width: 100%;
+										height: auto;
+										aspect-ratio: 140/140;
+										border-radius: 50%;
+										display: flex;
+										justify-content: center;
+										align-items: center;
+										background-color: map-get(mixin.$colors, "C-gray");
+										.img1 {
+											width: 50px;
+											height: 119px;
+											margin: 20px 0 0px;
+										}
+										.img2 {
+											width: 103px;
+											height: 59px;
+										}
+										.img3 {
+											width: 101px;
+											height: 82px;
+										}
+									}
+									
+									.textarea {
+										position: relative;
+										width: 100%;
+										margin: 0;
+										&__title {
+											border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
+											padding: 12.5px 0 7.5px 60px;
+											@include mixin.font-settings (
+											F-size20,
+											F-line-height20,
+											F-letter-spacing-0,
+											F-family-Noto-Sans-JP,
+											500,
+											F-color-blue);
+										}	
+										&__text {
+											margin: 24px 0 0;
+											@include mixin.font-settings (
+											F-size16,
+											F-line-height32,
+											F-letter-spacing-0-8,
+											F-family-Noto-Sans-JP,
+											500,
+											F-color-black);
+										}
+										&::before {
+											counter-increment: item;
+											content: counter(item, decimal-leading-zero); // 01, 02, 03
+											position: absolute;
+											text-align: center;
+											width: 49px;
+											height: 49px;
+											left: -0;
+											top: -7.5px;
+											background-color: map-get(mixin.$colors, "C-blue");
+											@include mixin.font-settings(
+												F-size24,
+												F-line-height48,
+												F-letter-spacing-0,
+												F-family-Noto-Sans-JP,
+												normal,
+												F-color-white
+											);
+										}
+									}
+								}
+							}
+							
+							.gradient-entry-button-wrapper {
+								display: flex;
+								justify-content: center;
+								margin: 10px auto;
+							}
+							
+						}
+					}
+				}
+			}
+		}
+	}
+	
+}
+

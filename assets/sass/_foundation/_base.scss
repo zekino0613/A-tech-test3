@@ -285,12 +285,12 @@ $transition: 0.3s;
   background: linear-gradient(90deg , map-get(mixin.$colors, "C-blue") 0%
 																		, map-get(mixin.$colors, "C-right-blue") 100%);
 	@include mixin.font-settings (
-      F-size16,
-      F-line-height32,
-      F-letter-spacing-0-8,
-      F-family-Noto-Sans-JP,
-      bold,
-      F-color-white);
+	F-size16,
+	F-line-height32,
+	F-letter-spacing-0-8,
+	F-family-Noto-Sans-JP,
+	bold,
+	F-color-white);
   border: 1px solid map-get(mixin.$colors, "C-gray");
   box-shadow: 0px 3px 6px #00000029;
   &:hover {
@@ -300,65 +300,6 @@ $transition: 0.3s;
   }
 }
 
-//【ナンバーリスト】
-.number-list {
-  counter-reset: item;
-  list-style: disc;
-  padding: 0;
-  margin: 0 auto;
-	width: 60%;
-	&__item {
-		display: flex;
-		.image {
-			width: 140px;
-			height: 140px;
-			margin-right: 100px;
-		}
-		.textarea {
-			position: relative;
-			margin: 20px auto;
-			&__title {
-				border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
-				padding: 12.5px 0 7.5px 60px;
-				@include mixin.font-settings (
-				F-size20,
-				F-line-height20,
-				F-letter-spacing-0,
-				F-family-Noto-Sans-JP,
-				medium,
-				F-color-blue);
-			}	
-			&__text {
-				@include mixin.font-settings (
-				F-size16,
-				F-line-height32,
-				F-letter-spacing-0-8,
-				F-family-Noto-Sans-JP,
-				normal,
-				F-color-black);
-			}
-			&::before {
-				counter-increment: item;
-				content: counter(item, decimal-leading-zero); // 01, 02, 03
-				position: absolute;
-				text-align: center;
-				width: 49px;
-				height: 49px;
-				left: -0;
-				top: -7.5px;
-				background-color: map-get(mixin.$colors, "C-blue");
-				@include mixin.font-settings(
-					F-size24,
-					F-line-height48,
-					F-letter-spacing-0,
-					F-family-Noto-Sans-JP,
-					normal,
-					F-color-white
-				);
-			}
-		}
-	}
-}
 
 
 // 【三角形背景】clumun privacy
@@ -381,9 +322,10 @@ $transition: 0.3s;
 		width: 60vw; // ← 横幅は画面幅に対する割合で
 		// width: 948px;
 		// height: 854px; // 三角形の高さ調整（自由に変更OK）
-		background-color: #32c4c4; // 任意の背景色
+		background-color: #c4a032; // 任意の背景色
 		clip-path: polygon(100% 0, 0 50%, 100% 100%); // ←ここで三角形を作成
 		z-index: 0;
+		opacity: 0.6;
 	}
 	.right1 {
 		position: absolute;
@@ -456,6 +398,9 @@ $transition: 0.3s;
     display: none;
   }
 	
+	.brnot {
+		display: none;
+	}
 	.other-circle-loop {
 		display: none;
 	}

@@ -190,7 +190,7 @@
 
 
 
-// 700px
+
 @media screen and (max-width: 850px) {
 	#column-body {
 		position: relative;
@@ -289,12 +289,7 @@
 										width: 100%;
 										text-align: center	;
 										// margin: 0 48px 0 0; 
-										img {
-											max-width: 463px;
-											width: 100%;
-											height: auto;
-											aspect-ratio: 463/393;
-											}
+										
 										}
 										&--textarea {
 											width: 100%;

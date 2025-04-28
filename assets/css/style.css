@@ -340,62 +340,6 @@ a:focus-visible {
   background: linear-gradient(124deg, #215F9D -11%, #FFFFFF 48%);
 }
 
-.number-list {
-  counter-reset: item;
-  list-style: disc;
-  padding: 0;
-  margin: 0 auto;
-  width: 60%;
-}
-.number-list__item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.number-list__item .image {
-  width: 140px;
-  height: 140px;
-  margin-right: 100px;
-}
-.number-list__item .textarea {
-  position: relative;
-  margin: 20px auto;
-}
-.number-list__item .textarea__title {
-  border-bottom: 2px solid #141853;
-  padding: 12.5px 0 7.5px 60px;
-  font-size: 20px;
-  letter-spacing: 0em;
-  line-height: 1;
-  font-family: "Noto Sans JP";
-  color: #141853;
-}
-.number-list__item .textarea__text {
-  font-size: 16px;
-  letter-spacing: 0.05em;
-  line-height: 2;
-  font-family: "Noto Sans JP";
-  font-weight: normal;
-  color: #000000;
-}
-.number-list__item .textarea::before {
-  counter-increment: item;
-  content: counter(item, decimal-leading-zero);
-  position: absolute;
-  text-align: center;
-  width: 49px;
-  height: 49px;
-  left: 0;
-  top: -7.5px;
-  background-color: #141853;
-  font-size: 24px;
-  letter-spacing: 0em;
-  line-height: 2;
-  font-family: "Noto Sans JP";
-  font-weight: normal;
-  color: #FFFFFF;
-}
-
 .triangle-contents {
   position: relative;
   overflow: hidden;
@@ -413,10 +357,11 @@ a:focus-visible {
   aspect-ratio: 948/854;
   height: auto;
   width: 60vw;
-  background-color: #32c4c4;
+  background-color: #c4a032;
   -webkit-clip-path: polygon(100% 0, 0 50%, 100% 100%);
           clip-path: polygon(100% 0, 0 50%, 100% 100%);
   z-index: 0;
+  opacity: 0.6;
 }
 .triangle-contents .right1 {
   position: absolute;
@@ -487,6 +432,9 @@ a:focus-visible {
     display: block;
   }
   .brpc {
+    display: none;
+  }
+  .brnot {
     display: none;
   }
   .other-circle-loop {
@@ -4822,12 +4770,6 @@ a:focus-visible {
     width: 100%;
     text-align: center;
   }
-  #column-body .main-content__inner #page-column .page-column__inner .colmun-content .number-list__item--image img {
-    max-width: 463px;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 463/393;
-  }
   #column-body .main-content__inner #page-column .page-column__inner .colmun-content .number-list__item--textarea {
     width: 100%;
     position: relative;
@@ -4881,10 +4823,558 @@ a:focus-visible {
     margin: 51px auto 73px;
   }
 }
-.recruitment {
-  background-color: rgb(209, 10, 3);
+#recruitment-body {
+  position: relative;
+  margin: 0 auto -43px;
+}
+#recruitment-body .triangle-contents {
+  margin: 124px 0 0;
+  height: 2152px;
+}
+#recruitment-body .triangle-contents .right1 {
+  top: 87px;
+  left: 0;
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+#recruitment-body .triangle-contents .left1 {
+  bottom: -143px;
+  left: auto;
+  right: 0;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+#recruitment-body .main-content {
+  width: 100%;
+  position: absolute;
+  z-index: 5;
+  top: -100px;
+  padding: 0 6.6%;
+}
+#recruitment-body .main-content__inner {
+  max-width: 960px;
+  width: 100%;
+  position: relative;
+  top: 10px;
+  margin: 0 auto;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .section-title {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .section-text {
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  line-height: 2;
+  font-family: "Noto Sans JP";
+  font-weight: 500;
+  color: #000000;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .work {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .work .work-detail {
+  width: 44%;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .work .work-detail__textarea--label {
+  font-size: 24px;
+  letter-spacing: 0em;
+  line-height: 1.1666666667;
+  font-family: "Noto Sans JP";
+  font-weight: 500;
+  color: #141853;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .work .work-detail__textarea--list li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  line-height: 2;
+  font-family: "Noto Sans JP";
+  font-weight: 400;
+  color: #000000;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .work .work-detail__textarea--list li::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 17px;
+  width: 8px;
+  height: 8px;
+  background-color: #0a1a4f;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .work .work-detail__textarea--text {
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  line-height: 2;
+  font-family: "Noto Sans JP";
+  font-weight: 400;
+  color: #000000;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .work .work-image {
+  width: 50%;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .work .work-image img {
+  max-width: 480px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 480/406;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .recruitment-list__title {
+  text-align: center;
+  font-size: 24px;
+  letter-spacing: 0em;
+  line-height: 1.1666666667;
+  font-family: "Noto Sans JP";
+  font-weight: 500;
+  color: #141853;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .recruitment-list .recruit-info-warpper {
+  padding: 0 6.4%;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .recruitment-list .recruit-info-warpper .recruit-info {
+  max-width: 772px;
+  width: 100%;
+  margin: 0 auto;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .recruitment-list .recruit-info-warpper .recruit-info__block {
+  width: 100%;
+  padding: 25px 33.5px 9.5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  border-bottom: 2px solid #141853;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .recruitment-list .recruit-info-warpper .recruit-info__block dt {
+  width: 21.76%;
+  font-size: 16px;
+  letter-spacing: 0em;
+  line-height: 1;
+  font-family: "Noto Sans JP";
+  font-weight: 500;
+  color: #141853;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .recruitment-list .recruit-info-warpper .recruit-info__block .dd-content dd {
+  font-size: 16px;
+  letter-spacing: 0em;
+  line-height: 1.75;
+  font-family: "Noto Sans JP";
+  font-weight: 400;
+  color: #141853;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list {
+  counter-reset: item;
+  list-style: disc;
+  padding: 0;
+  margin: 0 auto;
+  width: 100%;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__title {
+  text-align: center;
+  font-size: 24px;
+  letter-spacing: 0em;
+  line-height: 1;
+  font-family: "Noto Sans JP";
+  font-weight: 500;
+  color: #141853;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 9.79%;
+  width: 100%;
+  margin: 0 0 32px;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__item--image {
+  max-width: 140px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 140/140;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #DFE0E6;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__item--image .img1 {
+  width: 50px;
+  height: 119px;
+  margin: 20px 0 0px;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__item--image .img2 {
+  width: 103px;
+  height: 59px;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__item--image .img3 {
+  width: 101px;
+  height: 82px;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__item .textarea {
+  position: relative;
+  width: 100%;
+  margin: 0;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__item .textarea__title {
+  border-bottom: 2px solid #141853;
+  padding: 12.5px 0 7.5px 60px;
+  font-size: 20px;
+  letter-spacing: 0em;
+  line-height: 1;
+  font-family: "Noto Sans JP";
+  font-weight: 500;
+  color: #141853;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__item .textarea__text {
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  line-height: 2;
+  font-family: "Noto Sans JP";
+  font-weight: 500;
+  color: #000000;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__item .textarea::before {
+  counter-increment: item;
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  text-align: center;
+  width: 49px;
+  height: 49px;
+  left: 0;
+  top: -7.5px;
+  background-color: #141853;
+  font-size: 24px;
+  letter-spacing: 0em;
+  line-height: 2;
+  font-family: "Noto Sans JP";
+  font-weight: normal;
+  color: #FFFFFF;
+}
+#recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .gradient-entry-button-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
+@media screen and (max-width: 850px) {
+  #recruitment-body {
+    position: relative;
+    margin: 0 auto -43px;
+  }
+  #recruitment-body .triangle-contents {
+    display: none;
+    margin: 124px 0 0;
+    height: 2000px;
+  }
+  #recruitment-body .triangle-contents .right1 {
+    top: 87px;
+    left: 0;
+    -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+  }
+  #recruitment-body .triangle-contents .left1 {
+    bottom: -143px;
+    left: auto;
+    right: 0;
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+  #recruitment-body .main-content {
+    width: 100%;
+    position: relative;
+    z-index: 5;
+    top: 25px;
+    padding: 0 6.6% 128px;
+  }
+  #recruitment-body .main-content__inner {
+    max-width: 960px;
+    width: 100%;
+    position: relative;
+    top: 10px;
+    margin: 0 auto;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .section-title {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .section-title h3 {
+    line-height: 10px;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .section-title span {
+    line-height: 10px;
+    margin: 25px 0 0;
+    padding: 0;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .section-text {
+    margin: 19px 0 21px;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    line-height: 2;
+    font-family: "Noto Sans JP";
+    font-weight: 500;
+    color: #000000;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .work {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .work .work-detail {
+    width: 100%;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .work .work-detail__textarea--label {
+    margin: 30px 0 17px;
+    font-size: 20px;
+    letter-spacing: 0em;
+    line-height: 1.4;
+    font-family: "Noto Sans JP";
+    font-weight: 500;
+    color: #141853;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .work .work-detail__textarea--list li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    line-height: 2;
+    font-family: "Noto Sans JP";
+    font-weight: 500;
+    color: #000000;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .work .work-detail__textarea--list li::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 17px;
+    width: 8px;
+    height: 8px;
+    background-color: #0a1a4f;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .work .work-detail__textarea--text {
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    line-height: 2;
+    font-family: "Noto Sans JP";
+    font-weight: 400;
+    color: #000000;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .work .work-image {
+    width: 100%;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .work .work-image img {
+    max-width: 480px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 480/406;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .recruitment-list {
+    margin: 56px 0 10px;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .recruitment-list__title {
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 0em;
+    line-height: 1.1666666667;
+    font-family: "Noto Sans JP";
+    font-weight: 500;
+    color: #141853;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .recruitment-list .recruit-info-warpper {
+    padding: 0;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .recruitment-list .recruit-info-warpper .recruit-info {
+    max-width: 772px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .recruitment-list .recruit-info-warpper .recruit-info__block {
+    width: 100%;
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
+    border-bottom: 2px solid #141853;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .recruitment-list .recruit-info-warpper .recruit-info__block dt {
+    width: 100%;
+    margin: 18.5px 0 14.5px;
+    font-size: 16px;
+    letter-spacing: 0em;
+    line-height: 1;
+    font-family: "Noto Sans JP";
+    font-weight: 500;
+    color: #141853;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .recruitment-list .recruit-info-warpper .recruit-info__block .dd-content dd {
+    font-size: 16px;
+    letter-spacing: 0em;
+    line-height: 1.75;
+    font-family: "Noto Sans JP";
+    font-weight: 400;
+    color: #141853;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list {
+    counter-reset: item;
+    list-style: disc;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__title {
+    text-align: center;
+    margin: 48px 0 32px;
+    font-size: 24px;
+    letter-spacing: 0em;
+    line-height: 1;
+    font-family: "Noto Sans JP";
+    font-weight: 500;
+    color: #141853;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    margin: 0 0 32px;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__item--image {
+    max-width: 140px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 140/140;
+    border-radius: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background-color: #DFE0E6;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__item--image .img1 {
+    width: 50px;
+    height: 119px;
+    margin: 20px 0 0px;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__item--image .img2 {
+    width: 103px;
+    height: 59px;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__item--image .img3 {
+    width: 101px;
+    height: 82px;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__item .textarea {
+    position: relative;
+    width: 100%;
+    margin: 0;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__item .textarea__title {
+    border-bottom: 2px solid #141853;
+    padding: 12.5px 0 7.5px 60px;
+    font-size: 20px;
+    letter-spacing: 0em;
+    line-height: 1;
+    font-family: "Noto Sans JP";
+    font-weight: 500;
+    color: #141853;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__item .textarea__text {
+    margin: 24px 0 0;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    line-height: 2;
+    font-family: "Noto Sans JP";
+    font-weight: 500;
+    color: #000000;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .number-list__item .textarea::before {
+    counter-increment: item;
+    content: counter(item, decimal-leading-zero);
+    position: absolute;
+    text-align: center;
+    width: 49px;
+    height: 49px;
+    left: 0;
+    top: -7.5px;
+    background-color: #141853;
+    font-size: 24px;
+    letter-spacing: 0em;
+    line-height: 2;
+    font-family: "Noto Sans JP";
+    font-weight: normal;
+    color: #FFFFFF;
+  }
+  #recruitment-body .main-content__inner #page-recruitment .page-recruitment__inner .gradient-entry-button-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 10px auto;
+  }
+}
 .privacy {
   background-color: rgb(196, 183, 4);
 }
