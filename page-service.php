@@ -11,16 +11,19 @@
 ?>
 <!-- ---------------------------------------------------------------------->
 
+<!-- メインコンテンツ ----------------------------------------	-->
+<div class="main-content">
+	<div class="main-content__inner">
 <!-- Service -->
 <section id="page-service">
 	<div class="page-service__inner">
 		<div class="title-content">
 		<div class="title-content__inner container">
-				<!--【h3セクションタイトル】 -->
-				<div class="section-title">
-					<h3 class="section-title__eng">service</h3>
-					<span class="section-title__ja">サービス内容</span>		
-				</div>
+					<!--【h3セクションタイトル】 -->
+					<div class="section-title">
+						<h3 class="section-title__eng">service</h3>
+						<span class="section-title__ja">サービス内容</span>
+					</div>
 				
 				<p class="title-content__inner--contenttext">
 				不動産を通じてお客様のより良いライフプランを実現するために、

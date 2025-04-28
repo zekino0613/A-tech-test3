@@ -31,7 +31,7 @@ body {
   scroll-margin-top: 250px;
   width: 100%;
   height: 100%; // 高さが必要な場合
-  
+  background-color: map-get(mixin.$colors, "C-white");
 }
 
 *,
@@ -88,20 +88,6 @@ a:focus-visible {
   display: block;
 }
 
-//スクロール中に下からフェードイン
-// .fade-in {
-//   opacity: 0;
-//   transform: translateY(100px);
-//   transition: opacity 1s ease-out, transform 1s ease-out;
-//   visibility: hidden;
-//   /* 初期状態では要素を隠します。 */
-//   &.visible {
-//     opacity: 1;
-//     transform: translateY(0);
-//     visibility: visible;
-//     /* ビューポート内に入ったときに要素を表示します。 */
-//   }
-// }
 
 //mainvisualのテキスト。ロード後にフェードイン
 .fadein {
@@ -131,6 +117,16 @@ a:focus-visible {
 //-------------------------------------------------------------------------------
 // 共通パーツ
 //-------------------------------------------------------------------------------
+
+// 共通コンテナ
+.container {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;	
+
+}
+
+
 // 1. 共通化したいスタイルを mixin にまとめる
 @mixin circle-loop-style {
   position: absolute;
@@ -171,65 +167,11 @@ a:focus-visible {
 
 .other-circle-loop {
 	@include circle-loop-style;
-	top: 338px;
+	top: 308px;
   right: 141px;
 	
 }
 
-
-// // 【サークルループPC】
-// 	.circle-loop-pc {
-// 		position: absolute;
-// 		top: 618px;
-// 		right: 75px;
-// 		width: 205px;
-// 		height: 205px;
-// 		background-image: url('../../assets/images/a-tech3_image/text-circle.webp');
-// 		background-repeat: no-repeat;
-// 		background-size: cover;
-// 		background-position: center;
-// 		border-radius: 50%; // 円形
-// 		aspect-ratio: 1 / 1; // 円形比率
-// 		display: block;
-// 		z-index: 10;
-// 		animation: rotateCircle 15s linear infinite; /* 回転アニメーション */
-// 		@keyframes rotateCircle {
-// 			from {
-// 				transform: rotate(0deg);
-// 			}
-// 			to {
-// 				transform: rotate(360deg);
-// 			}
-// 		}
-// 	}
-	
-// 【other-mainvisualサークルループ】
-		// .other-circle-loop {
-		// 	position: absolute;
-		// 	top: 218px;
-		// 	right: 75px;
-		// 	width: 205px;
-		// 	height: 205px;
-		// 	background-image: url('../../assets/images/a-tech3_image/text-circle.webp');
-		// 	background-repeat: no-repeat;
-		// 	background-size: cover;
-		// 	background-position: center;
-		// 	border-radius: 50%; // 円形
-		// 	aspect-ratio: 1 / 1; // 円形比率
-		// 	display: block;
-		// 	z-index: 10;
-		// 	background-color: black;
-		// 	animation: rotateCircle 15s linear infinite; /* 回転アニメーション */
-		// 	@keyframes rotateCircle {
-		// 		from {
-		// 			transform: rotate(0deg);
-		// 		}
-		// 		to {
-		// 			transform: rotate(360deg);
-		// 		}
-		// 	}
-		// }
-	
 //【h3セクションタイトル】
 .section-title {
 	display: flex;
@@ -415,6 +357,41 @@ $transition: 0.3s;
 				);
 			}
 		}
+	}
+}
+
+
+// 【三角形背景】clumun privacy
+.triangle-contents {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 1500px;
+	&__bg-wrap {
+		position: absolute;
+		inset: 0; // top: 0; right: 0; bottom: 0; left: 0;
+		z-index: 0;
+		pointer-events: none;
+	}
+	&__bg {
+		position: absolute;
+		// width: min(948px, 60vw); // ✅ デフォルト最大948px、画面縮小時は60%まで縮む
+		aspect-ratio: 948 / 854; // ✅ 比率固定
+		height: auto;            // ✅ 高さは自動
+		width: 60vw; // ← 横幅は画面幅に対する割合で
+		// width: 948px;
+		// height: 854px; // 三角形の高さ調整（自由に変更OK）
+		background-color: #32c4c4; // 任意の背景色
+		clip-path: polygon(100% 0, 0 50%, 100% 100%); // ←ここで三角形を作成
+		z-index: 0;
+	}
+	.right1 {
+		position: absolute;
+
+	}
+	.left1 {
+		position: absolute;
+		transform: scaleX(-1);
 	}
 }
 

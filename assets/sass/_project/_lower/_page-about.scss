@@ -1,6 +1,222 @@
 @use "../../_foundation/_mixin"as mixin;
 @use "../../_foundation/_base"as base;
 
-.about {
-	background-color: antiquewhite;
+
+#about-body {
+	position: relative;
+	margin: 0 auto -43px;
+	.triangle-contents {
+		margin: 124px 0 0;
+		height: 1300px;
+		.right1 {
+			top: 87px;
+			left: 0;
+			transform: scaleX(-1);
+		}
+		.left1 {
+			bottom: -143px;
+			left: auto;         // ✅ これを明示
+			right: 0;           // ✅ 右寄せが効くようになる
+			transform: scaleX(1);
+		}
+	}
+	
+	
+		.main-content {
+			width: 100%;	
+			position: absolute; // ★重ねる準備
+			z-index: 5;         // ★背景より上に表示される
+			top: -100px;
+			padding: 0 4.6%;
+			&__inner {
+				max-width: 960px;	
+				width: 100%;	
+				position: relative;
+				top: 10px;
+				margin: 0 auto;
+				#page-about {
+					.page-about {
+						&__inner {
+							.section-title {
+								align-items: baseline;
+							}
+							.section-text {
+								margin: 1px 0 36px;
+								@include mixin.font-settings (
+								F-size16,
+								F-line-height32,
+								F-letter-spacing-0-8,
+								F-family-Noto-Sans-JP,
+								400,
+								F-color-black);
+							}
+						
+							.about-list {
+								&__content {
+									display: flex;
+									justify-content: space-between;
+									width: 100%;
+									&--image {
+										width: 48%;
+										img {
+											max-width: 463px;
+											width: 100%;
+											height: auto;
+											aspect-ratio: 463 / 393;
+										}
+									}	
+									&--textarea {
+										width: 48%;
+										padding: 50px 0px 0 9px;
+										.title {
+											// padding: 0 0 8.5px;
+											border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
+											@include mixin.font-settings (
+											F-size18,
+											F-line-height32,
+											F-letter-spacing-0,
+											F-family-Noto-Sans-JP,
+											500,
+											F-color-blue);
+										}
+										.text {
+											padding: 0 14px 0 0;
+											@include mixin.font-settings (
+											F-size16,
+											F-line-height32,
+											F-letter-spacing-0-8,
+											F-family-Noto-Sans-JP,
+											400,
+											F-color-black);
+										}
+									} 
+								}
+								.reverse {
+									margin: 126px 0 0;
+									flex-direction: row-reverse;
+								}
+								.reverse-padding {
+									padding: 37px 0 0px 0px;
+								}
+							}
+							.slanted-svg-button {
+								margin: 43px auto 0;
+							}
+						}
+					}
+				}
+
+		}
+	}
 }
+
+
+
+@media screen and (max-width: 700px) {
+	#about-body {
+		position: relative;
+		.triangle-contents {
+			display: none;
+		}
+		
+		
+			.main-content {
+			width: 100%;	
+			position: relative; // ★SP時はabsoluteからrelativeに切りかえる
+			z-index: 5;         
+			top: 0;
+			padding: 30px 6.6% 64px;
+			&__inner {
+				max-width: 960px;	
+				width: 100%;	
+				position: relative;
+				top: 0;
+				margin: 0 auto;
+				#page-about {
+					.page-about {
+						&__inner {
+							.section-title {
+								flex-direction: column;
+								h3 {
+									line-height: 48px;
+								}
+								span {
+									margin: 0;
+									padding: 0;
+								}
+							}
+							.section-text {
+								margin: 21px 0 34px;
+								@include mixin.font-settings (
+								F-size16,
+								F-line-height28-8,
+								F-letter-spacing-0-8,
+								F-family-Noto-Sans-JP,
+								400,
+								F-color-black);
+							}
+							
+							.about-list {
+								&__content {
+									display: flex;
+									justify-content: space-between;
+									flex-direction: column;
+									width: 100%;
+									&--image {
+										width: 100%;
+										text-align: center;
+										img {
+											max-width: 463px;
+											width: 100%;
+											height: auto;
+											aspect-ratio: 463 / 393;
+										}
+									}	
+									&--textarea {
+										width: 100%;
+										padding: 24px 0 0;
+										.title {
+											padding: 0 0 3px;
+											border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
+											@include mixin.font-settings (
+											F-size18,
+											F-line-height32,
+											F-letter-spacing-0,
+											F-family-Noto-Sans-JP,
+											500,
+											F-color-blue);
+										}
+										.text {
+											padding: 0;
+											@include mixin.font-settings (
+											F-size16,
+											F-line-height32,
+											F-letter-spacing-0-8,
+											F-family-Noto-Sans-JP,
+											400,
+											F-color-black);
+										}
+									} 
+								}
+								.reverse {
+									margin: 40px 0 0px;
+									flex-direction: column;
+								}
+								.reverse-padding {
+									padding: 22.2px 0px 0px 4px;
+								}
+							}
+							.slanted-svg-button {
+								margin: 46px auto 19px;
+							}
+						}
+					}
+				}
+
+
+			}
+		}
+	}
+
+}
+	

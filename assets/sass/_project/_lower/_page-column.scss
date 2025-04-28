@@ -2,6 +2,365 @@
 @use "../../_foundation/_base"as base;
 
 
-.column {
-	background-color: rgb(173, 103, 18);
+#column-body {
+	position: relative;
+	.triangle-contents {
+		margin: 454px 0 0;
+		height: 2666px;	
+		.right1 {
+			top: 0;
+			right: 0;
+			transform: scaleX(1);
+			background-color: brown;
+		}
+		.left1 {
+			top: 506px;
+			left: 0;         // ✅ これを明示
+			transform: scaleX(1);
+			background-color: blue;
+			transform: scaleX(-1);
+		}
+		.right2 {
+			bottom: 744px;
+			right: 0;
+			transform: scaleX(1);
+			background-color: blueviolet;
+		}
+		.left2 {
+			bottom: 130px;
+			left: 0;         // ✅ これを明示
+			transform: scaleX(-1);
+			background-color: cadetblue
+			
+			;
+		}
+	}
+	.main-content {
+		width: 100%;	
+		position: absolute; // ★重ねる準備
+		z-index: 5;         // ★背景より上に表示される
+		top: -426px;
+		&__inner {
+			padding: 0 6.5%;
+			width: 100%;	
+			position: relative;
+			top: 0;
+			margin: 0 auto;			
+			#page-column {
+				.page-column {
+					&__inner {
+						.section-title {
+							align-items: baseline;
+						}
+						
+						.colmun-bg {
+							position: absolute;
+							width: 100%;
+							height: 197px;
+							background: url('../../assets/images/a-tech3_image/fv-bg02-pc.webp') no-repeat center center;
+							background-size: cover;
+							z-index: 5;
+							top: 124px;
+							left: 0;
+							display: flex;
+								justify-content: center;
+								align-items: center;
+							&__text {
+								@include mixin.font-settings (
+									F-size32,
+									F-line-height54,
+									F-letter-spacing-1-6,
+									F-family-Noto-Sans-JP,
+									500,
+									F-color-black);
+							}
+						}
+						
+						.column-text {
+							text-align: center;
+							margin: 231px auto 50.5px;
+							@include mixin.font-settings (
+								F-size16,
+								F-line-height32,
+								F-letter-spacing-0-8,
+								F-family-Noto-Sans-JP,
+								400,
+								F-color-black);
+						}
+						
+						.colmun-content {							
+							margin: 0 auto;
+							&__title {
+								text-align: center;
+								padding: 0px 0 11px;
+								margin: -4px auto 50px;
+								border-bottom:  2px solid map-get(mixin.$colors, "C-blue");
+								@include mixin.font-settings (
+									F-size24,
+									F-line-height24,
+									F-letter-spacing-0,
+									F-family-Noto-Sans-JP,
+									500,
+									F-color-blue);
+							}
+							.number-list {
+								width: 100%;
+								.reverse {
+									flex-direction: row-reverse;
+								}
+								.list-item4 {
+									margin: 74px 0 72px 0px;
+								}
+								&__item {
+									display: flex;
+									justify-content: space-between;
+									align-items: center;
+									gap: 35px;
+									width: 100%;
+									margin: 0 0 61px;
+								&--image {
+									width: 48%;
+									// margin: 0 48px 0 0; 
+									img {
+										max-width: 463px;
+										width: 100%;
+										height: auto;
+										aspect-ratio: 463/393;
+										}
+									}
+									&--textarea {
+										width: 46%;
+										position: relative;
+										margin: -2px 6px -13px 0px;
+										// padding: 0 0 0 40px;
+										.textarea-title {
+											border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
+											padding: 12.5px 0 7.5px 60px;
+											@include mixin.font-settings (
+											F-size20,
+											F-line-height20,
+											F-letter-spacing-0,
+											F-family-Noto-Sans-JP,
+											500,
+											F-color-blue);
+										}	
+										.textarea-text {
+											padding: 19px 0px 0 0;
+											@include mixin.font-settings (
+											F-size16,
+											F-line-height32,
+											F-letter-spacing-0-8,
+											F-family-Noto-Sans-JP,
+											500,
+											F-color-black);
+										}
+										&::before {
+											counter-increment: item;
+											content: counter(item, decimal-leading-zero); // 01, 02, 03
+											position: absolute;
+											text-align: center;
+											width: 49px;
+											height: 49px;
+											left: -0;
+											top: -7.5px;
+											background-color: map-get(mixin.$colors, "C-blue");
+											@include mixin.font-settings(
+												F-size24,
+												F-line-height48,
+												F-letter-spacing-0,
+												F-family-Noto-Sans-JP,
+												normal,
+												F-color-white
+											);
+										}
+									}
+								}
+							}
+							.slanted-svg-button {
+								margin:-21px auto 0;
+							}
+						}
+						
+					}
+				}
+			}
+		}
+	}
 }
+
+
+
+// 700px
+@media screen and (max-width: 850px) {
+	#column-body {
+		position: relative;
+		.triangle-contents {
+			display: none;
+		}
+		.main-content {
+			width: 100%;	
+			position: relative; // ★SP時はabsoluteからrelativeに切りかえる
+			z-index: 5;         // ★背景より上に表示される
+			top: 30px;
+			&__inner {
+				padding: 0  6.6%;
+				width: 100%;	
+				position: relative;
+				top: 0;
+				margin: 0 auto;			
+				#page-column {
+					.page-column {
+						&__inner {
+							.section-title {
+								flex-direction: column;
+								h3 {
+									line-height: 48px;
+								}
+								span {
+									margin: 5px 0 0 ;
+									padding: 0;
+								}
+							}
+							.colmun-bg {
+								position: absolute;
+								width: 100%;
+								height: 115px;
+								background: url('../../assets/images/a-tech3_image/fv-bg02-sp.webp') no-repeat center center;
+								background-size: cover;
+								z-index: 5;
+								top: 97px;
+								left: 0;
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								&__text {
+									@include mixin.font-settings (
+										F-size24,
+										F-line-height38-4,
+										F-letter-spacing-1-2,
+										F-family-Noto-Sans-JP,
+										500,
+										F-color-black);
+								}
+							}
+							
+							.column-text {
+								text-align: left;
+								margin: 168px auto 67.5px;
+								@include mixin.font-settings (
+									F-size16,
+									F-line-height28-8,
+									F-letter-spacing-0-8,
+									F-family-Noto-Sans-JP,
+									400,
+									F-color-black);
+							}
+							
+							.colmun-content {							
+								margin: 0 auto;
+								&__title {
+									text-align: center;
+									padding: 0 0 8.5px;
+									margin: 0 auto 22px;
+									border-bottom:  2px solid map-get(mixin.$colors, "C-blue");
+									@include mixin.font-settings (
+										F-size20,
+										F-line-height24,
+										F-letter-spacing-0,
+										F-family-Noto-Sans-JP,
+										500,
+										F-color-blue);
+								}
+								.number-list {
+									width: 100%;
+									.reverse {
+										flex-direction:  column;
+										margin: -18px 0 0;
+									}
+									&__item {
+										display: flex;
+										flex-direction: column;
+										justify-content: space-between;
+										align-items: center;
+										gap: 29px;
+										width: 100%;
+										margin: 21px 0 40px;
+									&--image {
+										width: 100%;
+										text-align: center	;
+										// margin: 0 48px 0 0; 
+										img {
+											max-width: 463px;
+											width: 100%;
+											height: auto;
+											aspect-ratio: 463/393;
+											}
+										}
+										&--textarea {
+											width: 100%;
+											position: relative;
+											margin: 0 auto;
+											// padding: 0 0 0 40px;
+											.textarea-title {
+												border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
+												padding: 11.5px 0px 8.5px 55px;
+												@include mixin.font-settings (
+												F-size18,
+												F-line-height20,
+												F-letter-spacing-0,
+												F-family-Noto-Sans-JP,
+												500,
+												F-color-blue);
+											}	
+											.textarea-text {
+												padding: 17px 0px 9px 2px;
+												@include mixin.font-settings (
+												F-size16,
+												F-line-height32,
+												F-letter-spacing-0-8,
+												F-family-Noto-Sans-JP,
+												500,
+												F-color-black);
+											}
+											.item4 {
+												margin: 0px 0 0px;
+												padding: 22px 0px 12px 3px;
+											}
+											.item5 {
+												margin: 0px 0 -6px;
+												padding: 23px 0px 0px;
+											}
+											&::before {
+												counter-increment: item;
+												content: counter(item, decimal-leading-zero); // 01, 02, 03
+												position: absolute;
+												text-align: center;
+												width: 49px;
+												height: 49px;
+												left: -0;
+												top: -7.5px;
+												background-color: map-get(mixin.$colors, "C-blue");
+												@include mixin.font-settings(
+													F-size24,
+													F-line-height48,
+													F-letter-spacing-0,
+													F-family-Noto-Sans-JP,
+													normal,
+													F-color-white
+												);
+											}
+										}
+									}
+								}
+								.slanted-svg-button {
+									margin: 51px auto 73px;
+								}
+							}
+							
+						}
+					}
+				}
+			}
+		}
+	}
+}	
