@@ -6,15 +6,16 @@
 	margin: 0 auto -43px;
 	.triangle-contents {
 		margin: 124px 0 0;
-		height: 2152px;
+		height: 2446px;
 		.right1 {
-			top: 87px;
+			top: 66px;
 			left: 0;
 			transform: scaleX(-1);
 		}
 		.left1 {
-			bottom: -143px;
-			left: auto;         // ✅ これを明示
+			bottom: 125px;
+			left: auto;
+      width: 932px;
 			right: 0;           // ✅ 右寄せが効くようになる
 			transform: scaleX(1);
 		}
@@ -41,6 +42,7 @@
 						}
 						
 						.section-text {
+							margin: -4px 0 56px;
 							@include mixin.font-settings(
 							F-size16,
 							F-line-height32,
@@ -56,10 +58,13 @@
 							display: flex;
 							justify-content: space-between;
 							align-items: center;
+							padding: 2px 4px 0 7px;
 							.work-detail {
 								width: 44%;
+								margin: -16px 0 0px;
 								&__textarea {
 									&--label {
+										margin: 25px 0 14px;	
 										@include mixin.font-settings(
 										F-size24,
 										F-line-height28,
@@ -69,8 +74,9 @@
 										F-color-blue
 										);
 									}
-									
+
 									&--list {
+										margin:0 0 0;	
 										li {
 											position: relative;
 											padding-left: 20px;
@@ -106,6 +112,12 @@
 										);
 									}
 								}
+								.block1 {
+									margin: 0 0 0;	
+								}
+								.block2 {
+									margin: 0 0 0;
+								}
 							}
 							
 							.work-image {
@@ -121,6 +133,7 @@
 						
 						// 募集要項リスト
 						.recruitment-list {
+							margin: 96px 0 0;
 							&__title {
 								text-align: center;
 								@include mixin.font-settings(
@@ -141,13 +154,13 @@
 									margin: 0 auto;
 									&__block {
 										width: 100%;
-										padding: 25px 33.5px 9.5px;
+										padding: 23.6px 33.5px 8.6px;
 										display: flex;
 										align-items: baseline;
 										border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
 										// flex-direction: column;
 										dt {
-											width: 21.76%;
+											width: 19.16%;
 											@include mixin.font-settings(
 												F-size16,
 												F-line-height16,
@@ -158,6 +171,7 @@
 											);
 										}
 										.dd-content {
+											padding: 0 0px 0 8px;
 											dd {
 												// margin: 0 0 3px;
 												@include mixin.font-settings(
@@ -169,8 +183,16 @@
 													F-color-blue
 												);
 											}
+											.margin1 {
+												margin: 10px 0 -10px;
+											}
 										}
-									
+										.padding1 {
+											padding: 0 0 0 0;
+										}
+									}
+									.padding2 {
+										padding: 15.6px 33.5px 14.6px;
 									}
 								}
 							}
@@ -181,10 +203,11 @@
 							counter-reset: item;
 							list-style: disc;
 							padding: 0;
-							margin: 0 auto;
+							margin: 90px auto 75px;
 							width: 100%;
 							&__title {
 								text-align: center;
+								margin: 0 0 36px;
 								@include mixin.font-settings (
 									F-size24,
 									F-line-height24,
@@ -230,7 +253,8 @@
 									margin: 0;
 									&__title {
 										border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
-										padding: 12.5px 0 7.5px 60px;
+										padding: 12.5px 0 7.5px 65px;
+										margin: 0px 0 18px;
 										@include mixin.font-settings (
 										F-size20,
 										F-line-height20,
@@ -274,6 +298,7 @@
 						.gradient-entry-button-wrapper {
 							display: flex;
 							justify-content: center;
+							margin: -37px 0 0;
 						}
 						
 					}
@@ -312,7 +337,7 @@
 			width: 100%;	
 			position: relative; // ★SP時はabsoluteからrelativeに切りかえる
 			z-index: 5;         // ★背景より上に表示される
-			top: 25px;
+			top: 39px;
 			padding: 0 6.6% 128px;
 			&__inner {
 				max-width: 960px;	
@@ -336,7 +361,7 @@
 							}
 							
 							.section-text {
-								margin: 19px 0 21px;
+								margin: 25px 0 34px;
 								@include mixin.font-settings(
 								F-size16,
 								F-line-height32,
@@ -345,6 +370,7 @@
 								500,
 								F-color-black
 								);
+								line-height: 1.8;
 							}
 							
 							.work {
@@ -353,11 +379,13 @@
 								flex-direction: column-reverse;
 								justify-content: space-between;
 								align-items: center;
+								padding: 0;
 								.work-detail {
 									width: 100%;
+									padding: 0 0 0 3px;
 									&__textarea {
 										&--label {
-											margin: 30px 0 17px;
+											margin: 50px 0 -24px;
 											@include mixin.font-settings(
 											F-size20,
 											F-line-height28,
@@ -369,6 +397,7 @@
 										}
 										
 										&--list {
+											margin: 32px 0 -17px;
 											li {
 												position: relative;
 												padding-left: 20px;
@@ -394,6 +423,7 @@
 										}
 										
 										&--text {
+											margin: 34px 0 0px;
 											@include mixin.font-settings(
 											F-size16,
 											F-line-height32,
@@ -419,7 +449,7 @@
 							
 							// 募集要項リスト
 							.recruitment-list {
-								margin: 56px 0 10px;
+								margin: 52px 0 0px;
 								&__title {
 									text-align: center;
 									@include mixin.font-settings(
@@ -440,7 +470,7 @@
 										margin: 0 auto;
 										&__block {
 											width: 100%;
-											padding: 0;
+											padding: 2px 0 7px;
 											display: flex;
 											flex-direction: column;
 											align-items: baseline;
@@ -448,7 +478,7 @@
 											// flex-direction: column;
 											dt {
 												width: 100%;
-												margin: 18.5px 0 14.5px;
+												margin: 16.5px 0 11.5px;
 												@include mixin.font-settings(
 													F-size16,
 													F-line-height16,
@@ -459,6 +489,7 @@
 												);
 											}
 											.dd-content {
+												padding: 0 ;
 												dd {
 													// margin: 0 0 3px;
 													@include mixin.font-settings(
@@ -470,8 +501,16 @@
 														F-color-blue
 													);
 												}
+												.margin1 {
+													margin: 9px 0 -6px;
+												}
 											}
-										
+											.padding1 {
+												padding: 0 0 0 0;
+											}
+										}
+										.padding2 {
+											padding: 4px 0 17px 0px;
 										}
 									}
 								}
@@ -486,7 +525,7 @@
 								width: 100%;
 								&__title {
 									text-align: center;
-									margin: 48px 0 32px;
+									margin: 55px 0 37px;
 									@include mixin.font-settings (
 										F-size24,
 										F-line-height24,
@@ -499,7 +538,7 @@
 									display: flex;
 									align-items: center;
 									flex-direction: column;
-									gap: 16px;
+									gap: 24px;
 									width: 100%;
 									margin: 0 0 32px;
 									&--image {
@@ -533,7 +572,7 @@
 										margin: 0;
 										&__title {
 											border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
-											padding: 12.5px 0 7.5px 60px;
+											padding: 12.5px 0 7.1px 65px;
 											@include mixin.font-settings (
 											F-size20,
 											F-line-height20,
@@ -543,7 +582,7 @@
 											F-color-blue);
 										}	
 										&__text {
-											margin: 24px 0 0;
+											margin: -2px 0 0;
 											@include mixin.font-settings (
 											F-size16,
 											F-line-height32,
@@ -578,7 +617,7 @@
 							.gradient-entry-button-wrapper {
 								display: flex;
 								justify-content: center;
-								margin: 10px auto;
+								margin: 51px auto 13px;
 							}
 							
 						}

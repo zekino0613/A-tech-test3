@@ -38,7 +38,7 @@
 						
 						<div class="work">
 							<div class="work-detail">
-								<div class="work-detail__textarea">
+								<div class="work-detail__textarea block1">
 									<h4 class="work-detail__textarea--label">
 										求める人物像
 									</h4>
@@ -49,7 +49,7 @@
 									</ul>
 								</div>
 								
-								<div class="work-detail__textarea">
+								<div class="work-detail__textarea block2">
 									<h4 class="work-detail__textarea--label">
 										仕事内容
 									</h4>
@@ -77,7 +77,7 @@
 								<div class="recruit-info">
 									<dl class="recruit-info__block">
 										<dt>勤務地</dt>
-										<div class="dd-content">
+										<div class="dd-content padding1">
 											<dd>当社本社（港南1丁目9-36 アレア品川ビル13 階）</dd>
 											<dd>【交通手段】</dd>
 											<dd>JR山手線「品川」駅徒歩3分</dd>
@@ -92,14 +92,14 @@
 										</div>	
 									</dl>
 
-									<dl class="recruit-info__block">
+									<dl class="recruit-info__block padding2">
 										<dt>事業内容</dt>
 										<div class="dd-content">
 											<dd>月給25万円以上</dd>
 											<dd>経験・スキルを考慮し優遇</dd>
 											<br>
 											<dd>【年収例】</dd>
-											<dd>400万円／月給30万円＋賞与＋インセンティブ（入社5年目）</dd>
+											<dd class="margin1">400万円／月給30万円＋賞与＋インセンティブ（入社5年目）</dd>
 										</div>
 									</dl>
 									
@@ -194,7 +194,7 @@
 						
 						<!--【ボタン】グラデーション -->
 						<div class="gradient-entry-button-wrapper">
-							<a href="#entry" class="gradient-entry-button">
+							<a href="<?php echo home_url('/contact-form/'); ?>" class="gradient-entry-button">
 								エントリーする
 							</a>
 						</div>
