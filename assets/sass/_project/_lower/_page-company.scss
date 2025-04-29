@@ -1,6 +1,201 @@
 @use "../../_foundation/_mixin"as mixin;
 @use "../../_foundation/_base"as base;
 
-.company {
-	background-color: rgb(5, 139, 61);
+#page-company {
+	padding: 28px  6.4%;
+	.page-company {
+		&__inner {
+			.section-title {
+				align-items: baseline;
+			}
+			.section-text {
+				margin: 2px 0 29px;
+				@include mixin.font-settings(
+				F-size16,
+				F-line-height32,
+				F-letter-spacing-0-8,
+				F-family-Noto-Sans-JP,
+				500,
+				F-color-black
+				);
+			}
+			
+			.company-info-warpper {
+				// padding: 0 6.4%;
+				.company-info {
+					max-width: 772px;
+					width: 100%;
+					margin: 0 auto;
+					&__block {
+						width: 100%;
+						padding: 21.6px 32px 7.6px;
+						margin: 0 0 0 -14px;
+						display: flex;
+						align-items: baseline;
+						border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
+						dt {
+							width: 17.46%;
+							@include mixin.font-settings(
+								F-size16,
+								F-line-height16,
+								F-letter-spacing-0,
+								F-family-Noto-Sans-JP,
+								500,
+								F-color-blue
+							);
+						}
+						.dd-content {
+							padding: 0 0px 0 8px;
+							dd {
+								// margin: 0 0 3px;
+								@include mixin.font-settings(
+									F-size16,
+									F-line-height28,
+									F-letter-spacing-0,
+									F-family-Noto-Sans-JP,
+									400,
+									F-color-blue
+								);
+							}
+						}
+					}
+				}
+			}
+			
+		}
+	}
 }
+
+
+#access {
+	padding: 47px 6.4% 26px;
+	.access {
+		&__inner {
+			.section-title {
+				align-items: baseline;
+			}
+			
+			.access-content {
+				.access-map {
+					max-width: 776px;
+					width: 100%;
+					aspect-ratio:776/386;
+					height: auto;
+					margin: 0 auto;
+				}
+			}
+		
+			
+			.slanted-svg-button {
+				margin: 41px auto 90px;
+			}
+		}
+	}
+}
+
+// SP
+@media screen and (max-width: 700px) {	
+	#page-company {
+		padding: 46px 6.6% 24px;
+		.page-company {
+			&__inner {
+				.section-title {
+					flex-direction: column;
+					h3 {
+						line-height: 10px;
+					}
+					span {
+						line-height: 10px;
+						margin: 25px 0 0;
+						padding: 0;
+					}
+				}
+				.section-text {
+					margin: 27px 0 22px;
+					@include mixin.font-settings(
+					F-size16,
+					F-line-height32,
+					F-letter-spacing-0-8,
+					F-family-Noto-Sans-JP,
+					500,
+					F-color-black
+					);
+					line-height: 1.8;
+				}
+				
+				.company-info-warpper {
+					padding: 0 ;
+					.company-info {
+						max-width: 772px;
+						width: 100%;
+						margin: 0 auto;
+						&__block {
+							width: 100%;
+							padding: 10px 0 8px 4px;
+							margin: 0 auto;
+							display: flex;
+							flex-direction: column;
+							align-items: baseline;
+							border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
+							dt {
+								width: 100%;
+								margin: 15.5px 0 10.5px;
+								@include mixin.font-settings(
+									F-size16,
+									F-line-height16,
+									F-letter-spacing-0,
+									F-family-Noto-Sans-JP,
+									500,
+									F-color-blue
+								);
+							}
+							.dd-content {
+								padding: 0 ;
+								dd {
+									// margin: 0 0 3px;
+									@include mixin.font-settings(
+										F-size16,
+										F-line-height28,
+										F-letter-spacing-0,
+										F-family-Noto-Sans-JP,
+										400,
+										F-color-blue
+									);
+								}
+							}
+						}
+						.padding1 {
+							padding: 12px 0 36px 4px;
+						}
+					}
+				}
+				
+			}
+		}
+	}
+
+
+	#access {
+		padding: 0 6.4%;
+		.access {
+			&__inner {		
+				.access-content {
+					@media screen and (max-width: 500px) {	
+						.access-map {
+							max-width: 327px;
+							width: 100%;
+							height: auto;
+							aspect-ratio:327/355;
+							margin: 0 auto;
+						}
+					}
+				}
+			
+				
+				.slanted-svg-button {
+					margin: 42px auto 45px;
+				}
+			}
+		}
+	}
+}	

@@ -4462,10 +4462,174 @@ a:focus-visible {
     margin: 46px auto 19px;
   }
 }
-.company {
-  background-color: rgb(5, 139, 61);
+#page-company {
+  padding: 28px 6.4%;
+}
+#page-company .page-company__inner .section-title {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+#page-company .page-company__inner .section-text {
+  margin: 2px 0 29px;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  line-height: 2;
+  font-family: "Noto Sans JP";
+  font-weight: 500;
+  color: #000000;
+}
+#page-company .page-company__inner .company-info-warpper .company-info {
+  max-width: 772px;
+  width: 100%;
+  margin: 0 auto;
+}
+#page-company .page-company__inner .company-info-warpper .company-info__block {
+  width: 100%;
+  padding: 21.6px 32px 7.6px;
+  margin: 0 0 0 -14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  border-bottom: 2px solid #141853;
+}
+#page-company .page-company__inner .company-info-warpper .company-info__block dt {
+  width: 17.46%;
+  font-size: 16px;
+  letter-spacing: 0em;
+  line-height: 1;
+  font-family: "Noto Sans JP";
+  font-weight: 500;
+  color: #141853;
+}
+#page-company .page-company__inner .company-info-warpper .company-info__block .dd-content {
+  padding: 0 0px 0 8px;
+}
+#page-company .page-company__inner .company-info-warpper .company-info__block .dd-content dd {
+  font-size: 16px;
+  letter-spacing: 0em;
+  line-height: 1.75;
+  font-family: "Noto Sans JP";
+  font-weight: 400;
+  color: #141853;
 }
 
+#access {
+  padding: 47px 6.4% 26px;
+}
+#access .access__inner .section-title {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+#access .access__inner .access-content .access-map {
+  max-width: 776px;
+  width: 100%;
+  aspect-ratio: 776/386;
+  height: auto;
+  margin: 0 auto;
+}
+#access .access__inner .slanted-svg-button {
+  margin: 41px auto 90px;
+}
+
+@media screen and (max-width: 700px) {
+  #page-company {
+    padding: 46px 6.6% 24px;
+  }
+  #page-company .page-company__inner .section-title {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #page-company .page-company__inner .section-title h3 {
+    line-height: 10px;
+  }
+  #page-company .page-company__inner .section-title span {
+    line-height: 10px;
+    margin: 25px 0 0;
+    padding: 0;
+  }
+  #page-company .page-company__inner .section-text {
+    margin: 27px 0 22px;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    line-height: 2;
+    font-family: "Noto Sans JP";
+    font-weight: 500;
+    color: #000000;
+    line-height: 1.8;
+  }
+  #page-company .page-company__inner .company-info-warpper {
+    padding: 0;
+  }
+  #page-company .page-company__inner .company-info-warpper .company-info {
+    max-width: 772px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  #page-company .page-company__inner .company-info-warpper .company-info__block {
+    width: 100%;
+    padding: 10px 0 8px 4px;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
+    border-bottom: 2px solid #141853;
+  }
+  #page-company .page-company__inner .company-info-warpper .company-info__block dt {
+    width: 100%;
+    margin: 15.5px 0 10.5px;
+    font-size: 16px;
+    letter-spacing: 0em;
+    line-height: 1;
+    font-family: "Noto Sans JP";
+    font-weight: 500;
+    color: #141853;
+  }
+  #page-company .page-company__inner .company-info-warpper .company-info__block .dd-content {
+    padding: 0;
+  }
+  #page-company .page-company__inner .company-info-warpper .company-info__block .dd-content dd {
+    font-size: 16px;
+    letter-spacing: 0em;
+    line-height: 1.75;
+    font-family: "Noto Sans JP";
+    font-weight: 400;
+    color: #141853;
+  }
+  #page-company .page-company__inner .company-info-warpper .company-info .padding1 {
+    padding: 12px 0 36px 4px;
+  }
+  #access {
+    padding: 0 6.4%;
+  }
+}
+@media screen and (max-width: 700px) and (max-width: 500px) {
+  #access .access__inner .access-content .access-map {
+    max-width: 327px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 327/355;
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 700px) {
+  #access .access__inner .slanted-svg-button {
+    margin: 42px auto 45px;
+  }
+}
 #column-body {
   position: relative;
 }
