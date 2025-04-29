@@ -2,6 +2,245 @@
 @use "../../_foundation/_base"as base;
 
 
-.privacy {
-	background-color: rgb(196, 183, 4);
+
+#privacy-body {
+	position: relative;
+	.triangle-contents {
+		margin: 457px 0 0;
+		height: 3936px;	
+		.right1 {
+			top: 0;
+			right: 0;
+			width: 65vw;
+			transform: scaleX(1);
+			background-color: brown;
+		}
+		.left1 {
+			top: 520px;
+			left: 0;     
+			width: 65vw;    
+			transform: scaleX(1);
+			background-color: blue;
+			transform: scaleX(-1);
+		}
+		.right2 {
+			bottom: 1952px;
+			right: 0;
+			width: 65vw; 
+			transform: scaleX(1);
+			background-color: blueviolet;
+		}
+		.left2 {
+			bottom: 1330px;
+			left: 0;
+			width: 65vw;          // ✅ これを明示
+			transform: scaleX(-1);
+			background-color: cadetblue;
+		}
+		.right3 {
+			bottom: 718px;
+			right: 0;
+			width: 65vw;  
+			transform: scaleX(1);
+			background-color: rgb(0, 197, 85);
+		}
+	}
+	.main-content {
+		width: 100%;	
+		position: absolute; // ★重ねる準備
+		z-index: 5;         // ★背景より上に表示される
+		top: -418px;
+		&__inner {
+			padding: 0 6.5%;
+			width: 100%;	
+			position: relative;
+			top: 0;
+			margin: 0 auto;			
+			#page-privacy {
+				.page-privacy {
+					&__inner {
+						.section-title {
+							align-items: baseline;
+						}
+						
+						.privacy-text {
+							margin: 0 auto 58.5px;
+							@include mixin.font-settings (
+								F-size16,
+								F-line-height32,
+								F-letter-spacing-0-8,
+								F-family-Noto-Sans-JP,
+								400,
+								F-color-black);
+						}
+						
+						
+						.privacy-list {
+							&__inner {
+								max-width: 960px;
+								width: 100%;
+								margin: 0 auto;
+								.privacy-content {
+									&__title {
+										padding: 0 0 5px;
+										border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
+										@include mixin.font-settings (
+											F-size20,
+											F-line-height32,
+											F-letter-spacing-0,
+											F-family-Noto-Sans-JP,
+											500,
+											F-color-blue);
+									}
+									
+									&__textarea {
+										padding: 15px 0px 39.5px 0;
+										@include mixin.font-settings (
+											F-size16,
+											F-line-height32,
+											F-letter-spacing-0-8,
+											F-family-Noto-Sans-JP,
+											400,
+											F-color-black);
+									}
+									&__address {
+										padding: 15px 5px 0 0;
+										@include mixin.font-settings (
+											F-size16,
+											F-line-height32,
+											F-letter-spacing-0-8,
+											F-family-Noto-Sans-JP,
+											400,
+											F-color-black);
+									}
+									address {
+										margin: 0 0 6px;
+									}
+								}
+							}
+							.slanted-svg-button {
+								margin: 30px auto 60px;
+							}
+						}
+						
+						
+					}
+				}
+			}
+		}
+	}
 }
+
+
+// SP
+@media screen and (max-width: 700px) {	
+	#privacy-body {
+		position: relative;
+		.triangle-contents {
+			display: none;
+		}
+		.main-content {
+			width: 100%;	
+			position: relative; // ★SP時はabsoluteからrelativeに切りかえる
+			z-index: 5;         // ★背景より上に表示される
+			top: 0;
+			&__inner {
+				padding: 0 6.5% 83px;
+				width: 100%;	
+				position: relative;
+				top: 48px;
+				margin: 0 auto;			
+				#page-privacy {
+					.page-privacy {
+						&__inner {
+							.section-title {
+								flex-direction: column;
+								h3 {
+									line-height: 10px;
+								}
+								span {
+									line-height: 10px;
+									margin: 29px 0 0;
+									padding: 0;
+								}
+							}
+							
+							.privacy-text {
+								margin: 21px auto 38.5px;
+								@include mixin.font-settings (
+									F-size16,
+									F-line-height32,
+									F-letter-spacing-0-8,
+									F-family-Noto-Sans-JP,
+									400,
+									F-color-black);
+									line-height: 1.85;
+							}
+							
+							
+							.privacy-list {
+								&__inner {
+									max-width: 960px;
+									width: 100%;
+									margin: 0 auto;
+									.privacy-content {
+										&__title {
+											padding: 0 0 5px 2px;
+											border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
+											@include mixin.font-settings (
+												F-size20,
+												F-line-height32,
+												F-letter-spacing-0,
+												F-family-Noto-Sans-JP,
+												500,
+												F-color-blue);
+										}
+										.block3 {
+											padding: 0 0 12px;
+										}
+										.block9{
+											padding: 0 0 12px;
+										}
+										
+										&__textarea {
+											padding: 15px 2px 39.8px 2px;
+											@include mixin.font-settings (
+												F-size16,
+												F-line-height32,
+												F-letter-spacing-0-8,
+												F-family-Noto-Sans-JP,
+												400,
+												F-color-black);
+										}
+										.block5 {
+											padding: 15px 2px 8px 2px;
+										}
+										&__address {
+											padding: 15px 5px 0 0;
+											@include mixin.font-settings (
+												F-size16,
+												F-line-height32,
+												F-letter-spacing-0-8,
+												F-family-Noto-Sans-JP,
+												400,
+												F-color-black);
+										}
+										address {
+											margin: 8px 0 15px;
+										}
+									}
+								}
+								.slanted-svg-button {
+									margin: 83px auto 7px;
+								}
+							}
+							
+							
+						}
+					}
+				}
+			}
+		}
+	}
+	
+}	

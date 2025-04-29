@@ -5590,10 +5590,215 @@ a:focus-visible {
     margin: 51px auto 13px;
   }
 }
-.privacy {
-  background-color: rgb(196, 183, 4);
+#privacy-body {
+  position: relative;
+}
+#privacy-body .triangle-contents {
+  margin: 457px 0 0;
+  height: 3936px;
+}
+#privacy-body .triangle-contents .right1 {
+  top: 0;
+  right: 0;
+  width: 65vw;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  background-color: brown;
+}
+#privacy-body .triangle-contents .left1 {
+  top: 520px;
+  left: 0;
+  width: 65vw;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  background-color: blue;
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+#privacy-body .triangle-contents .right2 {
+  bottom: 1952px;
+  right: 0;
+  width: 65vw;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  background-color: blueviolet;
+}
+#privacy-body .triangle-contents .left2 {
+  bottom: 1330px;
+  left: 0;
+  width: 65vw;
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+  background-color: cadetblue;
+}
+#privacy-body .triangle-contents .right3 {
+  bottom: 718px;
+  right: 0;
+  width: 65vw;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  background-color: rgb(0, 197, 85);
+}
+#privacy-body .main-content {
+  width: 100%;
+  position: absolute;
+  z-index: 5;
+  top: -418px;
+}
+#privacy-body .main-content__inner {
+  padding: 0 6.5%;
+  width: 100%;
+  position: relative;
+  top: 0;
+  margin: 0 auto;
+}
+#privacy-body .main-content__inner #page-privacy .page-privacy__inner .section-title {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+#privacy-body .main-content__inner #page-privacy .page-privacy__inner .privacy-text {
+  margin: 0 auto 58.5px;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  line-height: 2;
+  font-family: "Noto Sans JP";
+  font-weight: 400;
+  color: #000000;
+}
+#privacy-body .main-content__inner #page-privacy .page-privacy__inner .privacy-list__inner {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}
+#privacy-body .main-content__inner #page-privacy .page-privacy__inner .privacy-list__inner .privacy-content__title {
+  padding: 0 0 5px;
+  border-bottom: 2px solid #141853;
+  font-size: 20px;
+  letter-spacing: 0em;
+  line-height: 1.6;
+  font-family: "Noto Sans JP";
+  font-weight: 500;
+  color: #141853;
+}
+#privacy-body .main-content__inner #page-privacy .page-privacy__inner .privacy-list__inner .privacy-content__textarea {
+  padding: 15px 0px 39.5px 0;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  line-height: 2;
+  font-family: "Noto Sans JP";
+  font-weight: 400;
+  color: #000000;
+}
+#privacy-body .main-content__inner #page-privacy .page-privacy__inner .privacy-list__inner .privacy-content__address {
+  padding: 15px 5px 0 0;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  line-height: 2;
+  font-family: "Noto Sans JP";
+  font-weight: 400;
+  color: #000000;
+}
+#privacy-body .main-content__inner #page-privacy .page-privacy__inner .privacy-list__inner .privacy-content address {
+  margin: 0 0 6px;
+}
+#privacy-body .main-content__inner #page-privacy .page-privacy__inner .privacy-list .slanted-svg-button {
+  margin: 30px auto 60px;
 }
 
+@media screen and (max-width: 700px) {
+  #privacy-body {
+    position: relative;
+  }
+  #privacy-body .triangle-contents {
+    display: none;
+  }
+  #privacy-body .main-content {
+    width: 100%;
+    position: relative;
+    z-index: 5;
+    top: 0;
+  }
+  #privacy-body .main-content__inner {
+    padding: 0 6.5% 83px;
+    width: 100%;
+    position: relative;
+    top: 48px;
+    margin: 0 auto;
+  }
+  #privacy-body .main-content__inner #page-privacy .page-privacy__inner .section-title {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #privacy-body .main-content__inner #page-privacy .page-privacy__inner .section-title h3 {
+    line-height: 10px;
+  }
+  #privacy-body .main-content__inner #page-privacy .page-privacy__inner .section-title span {
+    line-height: 10px;
+    margin: 29px 0 0;
+    padding: 0;
+  }
+  #privacy-body .main-content__inner #page-privacy .page-privacy__inner .privacy-text {
+    margin: 21px auto 38.5px;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    line-height: 2;
+    font-family: "Noto Sans JP";
+    font-weight: 400;
+    color: #000000;
+    line-height: 1.85;
+  }
+  #privacy-body .main-content__inner #page-privacy .page-privacy__inner .privacy-list__inner {
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  #privacy-body .main-content__inner #page-privacy .page-privacy__inner .privacy-list__inner .privacy-content__title {
+    padding: 0 0 5px 2px;
+    border-bottom: 2px solid #141853;
+    font-size: 20px;
+    letter-spacing: 0em;
+    line-height: 1.6;
+    font-family: "Noto Sans JP";
+    font-weight: 500;
+    color: #141853;
+  }
+  #privacy-body .main-content__inner #page-privacy .page-privacy__inner .privacy-list__inner .privacy-content .block3 {
+    padding: 0 0 12px;
+  }
+  #privacy-body .main-content__inner #page-privacy .page-privacy__inner .privacy-list__inner .privacy-content .block9 {
+    padding: 0 0 12px;
+  }
+  #privacy-body .main-content__inner #page-privacy .page-privacy__inner .privacy-list__inner .privacy-content__textarea {
+    padding: 15px 2px 39.8px 2px;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    line-height: 2;
+    font-family: "Noto Sans JP";
+    font-weight: 400;
+    color: #000000;
+  }
+  #privacy-body .main-content__inner #page-privacy .page-privacy__inner .privacy-list__inner .privacy-content .block5 {
+    padding: 15px 2px 8px 2px;
+  }
+  #privacy-body .main-content__inner #page-privacy .page-privacy__inner .privacy-list__inner .privacy-content__address {
+    padding: 15px 5px 0 0;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    line-height: 2;
+    font-family: "Noto Sans JP";
+    font-weight: 400;
+    color: #000000;
+  }
+  #privacy-body .main-content__inner #page-privacy .page-privacy__inner .privacy-list__inner .privacy-content address {
+    margin: 8px 0 15px;
+  }
+  #privacy-body .main-content__inner #page-privacy .page-privacy__inner .privacy-list .slanted-svg-button {
+    margin: 83px auto 7px;
+  }
+}
 #archive-info {
   margin: -11px auto 0;
   padding: 0 4% 123px;
