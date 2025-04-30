@@ -1,23 +1,28 @@
-<!-- ---header読み込み ----------------------------------------------->
+<!-- header -->
 <?php
     get_template_part('template-parts/header'); // header.php をインクルード
-  ?>
-  <!-- ---------------------------------------------------------------------->
-  <main>
-  <!-- title-heading -->
-  <?php
-      get_template_part('template-parts/title-heading'); // title-heading をインクルード
-  ?>
+?>
+<main>
+<!-- ---other-mainvisual読み込み ----------------------------------------------->
+<?php
+	get_template_part('template-parts/other-mainvisual'); // other-mainvisual.php をインクルード
+?>
+<!-- ---------------------------------------------------------------------->
 
 
     
-  <section id="thanks">
-    <p class="p1 fade-in">数日以内に担当の者からご入力いただいた<br class="brsp">メールアドレスに返信いたします。</p>
-    
-    <a href="<?php echo home_url('/'); ?>" class="btn-pattern2 fade-in">
-      <p class="btn-pattern2__text">TOPにもどる</p>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
+  <section id="thanks"> 
+		<div class="thanks__inner">
+			<div class="section-title">
+				<h3 class="section-title__eng">news</h3>
+				<span class="section-title__ja">お知らせ一覧</span>		
+			</div>
+			
+			<a href="<?php echo home_url('/'); ?>" class="btn-pattern2 fade-in">
+				<p class="btn-pattern2__text">TOPにもどる</p>
+				<i class="fa-solid fa-angle-right"></i>
+			</a>
+		</div>
   </section>
 
 

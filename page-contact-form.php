@@ -1,29 +1,25 @@
-<!-- ---header読み込み ----------------------------------------------->
 <?php
     get_template_part('template-parts/header'); // header.php をインクルード
-  ?>
-  <!-- ---------------------------------------------------------------------->
-  <main>
-  <!-- title-heading -->
-  <?php
-      get_template_part('template-parts/title-heading'); // title-heading をインクルード
-  ?>
-
+?>
+<main>
+<!-- ---other-mainvisual読み込み ----------------------------------------------->
+<?php
+	get_template_part('template-parts/other-mainvisual'); // other-mainvisual.php をインクルード
+?>
+<!-- ---------------------------------------------------------------------->
 
   <section id="contact-form-section">
     <div class="contact-form-section__inner">
-			<div class="contact-form-section__inner--textarea fade-in">
-				<p>
-					下記フォームにご記入の上、送信してください。折り返し、弊社担当よりご連絡させて頂きます。<br>
-					また、ご入力頂きました個人に関する情報につきましては、弊社で責任をもって管理し、お問い合わせへのご回答及び弊社のサービス向上のために利用させて頂き、第三者への開示や他の目的で利用は致しません。
-					詳しくは個人情報保護方針をご覧ください。
-				</p>
-				<a class="privacy-policy" href="<?php echo home_url('/privacy-policy/'); ?>">
-					弊社への登録に際して、お預かりする個人情報の扱いについて
-        </a>
+			<div class="contact-top">
+				<div class="section-title">
+					<h3 class="section-title__eng">contact</h3>
+					<span class="section-title__ja">お問い合わせ</span>		
+				</div>
+				
+				<p>当社へのお問い合わせはこちらからお願いします。</p>
 			</div>
 			
-      <div class="contact-form-wrapper fade-in">
+      <div class="contact-form-wrapper">
         <?php echo apply_shortcodes('[contact-form-7 id="6e37d1f" title="ご予約・お問い合わせ"]'); ?>
       </div>
     </div><!-- /contact-form-section__inner -->
