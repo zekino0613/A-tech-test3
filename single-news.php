@@ -1,23 +1,27 @@
-  <!-- ---footer読み込み ----------------------------------------------->
-  <?php
+<!-- header -->
+<?php
     get_template_part('template-parts/header'); // header.php をインクルード
-  ?>
-  <!-- ---------------------------------------------------------------------->
-  <main>
-			<!-- title-heading -->
-			<?php
-					get_template_part('template-parts/title-heading'); // title-heading をインクルード
-			?>
-
+?>
+<main>
+<!-- ---other-mainvisual読み込み ----------------------------------------------->
+<?php
+	get_template_part('template-parts/other-mainvisual'); // other-mainvisual.php をインクルード
+?>
+<!-- ---------------------------------------------------------------------->
+	<section id="single-news">
+		<div class="single-news__inner">
+			<div class="section-title">
+				<h3 class="section-title__eng">news</h3>
+				<span class="section-title__ja">お知らせ</span>		
+			</div>
 				
-		<section id="single-info">
-			<div class="info-post">
-				<h1 class="textarea__info-title"><?php the_title(); ?></h1>
+			<div class="news-post">
+				<h1 class="news-post__news-title"><?php the_title(); ?></h1>
 				<?php
 					$date = new DateTime(get_the_date('Y-m-d'));
-					echo '<time class="news-date">' . $date->format('Y/m/d D.') . '</time>';
+					echo '<time class="news-post__news-date">' . $date->format('Y/m/d D.') . '</time>';
 				?>
-				<p class="textarea"><?php the_field('textarea'); ?></p>
+				<p class="news-post__news-textarea"><?php the_field('textarea'); ?></p>
 				
 				<div class="sns-share-buttons">
 					<!-- Xでシェア -->
@@ -38,10 +42,14 @@
 
 
 
-					<a href="<?php echo home_url('/info/'); ?>" class="btn fade-in">
-						<p class="btn__text">こもれびだより一覧へ</p>
-						<i class="fa-solid fa-angle-right"></i>
-					</a>
+					<!-- slanted-svg-button.php -->
+					<?php
+						get_template_part('template-parts/slanted-svg-button', null, [
+							'label' => '一覧へ戻る',
+							'width' => '336px',
+							'url'   => get_post_type_archive_link('news')
+						]);
+					?>
 				</div>
 			</div>		
 		</section>

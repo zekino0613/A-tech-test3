@@ -175,8 +175,7 @@ a:focus-visible {
 //【h3セクションタイトル】
 .section-title {
 	display: flex;
-	align-items: center;
-	// justify-content: center;
+	align-items: flex-start;
 	&__eng {
 		text-transform: capitalize;
 		@include mixin.font-settings (
@@ -338,54 +337,6 @@ $transition: 0.3s;
 }
 
 
-// 【ページネーション】
-.pagination {
-	display: block; /* ✅ flex内に入らないようにblock指定 */
-	width: 100%; /* 横幅を最大に */
-	text-align: center; /* 中央揃え */
-	justify-content: center;
-	margin: 0 auto ;
-	&__inner {
-		display: flex;
-		width: 133px;
-		margin: 0 auto ;
-		a, span {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			margin: 0 auto;
-			width: 36px; /* ボタンの大きさ */
-			height: 36px;
-			border-radius: 8px; /* 丸い形 */
-			@include mixin.font-settings (
-				F-size16,
-				F-line-height19-2,
-				F-letter-spacing-10,
-				F-family-KosugiMaru,
-				normal,
-				F-color-pink);
-				text-decoration: none;
-				padding: 0 0 0 0;
-				background:map-get(mixin.$colors, "C-white"); /* 背景色 */
-				border: 1px solid map-get(mixin.$colors, "C-pink"); /* 枠線 */
-				transition: 0.3s ease;
-			i {
-				font-size: 11px;
-			}
-			&:hover {
-				opacity: 1;
-				transition: all 0.3s ease;
-				background: map-get(mixin.$colors, "C-pink");
-				color: map-get(mixin.$colors, "C-white");
-			}
-		}
-		.current {
-				background: map-get(mixin.$colors, "C-pink");
-				color: map-get(mixin.$colors, "C-white");
-				border: none;
-		}
-	}
-}
 
 
 @include mixin.TAB1 {

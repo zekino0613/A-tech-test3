@@ -2,116 +2,253 @@
 @use "../../_foundation/_base"as base;
 
 
-#archive-info {
-	margin: -11px auto 0;
+#archive-news {
+	margin: 29px auto 0;
 	padding: 0 4% 123px;
-	.archive-info {
+	.archive-news {
 		&__inner {	
-
-		.info-list {
-			// 投稿リストのデザイン
-			.info-card {
-				display: block;
-				transition: transform 0.3s ease, box-shadow 0.3s ease;
-				text-decoration: none;
-				max-width: 1080px;
-				width: 100%;
-				padding: 0;
-				margin: 0 auto;
-				&:hover {
-					transform: translateY(-5px);
+		max-width: 960px;
+		width: 100%;
+		margin: 0 auto;
+			.section-title {
+				margin: 0 0 6px;
+				align-items: baseline;
+				&__ja {
+					margin: 2px 0px 0 14px;
 				}
-				&__inner{
-					display: flex;
-					padding: 0 0 20px 0;
-					margin: 0px auto 34px;
-					align-items: flex-start;
-					border-bottom:1.5px solid map-get(mixin.$colors, "C-black");
-					&--flex {
-						display: flex;	
-						align-items: flex-end;
-						.category-icon{
-							width: 120px;
-							height: 120px; 
-							display: flex;
-							flex-direction: column;
-							align-items: center;
-							justify-content: center;
-							border-radius: 12px;
-							background-color: black;	
-							.category-image {
-								width: 48px;
-								height: 48px; // 高さが必要な場合
-								background-size: cover;
-							}
-							.category {
-								@include mixin.font-settings (
-									F-size18,
-									F-line-height27,
-									F-letter-spacing-0,
-									F-family-KosugiMaru,
-									normal,
-									F-color-brown);
-									margin: 8px 0 0;
-							}
-						}
-						.post-date {
-							display: none;
-							@include mixin.font-settings (
-								F-size16,
-								F-line-height24,
-								F-letter-spacing-4,
-								F-family-KosugiMaru,
-								normal,
-								F-color-black);
-								padding: 0 0 12px;
-								margin: 0;
-						}
-					}
-					
-					
-					.textarea {
-						width: 100%;
-						padding: 12px 0;
-						margin: 0 0 0 24px;
-						&__post-date {
-							@include mixin.font-settings (
-								F-size16,
-								F-line-height24,
-								F-letter-spacing-4,
-								F-family-KosugiMaru,
-								normal,
-								F-color-black);
-								padding: 0 ;
-								margin: 0px 0 10px;
-								display: block;
-						}
-						&__info-title {
-							@include mixin.font-settings (
-								F-size20,
-								F-line-height30,
-								F-letter-spacing-4,
-								F-family-KosugiMaru,
-								normal,
-								F-color-brown);
-								margin: 0 0 12px;
-						}
-						&__paragraph {
-							@include mixin.font-settings (
-								F-size18,
-								F-line-height27,
-								F-letter-spacing-0,
-								F-family-KosugiMaru,
-								normal,
-								F-color-black);
-						}
-					}
-				}
-				
 			}
-			// .pagination {
-			// 	margin: -5px auto 121px;
-			// }
+			.news-content {
+				display: flex;
+				justify-content: center;
+				gap: 60px;
+				.news-block {
+					max-width: 700px;
+					width: 100%;
+					.news-list {
+						// 投稿リストのデザイン
+						.news-card {
+							display: block;
+							transition: transform 0.3s ease, box-shadow 0.3s ease;
+							text-decoration: none;
+							width: 100%;
+							padding: 0;
+							margin: 0 auto;
+							&:hover {
+								opacity: 1;
+								transform: translateY(-5px);
+								.textarea__arrow-content {
+										transition: background-color 0.4s ease;
+										background-color: map-get(mixin.$colors, "C-blue");
+										.arrow {
+											position: absolute;
+											width: 13px;
+											height: 1.2px;
+											top: 14px;
+											right: 10px;
+											transition: background-color 0.4s ease;
+											background-color: map-get(mixin.$colors, "C-white"); // 横線
+											&::before,
+											&::after {
+												content: "";
+												position: absolute;
+												width: 6px;
+												height: 1.2px;
+												background-color: map-get(mixin.$colors, "C-white");
+												right: 0;
+											}
+									}
+								}
+							}
+							&__inner{
+								display: flex;
+								padding: 0 0 17px;
+								margin: 0 auto 30px;
+								align-items: flex-start;
+								border-bottom:2px solid #707070;	
+								.textarea {
+									width: 100%;
+									position: relative;	
+									// padding: 12px 0;
+									&__news-date {
+										@include mixin.font-settings (
+											F-size14,
+											F-line-height25,
+											F-letter-spacing-1-12,
+											F-family-Noto-Sans-JP,
+											600,
+											F-color-blue);
+											display: block;
+											padding: 0 ;
+											margin: 0px 0 13px;
+									}
+									&__news-title {
+										@include mixin.font-settings (
+											F-size16,
+											F-line-height32,
+											F-letter-spacing-0-8,
+											F-family-Noto-Sans-JP,
+											500,
+											F-color-black);
+											margin: 0px 0 21px;
+									}
+									&__news-paragraph {
+										@include mixin.font-settings (
+											F-size16,
+											F-line-height32,
+											F-letter-spacing-0-8,
+											F-family-Noto-Sans-JP,
+											500,
+											F-color-black);
+									}
+									&__arrow-content {
+										position: relative;
+										position: absolute;
+										bottom: -7px;
+										right: 11px;
+										width: 32px;
+										height: 32px;
+										background-color: map-get(mixin.$colors, "C-white");
+										border-radius: 50%;
+										border: 1px solid map-get(mixin.$colors, "C-blue");
+										.arrow {
+											position: absolute;
+											width: 13px;
+											height: 1.2px;
+											top: 14px;
+											right: 10px;
+											background-color: map-get(mixin.$colors, "C-blue"); // 横線
+											transition: background-color 0.4s ease;
+											&::before,
+											&::after {
+												content: "";
+												position: absolute;
+												width: 6px;
+												height: 1.2px;
+												background-color: map-get(mixin.$colors, "C-blue");
+												right: 0;
+											}
+											&::before {
+												top: 0px;
+												transform: rotate(45deg);
+												transform-origin: right center;
+											}
+											&::after {
+												top: 0px;
+												transform: rotate(-45deg);
+												transform-origin: right center;
+											}
+										}
+									}		
+								}
+								
+							}	
+						}
+					}
+					.pagination-area {
+						margin: 46px 0 0px auto;
+						// 【ページネーション】
+						.pagination {
+							display: block; /* ✅ flex内に入らないようにblock指定 */
+							width: 100%; /* 横幅を最大に */
+							text-align: center; /* 中央揃え */
+							margin: 0 auto ;
+							&__inner {
+								display: flex;
+								width: 160px;
+								a, span {
+									display: flex;
+									justify-content: center;
+									align-items: center;
+									width: fit-content; /* ボタンの大きさ */
+									height: 28px;
+									text-decoration: none;
+									padding: 0px 8.7px 9px;
+									margin: 0px 8.4px 0 0;
+									background:map-get(mixin.$colors, "C-white"); /* 背景色 */
+									border: 1px solid map-get(mixin.$colors, "C-blue"); /* 枠線 */
+									transition: 0.3s ease;
+									@include mixin.font-settings (
+										F-size14,
+										F-line-height24,
+										F-letter-spacing-0-7,
+										F-family-Noto-Sans-JP,
+										400,
+										F-color-blue);
+									i {
+										font-size: 9px;
+										margin: 15px 0px 0px 0px;
+									}
+													
+										&:hover {
+										opacity: 1;
+										transition: all 0.3s ease;
+										background: map-get(mixin.$colors, "C-blue");
+										color: map-get(mixin.$colors, "C-white");
+										i {
+											color: map-get(mixin.$colors, "C-white");
+										}
+									}
+								}
+								.current {
+										color: map-get(mixin.$colors, "C-blue");
+										border: 1px solid map-get(mixin.$colors, "C-blue");
+										background: map-get(mixin.$colors, "C-gray");
+										pointer-events: none; // ✅ hover や click を無効にする
+								}
+							}
+						}
+					}
+					
+					.slanted-svg-button {
+						margin: 38px 83px -10px auto;
+					}
+				}
+			}
+			
+		
+			.archive-sidebar {
+				width: 200px;
+				h3 {
+					padding: 6px 0 9px 0px;
+					margin: 0px 0 14px;
+					border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
+					@include mixin.font-settings (
+					F-size20,
+					F-line-height21,
+					F-letter-spacing-0,
+					F-family-Puritan,
+					500,
+					F-color-blue);
+				}
+				.archive-list {
+					li { 
+						a{
+							padding: 0 ;
+							@include mixin.font-settings (
+							F-size14,
+							F-line-height22,
+							F-letter-spacing-0-7,
+							F-family-Noto-Sans-JP,
+							500,
+							F-color-black);
+							&:hover {
+								opacity: 1;
+								font-weight: bold;
+								position: relative;
+								background: linear-gradient(132deg, #215F9D -19%, #FFFFFF 124%);
+								clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
+								color: map-get(mixin.$colors, "C-white"); // 任意の強調色に
+							}
+							&.is-current {
+								font-weight: bold;
+								position: relative;
+								background: linear-gradient(90deg, #001a4d 0%, #005a9c 100%);
+								clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
+								color: map-get(mixin.$colors, "C-white"); // 任意の強調色に
+							}
+						}
+					}	
+				}
 			}
 		}	
 	}
@@ -119,148 +256,222 @@
 
 
 
-
-@include mixin.TAB1 {
-	#archive-info {
-		padding: 0 4% 80px;
-		margin: 0px auto 0;
-		.archive-info {
+// SP
+@media screen and (max-width: 700px) {	
+	#archive-news {
+		margin: 52px auto 0;
+		padding: 0px 6.5% 123px;
+		.archive-news {
 			&__inner {	
-			.filter-buttons {
-				display: flex;
-				justify-content: flex-start;
-				gap: 8px;
-        padding: 0px;
-        margin: 8px 0 34px;
-				.filter-button {
-					@include mixin.font-settings (
-						F-size16,
-						F-line-height19-2,
-						F-letter-spacing-10,
-						F-family-KosugiMaru,
-						normal,
-						F-color-pink);
-						border-radius: 8px;
-						padding: 8.5px 16px;
-						text-align: center;
-						background-color: map-get(mixin.$colors, "C-white");
-						border: 1px solid map-get(mixin.$colors, "C-pink");
-						cursor: pointer;
-						transition: all 0.3s ease;
-						// border: 2px solid transparent;
-						cursor: pointer;
-						transition: all 0.3s ease;
-							&:hover {
-								color:map-get(mixin.$colors, "C-white");
-								background-color: map-get(mixin.$colors, "C-pink");
-							}
-						
-							&.active {
-								color:map-get(mixin.$colors, "C-white");
-								background-color: map-get(mixin.$colors, "C-pink");
-							}
-				}
-			}
-			
-			.info-list {
-				// 投稿リストのデザイン
-				.info-card {
-					display: block;
-					transition: transform 0.3s ease, box-shadow 0.3s ease;
-					text-decoration: none;
-					max-width: 1080px;
+					max-width: 960px;
 					width: 100%;
-					padding: 0 ;
 					margin: 0 auto;
-					&:hover {
-						transform: translateY(-5px);
-					}
-					&__inner{
-						display: flex;
+					.section-title {
 						flex-direction: column;
-						padding: 0 0 23px 0;
-						margin: 0 auto 42px;
-						border-bottom:1.5px solid map-get(mixin.$colors, "C-black");
-						&--flex {
-							display: flex;	
-							align-items: flex-end;
-							.category-icon{
-								width: 72px;
-								height: 72px; 
-								display: flex;
-								flex-direction: column;
-								align-items: center;
-								justify-content: center;
-								border-radius: 7.2px;
-								.category-image {
-									width: 28.8px;
-									height: 28.8px; // 高さが必要な場合
-									background-size: cover;
-								}
-								.category {
-									@include mixin.font-settings (
-										F-size10-8,
-										F-line-height16-2,
-										F-letter-spacing-0,
-										F-family-KosugiMaru,
-										normal,
-										F-color-brown);
-										margin: 5px 0 0;
-								}
-							}
-							.post-date {
-								display: block;
-								@include mixin.font-settings (
-									F-size14,
-									F-line-height21,
-									F-letter-spacing-4,
-									F-family-KosugiMaru,
-									normal,
-									F-color-black);
-									padding: 0 0 0 10px;
-							}
+						h3 {
+							line-height: 10px;
 						}
-						
-						.textarea {
-							padding: 12px 0;
-							margin: 0;
-							&__post-date {
-								display: none;
-								@include mixin.font-settings (
-									F-size14,
-									F-line-height21,
-									F-letter-spacing-4,
-									F-family-KosugiMaru,
-									normal,
-									F-color-black);
-									padding: 0 0 12px;
-							}
-							&__info-title {
-								@include mixin.font-settings (
-									F-size18,
-									F-line-height27,
-									F-letter-spacing-4,
-									F-family-KosugiMaru,
-									normal,
-									F-color-brown);
-									margin: 0 0 12px;
-							}
-							&__paragraph {
-								@include mixin.font-settings (
-									F-size14,
-									F-line-height21,
-									F-letter-spacing-4,
-									F-family-KosugiMaru,
-									normal,
-									F-color-black);
-							}
+						span {
+							line-height: 10px;
+							margin: 24px 0 23px;
+							padding: 0;
 						}
 					}
-					
+				.news-content {
+					display: flex;
+					flex-direction: column-reverse;
+					justify-content: center;
+					gap: 30px;
+					.news-block {
+						max-width: 700px;
+						width: 100%;
+						.news-list {
+							// 投稿リストのデザイン
+							.news-card {
+								display: block;
+								transition: transform 0.3s ease, box-shadow 0.3s ease;
+								text-decoration: none;
+								width: 100%;
+								padding: 0;
+								margin: 0 auto;
+								&:hover {
+									opacity: 1;
+									transform: translateY(-5px);
+									.textarea__arrow-content {
+											transition: background-color 0.4s ease;
+											background-color: map-get(mixin.$colors, "C-blue");
+											.arrow {
+												position: absolute;
+												width: 13px;
+												height: 1.2px;
+												top: 14px;
+												right: 10px;
+												transition: background-color 0.4s ease;
+												background-color: map-get(mixin.$colors, "C-white"); // 横線
+												&::before,
+												&::after {
+													content: "";
+													position: absolute;
+													width: 6px;
+													height: 1.2px;
+													background-color: map-get(mixin.$colors, "C-white");
+													right: 0;
+												}
+										}
+									}
+								}
+								&__inner{
+									display: flex;
+									padding: 0 0 50.7px;
+									margin: 0 auto 32px;
+									align-items: flex-start;
+									border-bottom:2px solid #707070;	
+									.textarea {
+										width: 100%;
+										position: relative;	
+										// padding: 12px 0;
+										&__news-date {
+											@include mixin.font-settings (
+												F-size14,
+												F-line-height27,
+												F-letter-spacing-1-12,
+												F-family-Noto-Sans-JP,
+												600,
+												F-color-blue);
+												display: block;
+												padding: 0 ;
+												margin: 0px 0 10px;
+										}
+										&__news-title {
+											@include mixin.font-settings (
+												F-size16,
+												F-line-height32,
+												F-letter-spacing-0-8,
+												F-family-Noto-Sans-JP,
+												500,
+												F-color-black);
+												margin: 0px 0 15px;
+										}
+										&__news-paragraph {
+											padding: 0 0 20px;
+											@include mixin.font-settings (
+												F-size16,
+												F-line-height32,
+												F-letter-spacing-0-8,
+												F-family-Noto-Sans-JP,
+												500,
+												F-color-black);
+										}
+										&__arrow-content {
+											position: relative;
+											position: absolute;
+											bottom: -40px;
+											right: 0;
+											width: 32px;
+											height: 32px;
+											background-color: map-get(mixin.$colors, "C-white");
+											border-radius: 50%;
+											border: 1px solid map-get(mixin.$colors, "C-blue");
+											.arrow {
+												position: absolute;
+												width: 13px;
+												height: 1.2px;
+												top: 14px;
+												right: 10px;
+												background-color: map-get(mixin.$colors, "C-blue"); // 横線
+												transition: background-color 0.4s ease;
+												&::before,
+												&::after {
+													content: "";
+													position: absolute;
+													width: 6px;
+													height: 1.2px;
+													background-color: map-get(mixin.$colors, "C-blue");
+													right: 0;
+												}
+												&::before {
+													top: 0px;
+													transform: rotate(45deg);
+													transform-origin: right center;
+												}
+												&::after {
+													top: 0px;
+													transform: rotate(-45deg);
+													transform-origin: right center;
+												}
+											}
+										}		
+									}
+									
+								}	
+							}
+						}
+						.pagination-area {
+							margin: 35px auto -4px;
+							.pagination {
+								&__inner {
+									margin: 0 auto;
+									justify-content: center;
+								}
+							}
+						}
+						.slanted-svg-button {
+							margin: 50px auto -81px;
+						}
+					}
 				}
 				
-			}
+			
+				.archive-sidebar {
+					width: 100%;
+					h3 {
+						padding: 0 0 0;
+						margin: 0 0 6px;
+						border-bottom: 2px solid map-get(mixin.$colors, "C-blue");
+						@include mixin.font-settings (
+						F-size20,
+						F-line-height21,
+						F-letter-spacing-0,
+						F-family-Puritan,
+						500,
+						F-color-blue);
+					}
+					.archive-list {
+						display: flex;
+						margin: 13px 0 -6px;
+						li { 
+							a{
+								padding: 0 10px 0 0px;
+								@include mixin.font-settings (
+								F-size14,
+								F-line-height20,
+								F-letter-spacing-0-7,
+								F-family-Noto-Sans-JP,
+								500,
+								F-color-black);
+								&:hover {
+									opacity: 1;
+									font-weight: bold;
+									position: relative;
+									background: linear-gradient(132deg, #215F9D -19%, #FFFFFF 124%);
+									clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
+									color: map-get(mixin.$colors, "C-white"); // 任意の強調色に
+								}
+								&.is-current {
+									font-weight: bold;
+									position: relative;
+									background: linear-gradient(90deg, #001a4d 0%, #005a9c 100%);
+									clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
+									color: map-get(mixin.$colors, "C-white"); // 任意の強調色に
+								}
+							}
+						}	
+					}
+				}
+			}	
 		}
 	}
-}
+	
 }	
+
+

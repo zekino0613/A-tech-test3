@@ -2,169 +2,142 @@
 		@use "../../_foundation/_base"as base;
 
 
-		#single-info {
-				padding: 0 4%;
-				margin: -11px auto 120px;
-			.info-post {
-				max-width: 1080px;
-				width: 100%;
-				border-radius: 40px;
-				margin: 0 auto;
-				padding: 32px;
-				background-color: map-get(mixin.$colors, "C-white");
-				&__post-date {
-					@include mixin.font-settings (
-							F-size14,
-							F-line-height16-8,
-							F-letter-spacing-10,
-							F-family-KosugiMaru,
-							normal,
-							F-color-black);
+#single-news {
+	padding: 0 6.4%;
+	margin: 29px 0 0;
+	.single-news {
+		&__inner {
+			max-width: 962px;
+			width: 100%;
+			margin: 0 auto;
+			.section-title {
+				align-items: baseline;
+				&__ja {
+					margin: 2px 0px 0 14px;
 				}
-				&__title {
-					border-bottom:2px solid map-get(mixin.$colors, "C-black"); 
-					padding: 11px 0 ;
-					@include mixin.font-settings (
-							F-size32,
-							F-line-height38-4,
-							F-letter-spacing-10,
-							F-family-KosugiMaru,
-							normal,
-							F-color-black);
-				}
-				&__image {
-					max-width: 640px;
-					width: 100%;
-					height: 320px;
-					display: block;
-					margin: 0 auto;
-					margin: 32px auto 0;
-				}
-				.text-content {
-					&__inner {
-						@include mixin.font-settings (
-							F-size16,
-							F-line-height32,
-							F-letter-spacing-10,
-							F-family-KosugiMaru,
-							normal,
-							F-color-black);
-						&--subheading {
-							padding: 0 17px;
-							margin: 8px 0;
-							position: relative;
-						}
-						&--subheading::before {
-							content: "";
-							width: 4px;
-							height: 32px;
-							border-radius: 2px;
-							position: absolute;
-							top: 2px;
-							left: 0;
-							background-color: map-get(mixin.$colors, "C-pink");
-						}		
-						&--paragraph {
-							margin: 0 0 8px;
-							
-						}
-					}
-				}
-				
-				.btn {
-					max-width: 300px;
-					width: 100%;
-					height: 60px;
-					margin: 64px auto;
-				}
-				
 			}
-		}
-
-
-@include mixin.TAB1 {
-	#single-info {
-		padding: 0 4%;
-		margin: -28px auto 79.5px;
-		.info-post {
-		max-width: 1080px;
-		width: 100%;
-		border-radius: 40px;
-		margin: 0 auto;
-		padding: 32px 4% 48px;
-		background-color: map-get(mixin.$colors, "C-white");
-		&__post-date {
-			@include mixin.font-settings (
-				F-size12,
-				F-line-height14-4
-				F-letter-spacing-10,
-				F-family-KosugiMaru,
-				normal,
-				F-color-black);
-			}
-			&__title {
-				border-bottom:2px solid map-get(mixin.$colors, "C-black"); 
-				padding: 10px 0 ;
-				@include mixin.font-settings (
-					F-size20,
-					F-line-height24,
-					F-letter-spacing-10,
-					F-family-KosugiMaru,
-					normal,
-					F-color-black);
-			}
-			&__image {
-				max-width: 315px;
-				width: 100%;
-				height: 157.5px;
-				border-radius: 20px;
-				display: block;
-				margin: 23px auto 0;
-			}	
 			
-			.text-content {
-				&__inner {
+			.news-post {
+				background-color: map-get(mixin.$colors, "C-white");
+				&__news-title {
+					margin: 10px 0 21px;
+					@include mixin.font-settings (
+						F-size32,
+						F-line-height46,
+						F-letter-spacing-1-6,
+						F-family-Noto-Sans-JP,
+						500,
+						F-color-black);
+				}
+				&__news-date {
+					@include mixin.font-settings (
+						F-size14,
+						F-line-height25,
+						F-letter-spacing-1-12,
+						F-family-Noto-Sans-JP,
+						600,
+						F-color-blue);
+				}
+				&__news-textarea {
+					margin: 6px 0 0;
 					@include mixin.font-settings (
 						F-size16,
 						F-line-height32,
-						F-letter-spacing-10,
-						F-family-KosugiMaru,
-						normal,
+						F-letter-spacing-0-8,
+						F-family-Noto-Sans-JP,
+						400,
 						F-color-black);
-					&--subheading {
-						padding: 0 18px;
-						margin: 9px 0 7px;
-						position: relative;
-					}
-					&--subheading::before {
-						content: "";
-						width: 4px;
-						height: 32px;
-						border-radius: 2px;
-						position: absolute;
-						top: 0px;
-						left: 2px;
-						background-color: map-get(mixin.$colors, "C-pink");
-					}		
-					&--paragraph {
-						margin: 0 0 9px;
-						
-					}
 				}
 			}
-			
-			.btn {
-				max-width: 300px;
-				width: 100%;
-				height: 60px;
-				margin: 48px auto 0;
-				i{
-					font-size: 19px;
-					top: 20px;
-					right: 21px;
-				}
-			}
-			
 		}
-  }
+	}
+}
+
+.sns-share-buttons {
+	display: flex;
+	margin: 45px 0 81px;
+	gap: 8px;
+	img {
+		width: 40px;
+		height: 40px;
+		border-radius: 10px;
+	}
+}
+
+.slanted-svg-button {
+	margin: 0px auto 114px;
+}
+
+
+@include mixin.SP {
+	#single-news {
+		padding: 0 6.4%;
+		margin: 47px 0 0px;
+		.single-news {
+			&__inner {
+				max-width: 962px;
+				width: 100%;
+				margin: 0 auto;
+				.section-title {
+					flex-direction: column;
+					h3 {
+						line-height: 10px;
+					}
+					span {
+						line-height: 10px;
+						margin: 29px 0 22px;
+						padding: 0;
+					}
+				}
+				
+				.news-post {
+					background-color: map-get(mixin.$colors, "C-white");
+					&__news-title {
+						margin: 10px 0 21px;
+						@include mixin.font-settings (
+							F-size24,
+							F-line-height35,
+							F-letter-spacing-1-2,
+							F-family-Noto-Sans-JP,
+							500,
+							F-color-black);
+					}
+					&__news-date {
+						@include mixin.font-settings (
+							F-size14,
+							F-line-height25,
+							F-letter-spacing-1-12,
+							F-family-Noto-Sans-JP,
+							600,
+							F-color-blue);
+					}
+					&__news-textarea {
+						margin: 13px 0 0;
+						@include mixin.font-settings (
+							F-size16,
+							F-line-height32,
+							F-letter-spacing-0-8,
+							F-family-Noto-Sans-JP,
+							400,
+							F-color-black);
+					}
+				}
+			}
+		}
+	}
+	
+	.sns-share-buttons {
+		display: flex;
+		margin: 32px 0 60px;
+		gap: 5px;
+		img {
+			width: 30px;
+			height: 30px;
+			border-radius: 8px;
+		}
+	}
+	
+	.slanted-svg-button {
+		margin: 0px auto 39px;
+	}
 }	

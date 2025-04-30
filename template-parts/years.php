@@ -1,8 +1,17 @@
 
+<?php
+$current_year = get_query_var('year'); // 例: /news/2024/ の「2024」を取得
+?>
+
 <aside class="archive-sidebar fade-in">
   <h3>Year</h3>
   <ul class="archive-list">
-    <li><a href="<?php echo esc_url(get_post_type_archive_link('news')); ?>">すべて</a></li>
+    <li>
+			<a href="<?php echo esc_url(get_post_type_archive_link('news')); ?>"
+				class="<?php echo empty($current_year) ? 'is-current' : ''; ?>">
+				すべて
+			</a>
+		</li>
     <?php
     global $wpdb;
     $years = $wpdb->get_col("
@@ -14,7 +23,11 @@
     foreach ($years as $year) :
       $url = home_url("/news/{$year}/");
     ?>
-      <li><a href="<?php echo esc_url($url); ?>"><?php echo esc_html($year); ?></a></li>
+      <li>
+				<a href="<?php echo esc_url($url); ?>"
+					class="<?php if ((int)$current_year === (int)$year) echo 'is-current'; ?>">
+					<?php echo esc_html($year); ?></a>
+			</li>
     <?php endforeach; ?>
   </ul>
 </aside>

@@ -17,8 +17,10 @@ $pagination_args = [
   'current'   => $current_page,
 	'base' => trailingslashit($base_url) . '%_%',
 	'format' => 'page/%#%/',
-  'prev_text' => '<i class="fa-solid fa-chevron-left"></i>',
-  'next_text' => '<i class="fa-solid fa-chevron-right"></i>',
+	'mid_size' => 1,
+  'end_size' => 1,
+  'prev_text' => '<i class="fa-solid fa-chevron-left"></i>Prev',
+  'next_text' => 'Next<i class="fa-solid fa-chevron-right"></i>',
   'type'      => 'plain',
   'add_args'  => [], // GET引数がある場合に追加
 ];
