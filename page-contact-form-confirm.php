@@ -11,13 +11,19 @@
 
 	<section class="contact-form-confirm"> 
 		<div class="contact-form-section-confirm__inner">
-			<div class="section-title">
-				<h3 class="section-title__eng">news</h3>
-				<span class="section-title__ja">お知らせ一覧</span>		
-			</div>
+			<div class="contact-top">
+				<div class="section-title">
+					<h3 class="section-title__eng">news</h3>
+					<span class="section-title__ja">お知らせ一覧</span>		
+				</div>
 		
-			<?php echo apply_shortcodes('[contact-form-7 id="cef9339" title="ご予約・お問い合わせ_確認画面"]'); ?> 
+				<div class="contact-form-wrapper">
+					<?php echo apply_shortcodes('[contact-form-7 id="cef9339" title="ご予約・お問い合わせ_確認画面"]'); ?> 
+				</div>
+			</div>
+		</div>	
 	</section>
+	
   
 </main>
 

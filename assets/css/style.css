@@ -6368,6 +6368,18 @@ a:focus-visible {
     margin: 0px auto 39px;
   }
 }
+.wpcf7-not-valid-tip {
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  font-family: "Noto Sans JP";
+  font-weight: 500;
+  color: #000000;
+  color: #dc3232;
+  display: block;
+  margin: 5px 0 -30px;
+}
+
 #contact-form-section {
   margin: 32px auto 70px;
   height: auto;
@@ -6383,7 +6395,7 @@ a:focus-visible {
 #contact-form-section .contact-form-section__inner .contact-form-wrapper {
   background-color: #F6F7F7;
   padding: 56px 6.4%;
-  margin: 50px 0 0;
+  margin: 50px 0 117px;
 }
 #contact-form-section .contact-form-section__inner .contact-form-wrapper .wpcf7 .wpcf7-form {
   max-width: 836px;
@@ -6568,7 +6580,13 @@ a:focus-visible {
   color: #FFFFFF;
 }
 #contact-form-section .contact-form-section__inner .contact-form-wrapper .wpcf7 .wpcf7-form .form-list.agree .input-agree #agree-error {
-  margin: 6px 0 0 30px;
+  margin: 8px 0 -31px 54px;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  font-family: "Noto Sans JP";
+  font-weight: 500;
+  color: #000000;
 }
 #contact-form-section .contact-form-section__inner .contact-form-wrapper .wpcf7 .wpcf7-form input[type=text],
 #contact-form-section .contact-form-section__inner .contact-form-wrapper .wpcf7 .wpcf7-form input[type=email],
@@ -6716,6 +6734,9 @@ a:focus-visible {
     font-weight: 400;
     color: #000000;
   }
+  #contact-form-section .contact-form-section__inner .contact-form-wrapper .wpcf7 .wpcf7-form .form-list .input-content .inquiry-checkbox .last {
+    display: none;
+  }
   #contact-form-section .contact-form-section__inner .contact-form-wrapper .wpcf7 .wpcf7-form .form-list .tel-input {
     max-width: 310px;
     width: 100%;
@@ -6821,7 +6842,13 @@ a:focus-visible {
     color: #FFFFFF;
   }
   #contact-form-section .contact-form-section__inner .contact-form-wrapper .wpcf7 .wpcf7-form .form-list.agree .input-agree #agree-error {
-    margin: 6px 0 0 30px;
+    margin: -1px 0 -27px 51px;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+    font-family: "Noto Sans JP";
+    font-weight: 500;
+    color: #000000;
   }
   #contact-form-section .contact-form-section__inner .contact-form-wrapper .wpcf7 .wpcf7-form input[type=text],
   #contact-form-section .contact-form-section__inner .contact-form-wrapper .wpcf7 .wpcf7-form input[type=email],

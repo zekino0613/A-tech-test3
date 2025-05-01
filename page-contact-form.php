@@ -15,8 +15,6 @@
 					<h3 class="section-title__eng">contact</h3>
 					<span class="section-title__ja">お問い合わせ</span>		
 				</div>
-				
-				<p>当社へのお問い合わせはこちらからお願いします。</p>
 			</div>
 			
       <div class="contact-form-wrapper">

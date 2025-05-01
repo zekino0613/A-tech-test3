@@ -14,14 +14,22 @@
   <section id="thanks"> 
 		<div class="thanks__inner">
 			<div class="section-title">
-				<h3 class="section-title__eng">news</h3>
-				<span class="section-title__ja">お知らせ一覧</span>		
+				<h3 class="section-title__eng">contact</h3>
+				<span class="section-title__ja">お問い合わせ</span>		
 			</div>
 			
-			<a href="<?php echo home_url('/'); ?>" class="btn-pattern2 fade-in">
-				<p class="btn-pattern2__text">TOPにもどる</p>
-				<i class="fa-solid fa-angle-right"></i>
-			</a>
+				<h4>お問い合わせありがとうございました。</h4>
+				<p>担当者より、追って連絡させていただきます。</p>
+			
+				<!-- slanted-svg-button.php -->
+				<?php
+					get_template_part('template-parts/slanted-svg-button', null, [
+						'label' => 'TOPページへ戻る',
+						'width' => '336px',
+						'url'   => home_url('/')
+					]);
+				?>
+			</div>
 		</div>
   </section>
 
