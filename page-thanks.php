@@ -18,7 +18,7 @@
 				<span class="section-title__ja">お問い合わせ</span>		
 			</div>
 			
-				<h4>お問い合わせありがとうございました。</h4>
+				<h4>お問い合わせ<br class="brsp">ありがとうございました。</h4>
 				<p>担当者より、追って連絡させていただきます。</p>
 			
 				<!-- slanted-svg-button.php -->

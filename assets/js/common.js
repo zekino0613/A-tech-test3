@@ -192,108 +192,82 @@ jQuery(function ($) {
 // });
 
 
-document.addEventListener("DOMContentLoaded", function() {
-	let submitBtn = document.querySelector(".btn");
-	if (submitBtn) {
-			let icon = document.createElement("i");
-			icon.classList.add("fa-solid", "fa-angle-right");
-			submitBtn.appendChild(icon);
-	}
-});
-
-// // 【同意チェック欄】のバリデーション
-// jQuery(function ($) {
-// 	const $form = $('.wpcf7 form'); // CF7のフォーム
-// 	const $checkbox = $('#agree-check');
-// 	const $errorMsg = $('#agree-error');
-
-// 	$form.on('submit', function (e) {
-// 		if (!$checkbox.prop('checked')) {
-// 			e.preventDefault(); // フォーム送信を止める
-// 			$errorMsg.fadeIn(); // エラーメッセージ表示
-// 		} else {
-// 			$errorMsg.fadeOut(); // エラー非表示
-// 		}
-// 	});
+// document.addEventListener("DOMContentLoaded", function() {
+// 	let submitBtn = document.querySelector(".btn");
+// 	if (submitBtn) {
+// 			let icon = document.createElement("i");
+// 			icon.classList.add("fa-solid", "fa-angle-right");
+// 			submitBtn.appendChild(icon);
+// 	}
 // });
 
-
-
-
-// // JSだけでのバリデーションチェック実装
-
+// // // 【同意チェック欄】のバリデーション
 jQuery(function ($) {
-  $('.gradient-entry-button').on('click', function () {
-    const $form = $(this).closest('form');
-    let isValid = true;
+	const $form = $('.wpcf7 form'); // CF7のフォーム
+	const $checkbox = $('#agree-check');
+	const $errorMsg = $('#agree-error');
 
-    // 名前
-    const $name = $form.find('[name="your-name"]');
-    if (!$name.val()) {
-      showError($name, '必須項目を入力してください');
-      isValid = false;
-    } else {
-      clearError($name);
-    }
-
-    // ふりがな
-    const $furigana = $form.find('[name="furigana"]');
-    if (!$furigana.val()) {
-      showError($furigana, '必須項目を入力してください');
-      isValid = false;
-    } else {
-      clearError($furigana);
-    }
-
-    // メール
-    const $email = $form.find('[name="email"]');
-    const emailVal = $email.val();
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailVal) {
-      showError($email, '必須項目を入力してください');
-      isValid = false;
-    } else if (!emailPattern.test(emailVal)) {
-      showError($email, 'メールアドレスの形式が正しくありません');
-      isValid = false;
-    } else {
-      clearError($email);
-    }
-
-    // チェックボックス
-    const $checkboxes = $form.find('input[name="checkbox-2[]"]');
-    const $checkboxError = $('#checkbox-error');
-    if (!$checkboxes.is(':checked')) {
-      $checkboxError.fadeIn();
-      isValid = false;
-    } else {
-      $checkboxError.fadeOut();
-    }
-
-    // プライバシー同意
-    const $agree = $form.find('#agree-check');
-    const $agreeError = $('#agree-error');
-    if (!$agree.prop('checked')) {
-      $agreeError.fadeIn();
-      isValid = false;
-    } else {
-      $agreeError.fadeOut();
-    }
-
-    if (isValid) {
-      $form.get(0).dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
-    }
-  });
-
-  function showError($field, message) {
-    if ($field.next('.error-message').length === 0) {
-      $field.after('<p class="error-message" style="color:red;">' + message + '</p>');
-    }
-  }
-
-  function clearError($field) {
-    $field.next('.error-message').remove();
-  }
+	$form.on('submit', function (e) {
+		if (!$checkbox.prop('checked')) {
+			e.preventDefault(); // フォーム送信を止める
+			$errorMsg.fadeIn(); // エラーメッセージ表示
+		} else {
+			$errorMsg.fadeOut(); // エラー非表示
+		}
+	});
 });
+
+
+
+
+// // // JSだけでのバリデーションチェック実装
+
+// jQuery(function ($) {
+//   $('.gradient-entry-button').on('click', function () {
+//     const $form = $(this).closest('form');
+//     let isValid = true;
+
+//     // バリデーションチェック（省略せずすべて含む）
+//     const $name = $form.find('[name="your-name"]');
+//     const $furigana = $form.find('[name="furigana"]');
+//     const $email = $form.find('[name="email"]');
+//     const emailVal = $email.val();
+//     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//     const $checkboxes = $form.find('input[name="checkbox-2[]"]');
+//     const $agree = $form.find('#agree-check');
+
+//     if (!$name.val()) { showError($name, '必須項目を入力してください'); isValid = false; } else { clearError($name); }
+//     if (!$furigana.val()) { showError($furigana, '必須項目を入力してください'); isValid = false; } else { clearError($furigana); }
+//     if (!emailVal) {
+//       showError($email, '必須項目を入力してください'); isValid = false;
+//     } else if (!emailPattern.test(emailVal)) {
+//       showError($email, 'メールアドレスの形式が正しくありません'); isValid = false;
+//     } else {
+//       clearError($email);
+//     }
+
+//     const $checkboxError = $('#checkbox-error');
+//     if (!$checkboxes.is(':checked')) { $checkboxError.fadeIn(); isValid = false; } else { $checkboxError.fadeOut(); }
+
+//     const $agreeError = $('#agree-error');
+//     if (!$agree.prop('checked')) { $agreeError.fadeIn(); isValid = false; } else { $agreeError.fadeOut(); }
+
+//     // ✅ Contact Form 7 送信イベントを発火（ここが重要）
+//     if (isValid) {
+//       $form.find('input.wpcf7-submit').click();
+//     }
+//   });
+
+//   function showError($field, message) {
+//     if ($field.next('.error-message').length === 0) {
+//       $field.after('<p class="error-message" style="color:red;">' + message + '</p>');
+//     }
+//   }
+
+//   function clearError($field) {
+//     $field.next('.error-message').remove();
+//   }
+// });
 
 
 });

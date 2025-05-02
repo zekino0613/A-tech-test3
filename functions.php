@@ -448,7 +448,7 @@ function custom_wpcf7_validation($result, $tags) {
 
 
 
-// お問い合わせフォーム用バリデーション
+// // // お問い合わせフォーム用バリデーション
 // function validate_contact_form($result, $tags) {
 //     foreach ($tags as $tag) {
 //         $name = $tag['name'];
@@ -482,19 +482,67 @@ function custom_wpcf7_validation($result, $tags) {
 // }
 
 
-
-
-// // 制御はjQueryで対応している。下記コードはコンタクトフォームに最低限必要なもの
 function validate_contact_form($result, $tags) {
 	foreach ($tags as $tag) {
 		$name = $tag['name'];
-		$value = isset($_POST[$name]) ? $_POST[$name] : '';
-		if (is_array($value)) {
-			$value = array_filter($value); // 配列項目（チェックボックス）も空チェック
-		} else {
-			$value = trim($value);
+
+		// ✅ agree は未チェック時に POST に現れないため個別判定
+		if ($name === 'agree' && !isset($_POST[$name])) {
+			$result->invalidate($name, 'プライバシーポリシーへの同意が必要です。');
+			continue;
+		}
+
+		$value_raw = isset($_POST[$name]) ? $_POST[$name] : '';
+		$value = is_array($value_raw)
+			? array_filter(array_map('trim', $value_raw))
+			: trim($value_raw);
+
+		// 必須チェック対象（agree は除外）
+		$required = [
+			'your-name'    => 'お名前',
+			'furigana'     => 'ふりがな',
+			'email'        => 'メールアドレス',
+			'checkbox-2'   => 'お問い合わせ内容',
+		];
+
+		// ▼ 個別メッセージでバリデーション
+		if ($name === 'checkbox-2' && empty($value)) {
+			$result->invalidate($name, '選択してください');
+		}
+
+		if (array_key_exists($name, $required) && empty($value)) {
+			$result->invalidate($name, '必須項目を入力してください。');
+		}
+
+		// ▼ メール形式
+		if ($name === 'email' && !empty($value) && !filter_var($value, FILTER_VALIDATE_EMAIL)) {
+			$result->invalidate($name, 'メールアドレスの形式が正しくありません。');
+		}
+
+		// ▼ ふりがなはひらがなのみ許可（全角スペース含む）
+		if ($name === 'furigana' && !empty($value) && !preg_match('/^[ぁ-んー\s]+$/u', $value)) {
+			$result->invalidate($name, 'ふりがなは全角ひらがなで入力してください。');
 		}
 	}
+
 	return $result;
 }
 add_filter('wpcf7_validate', 'validate_contact_form', 10, 2);
+
+
+
+
+
+
+// // // 制御はjQueryで対応している。下記コードはコンタクトフォームに最低限必要なもの
+// function validate_contact_form($result, $tags) {
+// 	foreach ($tags as $tag) {
+// 		$name = $tag['name'];
+// 		$value_raw = isset($_POST[$name]) ? $_POST[$name] : '';
+// 		$value = is_array($value_raw) ? array_filter($value_raw) : trim($value_raw);
+
+// 	}
+// 	return $result;
+// }
+// add_filter('wpcf7_validate', 'validate_contact_form', 10, 2);
+
