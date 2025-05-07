@@ -62,6 +62,9 @@
 						F-color-black);
 						font-size: clamp(14px, 1.2vw, 16px);
 				}
+				.slanted-svg-button {
+					margin:  0px auto 83px 0;
+				}
 			}
 			
 			.recruit-imagecontent {
@@ -125,7 +128,7 @@
 							font-size: clamp(16px, 6.4vw, 24px);
 					}
 					&__text {
-						margin: 10px 0 49px;
+						margin: 16px 0 306px;
 						@include mixin.font-settings (
 							F-size16,
 							F-line-height32,
@@ -138,35 +141,39 @@
 				}
 				
 				.recruit-image-box {
-					width: 100%;
-					max-width: 70%;
-					aspect-ratio: 270 / 146;
 					position: relative;	
-					top: -3px;
-					right: -97px;
-					transform: skewX(-10deg);
-					z-index: 2;
-					.recruit-image {
+					position: absolute;
+					top: 375px;
+					right: 188px;
+					width: 100%;
+					max-width: 278px;
+					height: 140px;
+					&__image {
+						position: absolute;
 						width: 100%;
-						height: 100%;
+						max-width: 368px;
+						height: 165px;
+						top: 5px;
+						left: 62px;
 						object-fit: cover;
-						display: block;
+						clip-path: polygon(24% 0%, 98% 0%, 78% 100%, 0 100%);
 						object-position: top;
-						transform: skewX(10deg);
+						z-index: 2; 
 					}
 					&__bg {
-						width: 80%;
-						height: 100%;
-						background-color: #141853;
 						position: absolute;
-						top: 15px;
-						left: 98px;
-						z-index: -1;
+						width: 100%;
+						max-width: 368px;
+						height: 165px;
+						top: 11px;
+						left: 71px;
+						background-color: #141853;
+						z-index: 1;
 						opacity: 1;
-						-webkit-clip-path: polygon(19% -3.3%, 100% -36.4%, 78.8% 102%, 2.8% 100.2%);
-						clip-path: polygon(6% -3.3%, 100% -36.4%, 92.8% 114%, 0.8% 100.2%);
+						clip-path: polygon(24% 0%, 98% 0%, 78% 100%, 0 100%);
 					}
 				}
+				
 				
 				.slanted-svg-button {
 					margin: 50px auto 0;
@@ -212,7 +219,7 @@
 							font-size: clamp(16px, 6.4vw, 24px);
 					}
 					&__text {
-						margin: 17px 0 47px;
+						margin: 16px 0 227px;
 						@include mixin.font-settings (
 							F-size16,
 							F-line-height32,
@@ -226,35 +233,39 @@
 				}
 				
 				.recruit-image-box {
-					width: 100%;
-					max-width: 254px;
-					aspect-ratio: 270 / 146;
 					position: relative;	
-					top: -3px;
-					right: -97px;
-					transform: skewX(-10deg);
-					z-index: 2;
-					.recruit-image {
+					position: absolute;
+					top: 399px;
+					right: 30px;
+					width: 100%;
+					max-width: 271px;
+					height: 140px;
+					&__image {
+						position: absolute;
 						width: 100%;
-						height: 100%;
+						max-width: 249px;
+						height: 140px;
+						top: 5px;
+						left: 62px;
 						object-fit: cover;
-						display: block;
+						clip-path: polygon(24% 0%, 98% 0%, 78% 100%, 0 100%);
 						object-position: top;
-						transform: skewX(10deg);
+						z-index: 2; 
 					}
 					&__bg {
-						width: 82%;
-						height: 100%;
-						background-color: #141853;
 						position: absolute;
-						top: 10px;
-						left: 50px;
-						z-index: -1;
+						width: 100%;
+						max-width: 249px;
+						height: 140px;
+						top: 11px;
+						left: 71px;
+						background-color: #141853;
+						z-index: 1;
 						opacity: 1;
-						-webkit-clip-path: polygon(19% -3.3%, 100% -36.4%, 78.8% 102%, 2.8% 100.2%);
-						clip-path: polygon(6% -3.3%, 100% -36.4%, 92.8% 114%, 0.8% 100.2%);
+						clip-path: polygon(24% 0%, 98% 0%, 78% 100%, 0 100%);
 					}
 				}
+				
 				
 				.slanted-svg-button {
 					margin: 42px auto 0px;
@@ -262,4 +273,4 @@
 			}
 		}
 	}
-}	
+}

@@ -9,14 +9,16 @@
 		margin: 124px 0 0;
 		height: 1300px;
 		.right1 {
-			top: 87px;
+			top: 17px;
 			left: 0;
+			width: 66vw;
 			transform: scaleX(-1);
 		}
 		.left1 {
-			bottom: -143px;
+			bottom: -189px;
 			left: auto;         // ✅ これを明示
 			right: 0;           // ✅ 右寄せが効くようになる
+			width: 65.6vw;
 			transform: scaleX(1);
 		}
 	}

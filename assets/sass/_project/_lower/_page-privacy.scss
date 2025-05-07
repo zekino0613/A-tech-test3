@@ -13,14 +13,12 @@
 			right: 0;
 			width: 65vw;
 			transform: scaleX(1);
-			background-color: brown;
 		}
 		.left1 {
 			top: 520px;
 			left: 0;     
 			width: 65vw;    
 			transform: scaleX(1);
-			background-color: blue;
 			transform: scaleX(-1);
 		}
 		.right2 {
@@ -28,21 +26,18 @@
 			right: 0;
 			width: 65vw; 
 			transform: scaleX(1);
-			background-color: blueviolet;
 		}
 		.left2 {
 			bottom: 1330px;
 			left: 0;
 			width: 65vw;          // ✅ これを明示
 			transform: scaleX(-1);
-			background-color: cadetblue;
 		}
 		.right3 {
 			bottom: 718px;
 			right: 0;
 			width: 65vw;  
 			transform: scaleX(1);
-			background-color: rgb(0, 197, 85);
 		}
 	}
 	.main-content {
@@ -132,8 +127,18 @@
 }
 
 
-// SP
-@media screen and (max-width: 700px) {	
+
+
+
+
+
+
+
+
+
+
+// SPとTABTAB
+@media screen and (max-width: 1050px) {	
 	#privacy-body {
 		position: relative;
 		.triangle-contents {

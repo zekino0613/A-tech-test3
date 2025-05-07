@@ -389,9 +389,9 @@ function custom_wpcf7_validation($result, $tags) {
     $form = WPCF7_ContactForm::get_current();
     $form_id = $form->id();
 
-    if ($form_id == 132) {
-        return validate_recruit_form($result, $tags); // 採用フォーム
-    }
+    // if ($form_id == 132) {
+    //     return validate_recruit_form($result, $tags); // 採用フォーム
+    // }
 
     if ($form_id == 6) {
         return validate_contact_form($result, $tags); // お問い合わせフォーム
@@ -400,86 +400,6 @@ function custom_wpcf7_validation($result, $tags) {
     return $result;
 }
 
-
-
-
-// // 採用フォーム用バリデーション
-// function validate_recruit_form($result, $tags) {
-//     foreach ($tags as $tag) {
-//         $name = $tag['name'];
-//         $post = isset($_POST[$name]) ? trim($_POST[$name]) : '';
-
-//         $required = [
-//             'your-name' => 'お名前',
-//             'your-furigana' => 'ふりがな',
-//             'your-birthdate' => '生年月日',
-//             'postal-code' => '郵便番号',
-//             'prefecture' => '都道府県',
-//             'city' => '市区町村',
-//             'address' => '番地・建物名',
-//             'phone-number' => '電話番号',
-//             'email' => 'メールアドレス',
-//             'work-area' => '希望就業エリア',
-//         ];
-
-//         if (array_key_exists($name, $required) && empty($post)) {
-//             $result->invalidate($name, "{$required[$name]}は必須です。");
-//         }
-
-//         if ($name === 'your-furigana' && !empty($post) && !preg_match('/^[ぁ-んー\s]+$/u', $post)) {
-//             $result->invalidate($name, 'ふりがなは全角ひらがなで入力してください。');
-//         }
-				
-// 				  // ✅ 電話番号：半角数字のみ（ハイフンなし）10～11桁
-// 					if ($name === 'phone-number' && !empty($post) && !preg_match('/^0\d{9,10}$/', $post)) {
-//             $result->invalidate($name, '電話番号はハイフンなしの半角数字で入力してください（例：09012345678）。');
-//         }
-
-//         // ✅ メールアドレス形式チェック
-//         if ($name === 'email' && !empty($post) && !filter_var($post, FILTER_VALIDATE_EMAIL)) {
-//             $result->invalidate($name, 'メールアドレスの形式が正しくありません。');
-//         }
-				
-				
-//     }
-	
-//     return $result;
-// }
-
-
-
-// // // お問い合わせフォーム用バリデーション
-// function validate_contact_form($result, $tags) {
-//     foreach ($tags as $tag) {
-//         $name = $tag['name'];
-//         $post = isset($_POST[$name]) ? trim($_POST[$name]) : '';
-				
-//         $required = [
-// 					'your-name' => 'お名前',
-// 					'furigana' => 'ふりがな',
-// 					'email' => 'メールアドレス',
-//         ];
-				
-// 				//// 下記二つは共存できません。
-// 				//// どちらかを選択して使用
-// 				//// ------------------------------------------------------------
-// 				//// 共通メッセージで必須チェック
-// 				if (array_key_exists($name, $required) && empty($post)) {
-// 					$result->invalidate($name, '必須項目を入力してください。');
-// 				}	
-// 				////必須チェック$required内の項目名を出力
-//         // if (array_key_exists($name, $required) && empty($post)) {
-//         //     $result->invalidate($name, "{$required[$name]}は必須です");
-//         // }
-// 				//// ------------------------------------------------------------
-				
-//        // ✅ メールアドレス形式チェック
-// 				if ($name === 'email' && !empty($post) && !filter_var($post, FILTER_VALIDATE_EMAIL)) {
-// 				$result->invalidate($name, 'メールアドレスの形式が正しくありません。');
-// 		}
-//     }
-//     return $result;
-// }
 
 
 function validate_contact_form($result, $tags) {
@@ -496,7 +416,6 @@ function validate_contact_form($result, $tags) {
 		$value = is_array($value_raw)
 			? array_filter(array_map('trim', $value_raw))
 			: trim($value_raw);
-
 		// 必須チェック対象（agree は除外）
 		$required = [
 			'your-name'    => 'お名前',

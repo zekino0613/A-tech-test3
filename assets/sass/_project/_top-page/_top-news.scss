@@ -35,7 +35,7 @@
 				}
 				&__inner{
 					display: flex;
-					padding: 0px 0 12px 0;
+					padding: 1px 0 9px 0;
 					margin: 0px auto 33px;
 					align-items: flex-start;
 					border-bottom:1.5px solid map-get(mixin.$colors, "C-black");	
@@ -81,7 +81,7 @@
 
 @include mixin.SP {
 	#news {
-		padding: 11px 5.2% 36px;
+		padding: 11px 6.2% 40px;
 		.news__inner {
 			max-width: 960px;
 			width: 100%;
@@ -111,8 +111,8 @@
 					}
 					&__inner{
 						display: flex;
-						padding: 0px 0 22px 0;
-						margin: 4px auto 34px;
+						padding: 0;
+						margin: 22px auto 32px;
 						align-items: flex-start;
 						border-bottom:1.5px solid map-get(mixin.$colors, "C-black");	
 						.textarea {
@@ -128,7 +128,7 @@
 									bold,
 									F-color-blue);
 									padding: 0;
-									margin: 0px 0 8px;
+									margin: 0px 0 -2px;
 									display: block;
 							}
 							&__news-title {
@@ -139,7 +139,7 @@
 									F-family-Noto-Sans-JP,
 									500,
 									F-color-black);
-									margin: 0 ;
+									margin:  11px 0 -12px;
 							}
 						}
 					}
@@ -147,7 +147,7 @@
 				}
 			}
 			.slanted-svg-button {
-				margin: -7px auto 6px;
+				margin: -3px auto 3px;
 				.button-text {
 					padding: 0px 37px 0 0px;
 				}

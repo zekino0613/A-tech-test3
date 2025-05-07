@@ -33,9 +33,14 @@
 				// padding: 24px 4.6%;
 				&__inner {
 					.service-list-wrap {
+						// overflow-x: auto; // 横スクロール許可
+						-webkit-overflow-scrolling: touch; // スマホ慣性スクロール
+						cursor: grab;
 						.service-list {
 							display: flex;
 							gap: 27px;
+							// width: max-content; // 子要素に合わせて幅を広げる
+							// user-select: none; // テキスト選択を防ぐ
 							&__tab {
 								position: relative;
 								width: 58.67%;
@@ -81,6 +86,9 @@
 									right: 46%;
 								}
 							}
+						}
+						&.dragging {
+							cursor: grabbing;
 						}
 					}
 					
@@ -128,11 +136,10 @@
 	.voice {
 		&__inner {	
 			.section-title {
-				h3 {
-					line-height: 48px;
-				}
-				span {
-					margin: 2px 0px 0 11px;
+				margin: 0 0 1px;
+				align-items: center;
+				&__ja {
+					margin: 2px 0px 0 14px;
 				}
 			}
 			.voice-list {
@@ -182,7 +189,7 @@
 				}
 			}
 			.slanted-svg-button {
-				margin: 20px auto 60px 301px;
+				margin: 20px auto 60px ;
 				// margin: 20px auto 60px;
 			}
 		}
@@ -363,17 +370,6 @@
 	}
 }	
 
-#voice {
-	padding: 79px 4.6% 55px;
-	.voice {
-		&__inner {	
-			.slanted-svg-button {
-				margin: 20px auto 60px;
-			}
-		}
-	}
-}
-
 
 
 
@@ -544,6 +540,7 @@
 		.voice {
 			&__inner {
 				.section-title {
+					align-items: flex-start;
 					flex-direction: column;
 					h3 {
 						line-height: 48px;

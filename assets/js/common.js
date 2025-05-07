@@ -106,18 +106,6 @@ jQuery(function($) {
 
 
 // // 個別ページ  Service-サービス内容
-// jQuery(function ($) {
-// 	$('.service-list__tab').on('click', function () {
-// 		var tabID = $(this).data('tab');
-
-// 		$('.service-list__tab').removeClass('is-active');
-// 		$(this).addClass('is-active');
-
-// 		$('.service-textarea__desc').removeClass('is-show').fadeOut(200);
-// 		$('#' + tabID).fadeIn(300).addClass('is-show');
-// 	});
-// });
-
 jQuery(function ($) {
   $('.service-list__tab').on('click', function () {
     const tabID = $(this).data('tab');
@@ -134,72 +122,39 @@ jQuery(function ($) {
 });
 
 
+// スライド部分マウスクリックで掴めるようにする
+
+jQuery(function($) {
+	const $slider = $('.service-list-wrap');
+	let isDown = false;
+	let startX;
+	let scrollLeft;
+
+	$slider.on('mousedown touchstart', function(e) {
+		isDown = true;
+		$slider.addClass('dragging');
+		startX = e.pageX || e.originalEvent.touches[0].pageX;
+		scrollLeft = $slider.scrollLeft();
+	});
+
+	$(document).on('mouseup touchend', function() {
+		isDown = false;
+		$slider.removeClass('dragging');
+	});
+
+	$(document).on('mousemove touchmove', function(e) {
+		if (!isDown) return;
+		e.preventDefault();
+		const x = e.pageX || e.originalEvent.touches[0].pageX;
+		const walk = (x - startX) * 1.5; // スクロール速度
+		$slider.scrollLeft(scrollLeft - walk);
+	});
+});
 
 
-// // 採用情報フォーム
-// // ラジオボタンで「その他」選択の時にだけテキストエリアが入力できるようにする
-// jQuery(document).ready(function ($) {
-//   function toggleOtherTextarea() {
-//       let selectedValue = $(".inquiry-checkbox input:checked").val();
-
-//       if (selectedValue === "その他") {
-//           $(".other-textarea").prop("disabled", false).focus();
-//       } else {
-//           $(".other-textarea").prop("disabled", true).val("");
-//       }
-//   }
-
-//   // ページロード時に適用（リロード後の状態保持対策）
-//   toggleOtherTextarea();
-
-//   // ラジオボタンの変更を監視
-//   $(".inquiry-checkbox input").change(function () {
-//       toggleOtherTextarea();
-//   });
-// });
-
-// //採用情報フォーム確認画面
-// // ダブルクリックでカレンダー表示
-// jQuery(document).ready(function ($) {
-//   $(".birthdate").on("dblclick", function () {
-//       this.showPicker();
-//   });
-// });
 
 
-//採用情報フォーム確認画面
-// ラジオボタンで「その他」選択の時にだけテキストエリアが出力されるようにする
-// jQuery(document).ready(function ($) {
-//   function toggleOtherTextarea() {
-//       let selectedValue = $(".confirm-radio").text().trim();
-//       let otherLabel = $(".confirm-other-text");
-//       let otherTextarea = $(".confirm-other-textarea");
 
-//       console.log("選択中のラジオボタン:", selectedValue);
-//       console.log("その他入力値:", otherTextarea.text().trim());
-
-//       if (selectedValue === "その他" && otherTextarea.text().trim() !== "") {
-//           otherLabel.removeClass("hidden");
-//           otherTextarea.removeClass("hidden");
-//       } else {
-//           otherLabel.addClass("hidden");
-//           otherTextarea.addClass("hidden");
-//       }
-//   }
-
-//   // 初期状態で実行
-//   toggleOtherTextarea();
-// });
-
-
-// document.addEventListener("DOMContentLoaded", function() {
-// 	let submitBtn = document.querySelector(".btn");
-// 	if (submitBtn) {
-// 			let icon = document.createElement("i");
-// 			icon.classList.add("fa-solid", "fa-angle-right");
-// 			submitBtn.appendChild(icon);
-// 	}
-// });
 
 // // // 【同意チェック欄】のバリデーション
 jQuery(function ($) {

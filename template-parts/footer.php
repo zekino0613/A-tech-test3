@@ -40,7 +40,7 @@
 									width="78" 
 									height="82"
 									loading="lazy"
-									alt="ヘッダーロゴ">
+									alt="フッダーロゴ">
 						</a>			
 						
 						<nav class="footer-nav">

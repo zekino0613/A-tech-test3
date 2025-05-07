@@ -4,7 +4,7 @@
 
 
 #error-404 {
-  padding: 0 12.5% 174px;
+  padding: 81px 6.5% 91px;
   margin: -9px 0 0 0;
   p {
     @include mixin.font-settings (
@@ -28,7 +28,7 @@
 
 @include mixin.SP {
   #error-404 {
-    padding: 0 4% 120px;
+    padding: 100px 4%;
     margin: 0;
     p {
       @include mixin.font-settings (

@@ -14,7 +14,7 @@
 		<meta property="og:title" content="株式会社ネクストリアルティ｜不動産の可能性を発見し、最適な選択を。">
 		<meta property="og:description" content="日本全国のご自宅用不動産の売買コンサルティングを行っている株式会社ネクストリアルティのホームページです。不動産を通じてお客様のより良いライフプランを実現するために、お客様へのヒアリングから販売会社の斡旋、アフターフォローまでお手伝いします。">
 		<meta property="og:type" content="website" />
-		<meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/ogp-image.webp">
+		<meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/top-ogp.jpg">
 		<meta property="og:url" content="<?php echo home_url(); ?>">
   <?php endif; ?> 
   <!-- 【その他のページOGP設定】 -->
@@ -27,7 +27,7 @@
     <meta property="og:title" content="お知らせ一覧｜株式会社ネクストリアルティ">
     <meta property="og:description" content="ネクストリアルティのお知らせ一覧ページ。最新の不動産情報やサービスの更新、イベント情報をお届けします。不動産に関する最新ニュースはこちらをチェックしてください。">
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/ogp-image.webp">
+    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/news-ogp.jpg">
     <meta property="og:url" content="<?php echo get_post_type_archive_link('news'); ?>">
   <?php endif; ?> 
 	<!-- fontawesome -->

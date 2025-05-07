@@ -147,7 +147,7 @@
 					get_template_part('template-parts/slanted-svg-button', null, [
 						'label' => 'View more',
 						'width' => '336px',
-						'url'   => home_url('/servise/')
+						'url'   => home_url('/service/')
 					]);
 				?>
 			</div>
@@ -261,14 +261,14 @@
 				
 				
 				<div class="recruit-image-box">
-					<img class= "recruit-image" 
-						src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/top-recruit.webp"
-						width="255" 
-						height="146"
-						loading="lazy"
-						alt="採用情報画像">
-						
-					<div class="recruit-image-box__bg"></div>	
+					<img class= "recruit-image-box__image" 
+							src="<?php echo get_template_directory_uri(); ?>/assets/images/a-tech3_image/recruitment01.webp"
+							width="240" 
+							height="146"
+							loading="lazy"
+							alt="採用情報画像">
+							
+						<div class="recruit-image-box__bg"></div>		
 				</div>
 				
 				<!-- slanted-svg-button.php -->

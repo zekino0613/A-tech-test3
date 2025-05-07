@@ -207,8 +207,8 @@ $transition: 0.3s;
 .slanted-svg-button {
 	display: block;
 	// max-width: 272px;
-  width: 100%;
 	max-width: clamp(180px, 79vw, 272px);
+  width: 100%;
 	cursor: pointer;
 	overflow: hidden; // ✅ 追加！
 	a {
@@ -216,6 +216,8 @@ $transition: 0.3s;
 		display: block;
     width: 132%;
     height: 113%;
+		// height: auto;
+    // display: block;
 	}
   svg {
     width: 80%;
@@ -233,12 +235,14 @@ $transition: 0.3s;
     transition: fill $transition, stroke $transition;
   }
   .button-text {
-		width: 218px;
+		max-width: 218px;
+		width: 100%;
     height: 49px;
     display: flex;
     gap: 7px;
     align-items: center;
     justify-content: center;
+		text-align: center;
 		padding: 8px 31px 0 0px;
 		@include mixin.font-settings (
 		F-size14,
@@ -247,7 +251,7 @@ $transition: 0.3s;
 		F-family-Puritan,
 		400,
 		F-color-blue);
-		font-size: 11px;
+		// font-size: 11px;
     transition: color $transition;
 		position: relative;
     .arrow {
@@ -315,16 +319,12 @@ $transition: 0.3s;
 	}
 	&__bg {
 		position: absolute;
-		// width: min(948px, 60vw); // ✅ デフォルト最大948px、画面縮小時は60%まで縮む
 		aspect-ratio: 948 / 854; // ✅ 比率固定
 		height: auto;            // ✅ 高さは自動
 		width: 60vw; // ← 横幅は画面幅に対する割合で
-		// width: 948px;
-		// height: 854px; // 三角形の高さ調整（自由に変更OK）
-		background-color: #c4a032; // 任意の背景色
+		background-color: #F6F7F7; // 任意の背景色
 		clip-path: polygon(100% 0, 0 50%, 100% 100%); // ←ここで三角形を作成
 		z-index: 0;
-		opacity: 0.6;
 	}
 	.right1 {
 		position: absolute;

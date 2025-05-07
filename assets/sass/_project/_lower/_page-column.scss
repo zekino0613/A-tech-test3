@@ -11,27 +11,22 @@
 			top: 0;
 			right: 0;
 			transform: scaleX(1);
-			background-color: brown;
 		}
 		.left1 {
 			top: 506px;
 			left: 0;         // ✅ これを明示
 			transform: scaleX(1);
-			background-color: blue;
 			transform: scaleX(-1);
 		}
 		.right2 {
 			bottom: 744px;
 			right: 0;
 			transform: scaleX(1);
-			background-color: blueviolet;
 		}
 		.left2 {
 			bottom: 130px;
 			left: 0;         // ✅ これを明示
-			transform: scaleX(-1);
-			background-color: cadetblue
-			
+			transform: scaleX(-1);	
 			;
 		}
 	}
@@ -105,6 +100,8 @@
 							}
 							.number-list {
 								width: 100%;
+								counter-reset: item;
+								list-style: disc;
 								.reverse {
 									flex-direction: row-reverse;
 								}
@@ -219,6 +216,7 @@
 								span {
 									margin: 5px 0 0 ;
 									padding: 0;
+									line-height: 20px;
 								}
 							}
 							.colmun-bg {

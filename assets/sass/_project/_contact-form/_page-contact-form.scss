@@ -24,16 +24,30 @@
   &__inner {			
 		.contact-top {
 			padding: 0 6.4%;
-			.section-title,p {
+			.section-title,&__text {
 				max-width: 963px;
 				width: 100%;
 				margin: 15px auto 0px;
 			}
+			
+			&__text {
+				@include mixin.font-settings
+				( F-size16
+				, F-line-height32
+				, F-letter-spacing-0-8
+				, F-family-Noto-Sans-JP
+				, 500
+				, F-color-black
+				);
+				margin: 9px auto -10px;
+			}
 		}
+
     .contact-form-wrapper {
 			background-color: #F6F7F7;
-			padding: 56px 6.4%;
-			margin: 50px 0 117px;
+			padding: 55px 6.4%;
+			margin: 50px 0 101px;
+	
 			.wpcf7 {
 				.wpcf7-form {
 					max-width: 836px;
@@ -52,6 +66,7 @@
 							label {
 								position: relative;
 								margin: 0 0 0 71px;
+								cursor: pointer;
 								@include mixin.font-settings
 								( F-size16
 								, F-line-height24
@@ -96,15 +111,13 @@
 									, F-family-Noto-Sans-JP
 									, 400
 									, F-color-black);
+									label {
+										cursor: pointer;
+									}
 								}
 							}
 						}
-						.tel-input {
-							max-width: 310px;							
-							width: 100%;
-							height: 48px;
-						}
-					
+						
 						
 						.inquiry-details {
 							max-width: 582px;
@@ -115,12 +128,24 @@
 					
 					.flex-start {
 						align-items: flex-start;
-						margin: 50px 0 17px;
+						margin: 51px 0 -6px;
 					}
+					
+					.tel-input {
+						display: flex;
+						align-items: flex-end;
+						margin: -20px 0 55px;
+						.input-content {
+							max-width: 310px;							
+							width: 100%;
+							height: 48px;	
+						}
+					}
+					
 					//利用規約と個人情報
 					.form-list.agree {
 						width: 63%;
-						margin: 28px auto 49px;
+						margin: 37px auto 49px;
 						justify-content: center;
 						.input-agree {
 							display: flex;
@@ -208,13 +233,14 @@
 						{
 						max-width: 374px;
 						width: 100%;
+						height: 48px;
 						padding: 12px;
 						border-radius: 4px;
 						border: 1px solid map-get(mixin.$colors, "C-black");
 						font-size: 16px;
 						background: map-get(mixin.$colors, "C-white");
 						&:focus {
-							border-color: map-get(mixin.$colors, "C-pink");
+							border-color: map-get(mixin.$colors, "C-blue");
 							background: #fff;
 							outline: none;
 						}
@@ -229,19 +255,24 @@
 						font-size: 16px;
 						background: map-get(mixin.$colors, "C-white");
 						&:focus {
-							border-color: map-get(mixin.$colors, "C-pink");
+							border-color: map-get(mixin.$colors, "C-blue");
 							background: #fff;
 							outline: none;
 						}
 					}
 					input[type="radio"],
 					input[type="checkbox"] {
-						-webkit-appearance: checkbox; // Webkitブラウザ用
-						-moz-appearance: checkbox;    // Mozillaブラウザ用
-						appearance: checkbox;         // モダンブラウザ用
+						-webkit-appearance: checkbox;  /* Webkitブラウザ用 */
+						-moz-appearance: checkbox;     /* Mozillaブラウザ用 */
+						appearance: checkbox;          /* モダンブラウザ用 */
 						margin-right: 18px;
 						width: 22px;
 						height: 22px;
+						&:hover {
+							cursor: pointer; 
+							box-shadow: 0 0 0 2px rgba(251, 103, 11, 0.4); 
+							border-radius: 2px;
+						}
 					}
 				
 					.btn-wrapper {
@@ -262,13 +293,13 @@
 		margin: 49px auto -26px;
 		height: auto;
 		.contact-form-section {
-		&__inner {			
+		&__inner {	
 			.contact-top {
 				padding: 0 6.4%;
-				.section-title,p {
+				.section-title,&__text {
 					max-width: 963px;
 					width: 100%;
-					margin: 0 auto;
+					margin: 15px auto 0px;
 					flex-direction: column;
 					line-height: 27px;
 					h3 {
@@ -280,7 +311,20 @@
 						padding: 0;
 					}
 				}
-			}
+				
+				&__text {
+					@include mixin.font-settings
+					( F-size16
+					, F-line-height32
+					, F-letter-spacing-0-8
+					, F-family-Noto-Sans-JP
+					, 500
+					, F-color-black
+					);
+					margin:-5px auto -8px;
+				}
+			}		
+		
 			.contact-form-wrapper {
 				background-color: #F6F7F7;
 				padding: 40px 6.4% 10px;
@@ -348,18 +392,9 @@
 										, 400
 										, F-color-black);		
 									}
-									.last {
-										display: none
-									}
 								}
 							}
-							.tel-input {
-								max-width: 310px;							
-								width: 100%;
-								height: 48px;
-							}
-						
-							
+
 							.inquiry-details {
 								max-width: 582px;
 								width: 100%;
@@ -368,12 +403,29 @@
 						}	
 						
 						.flex-start {
-							align-items: flex-start
+							align-items: flex-start;
+							margin: 20px 0 29px;
 						}
+						
+						.tel-input {
+							display: flex;
+							align-items: flex-start;
+							flex-direction: column;
+							margin: -20px 0 55px;
+							.label-content {
+								margin: 15px 0 -6px;
+							}
+							.input-content {
+								max-width: 310px;							
+								width: 100%;
+								height: 48px;	
+							}
+						}
+						
 						//利用規約と個人情報
 						.form-list.agree {
 							width: 100%;
-							margin: -8px auto 49px 20px;
+							margin: -1px auto 29px 20px;
 							justify-content: center;
 							.input-agree {
 								display: flex;
@@ -386,6 +438,7 @@
 									margin-right: 4px;
 									width: 20px;
 									height: 20px;
+									
 								}
 								label {
 									display: flex;
@@ -422,22 +475,7 @@
 											, F-color-black);
 										}
 									}
-									.required {
-										display: block;
-										width: 42px;
-										height: 20px;
-										text-align: center;
-										padding: 4px 0;
-										margin: 0 0 0 4px;
-										background-color: map-get(mixin.$colors, "C-pink");
-										@include mixin.font-settings
-										( F-size12
-										, F-line-height12
-										, F-letter-spacing-10
-										, F-family-KosugiMaru
-										, 400
-										, F-color-white);
-									}
+								
 								}
 								#agree-error {
 									margin: -1px 0 -27px 51px;
@@ -465,7 +503,7 @@
 							font-size: 16px;
 							background: map-get(mixin.$colors, "C-white");
 							&:focus {
-								border-color: map-get(mixin.$colors, "C-pink");
+								border-color: map-get(mixin.$colors, "C-blue");
 								background: #fff;
 								outline: none;
 							}
@@ -480,7 +518,7 @@
 							font-size: 16px;
 							background: map-get(mixin.$colors, "C-white");
 							&:focus {
-								border-color: map-get(mixin.$colors, "C-pink");
+								border-color: map-get(mixin.$colors, "C-blue");
 								background: #fff;
 								outline: none;
 							}
@@ -496,7 +534,7 @@
 						}
 					
 						.btn-wrapper {
-							margin: 0 auto;
+							margin: -1px auto -21px;
 							text-align: center;
 							.gradient-entry-button {
 								max-width: 100%;
